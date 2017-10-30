@@ -1,0 +1,62 @@
+#
+# Php Dockerfile
+#
+# https://github.com/tamboraorg/docker/crephp
+#
+
+# Pull base image.
+#FROM tamboraorg/creubuntu
+
+# Fixes some weird terminal issues such as broken clear / CTRL+L
+ENV TERM=linux
+
+# Install cURL and nano
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl ca-certificates nano \
+    && apt-get clean \
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# Install dotdeb repo, PHP7, composer and selected extensions
+RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list \
+    && curl -sS https://www.dotdeb.org/dotdeb.gpg | apt-key add - \
+    && apt-get update \
+    && apt-get -y --no-install-recommends install php7.0-cli php7.0-apcu php7.0-apcu-bc php7.0-curl \
+        php7.0-json php7.0-mcrypt php7.0-opcache php7.0-readline php7.0-xml php7.0-zip \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
+
+CMD ["php", "-a"]
+
+# If you'd like to be able to use this container on a docker-compose environment as a quiescent PHP CLI container
+# you can /bin/bash into, override CMD with the following - bear in mind that this will make docker-compose stop
+# slow on such a container, docker-compose kill might do if you're in a hurry
+# CMD ["tail", "-f", "/dev/null"]
+
+# Install FPM
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install php7.0-fpm \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# File permissions workaround
+RUN usermod -u 1000 www-data
+
+# PHP-FPM packages need a nudge to make them docker-friendly
+COPY overrides.conf /etc/php/7.0/fpm/pool.d/z-overrides.conf
+
+# PHP-FPM has really dirty logs, certainly not good for dockerising
+# The following startup script contains some magic to clean these up
+COPY php-fpm-startup /usr/bin/php-fpm
+CMD /usr/bin/php-fpm
+
+# Open up fcgi port
+EXPOSE 9000
+
+# Install selected extensions and other stuff
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install  php7.0-gd php7.0-mbstring php7.0-memcached php7.0-mongodb php7.0-pgsql php7.0-imagick php7.0-ssh2 php7.0-xdebug \
+    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+
+WORKDIR "/var/www/cre"
