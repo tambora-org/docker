@@ -9,8 +9,8 @@ ENV POSTGIS_MAJOR 2.2
 #ENV POSTGIS_VERSION 2.3.2+dfsg-1~exp2.pgdg16.04+1
 
 
-#RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
-RUN add-apt-repository ppa:ubuntugis/ppa
+RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
+#RUN add-apt-repository ppa:ubuntugis/ppa
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
