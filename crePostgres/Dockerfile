@@ -7,10 +7,13 @@ ENV INITRD No
 ENV LANG en_US.UTF-8
 ENV PG_VERSION 9.5
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
-    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \
-      | tee /etc/apt/sources.list.d/postgresql.list && \
-    apt-get update && \
+#RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
+#    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \
+#      | tee /etc/apt/sources.list.d/postgresql.list 
+
+RUN add-apt-repository ppa:ubuntugis/ppa
+
+RUN apt-get update && \
     apt-get install -y -q --no-install-recommends \
       postgresql-$PG_VERSION postgresql-client-$PG_VERSION postgresql-contrib-$PG_VERSION && \
     apt-get clean && \
