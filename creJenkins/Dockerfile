@@ -4,8 +4,8 @@
 # https://github.com/tamboraorg/docker/crejenkins
 #
 
-# Pull base image.
-FROM tamboraorg/creubuntu
+# Pull base image. 
+FROM tamboraorg/crejava
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 

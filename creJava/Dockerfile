@@ -1,5 +1,5 @@
 #
-# Java Dockerfile
+# Java Dockerfile 
 #
 # https://github.com/tamboraorg/docker/crejava
 #
@@ -9,7 +9,7 @@ FROM tamboraorg/creubuntu
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 ENV LANG en_US.UTF-8
 
