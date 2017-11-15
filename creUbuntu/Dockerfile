@@ -22,6 +22,8 @@ RUN \
 #ADD root/.gitconfig /root/.gitconfig
 #ADD root/.scripts /root/.scripts
 
+RUN apt-get update && apt-get -y install apt-transport-https curl
+
 # Set environment variables.
 ENV HOME /root
 
