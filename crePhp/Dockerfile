@@ -9,6 +9,7 @@ FROM tamboraorg/creubuntu
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
+ENV PHP_VERSION 7.1
 
 # Install cURL and nano
 #RUN apt-get update \
@@ -18,13 +19,13 @@ ENV TERM=linux
 
 # Install dotdeb repo, PHP7, composer and selected extensions
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install php7.1-cli php7.1-apcu php7.1-apcu-bc php7.1-curl \
-        php7.1-json php7.1-mcrypt php7.1-opcache php7.1-readline php7.1-xml php7.1-zip \
+    && apt-get -y --no-install-recommends install php$PHP_VERSION-cli php$PHP_VERSION-apcu php$PHP_VERSION-apcu-bc php$PHP_VERSION-curl \
+        php$PHP_VERSION-json php$PHP_VERSION-mcrypt php$PHP_VERSION-opcache php$PHP_VERSION-readline php$PHP_VERSION-xml php$PHP_VERSION-zip \
 #    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 #    && apt-get clean \
 #    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
  
-CMD ["php", "-a"]
+#CMD ["php", "-a"]
 
 # If you'd like to be able to use this container on a docker-compose environment as a quiescent PHP CLI container
 # you can /bin/bash into, override CMD with the following - bear in mind that this will make docker-compose stop
@@ -33,7 +34,7 @@ CMD ["php", "-a"]
 
 # Install FPM
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install php7.1-fpm \
+    && apt-get -y --no-install-recommends install php$PHP_VERSION-fpm \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
@@ -41,7 +42,7 @@ RUN apt-get update \
 RUN usermod -u 1000 www-data
 
 # PHP-FPM packages need a nudge to make them docker-friendly
-COPY overrides.conf /etc/php/7.1/fpm/pool.d/z-overrides.conf
+COPY overrides.conf /etc/php/$PHP_VERSION/fpm/pool.d/z-overrides.conf
 
 # PHP-FPM has really dirty logs, certainly not good for dockerising
 # The following startup script contains some magic to clean these up
@@ -53,8 +54,19 @@ EXPOSE 9000
 
 # Install selected extensions and other stuff
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install  php7.1-gd php7.1-mbstring php7.1-memcached php7.1-mongodb php7.1-pgsql php7.1-imagick php7.1-ssh2 php7.1-xdebug \
+    && apt-get -y --no-install-recommends install  php$PHP_VERSION-gd php$PHP_VERSION-mbstring php$PHP_VERSION-memcached php$PHP_VERSION-mongodb php$PHP_VERSION-pgsql php$PHP_VERSION-imagick php$PHP_VERSION-ssh2 \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+
+# Install selected debug extensions and other stuff
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install  php$PHP_VERSION-xdebug \
+    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# Install composer and selected extensions
+RUN apt-get update \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
 WORKDIR "/var/www/cre"
