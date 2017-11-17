@@ -21,7 +21,7 @@ ENV PHP_VERSION 7.0
 
 # Install dotdeb repo, PHP7, composer and selected extensions
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install php$PHP_VERSION-cli php$PHP_VERSION-apcu php$PHP_VERSION-apcu-bc php$PHP_VERSION-curl \
+    && apt-get -y --no-install-recommends install php$PHP_VERSION-cli php$PHP_VERSION-curl \
         php$PHP_VERSION-json php$PHP_VERSION-mcrypt php$PHP_VERSION-opcache php$PHP_VERSION-readline php$PHP_VERSION-xml php$PHP_VERSION-zip \
 #    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 #    && apt-get clean \
@@ -56,9 +56,14 @@ EXPOSE 9000
 
 # Install selected extensions and other stuff
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install  php$PHP_VERSION-gd php$PHP_VERSION-mbstring php$PHP_VERSION-memcached php$PHP_VERSION-mongodb php$PHP_VERSION-pgsql php$PHP_VERSION-imagick php$PHP_VERSION-ssh2 \
+    && apt-get -y --no-install-recommends install  php$PHP_VERSION-gd php$PHP_VERSION-mbstring  php$PHP_VERSION-imagick php$PHP_VERSION-ssh2 \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+# Install db extensions and other stuff
+# php$PHP_VERSION-apcu php$PHP_VERSION-apcu-bc  is depricated
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install  php$PHP_VERSION-memcached php$PHP_VERSION-mongodb php$PHP_VERSION-pgsql \
+    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install selected debug extensions and other stuff
 RUN apt-get update \
