@@ -22,7 +22,7 @@ RUN \
 #ADD root/.gitconfig /root/.gitconfig
 #ADD root/.scripts /root/.scripts
 
-RUN apt-get update && apt-get -y install apt-transport-https curl libzip2
+RUN apt-get update && apt-get -y install apt-transport-https curl libzip4
 
 # Set environment variables.
 ENV HOME /root
