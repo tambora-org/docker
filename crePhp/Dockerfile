@@ -9,7 +9,9 @@ FROM tamboraorg/creubuntu
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
-ENV PHP_VERSION 7.1
+ENV PHP_VERSION 7.0   
+
+
 
 # Install cURL and nano
 #RUN apt-get update \
