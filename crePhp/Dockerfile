@@ -55,18 +55,24 @@ EXPOSE 9000
 
 # Install selected extensions and other stuff
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install  php$PHP_VERSION-gd php$PHP_VERSION-mbstring  php$PHP_VERSION-imagick php$PHP_VERSION-ssh2 \
+    && apt-get -y --no-install-recommends install  php$PHP_VERSION-gd php$PHP_VERSION-mbstring  php-imagick php-ssh2 \
+    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# Install memcached
+# maybe add 'memcached' here as well...
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install   php-memcached \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install db extensions and other stuff
 # php$PHP_VERSION-apcu php$PHP_VERSION-apcu-bc  is depricated
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install  php$PHP_VERSION-memcached php$PHP_VERSION-mongodb php$PHP_VERSION-pgsql \
+    && apt-get -y --no-install-recommends install   php-mongodb php$PHP_VERSION-pgsql \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install selected debug extensions and other stuff
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install  php$PHP_VERSION-xdebug \
+    && apt-get -y --no-install-recommends install  php-xdebug \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install composer and selected extensions
