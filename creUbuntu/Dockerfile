@@ -4,6 +4,9 @@
 # https://github.com/tamboraorg/docker/creUbuntu
 # (adapted from https://github.com/dockerfile/ubuntu )
 
+ENV UBUNTU_VERSION 16.04
+ENV DOCKER_GEN_VERSION 0.7.4
+
 # Pull base image.
 FROM ubuntu:16.04
 
@@ -23,6 +26,11 @@ RUN \
 #ADD root/.scripts /root/.scripts
 
 RUN apt-get update && apt-get -y install apt-transport-https curl libzip4 libssh2-1
+
+# Install docker-gen (generates files from templates with docker data filled in)
+RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
+ && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
+ && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
 
 # Set environment variables.
 ENV HOME /root
