@@ -4,11 +4,12 @@
 # https://github.com/tamboraorg/docker/creUbuntu
 # (adapted from https://github.com/dockerfile/ubuntu )
 
+# Pull base image.
+FROM ubuntu:16.04
+
 ENV UBUNTU_VERSION 16.04
 ENV DOCKER_GEN_VERSION 0.7.4
 
-# Pull base image.
-FROM ubuntu:16.04
 
 # Install.
 RUN \
