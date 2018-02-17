@@ -14,7 +14,7 @@ ENV INITRD No
 ENV LANG en_US.UTF-8
 ENV PATH=$PATH:/usr/share/elasticsearch/bin
 
-RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add - && \
+RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
     echo 'deb http://packages.elasticsearch.org/elasticsearch/2.x/debian stable main' \
       | tee /etc/apt/sources.list.d/elasticsearch.list && \
     apt-get update && \
