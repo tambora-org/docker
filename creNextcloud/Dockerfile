@@ -1,11 +1,13 @@
 #
-# Jenkins Dockerfile
+# Nextcloud Dockerfile
 #
-# https://github.com/tamboraorg/docker/crejenkins
+# https://github.com/tamboraorg/docker/crenextcloud
 #
 
 # Pull base image. 
 FROM tamboraorg/crephp
+
+
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
