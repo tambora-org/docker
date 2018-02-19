@@ -5,7 +5,7 @@ FROM tamboraorg/crenginx
 
 RUN apt-get update; apt-get install -y openssl
 
-COPY network_internal.conf /etc/nginx/
+COPY ./app/network_internal.conf /etc/nginx/
 
 COPY ./app /app/
 WORKDIR /app/
