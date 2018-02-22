@@ -11,7 +11,6 @@ COPY app /app
 WORKDIR /app/
 
 COPY mk.txt /etc
-COPY creProxy/mk.txt /etc
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
