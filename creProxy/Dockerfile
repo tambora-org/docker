@@ -5,9 +5,9 @@ FROM tamboraorg/crenginx
 
 RUN apt-get update; apt-get install -y openssl
 
-COPY ./app/network_internal.conf /etc/nginx/
+COPY app/network_internal.conf /etc/nginx/
 
-COPY ./app /app/
+COPY app /app
 WORKDIR /app/
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
