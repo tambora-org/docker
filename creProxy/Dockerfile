@@ -10,9 +10,6 @@ RUN apt-get update; apt-get install -y openssl
 
 RUN echo "$(date +'%F %R%t') $(openssl version)" >> /app/versions.txt
 
-
-RUN env "$(cat /usr/lib/os-release | grep PRETTY)" && echo "$(date +'%F %R%t') creUbuntu2 $PRETTY_NAME" >> /app/versions.txt
-
 COPY app/network_internal.conf /etc/nginx/
 
 COPY app /app
