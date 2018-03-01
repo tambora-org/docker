@@ -37,6 +37,8 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
 COPY shoreman.sh /usr/local/bin/shoreman
 RUN chmod 755 /usr/local/bin/shoreman
 
+RUN touch mk.txt
+
 # Set environment variables.
 ENV HOME /root
 
