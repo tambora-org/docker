@@ -12,12 +12,12 @@ WORKDIR /app/
 
 COPY mk.txt /etc
 
-RUN touch /usr/local/bin/mkc3.txt
+RUN touch /usr/local/bin/mkc4.txt
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
 VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
-CMD ["shoreman", "start", "-r"]
+#ENTRYPOINT ["/app/docker-entrypoint.sh"]
+#CMD ["shoreman", "start", "-r"]
 
