@@ -10,6 +10,7 @@ FROM ubuntu:16.04
 ENV UBUNTU_VERSION 16.04
 ENV DOCKER_GEN_VERSION 0.7.4
 
+RUN touch /usr/local/bin/mka5.txt
 
 # Install.
 RUN \
@@ -36,8 +37,6 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
 # Copy shoremen to handle Procfile (Process Managment)
 COPY shoreman.sh /usr/local/bin/shoreman
 RUN chmod 755 /usr/local/bin/shoreman
-
-RUN touch /usr/local/bin/mka4.txt
 
 # Set environment variables.
 ENV HOME /root

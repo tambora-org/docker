@@ -3,16 +3,14 @@ FROM tamboraorg/crenginx
  
 #Adapted from https://github.com/jwilder/nginx-proxy
 
+RUN touch /usr/local/bin/mkc5.txt
+
 RUN apt-get update; apt-get install -y openssl
 
 COPY app/network_internal.conf /etc/nginx/
 
 COPY app /app
 WORKDIR /app/
-
-COPY mk.txt /etc
-
-RUN touch /usr/local/bin/mkc4.txt
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
