@@ -12,6 +12,8 @@ WORKDIR /app/
 
 COPY mk.txt /etc
 
+RUN touch /usr/local/bin/mkc3.txt
+
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
 VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
