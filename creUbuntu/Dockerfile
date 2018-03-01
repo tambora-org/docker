@@ -10,8 +10,8 @@ FROM ubuntu:16.04
 ENV UBUNTU_VERSION 16.04
 ENV DOCKER_GEN_VERSION 0.7.4
 
-RUN mkdir -p /app && touch /app/versions.txt && \
-    echo "$(date +'%F %R%t') creUbuntu $(lsb_release -d -s)" >> /app/versions.txt
+RUN mkdir -p /app && touch /app/versions.txt && ./etc/os-release && \
+    echo "$(date +'%F %R%t') creUbuntu $PRETTY_NAME" >> /app/versions.txt
 
 # Install.
 RUN \
