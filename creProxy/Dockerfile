@@ -3,8 +3,8 @@ FROM tamboraorg/crenginx
  
 #Adapted from https://github.com/jwilder/nginx-proxy
 
-RUN touch /app/versions.txt
-echo "$(date +'%F %R%t') creProxy" >> /app/versions.txt
+RUN touch /app/versions.txt && \
+    echo "$(date +'%F %R%t') creProxy" >> /app/versions.txt
 
 RUN apt-get update; apt-get install -y openssl
 
@@ -18,5 +18,4 @@ ENV DOCKER_HOST unix:///tmp/docker.sock
 VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
-#CMD ["shoreman", "start", "-r"]
 CMD ["shoreman", "/app/Procfile"]
