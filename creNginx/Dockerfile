@@ -7,8 +7,6 @@
 # Pull base image.
 FROM tamboraorg/creubuntu
 
-RUN touch /usr/local/bin/mkb5.txt
-
 # Install Nginx.
 RUN \
   add-apt-repository -y ppa:nginx/stable && \
@@ -19,6 +17,8 @@ RUN \
   sed -i 's/worker_processes  1/worker_processes  auto/' /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx
 
+RUN touch /app/versions.txt
+echo "$(date +'%F %R%t') creNginx $(nginx -v)" >> /app/versions.txt
 
 # Define mountable directories.
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
