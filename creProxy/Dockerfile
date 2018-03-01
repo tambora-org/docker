@@ -8,6 +8,8 @@ RUN mkdir -p /app && touch /app/versions.txt && \
 
 RUN apt-get update; apt-get install -y openssl
 
+RUN echo "$(date +'%F %R%t') $(openssl version)" >> /app/versions.txt
+
 COPY app/network_internal.conf /etc/nginx/
 
 COPY app /app
