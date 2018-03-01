@@ -17,5 +17,5 @@ ENV DOCKER_HOST unix:///tmp/docker.sock
 VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
-CMD ["shoreman", "start", "-r"]
-
+#CMD ["shoreman", "start", "-r"]
+CMD ["shoreman", "/app/Procfile"]
