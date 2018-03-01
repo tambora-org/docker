@@ -17,6 +17,8 @@ RUN \
   sed -i 's/worker_processes  1/worker_processes  auto/' /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx
 
+RUN touch /usr/local/bin/mkb2.txt
+
 # Define mountable directories.
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
 
