@@ -4,7 +4,7 @@ FROM tamboraorg/crenginx
 #Adapted from https://github.com/jwilder/nginx-proxy
 
 RUN mkdir -p /app && touch /app/versions.txt && \
-    echo "$(date +'%F %R%t') creProxy" >> /app/versions.txt
+    echo "$(date +'%F %R%t') cre_Proxy" >> /app/versions.txt
 
 RUN apt-get update; apt-get install -y openssl
 
