@@ -12,7 +12,7 @@ ENV DOCKER_GEN_VERSION 0.7.4
 
 RUN mkdir -p /app && touch /app/versions.txt && \
     env "$(cat /usr/lib/os-release | grep PRETTY)" && \ 
-    echo "$(date +'%F %R%t') creUbuntu2 $PRETTY_NAME" >> /app/versions.txt
+    echo "$(date +'%F %R%t') creUbuntu $PRETTY_NAME" >> /app/versions.txt
 
 # Install.
 RUN \
