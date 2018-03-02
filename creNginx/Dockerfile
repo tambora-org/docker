@@ -18,7 +18,7 @@ RUN \
   chown -R www-data:www-data /var/lib/nginx
 
 RUN mkdir -p /app && touch /app/versions.txt && \ 
-    echo "$(date +'%F %R') \t creNginx \t $(/usr/sbin/nginx -v 2>&1 | sed -e "s/^nginc version: nginx\///" )" >> /app/versions.txt 
+    echo "$(date +'%F %R') \t creNginx \t $(/usr/sbin/nginx -v 2>&1 | sed -e "s/^nginx version: nginx\///" )" >> /app/versions.txt 
 
 # Define mountable directories.
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
