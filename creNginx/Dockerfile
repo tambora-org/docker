@@ -17,8 +17,8 @@ RUN \
   sed -i 's/worker_processes  1/worker_processes  auto/' /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx
 
-RUN mkdir -p /app && touch /app/versions.txt && \
-    echo "$(date +'%F %R%t') creNginx $(/usr/sbin/nginx -v)" >> /app/versions.txt
+RUN mkdir -p /app && touch /app/versions.txt && \ ngver = $(/usr/sbin/nginx -v) && \
+    echo "$(date +'%F %R%t') creNginx $ngver" >> /app/versions.txt
 
 # Define mountable directories.
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
