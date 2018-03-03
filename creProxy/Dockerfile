@@ -1,4 +1,3 @@
-#FROM nginx:latest
 FROM tamboraorg/crenginx
  
 #Adapted from https://github.com/jwilder/nginx-proxy
@@ -6,7 +5,8 @@ FROM tamboraorg/crenginx
 RUN mkdir -p /app && touch /app/versions.txt && \
     echo "$(date +'%F %R') \t creProxy \t " >> /app/versions.txt
 
-RUN apt-get update; apt-get install -y openssl
+#RUN apt-get update; apt-get install -y openssl
+RUN add-apt-repository ppa:certbot/certbot; apt-get update; apt-get install -y openssl python-certbot-nginx
 
 RUN echo "$(date +'%F %R') \t  $(openssl version)" >> /app/versions.txt
 
