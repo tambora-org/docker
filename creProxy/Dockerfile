@@ -9,7 +9,10 @@ RUN mkdir -p /app && touch /app/versions.txt && \
 RUN add-apt-repository ppa:certbot/certbot; apt-get update; apt-get install -y openssl python-certbot-nginx
 
 RUN echo "$(date +'%F %R') \t  $(openssl version)" >> /app/versions.txt
-
+RUN echo "$(date +'%F %R') \t  $(certbot-auto --version)" >> /app/versions.txt
+# RUN certbot-auto --install-only 
+# cerbot-auto --no-self-upgrade ; certbot --nginx
+ 
 COPY app/network_internal.conf /etc/nginx/
 
 COPY app /app
