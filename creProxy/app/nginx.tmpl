@@ -44,7 +44,9 @@ map $http_upgrade $proxy_connection {
 }
 
 # Apply fix for very long server names
-server_names_hash_bucket_size 128;
+# server_names_hash_bucket_size 128;
+# bucket size only one time allowed, but is added by certbot as well
+# better move this to central configuration file
 
 # Default dhparam
 {{ if (exists "/etc/nginx/dhparam/dhparam.pem") }}
