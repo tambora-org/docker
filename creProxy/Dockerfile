@@ -11,7 +11,7 @@ RUN wget https://dl.eff.org/certbot-auto && \
     chmod 755 /usr/local/bin/certbot-auto
   
 RUN echo "$(date +'%F %R') \t  $(openssl version)" >> /app/versions.txt
-RUN echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --version)" >> /app/versions.txt
+# RUN echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --version)" >> /app/versions.txt
 # RUN ./certbot-auto --install-only 
 # /usr/local/bin/cerbot-auto --no-self-upgrade ; certbot --nginx
  
