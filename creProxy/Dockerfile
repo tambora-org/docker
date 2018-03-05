@@ -13,7 +13,7 @@ RUN wget https://dl.eff.org/certbot-auto && \
 RUN /usr/local/bin/certbot-auto --noninteractive --version  
 
 RUN echo "$(date +'%F %R') \t  $(openssl version)" >> /app/versions.txt
-RUN echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --version)" >> /app/versions.txt
+RUN echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --version 2>&1)" >> /app/versions.txt
 
 # /usr/local/bin/cerbot-auto --no-self-upgrade ; certbot --nginx
  
