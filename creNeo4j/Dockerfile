@@ -15,7 +15,7 @@ ARG NEO4J_URI=http://dist.neo4j.org/neo4j-enterprise-3.3.3-unix.tar.gz
 COPY ./local-package/* /tmp/
 
 RUN curl --fail --silent --show-error --location --remote-name ${NEO4J_URI} \
-    && echo "${NEO4J_SHA256}  ${NEO4J_TARBALL}" | sha256sum -csw - \
+    && echo "${NEO4J_SHA256}  ${NEO4J_TARBALL}" | sha256sum --status --check --warn - \
     && tar --extract --file ${NEO4J_TARBALL} --directory /var/lib \
     && mv /var/lib/neo4j-* /var/lib/neo4j \
     && rm ${NEO4J_TARBALL} \
