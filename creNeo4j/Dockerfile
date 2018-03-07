@@ -1,4 +1,5 @@
-FROM openjdk:8-jre-alpine
+FROM tamboraorg/crejava
+#FROM openjdk:8-jre-alpine
 
 # https://github.com/docker-library/docs/tree/master/neo4j
 # https://github.com/neo4j/docker-neo4j-publish/blob/master/3.3.3/enterprise/Dockerfile
