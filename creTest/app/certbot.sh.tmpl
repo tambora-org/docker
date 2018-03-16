@@ -1,0 +1,11 @@
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+
+#/etc/letsencrypt/live/dhparam.pem
+#openssl dhparam -out /etc/letsencrypt/live/dhparam.pem 4096
+
+{{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
+ {{ $host := trim $host }}
+ {{ $is_regexp := hasPrefix "~" $host }}
+ {{ $upstream_name := when $is_regexp (sha1 $host) $host }}
+certbot --noninteractive --nginx --agree-tos -m admin@email.com --domains {{ $host }}
+{{ end }}

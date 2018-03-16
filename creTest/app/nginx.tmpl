@@ -186,6 +186,8 @@ upstream {{ $upstream_name }} {
 {{ $cert := (coalesce $certName $vhostCert) }}
 
 {{ $is_https := (and (ne $https_method "nohttps") (ne $cert "") (exists (printf "/etc/nginx/certs/%s.crt" $cert)) (exists (printf "/etc/nginx/certs/%s.key" $cert))) }}
+{{ $is_https := true }}
+
 
 {{ if $is_https }}
 

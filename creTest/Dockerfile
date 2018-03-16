@@ -25,7 +25,7 @@ WORKDIR /app/
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
-VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
+VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam", "/etc/letsencrypt/live"]
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["shoreman", "/app/Procfile"]
