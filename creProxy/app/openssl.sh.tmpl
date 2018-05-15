@@ -1,0 +1,25 @@
+#!/bin/sh
+{{ if (not (exists "/etc/letsencrypt/live/dhparam.pem")) }}
+openssl dhparam -out /etc/letsencrypt/live/dhparam.pem 4096
+{{ end }}
+
+
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
+
+openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout {{ $CurrentDomain }}.key.pem -days 365 -out {{ $CurrentDomain }}.cert.pem
+
+{{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
+
+{{ $subdomain := trim $subdomain }}
+{{ $host := $CurrentDomain + "." + $subdomain }}
+
+# {{ $host }}
+# for localhost create openssl sel-signed
+openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout {{ $host }}.key.pem -days 365 -out {{ $host }}.cert.pem
+
+
+{{ end }}
+
+# Finally reload nginx
+#nginx -s reload

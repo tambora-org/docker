@@ -1,7 +1,7 @@
 [ req ]
 default_bits        = 2048
 default_keyfile     = server-key.pem
-distinguished_name  = subject
+distinguished_name  = cre
 req_extensions      = req_ext
 x509_extensions     = x509_ext
 string_mask         = utf8only
@@ -9,28 +9,28 @@ string_mask         = utf8only
 # The Subject DN can be formed using X501 or RFC 4514 (see RFC 4519 for a description).
 #   Its sort of a mashup. For example, RFC 4514 does not provide emailAddress.
 [ subject ]
-countryName         = Country Name (2 letter code)
-countryName_default     = US
+countryName         = DE
+countryName_default     = DE
 
-stateOrProvinceName     = State or Province Name (full name)
-stateOrProvinceName_default = NY
+stateOrProvinceName     = BW
+stateOrProvinceName_default = BW
 
-localityName            = Locality Name (eg, city)
-localityName_default        = New York
+localityName            = Freiburg
+localityName_default        = Freiburg
 
-organizationName         = Organization Name (eg, company)
-organizationName_default    = Example, LLC
+organizationName         = University Freiburg
+organizationName_default    = University Freiburg
 
 # Use a friendly name here because its presented to the user. The server's DNS
 #   names are placed in Subject Alternate Names. Plus, DNS names here is deprecated
 #   by both IETF and CA/Browser Forums. If you place a DNS name here, then you 
 #   must include the DNS name in the SAN too (otherwise, Chrome and others that
 #   strictly follow the CA/Browser Baseline Requirements will fail).
-commonName          = Common Name (e.g. server FQDN or YOUR name)
-commonName_default      = Example Company
+commonName              = tambora.org
+commonName_default      = tambora.org
 
-emailAddress            = Email Address
-emailAddress_default        = test@example.com
+emailAddress            = test@example.com
+emailAddress_default    = test@example.com
 
 # Section x509_ext is used when generating a self-signed certificate. I.e., openssl req -x509 ...
 [ x509_ext ]
@@ -41,9 +41,9 @@ authorityKeyIdentifier  = keyid,issuer
 # You only need digitalSignature below. *If* you don't allow
 #   RSA Key transport (i.e., you use ephemeral cipher suites), then
 #   omit keyEncipherment because that's key transport.
-basicConstraints        = CA:FALSE
+basicConstraints    = CA:FALSE
 keyUsage            = digitalSignature, keyEncipherment
-subjectAltName          = @alternate_names
+subjectAltName      = @alternate_names
 nsComment           = "OpenSSL Generated Certificate"
 
 # RFC 5280, Section 4.2.1.12 makes EKU optional
@@ -54,11 +54,11 @@ nsComment           = "OpenSSL Generated Certificate"
 # Section req_ext is used when generating a certificate signing request. I.e., openssl req ...
 [ req_ext ]
 
-subjectKeyIdentifier        = hash
+subjectKeyIdentifier  = hash
 
-basicConstraints        = CA:FALSE
+basicConstraints    = CA:FALSE
 keyUsage            = digitalSignature, keyEncipherment
-subjectAltName          = @alternate_names
+subjectAltName      = @alternate_names
 nsComment           = "OpenSSL Generated Certificate"
 
 # RFC 5280, Section 4.2.1.12 makes EKU optional
@@ -68,16 +68,26 @@ nsComment           = "OpenSSL Generated Certificate"
 
 [ alternate_names ]
 
-DNS.1       = example.com
-DNS.2       = www.example.com
-DNS.3       = mail.example.com
-DNS.4       = ftp.example.com
-
 # Add these if you need them. But usually you don't want them or
 #   need them in production. You may need them for development.
-# DNS.5       = localhost
-# DNS.6       = localhost.localdomain
-# DNS.7       = 127.0.0.1
+#DNS.1       = localhost
+#DNS.2       = 127.0.0.1
+
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
+DNS.1 = $CurrentDomain
+
+{{ $CurrentNumber := 1 }} 
+{{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
+{{ $CurrentNumber := 1 + $CurrentNumber }} 
+
+{{ $subdomain := trim $subdomain }}
+{{ $host := $CurrentDomain + "." + $subdomain }}
+
+DNS.{{ $CurrentNumber }}  = {{ $host }}
+
+{{ end }}
+
 
 # IPv6 localhost
 # DNS.8     = ::1
