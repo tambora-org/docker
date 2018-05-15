@@ -1,0 +1,12 @@
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
+
+
+{{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
+
+{{ $subdomain := trim $subdomain }}
+{{ $host := coalesce $CurrentDomain $subdomain }}
+
+# {{ $host }}
+
+{{ end }}
