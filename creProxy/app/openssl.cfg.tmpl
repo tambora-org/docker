@@ -79,7 +79,7 @@ DNS.1 = $CurrentDomain
 
 {{ $CurrentNumber := 1 }} 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
-{{ $CurrentNumber := 1 + $CurrentNumber }} 
+{{ $CurrentNumber := (add 1 $CurrentNumber) }} 
 
 {{ $subdomain := trim $subdomain }}
 {{ $host := (print "%s.%s" $CurrentDomain $subdomain) }}
