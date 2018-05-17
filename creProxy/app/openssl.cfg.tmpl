@@ -82,8 +82,9 @@ DNS.1 = $CurrentDomain
 {{ $CurrentNumber := 1 + $CurrentNumber }} 
 
 {{ $subdomain := trim $subdomain }}
-{{ $host := $CurrentDomain + "." + $subdomain }}
+{{ $host := (print "%s.%s" $CurrentDomain $subdomain) }}
 
+#DNS.{{ $CurrentNumber }}  = {{ $CurrentDomain }}.{{ $subdomain }}
 DNS.{{ $CurrentNumber }}  = {{ $host }}
 
 {{ end }}
