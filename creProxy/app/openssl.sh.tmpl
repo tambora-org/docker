@@ -18,6 +18,7 @@ openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -node
 # for localhost create openssl sel-signed
 openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout {{ $host }}.key.pem -days 365 -out {{ $host }}.cert.pem
 
+certbot --noninteractive --nginx --agree-tos -m mail@{{ $host }} --domains {{ $host }}
 
 {{ end }}
 
