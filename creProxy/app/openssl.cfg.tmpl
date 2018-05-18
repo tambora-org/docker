@@ -75,7 +75,7 @@ nsComment           = "OpenSSL Generated Certificate"
 
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
-DNS.1 = $CurrentDomain
+DNS.1 = {{ $CurrentDomain }}
 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
 
