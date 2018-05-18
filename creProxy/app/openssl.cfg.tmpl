@@ -77,17 +77,12 @@ nsComment           = "OpenSSL Generated Certificate"
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 DNS.1 = $CurrentDomain
 
-#{{ $CurrentNumber := 1 }} 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
-#{{ $CurrentNumber := (add 1 $CurrentNumber) }} 
 
 {{ $subdomain := trim $subdomain }}
 {{ $host := (printf "%s.%s" $subdomain $CurrentDomain) }}
 
-#DNS.{{ $CurrentNumber }}  = {{ $CurrentDomain }}.{{ $subdomain }}
-DNS.{{ $subdomain }}  = {{ $CurrentDomain }}.{{ $subdomain }}
-#DNS.{{ $CurrentNumber }}  = {{ $host }}
-
+DNS.{{ $subdomain }}  = {{ $host }}
 
 {{ end }}
 
