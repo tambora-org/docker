@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh 
 {{ if (not (exists "/etc/letsencrypt/live/dhparam.pem")) }}
 openssl dhparam -out /etc/letsencrypt/live/dhparam.pem 4096
 {{ end }}
