@@ -20,7 +20,8 @@ map $http_upgrade $proxy_connection {
   '' close;
 }
 # Apply fix for very long server names
-server_names_hash_bucket_size 128;
+# not working in the moment with certbot: https://github.com/certbot/certbot/issues/5199
+#server_names_hash_bucket_size 128;
 
 # Default dhparam
 {{ if (exists "/etc/nginx/dhparam/dhparam.pem") }}
@@ -87,7 +88,7 @@ upstream {{ $host }} {
 					{{ $address := where $container.Addresses "Port" $port | first }}
 			                # {{ $container.Name }}
                                         # second branch
-			                server {{ $containerNetwork.IP }}:{{ $address.Port }};
+			                server {{ $containerNetwork.IP }}:{{ $port }};
 				{{ end }}
 			{{ end }}
 		{{ end }}
@@ -130,7 +131,9 @@ server {
 	{{ end }}
 
 	add_header Strict-Transport-Security "max-age=31536000";
+        {{ if (exists "/etc/nginx/vhost.d/default") }}
 	include /etc/nginx/vhost.d/default;
+	{{ end }}
 	location / {
                 proxy_pass http://{{$host}};
 	}
