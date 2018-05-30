@@ -18,4 +18,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t creJava \t $(java -version 2>&1 | grep version)" >> /cre/versions.txt 
+
 CMD ["/usr/bin/java"]
