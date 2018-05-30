@@ -120,14 +120,14 @@ server {
 	ssl_session_cache shared:SSL:50m;
 	ssl_session_tickets off;
 
-        {{ if (exists (printf "/etc/nginx/certs/%s.dhparam.crt" $host)) }}
-	ssl_certificate /etc/nginx/certs/{{ (printf "%s.crt" $host) }};
+        {{ if (exists (printf "/etc/letsencrypt/live/%s.dhparam.crt" $host)) }}
+	ssl_certificate /etc/letsencrypt/live/{{ (printf "%s.crt" $host) }};
 	{{ end }}
-        {{ if (exists (printf "/etc/nginx/certs/%s.dhparam.key" $host)) }}
-	ssl_certificate_key /etc/nginx/certs/{{ (printf "%s.key" $host) }};
+        {{ if (exists (printf "/etc/letsencrypt/live/%s.dhparam.key" $host)) }}
+	ssl_certificate_key /etc/letsencrypt/live/{{ (printf "%s.key" $host) }};
 	{{ end }}
-	{{ if (exists (printf "/etc/nginx/certs/%s.dhparam.pem" $host)) }}
-	ssl_dhparam {{ printf "/etc/nginx/certs/%s.dhparam.pem" $host }};
+	{{ if (exists (printf "/etc/letsencrypt/live/%s.dhparam.pem" $host)) }}
+	ssl_dhparam {{ printf "/etc/letsencrypt/live/%s.dhparam.pem" $host }};
 	{{ end }}
 
 	add_header Strict-Transport-Security "max-age=31536000";
