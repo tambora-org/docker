@@ -13,15 +13,18 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 ENV LANG en_US.UTF-8
 
-RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key add -
-RUN echo deb https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list
+RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key add - && \
+    echo deb https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list
 
 
-RUN apt-get update 
-RUN apt-get install --no-install-recommends -y jenkins 
-RUN apt-get clean 
-RUN rm -rf /var/lib/apt/lists/* 
-RUN update-rc.d -f jenkins disable
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y jenkins && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    update-rc.d -f jenkins disable 
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t creJenkins \t $(java -jar /usr/share/jenkins/jenkins.war --version)" >> /cre/versions.txt 
 
 ENV JENKINS_HOME /var/jenkins
 
