@@ -5,7 +5,7 @@ DHPARAM_BITS=${1:-2048}
 
 # If a dhparam file is not available, use the pre-generated one and generate a new one in the background.
 # Note that /etc/nginx/dhparam is a volume, so this dhparam will persist restarts.
-PREGEN_DHPARAM_FILE="/app/dhparam.pem.default"
+PREGEN_DHPARAM_FILE="/cre/dhparam.pem.default"
 DHPARAM_FILE="/etc/nginx/dhparam/dhparam.pem"
 GEN_LOCKFILE="/tmp/dhparam_generating.lock"
 

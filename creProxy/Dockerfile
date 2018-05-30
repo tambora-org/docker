@@ -23,9 +23,9 @@ RUN echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --version 2>&1)" >>
 # /usr/local/bin/certbot-auto --no-self-upgrade ; 
 # certbot --noninteractive --nginx --agree-tos -m mail@domain.tld --domains domain.tld
  
-COPY app/network_internal.conf /etc/nginx/
+COPY cre/network_internal.conf /etc/nginx/
 
-COPY app /cre
+COPY cre /cre
 WORKDIR /cre/
 
 ENV DOCKER_HOST unix:///tmp/docker.sock
