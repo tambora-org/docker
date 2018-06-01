@@ -14,11 +14,11 @@ RUN add-apt-repository ppa:certbot/certbot; apt-get update; apt-get install -y o
 RUN wget https://dl.eff.org/certbot-auto && \
     mv certbot-auto /usr/local/bin/ && \
     chmod 755 /usr/local/bin/certbot-auto && \
+    /usr/local/bin/certbot-auto --noninteractive --install-only && \
     /usr/local/bin/certbot-auto --noninteractive --version  
-# RUN /usr/local/bin/certbot-auto --noninteractive --install-only   
 
 RUN echo "$(date +'%F %R') \t  $(openssl version)" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --version 2>&1)" >> /cre/versions.txt
+    echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --noninteractive --version 2>&1)" >> /cre/versions.txt
 
 # /usr/local/bin/certbot-auto --no-self-upgrade ; 
 # certbot --noninteractive --nginx --agree-tos -m mail@domain.tld --domains domain.tld
