@@ -8,18 +8,24 @@ string_mask         = utf8only
 
 # The Subject DN can be formed using X501 or RFC 4514 (see RFC 4519 for a description).
 #   Its sort of a mashup. For example, RFC 4514 does not provide emailAddress.
-[ subject ]
+[cre]
+C = DE
 countryName         = DE
 countryName_default     = DE
 
+ST = BW
 stateOrProvinceName     = BW
 stateOrProvinceName_default = BW
 
+L = Freiburg
 localityName            = Freiburg
 localityName_default        = Freiburg
 
+O = University Freiburg
 organizationName         = University Freiburg
 organizationName_default    = University Freiburg
+OU = Geography
+CN = www.tambora.org
 
 # Use a friendly name here because its presented to the user. The server's DNS
 #   names are placed in Subject Alternate Names. Plus, DNS names here is deprecated
