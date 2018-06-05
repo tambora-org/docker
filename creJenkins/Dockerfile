@@ -28,6 +28,9 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 ENV JENKINS_HOME /var/jenkins
 
+COPY cre /cre
+
 EXPOSE 8080 50000
 
-CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
+#CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
+#CMD  /cre/start-jenkins.sh
