@@ -1,4 +1,4 @@
-FROM tamboraorg/crenginx
+FROM tamboraorg/crenginx:2010.0
  
 #Adapted from https://github.com/jwilder/nginx-proxy
 
@@ -23,8 +23,6 @@ RUN echo "$(date +'%F %R') \t  $(openssl version)" >> /cre/versions.txt && \
 # /usr/local/bin/certbot-auto --no-self-upgrade ; 
 # certbot --noninteractive --nginx --agree-tos -m mail@domain.tld --domains domain.tld
  
-COPY cre/network_internal.conf /etc/nginx/ 
-
 COPY cre /cre
 WORKDIR /cre/
 

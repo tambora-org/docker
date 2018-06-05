@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu
+FROM tamboraorg/creubuntu:2010.0
 
 # Install Nginx.
 RUN \
