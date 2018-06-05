@@ -10,7 +10,8 @@ fi
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
-certbot --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+# use --staging for development and during implementation
+certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
 
@@ -20,7 +21,8 @@ certbot --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --doma
 # {{ $host }}
 # for localhost create openssl self-signed
 
-certbot --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $host }}
+# use --staging for development and during implementation
+certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $host }}
 
 {{ end }}
 
