@@ -24,9 +24,14 @@ map $http_upgrade $proxy_connection {
 #server_names_hash_bucket_size 128;
 
 # Default dhparam
-{{ if (exists "/etc/nginx/dhparam/dhparam.pem") }}
-ssl_dhparam /etc/nginx/dhparam/dhparam.pem;
+{{ if (exists "/etc/letsencrypt/live/dhparam.pem") }}
+ ssl_dhparam "/etc/letsencrypt/live/dhparam.pem";
+{{ else if (exists "/etc/letsencrypt/openssl/dhparam.pem") }}
+ ssl_dhparam /etc/letsencrypt/openssl/dhparam.pem;
+{{ else if (exists "/etc/nginx/dhparam/dhparam.pem") }}
+ ssl_dhparam /etc/nginx/dhparam/dhparam.pem;
 {{ end }}
+
 
 # Set appropriate X-Forwarded-Ssl header
 map $scheme $proxy_x_forwarded_ssl {
@@ -120,9 +125,9 @@ server {
 	ssl_session_cache shared:SSL:50m;
 	ssl_session_tickets off;
 
-        {{ if (exists (printf "/etc/letsencrypt/live/%s.com/fullchain.pem" $host)) }}
+        {{ if (exists (printf "/etc/letsencrypt/live/%s/fullchain.pem" $host)) }}
          # certbot certifictes
-         ssl_certificate {{ printf "/etc/letsencrypt/live/%s.com/fullchain.pem" $host }};
+         ssl_certificate {{ printf "/etc/letsencrypt/live/%s/fullchain.pem" $host }};
          {{ if (exists (printf "/etc/letsencrypt/live/%s/privkey.pem" $host)) }}
 	  ssl_certificate_key {{ printf "/etc/letsencrypt/live/%s/privkey.pem" $host }};
 	 {{ end }}
@@ -132,11 +137,11 @@ server {
           ssl_dhparam /etc/letsencrypt/live/dhparam.pem;
 	 {{ end }}
 
-        {{ else if (exists (printf "/etc/letsencrypt/openssl/%s.cert.crt" $host)) }}
+        {{ else if (exists (printf "/etc/letsencrypt/openssl/%s.cert.pem" $host)) }}
          # openssl certificates
-         ssl_certificate {{ printf "/etc/letsencrypt/openssl/%s.cert.crt" $host }};
-         {{ if (exists (printf "/etc/letsencrypt/openssl/%s.key" $host)) }}
-	  ssl_certificate_key printf "/etc/letsencrypt/openssl/%s.key" $host }};
+         ssl_certificate {{ printf "/etc/letsencrypt/openssl/%s.cert.pem" $host }};
+         {{ if (exists (printf "/etc/letsencrypt/openssl/%s.key.pem" $host)) }}
+	  ssl_certificate_key printf "/etc/letsencrypt/openssl/%s.key.pem" $host }};
 	 {{ end }}
 	 {{ if (exists (printf "/etc/letsencrypt/openssl/%s.dhparam.pem" $host)) }}
 	  ssl_dhparam {{ printf "/etc/letsencrypt/openssl/%s.dhparam.pem" $host }};
