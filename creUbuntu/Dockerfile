@@ -7,7 +7,8 @@
 # Pull base image.
 FROM ubuntu:16.04
 
-ENV CRE_VERSION 2010.0
+# version: yyyy.n for stable versions / 0.yyyy for development
+ENV CRE_VERSION 0.2010 
 ENV UBUNTU_VERSION 16.04
 ENV DOCKER_GEN_VERSION 0.7.4
 
