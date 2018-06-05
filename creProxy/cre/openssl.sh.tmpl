@@ -1,8 +1,13 @@
 #!/bin/sh 
-{{ if (not (exists "/etc/letsencrypt/live/dhparam.pem")) }}
-if ! [ -e /etc/letsencrypt/live/dhparam.pem ]
+if ! [ -e /etc/letsencrypt/openssl ]
 then
-   openssl dhparam -out /etc/letsencrypt/live/dhparam.pem 4096
+   mkdir /etc/letsencrypt/openssl
+fi
+
+{{ if (not (exists "/etc/letsencrypt/openssl/dhparam.pem")) }}
+if ! [ -e /etc/letsencrypt/openssl/dhparam.pem ]
+then
+   openssl dhparam -out /etc/letsencrypt/openssl/dhparam.pem 4096
 fi
 {{ end }}
 
@@ -10,7 +15,7 @@ fi
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
-openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/live/{{ $CurrentDomain }}.key.pem -days 365 -out /etc/letsencrypt/live/{{ $CurrentDomain }}.cert.pem
+openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/openssl/{{ $CurrentDomain }}.key.pem -days 365 -out /etc/letsencrypt/openssl/{{ $CurrentDomain }}.cert.pem
 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
 
@@ -19,7 +24,7 @@ openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -node
 
 # {{ $host }}
 # for localhost create openssl self-signed
-openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/live/{{ $host }}.key.pem -days 365 -out /etc/letsencrypt/live/{{ $host }}.cert.pem
+openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/openssl/{{ $host }}.key.pem -days 365 -out /etc/letsencrypt/openssl/{{ $host }}.cert.pem
 
 {{ end }}
 

@@ -120,15 +120,30 @@ server {
 	ssl_session_cache shared:SSL:50m;
 	ssl_session_tickets off;
 
-        {{ if (exists (printf "/etc/letsencrypt/live/%s.dhparam.crt" $host)) }}
-	ssl_certificate /etc/letsencrypt/live/{{ (printf "%s.crt" $host) }};
-	{{ end }}
-        {{ if (exists (printf "/etc/letsencrypt/live/%s.dhparam.key" $host)) }}
-	ssl_certificate_key /etc/letsencrypt/live/{{ (printf "%s.key" $host) }};
-	{{ end }}
-	{{ if (exists (printf "/etc/letsencrypt/live/%s.dhparam.pem" $host)) }}
-	ssl_dhparam {{ printf "/etc/letsencrypt/live/%s.dhparam.pem" $host }};
-	{{ end }}
+        {{ if (exists (printf "/etc/letsencrypt/live/%s.com/fullchain.pem" $host)) }}
+         # certbot certifictes
+         ssl_certificate {{ printf "/etc/letsencrypt/live/%s.com/fullchain.pem" $host }};
+         {{ if (exists (printf "/etc/letsencrypt/live/%s/privkey.pem" $host)) }}
+	  ssl_certificate_key {{ printf "/etc/letsencrypt/live/%s/privkey.pem" $host }};
+	 {{ end }}
+	 {{ if (exists (printf "/etc/letsencrypt/live/%s.dhparam.pem" $host)) }}
+	  ssl_dhparam {{ printf "/etc/letsencrypt/live/%s.dhparam.pem" $host }};
+         {{ else if (exists "/etc/letsencrypt/live/dhparam.pem") }}
+          ssl_dhparam /etc/letsencrypt/live/dhparam.pem;
+	 {{ end }}
+
+        {{ else if (exists (printf "/etc/letsencrypt/openssl/%s.cert.crt" $host)) }}
+         # openssl certificates
+         ssl_certificate {{ printf "/etc/letsencrypt/openssl/%s.cert.crt" $host }};
+         {{ if (exists (printf "/etc/letsencrypt/openssl/%s.key" $host)) }}
+	  ssl_certificate_key printf "/etc/letsencrypt/openssl/%s.key" $host }};
+	 {{ end }}
+	 {{ if (exists (printf "/etc/letsencrypt/openssl/%s.dhparam.pem" $host)) }}
+	  ssl_dhparam {{ printf "/etc/letsencrypt/openssl/%s.dhparam.pem" $host }};
+         {{ else if (exists "/etc/letsencrypt/openssl/dhparam.pem") }}
+          ssl_dhparam /etc/letsencrypt/openssl/dhparam.pem;
+	 {{ end }}
+        {{ end }}
 
 	add_header Strict-Transport-Security "max-age=31536000";
         {{ if (exists "/etc/nginx/vhost.d/default") }}
