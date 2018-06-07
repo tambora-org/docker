@@ -33,5 +33,5 @@ COPY cre /cre
 EXPOSE 8080 50000
 
 # CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
-CMD  /cre/start-jenkins.sh\
+CMD  /cre/start-jenkins.sh
 # CMD ["/usr/bin/java", "-version"]
