@@ -43,12 +43,12 @@ RUN apt-get update \
 RUN usermod -u 1000 www-data
 
 # PHP-FPM packages need a nudge to make them docker-friendly
-COPY overrides.conf /etc/php/$PHP_VERSION/fpm/pool.d/z-overrides.conf
+COPY /cre/overrides.conf /etc/php/$PHP_VERSION/fpm/pool.d/z-overrides.conf
 
 # PHP-FPM has really dirty logs, certainly not good for dockerising
 # The following startup script contains some magic to clean these up
-COPY php-fpm-startup /usr/bin/php-fpm
-CMD /usr/bin/php-fpm
+COPY /cre/php-fpm.sh /cre/php-fpm.sh
+CMD /cre/php-fpm.sh
 
 # Open up fcgi port
 EXPOSE 9000
@@ -70,4 +70,4 @@ RUN apt-get update \
     && apt-get -y --no-install-recommends install   php-mongodb php$PHP_VERSION-pgsql \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-WORKDIR "/var/www/cre"
+WORKDIR "/cre/www"
