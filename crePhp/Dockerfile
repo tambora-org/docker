@@ -5,13 +5,14 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2010.0 
+FROM tamboraorg/crenginx:2010.0 
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV PHP_VERSION 7.0    
 
-
+RUN mkdir -p /cre && touch /cre/versions.txt && \
+    echo "$(date +'%F %R') \t crePhp \t $PHP_VERSION " >> /cre/versions.txt
 
 # Install cURL and nano
 #RUN apt-get update \
@@ -44,6 +45,9 @@ RUN usermod -u 1000 www-data
 
 # PHP-FPM packages need a nudge to make them docker-friendly
 COPY /cre/overrides.conf /etc/php/$PHP_VERSION/fpm/pool.d/z-overrides.conf
+COPY /cre/php-ini-overrides.ini /etc/php/$PHP_VERSION/fpm/conf.d/99-overrides.ini
+COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
+
 
 # PHP-FPM has really dirty logs, certainly not good for dockerising
 # The following startup script contains some magic to clean these up
@@ -69,5 +73,7 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get -y --no-install-recommends install   php-mongodb php$PHP_VERSION-pgsql \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+RUN echo "$(date +'%F %R') \t  $(php -version | head -n1)" >> /cre/versions.txt 
 
 WORKDIR "/cre/www"
