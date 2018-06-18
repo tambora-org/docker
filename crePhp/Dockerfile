@@ -51,7 +51,8 @@ COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
 
 # PHP-FPM has really dirty logs, certainly not good for dockerising
 # The following startup script contains some magic to clean these up
-COPY /cre/php-fpm.sh /cre/php-fpm.sh
+COPY cre/ /cre/
+#COPY /cre/php-fpm.sh /cre/php-fpm.sh
 CMD /cre/php-fpm.sh
 
 # Open up fcgi port
@@ -77,3 +78,5 @@ RUN apt-get update \
 RUN echo "$(date +'%F %R') \t  $(php -version | head -n1)" >> /cre/versions.txt 
 
 WORKDIR "/cre/www"
+
+CMD ["nginx"]
