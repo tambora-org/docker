@@ -17,6 +17,7 @@ fi
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead
+# staging does not work with Strict-Transport-Security - see proxy.tmpl
 certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
