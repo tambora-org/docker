@@ -1,5 +1,5 @@
 #
-# Nginx Dockerfile
+# Nginx Php Dockerfile
 #
 # https://github.com/tamboraorg/docker/crenginxphp
 #
@@ -19,7 +19,8 @@ VOLUME ["/cre/www"]
 WORKDIR /cre/www
 
 # Define default command.
-CMD ["nginx"]
+#CMD ["nginx"]
+CMD ["nginx", "-g", "daemon off;"]
 
 # Expose ports.
 EXPOSE 80
