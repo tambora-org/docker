@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crenginx:2010.0 
+FROM tamboraorg/creubuntu:2010.0 
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
@@ -46,7 +46,6 @@ RUN usermod -u 1000 www-data
 # PHP-FPM packages need a nudge to make them docker-friendly
 COPY /cre/overrides.conf /etc/php/$PHP_VERSION/fpm/pool.d/z-overrides.conf
 COPY /cre/php-ini-overrides.ini /etc/php/$PHP_VERSION/fpm/conf.d/99-overrides.ini
-COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
 
 
 # PHP-FPM has really dirty logs, certainly not good for dockerising
@@ -77,6 +76,9 @@ RUN apt-get update \
 
 RUN echo "$(date +'%F %R') \t  $(php -version | head -n1)" >> /cre/versions.txt 
 
+VOLUME ["/cre/www"]
+
 WORKDIR "/cre/www"
 
-CMD ["nginx"]
+## for nginx
+#CMD ["nginx"]
