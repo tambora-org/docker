@@ -7,17 +7,20 @@
 # Pull base image.
 FROM tamboraorg/crenginx:2010.0
 
+RUN mkdir -p /cre && touch /cre/versions.txt && \
+    echo "$(date +'%F %R') \t creNginxPhp \t " >> /cre/versions.txt
+
 COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
 
 # Define mountable directories.
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/conf.d", "/var/log/nginx", "/cre/www"]
+VOLUME ["/cre/www"]
 
 # Define working directory.
-WORKDIR /etc/nginx
+WORKDIR /cre/www
 
 # Define default command.
 CMD ["nginx"]
 
 # Expose ports.
 EXPOSE 80
-EXPOSE 443
+#EXPOSE 443
