@@ -7,7 +7,7 @@
 # Pull base image.
 FROM tamboraorg/creubuntu:2010.0
 
-# Install Nginx.
+# Install Nginx
 RUN \
   add-apt-repository -y ppa:nginx/stable && \
   apt-get update && \
