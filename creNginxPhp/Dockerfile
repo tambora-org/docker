@@ -7,6 +7,9 @@
 # Pull base image.
 FROM tamboraorg/crenginx:2010.0
 
+# version: yyyy.n for stable versions / 0.yyyy for development
+ENV CRE_VERSION 0.2010 
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creNginxPhp \t " >> /cre/versions.txt
 
@@ -19,8 +22,7 @@ VOLUME ["/cre/www"]
 WORKDIR /cre/www
 
 # Define default command.
-#CMD ["nginx"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx"]
 
 # Expose ports.
 EXPOSE 80
