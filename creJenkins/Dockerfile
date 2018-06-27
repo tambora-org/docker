@@ -9,6 +9,8 @@ FROM tamboraorg/crejava:2010.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
+# version: yyyy.n for stable versions / 0.yyyy for development
+ENV CRE_VERSION 0.2010 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 ENV LANG en_US.UTF-8
@@ -32,7 +34,8 @@ COPY cre /cre
 
 EXPOSE 8080 50000
 
+# ENTRY-POINT /cre/start-jenkins.sh
 # CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
 CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war", "--argumentsRealm.passwd.jenkins=swordfish", "--argumentsRealm.roles.jenkins=admin"]
-# CMD  /cre/start-jenkins.sh
+
 # CMD ["/usr/bin/java", "-version"]

@@ -7,6 +7,8 @@
 # Pull base image.
 FROM tamboraorg/creubuntu:2010.0 
 
+# version: yyyy.n for stable versions / 0.yyyy for development
+ENV CRE_VERSION 0.2010 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV PHP_VERSION 7.0    

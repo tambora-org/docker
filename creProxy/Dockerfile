@@ -1,6 +1,13 @@
+#
+# Nginx Proxy Dockerfile
+#
+# https://github.com/tamboraorg/docker/creProxy
+# (adapted from https://github.com/jwilder/nginx-proxy )
+
 FROM tamboraorg/crenginx:2010.0
- 
-#Adapted from https://github.com/jwilder/nginx-proxy
+
+# version: yyyy.n for stable versions / 0.yyyy for development
+ENV CRE_VERSION 0.2010  
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creProxy \t " >> /cre/versions.txt
