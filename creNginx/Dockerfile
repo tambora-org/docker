@@ -16,6 +16,7 @@ RUN \
   apt-get update && \
   apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
+  rm /etc/nginx/sites-enabled/default && \
   echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
   sed -i 's/worker_processes  1/worker_processes  auto/' /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx
