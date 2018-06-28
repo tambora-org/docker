@@ -14,6 +14,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creNginxPhp \t " >> /cre/versions.txt
 
 COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
+COPY cre/ /cre/
 
 # Define mountable directories.
 VOLUME ["/cre/www"]
