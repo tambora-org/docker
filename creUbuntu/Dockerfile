@@ -39,8 +39,9 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
 
 RUN echo "$(date +'%F %R') \t  docker-gen \t $(docker-gen -version)" >> /cre/versions.txt
 
+COPY cre/ /cre/
 # Copy shoremen to handle Procfile (Process Managment)
-COPY shoreman.sh /usr/local/bin/shoreman
+COPY /cre/shoreman.sh /usr/local/bin/shoreman
 RUN chmod 755 /usr/local/bin/shoreman
 
 # Set environment variables.
