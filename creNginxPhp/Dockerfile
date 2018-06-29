@@ -16,6 +16,8 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
 COPY cre/ /cre/
 
+ENV DOCKER_HOST unix:///tmp/docker.sock
+
 # Define mountable directories.
 VOLUME ["/cre/www"]
 

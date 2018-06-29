@@ -1,16 +1,18 @@
-{{ range $subdomain, $containers := groupByMulti $ "Env.CRE_PHP_ROOT" "," }}
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
-{{ $subdomain := trim $subdomain }}
-{{ $host := (printf "%s.%s" $subdomain $CurrentDomain) }}
+{{ range $phproot, $containers := groupByMulti $ "Env.CRE_PHP_ROOT" "," }}
 
-# {{ $host }}
+{{ $phproot := trim $phproot }}
+{{ $phpdomain := replace $phproot "/" "."}}
+{{ $phphost := (printf "php%s.%s" $phpdomain $CurrentDomain) }}
+{{ $rootpath := (printf "/cre/www%s" $phproot) }}
 
-upstream {{ $host }} {
-
+# {{ $phphost }}
+upstream {{ $phphost }} {
 
 {{ range $container := $containers }}
 	{{ $addrLen := len $container.Addresses }}
-
 	{{ range $knownNetwork := $CurrentContainer.Networks }}
 		{{ range $containerNetwork := $container.Networks }}
 			{{ if (and (ne $containerNetwork.Name "ingress") (or (eq $knownNetwork.Name $containerNetwork.Name) (eq $knownNetwork.Name "host"))) }}
@@ -57,7 +59,7 @@ server {
     access_log /var/log/nginx/clima.access.log;
 
 
-    root /cre/www;
+    root {{ $rootpath }};
     index index.php;
 
     if (!-e $request_filename) {
@@ -99,7 +101,7 @@ server {
             fastcgi_param modHeadersAvailable true;
             fastcgi_param SCRIPT_FILENAME $document_root$1;
             fastcgi_param PATH_INFO $2;
-            fastcgi_pass crephp:9000;
+            fastcgi_pass {{ $phphost }};
         }
 
         location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
@@ -109,7 +111,7 @@ server {
 
 
     location ~ \.php$ {
-        fastcgi_pass crephp:9000;
+        fastcgi_pass {{ $phphost }};
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param PHP_VALUE "error_log=/var/log/nginx/clima_php_errors.log";
@@ -119,3 +121,5 @@ server {
     }
     
 }
+
+{{ end }}
