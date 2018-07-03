@@ -25,8 +25,8 @@ VOLUME ["/cre/www"]
 WORKDIR /cre/www
 
 # Define default command.
-CMD ["nginx"]
+#CMD ["nginx"]
+CMD ["shoreman", "/cre/nginx-php-procfile"]
 
 # Expose ports.
-EXPOSE 80
-#EXPOSE 443
+#EXPOSE 80

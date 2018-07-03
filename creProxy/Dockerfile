@@ -39,3 +39,8 @@ VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 
 ENTRYPOINT ["/cre/docker-entrypoint.sh"]
 CMD ["shoreman", "/cre/proxy-procfile"]
+
+
+# Expose ports.
+EXPOSE 80
+EXPOSE 443
