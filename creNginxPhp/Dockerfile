@@ -29,4 +29,4 @@ WORKDIR /cre/www
 CMD ["shoreman", "/cre/nginx-php-procfile"]
 
 # Expose ports.
-#EXPOSE 80
+EXPOSE 80
