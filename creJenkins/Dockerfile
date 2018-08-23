@@ -24,9 +24,13 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     update-rc.d -f jenkins disable 
 
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y nodejs 
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creJenkins \t $(java -jar /usr/share/jenkins/jenkins.war --version)" >> /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t  ant \t $(ant -version)" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t  ant \t $(ant -version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt
 
 ENV JENKINS_HOME /var/jenkins
 
