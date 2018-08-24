@@ -14,23 +14,36 @@ ENV CRE_VERSION 0.2010
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_CTYPE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key add - && \
     echo deb https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list
 
+# Install jenkins, java-jdk & ant
 RUN apt-get update && \
     apt-get install --no-install-recommends -y openjdk-$JAVA_VERSION-jdk jenkins ant && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     update-rc.d -f jenkins disable 
 
+# Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs 
+
+# Install yarn
+## Ubuntu 17 maybe needs: apt remove cmdtest 
+RUN curl -sL https://dl.yarnpkg.com/debian/pubkey | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ rc main" | tee /etc/apt/sporces.list.d/yarn.list && \
+    apt-get update && apt-get install yarn && \
+    apt-get clean
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creJenkins \t $(java -jar /usr/share/jenkins/jenkins.war --version)" >> /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  ant \t $(ant -version)" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt
+    echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  yarn \t $(yarn --version)" >> /cre/versions.txt
 
 ENV JENKINS_HOME /var/jenkins
 
