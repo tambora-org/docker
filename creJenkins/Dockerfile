@@ -32,17 +32,19 @@ RUN apt-get update && \
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs 
 
-# Install yarn
+# Install yarn & npm
 ## Ubuntu 17 maybe needs: apt remove cmdtest 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - 
 RUN echo "deb https://dl.yarnpkg.com/debian/ rc main" | tee /etc/apt/sources.list.d/yarn.list 
-RUN apt-get update && apt-get install yarn && apt-get clean
+RUN apt-get update && apt-get install --no-install-recommends -y yarn npm && apt-get clean
+
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creJenkins \t $(java -jar /usr/share/jenkins/jenkins.war --version)" >> /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  ant \t $(ant -version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  yarn \t $(yarn --version)" >> /cre/versions.txt
+    echo "$(date +'%F %R') \t  yarn \t $(yarn --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
 
 ENV JENKINS_HOME /var/jenkins
 
