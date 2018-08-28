@@ -34,9 +34,9 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 
 # Install yarn & npm
 ## Ubuntu 17 maybe needs: apt remove cmdtest 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - 
-RUN echo "deb https://dl.yarnpkg.com/debian/ rc main" | tee /etc/apt/sources.list.d/yarn.list 
-RUN apt-get update && apt-get install --no-install-recommends -y yarn npm && apt-get clean
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ rc main" | tee /etc/apt/sources.list.d/yarn.list 
+RUN apt-get update && apt-get install -y yarn npm && apt-get clean
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
