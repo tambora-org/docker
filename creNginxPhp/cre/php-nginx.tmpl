@@ -56,8 +56,7 @@ server {
  
     client_max_body_size 108M;
 
-    access_log {{ /var/log/nginx/$phpdomain.access.log }};
-
+    access_log /var/log/nginx/php.access.log;
 
     root {{ $rootpath }};
     index index.php;
@@ -114,7 +113,7 @@ server {
         fastcgi_pass {{ $phphost }};
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param PHP_VALUE {{ "error_log=/var/log/nginx/$phpdomain.php_errors.log" }};
+        fastcgi_param PHP_VALUE "error_log=/var/log/nginx/php.errors.log";
         fastcgi_buffers 16 16k;
         fastcgi_buffer_size 32k;
         include fastcgi_params;
