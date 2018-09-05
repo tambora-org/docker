@@ -4,9 +4,9 @@
 {{ range $phproot, $containers := groupByMulti $ "Env.CRE_PHP_ROOT" "," }}
 
 {{ $phproot := trim $phproot }}
-{{ $phpdomain := replace $phproot "/" "." -1}}
-{{ $phphost := (printf "php%s.%s" $phpdomain $CurrentDomain) }}
-{{ $rootpath := (printf "/cre/www%s" $phproot) }}
+{{ $phpdomain := replace $phproot "/" "-" -1}}
+{{ $phphost := (printf "php.%s.%s" $phpdomain $CurrentDomain) }}
+{{ $rootpath := (printf "/cre/%s" $phproot) }}
 
 # {{ $phphost }}
 upstream {{ $phphost }} {
@@ -56,7 +56,7 @@ server {
  
     client_max_body_size 108M;
 
-    access_log /var/log/nginx/clima.access.log;
+    access_log {{ /var/log/nginx/$phpdomain.access.log }};
 
 
     root {{ $rootpath }};
@@ -114,7 +114,7 @@ server {
         fastcgi_pass {{ $phphost }};
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param PHP_VALUE "error_log=/var/log/nginx/clima_php_errors.log";
+        fastcgi_param PHP_VALUE {{ "error_log=/var/log/nginx/$phpdomain.php_errors.log" }};
         fastcgi_buffers 16 16k;
         fastcgi_buffer_size 32k;
         include fastcgi_params;

@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install yarn && apt-get clean
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t  jdk \t $(javac -version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t creJenkins \t $(java -jar /usr/share/jenkins/jenkins.war --version)" >> /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  ant \t $(ant -version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
