@@ -5,9 +5,7 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crephp
-
-
+FROM tamboraorg/crephp:2010.0 
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
@@ -15,51 +13,16 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 ENV LANG en_US.UTF-8
 
-RUN apt-get update && apt-get install -y \
-  rsync \
-  bzip2 \
-  libcurl4-openssl-dev \
-  libfreetype6-dev \
-  libicu-dev \
-  libjpeg-dev \
-  libldap2-dev \
-  libmcrypt-dev \
-  libmemcached-dev \
-  libpng12-dev \
-  libpq-dev \
-  libxml2-dev \
-  && rm -rf /var/lib/apt/lists/*
+ENV NEXTCLOUD_VERSION 9.0.58
 
-# https://docs.nextcloud.com/server/9/admin_manual/installation/source_installation.html
-RUN debMultiarch="$(dpkg-architecture --query DEB_BUILD_MULTIARCH)" \
-  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-  && docker-php-ext-configure ldap --with-libdir="lib/$debMultiarch" \
-  && docker-php-ext-install gd exif intl mbstring mcrypt ldap mysqli opcache pdo_mysql pdo_pgsql pgsql zip pcntl
+RUN mkdir -p /cre && touch /cre/versions.txt && \
+    echo "$(date +'%F %R') \t creNextcloud \t $NEXTCLOUD_VERSION " >> /cre/versions.txt
 
-# set recommended PHP.ini settings
-# see https://docs.nextcloud.com/server/12/admin_manual/configuration_server/server_tuning.html#enable-php-opcache
-RUN { \
-  echo 'opcache.enable=1'; \
-  echo 'opcache.enable_cli=1'; \
-  echo 'opcache.interned_strings_buffer=8'; \
-  echo 'opcache.max_accelerated_files=10000'; \
-  echo 'opcache.memory_consumption=128'; \
-  echo 'opcache.save_comments=1'; \
-  echo 'opcache.revalidate_freq=1'; \
-  } > /usr/local/etc/php/conf.d/opcache-recommended.ini
-
-# PECL extensions
-RUN set -ex \
- && pecl install APCu-5.1.8 \
- && pecl install memcached-3.0.4 \
- && pecl install redis-3.1.4 \
- && docker-php-ext-enable apcu redis memcached
-
-ENV NEXTCLOUD_VERSION 12.0.4
-
-RUN chown -R www-data:root /var/www/html && \
-    chmod -R g=u /var/www/html
-VOLUME /var/www/html
+COPY cre/ /cre/
+ 
+RUN chown -R www-data:root /cre/www/nextcloud && \
+    chmod -R g=u /cre/www/nextcloud 
+VOLUME /cre/www/nextcloud 
 
 RUN curl -fsSL -o nextcloud.tar.bz2 \
     "https://download.nextcloud.com/server/releases/nextcloud-${NEXTCLOUD_VERSION}.tar.bz2" \
@@ -80,5 +43,6 @@ RUN curl -fsSL -o nextcloud.tar.bz2 \
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY config/* /usr/src/nextcloud/config/
 
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["php-fpm"]
+#ENTRYPOINT ["/entrypoint.sh"]
+#CMD ["php-fpm"]
+CMD /cre/php-fpm.sh
