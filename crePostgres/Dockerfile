@@ -1,5 +1,5 @@
 # Adapted from https://github.com/partlab/docker/blob/master/ubuntu-postgresql/Dockerfile
-FROM tamboraorg/creubuntu
+FROM tamboraorg/creubuntu:2010.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -29,5 +29,7 @@ RUN chmod +x /usr/local/bin/run
 VOLUME ["/var/lib/postgresql"]
 
 EXPOSE 5432
+
+USER postgres
 
 CMD ["/usr/local/bin/run"]
