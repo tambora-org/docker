@@ -37,7 +37,7 @@ ENV DOCKER_HOST unix:///tmp/docker.sock
 
 VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 
-ENTRYPOINT ["/cre/docker-entrypoint.sh"]
+ENTRYPOINT ["/cre/proxy-entrypoint.sh"]
 CMD ["shoreman", "/cre/proxy-procfile"]
 
 
