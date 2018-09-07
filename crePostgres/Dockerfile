@@ -5,7 +5,7 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 ENV LANG en_US.UTF-8
-ENV PG_VERSION 9.5
+ENV PG_VERSION 9.5 
 
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
 #    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \

@@ -17,7 +17,7 @@ if [ ! -d "$POSTGRESQL_DATA" ]; then
   /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
     --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
     --username=postgres --encoding=unicode --auth=trust >/dev/null
-
+ 
   echo "========================================================================"
   echo " postgres password is ${POSTGRES_PASSWORD}"
   echo "========================================================================"
