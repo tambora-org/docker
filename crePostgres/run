@@ -1,6 +1,6 @@
 #!/bin/bash
 
-POSTGRES_VERSION=9.5
+POSTGRES_VERSION=9.5 
 POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-$(pwgen -c -n -1 14)}
 
 POSTGRESQL_BIN=/usr/lib/postgresql/${POSTGRES_VERSION}/bin/postgres
