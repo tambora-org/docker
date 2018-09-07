@@ -10,7 +10,11 @@ POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
 if [ ! -d "$POSTGRESQL_DATA" ]; then
   echo "${POSTGRES_PASSWORD}" > /var/lib/postgresql/pwfile
 
-  sudo -u postgres -H /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
+#  sudo -u postgres -H /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
+#    --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
+#    --username=postgres --encoding=unicode --auth=trust >/dev/null
+
+  /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
     --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
     --username=postgres --encoding=unicode --auth=trust >/dev/null
 
@@ -19,4 +23,5 @@ if [ ! -d "$POSTGRESQL_DATA" ]; then
   echo "========================================================================"
 fi
 
-exec sudo -u postgres $POSTGRESQL_BIN -D $POSTGRESQL_DATA -c config_file=$POSTGRESQL_CONFIG_FILE
+#exec sudo -u postgres $POSTGRESQL_BIN -D $POSTGRESQL_DATA -c config_file=$POSTGRESQL_CONFIG_FILE
+exec $POSTGRESQL_BIN -D $POSTGRESQL_DATA -c config_file=$POSTGRESQL_CONFIG_FILE
