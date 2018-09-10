@@ -30,6 +30,6 @@ VOLUME ["/var/lib/postgresql"]
 
 EXPOSE 5432
 
-USER postgres
+#USER postgres
 
 CMD ["/usr/local/bin/run"]
