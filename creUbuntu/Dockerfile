@@ -20,9 +20,8 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y build-essential && \
-  apt-get install -y software-properties-common && \
-  apt-get install -y byobu curl git htop logrotate man sudo unzip vim wget && \
+  apt-get install -y apt-transport-https build-essential software-properties-common locale-gen en_US en_US.UTF-8 && \
+  apt-get install -y byobu curl git htop libzip4 libssh2-1 logrotate man pwgen sudo unzip vim wget && \
   rm -rf /var/lib/apt/lists/*
 
 # Add files.
@@ -30,7 +29,7 @@ RUN \
 #ADD root/.gitconfig /root/.gitconfig
 #ADD root/.scripts /root/.scripts
 
-RUN apt-get update && apt-get -y install apt-transport-https curl libzip4 libssh2-1
+##RUN apt-get update && apt-get -y install apt-transport-https curl libzip4 libssh2-1 # moved
 
 # Install docker-gen (generates files from templates with docker data filled in)
 RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
