@@ -4,7 +4,7 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
-ENV LANG en_US.UTF-8
+#ENV LANG en_US.UTF-8
 ENV PG_VERSION 9.5
 
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
@@ -23,8 +23,14 @@ RUN apt-get update && \
     rm -rf /var/lib/postgresql/$PG_VERSION/main && \
     update-rc.d -f postgresql disable
 
-ADD run /usr/local/bin/run
-RUN chmod +x /usr/local/bin/run
+#ADD run /usr/local/bin/run
+#RUN chmod +x /usr/local/bin/run
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t crePostgres \t /usr/lib/postgresql/${PG_VERSION}/bin/postgres --version" >> /cre/versions.txt  
+
+COPY cre /cre
+WORKDIR /cre/
 
 VOLUME ["/var/lib/postgresql"]
 
@@ -32,4 +38,4 @@ EXPOSE 5432
 
 #USER postgres
 
-CMD ["/usr/local/bin/run"]
+CMD ["/cre/run.sh"]

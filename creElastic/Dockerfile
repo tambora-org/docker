@@ -5,13 +5,13 @@
 #
 
 # 
-FROM tamboraorg/crejava
+FROM tamboraorg/crejava:2010.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
-ENV LANG en_US.UTF-8
+#ENV LANG en_US.UTF-8
 ENV PATH=$PATH:/usr/share/elasticsearch/bin
 
 RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \

@@ -13,7 +13,7 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 ENV CRE_VERSION 0.2010 
 ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
-ENV LANG en_US.UTF-8
+#ENV LANG en_US.UTF-8
 ENV JAVA_VERSION 8 
 
 RUN apt-get update && \
@@ -23,5 +23,8 @@ RUN apt-get update && \
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creJava \t $(java -version 2>&1 | grep version)" >> /cre/versions.txt  
+
+#COPY cre /cre
+WORKDIR /cre/
 
 CMD ["/usr/bin/java"]

@@ -12,6 +12,11 @@ ENV CRE_VERSION 0.2010
 ENV UBUNTU_VERSION 16.04
 ENV DOCKER_GEN_VERSION 0.7.4
 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_CTYPE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creUbuntu \t $(cat /usr/lib/os-release | grep PRETTY | sed -e "s/^PRETTY_NAME=\"Ubuntu //" -e "s/\"$//")" >> /cre/versions.txt
 
@@ -27,7 +32,6 @@ RUN \
 RUN locale-gen en_US en_US.UTF-8 && \ 
     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
-
 # Add files.
 #ADD root/.bashrc /root/.bashrc
 #ADD root/.gitconfig /root/.gitconfig
@@ -40,7 +44,10 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
  && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
  && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
 
-RUN echo "$(date +'%F %R') \t  docker-gen \t $(docker-gen -version)" >> /cre/versions.txt
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t creUbuntu \t $(lsb_release -a 2>&1 | grep Description | sed -e "s/^Description:\tUbuntu \///" )" >> /cre/versions.txt &&\ 
+    echo "$(date +'%F %R') \t  $(openssl version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  docker-gen \t $(docker-gen -version)" >> /cre/versions.txt
 
 COPY cre/ /cre/
 # Copy shoremen to handle Procfile (Process Managment)

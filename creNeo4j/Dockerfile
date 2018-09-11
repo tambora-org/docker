@@ -1,4 +1,4 @@
-FROM tamboraorg/crejava
+FROM tamboraorg/crejava:2010.0
 #FROM openjdk:8-jre-alpine
 
 # https://github.com/docker-library/docs/tree/master/neo4j
@@ -21,7 +21,6 @@ RUN curl --fail --silent --show-error --location --remote-name ${NEO4J_URI} \
     && rm ${NEO4J_TARBALL} \
     && mv /var/lib/neo4j/data /data \
     && ln -s /data /var/lib/neo4j/data 
-
 
 ENV PATH /var/lib/neo4j/bin:$PATH
 

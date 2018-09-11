@@ -1,6 +1,6 @@
 # Adapted from mdillon/postgis:9.5
 #FROM postgres:9.5
-FROM tamboraorg/crepostgres
+FROM tamboraorg/crepostgres:2010.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV POSTGIS_MAJOR 2.3
@@ -20,6 +20,11 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
+
+
+
+#COPY cre /cre
+WORKDIR /cre/
 
 RUN mkdir -p /docker-entrypoint-initdb.d
 COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/postgis.sh

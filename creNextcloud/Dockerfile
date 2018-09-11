@@ -11,7 +11,7 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
-ENV LANG en_US.UTF-8
+#ENV LANG en_US.UTF-8
 
 ENV NEXTCLOUD_VERSION 9.0.58
 
@@ -40,9 +40,12 @@ RUN curl -fsSL -o nextcloud.tar.bz2 \
  && mkdir -p /usr/src/nextcloud/custom_apps \
  && chmod +x /usr/src/nextcloud/occ
 
-COPY docker-entrypoint.sh /entrypoint.sh
 COPY config/* /usr/src/nextcloud/config/
 
-#ENTRYPOINT ["/entrypoint.sh"]
-#CMD ["php-fpm"]
+#COPY cre /cre
+WORKDIR /cre/
+
+ENTRYPOINT ["/cre/nextcloud-entrypoint.sh"]
+
+#CMD ["shoreman", "/cre/nextcloud-procfile"]
 CMD /cre/php-fpm.sh

@@ -13,10 +13,7 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 ENV CRE_VERSION 0.2010 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
-ENV LC_CTYPE en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+
 
 RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key add - && \
     echo deb https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list
@@ -51,6 +48,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 ENV JENKINS_HOME /var/jenkins
 
 COPY cre /cre
+WORKDIR /cre/
 
 EXPOSE 8080 50000
 

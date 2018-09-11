@@ -55,9 +55,9 @@ COPY /cre/php-ini-overrides.ini /etc/php/$PHP_VERSION/fpm/conf.d/99-overrides.in
 # The following startup script contains some magic to clean these up
 COPY cre/ /cre/
 #COPY /cre/php-fpm.sh /cre/php-fpm.sh
-CMD /cre/php-fpm.sh
 
-# Open up fcgi port
+
+# Open up fcgi port 
 EXPOSE 9000
 
 # Install selected extensions and other stuff
@@ -70,6 +70,7 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get -y --no-install-recommends install   php-memcached \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+#pecl install memcached-3.0.4 ??
 
 # Install db extensions and other stuff
 # php$PHP_VERSION-apcu php$PHP_VERSION-apcu-bc  is depricated
@@ -83,5 +84,4 @@ VOLUME ["/cre/www"]
 
 WORKDIR "/cre/www"
 
-## for nginx
-#CMD ["nginx"]
+CMD /cre/php-fpm.sh
