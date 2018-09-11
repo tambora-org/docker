@@ -1,0 +1,36 @@
+#!/bin/sh 
+
+if ! [ -e /etc/letsencrypt/live ]
+then
+   mkdir /etc/letsencrypt/live
+fi
+
+{{ if (not (exists "/etc/letsencrypt/live/dhparam.pem")) }}
+if ! [ -e /etc/letsencrypt/live/dhparam.pem ]
+then
+   openssl dhparam -out /etc/letsencrypt/live/dhparam.pem 4096
+fi
+{{ end }}
+
+
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
+
+# use --staging for development and during implementation - works not for localhost / use openssl instead
+# staging does not work with Strict-Transport-Security - see proxy.tmpl
+certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+
+{{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
+
+{{ $subdomain := trim $subdomain }}
+{{ $host := (printf "%s.%s" $subdomain $CurrentDomain) }}
+
+# {{ $host }}
+
+# use --staging for development and during implementation - works not for localhost / use openssl instead
+certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $host }}
+
+{{ end }}
+
+# Finally reload nginx
+#nginx -s reload

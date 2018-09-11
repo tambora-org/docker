@@ -42,7 +42,7 @@ RUN curl -fsSL -o nextcloud.tar.bz2 \
 
 COPY config/* /usr/src/nextcloud/config/
 
-#COPY cre /cre
+COPY cre /cre
 WORKDIR /cre/
 
 ENTRYPOINT ["/cre/nextcloud-entrypoint.sh"]

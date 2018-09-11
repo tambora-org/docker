@@ -5,7 +5,8 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephp 
+FROM tamboraorg/crephp:2010.0
+MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux

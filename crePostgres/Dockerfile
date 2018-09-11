@@ -27,7 +27,8 @@ RUN apt-get update && \
 #RUN chmod +x /usr/local/bin/run
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t crePostgres \t /usr/lib/postgresql/${PG_VERSION}/bin/postgres --version" >> /cre/versions.txt  
+    echo "$(date +'%F %R') \t crePostgres \t /usr/lib/postgresql/${PG_VERSION}/bin/postgres --version" >> /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t  psql \t psql --version" >> /cre/versions.txt 
 
 COPY cre /cre
 WORKDIR /cre/

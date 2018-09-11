@@ -37,6 +37,8 @@ RUN set -ex \
   done
 
 COPY ./config /usr/share/elasticsearch/config
+COPY cre /cre
+#WORKDIR /cre/
 
 USER elasticsearch
 

@@ -28,9 +28,12 @@ WORKDIR /var/lib/neo4j
 
 VOLUME /data
 
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+#COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY cre /cre
+#WORKDIR /cre/
+
 
 EXPOSE 7474 7473 7687
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/cre/neo4j-entrypoint.sh"]
 CMD ["neo4j"]

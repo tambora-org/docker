@@ -5,7 +5,8 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2010.0 
+FROM tamboraorg/creubuntu:2010.0
+MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV CRE_VERSION 0.2010 

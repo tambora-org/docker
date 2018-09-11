@@ -1,0 +1,6 @@
+https: docker-gen -watch /cre/openssl.cfg.tmpl /cre/openssl.cfg
+openssl: docker-gen -watch -notify "/cre/openssl.sh" /cre/openssl.sh.tmpl /cre/openssl.sh
+dockergen: docker-gen -watch /cre/nginx.tmpl /etc/nginx/conf.d/default.conf.old
+proxy: docker-gen -watch -notify "nginx -s reload" /cre/proxy.tmpl /etc/nginx/conf.d/default.conf
+openssl: docker-gen -watch -notify "/cre/certbot.sh" /cre/certbot.sh.tmpl /cre/certbot.sh
+nginx: nginx

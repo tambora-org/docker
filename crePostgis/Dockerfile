@@ -21,11 +21,9 @@ RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
 
-
-
-#COPY cre /cre
+COPY cre /cre
 WORKDIR /cre/
 
-RUN mkdir -p /docker-entrypoint-initdb.d
-COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/postgis.sh
-COPY ./update-postgis.sh /usr/local/bin
+#RUN mkdir -p /docker-entrypoint-initdb.d
+#COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/postgis.sh
+#COPY ./update-postgis.sh /usr/local/bin

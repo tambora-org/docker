@@ -6,6 +6,7 @@
 
 # Pull base image.
 FROM tamboraorg/creubuntu:2010.0
+MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV CRE_VERSION 0.2010 
@@ -28,7 +29,9 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/conf.d", "/var/log/nginx", "/cre/www"]
 
 # Define working directory.
-WORKDIR /etc/nginx
+#COPY cre /cre
+WORKDIR /cre/
+#WORKDIR /etc/nginx
 
 # Define default command.
 CMD ["nginx"]
