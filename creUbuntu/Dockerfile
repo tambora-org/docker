@@ -44,10 +44,10 @@ COPY /cre/shoreman.sh /usr/local/bin/shoreman
 RUN chmod 755 /usr/local/bin/shoreman
 
 # Set environment variables.
-ENV HOME /root
+ENV HOME /cre
 
 # Define working directory.
-WORKDIR /root
+WORKDIR /cre
 
 # Define default command.
 CMD ["bash"]
