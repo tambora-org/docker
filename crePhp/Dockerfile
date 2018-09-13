@@ -85,4 +85,7 @@ VOLUME ["/cre/www"]
 
 WORKDIR "/cre/www"
 
-CMD /cre/php-fpm.sh
+# Define default command.
+#CMD /cre/php-fpm.sh
+ENTRYPOINT ["/cre/nginx-entrypoint.sh"]
+CMD ["shoreman", "/cre/nginx-procfile"]
