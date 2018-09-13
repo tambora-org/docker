@@ -1,0 +1,4 @@
+config: docker-gen -watch /cre/ubuntu-config.txt.tmpl /cre/ubuntu-config.txt
+init: docker-gen -watch -notify "/cre/ubuntu-init.sh" /cre/ubuntu-init.sh.tmpl /cre/ubuntu-init.sh
+update: watch -n 600007 /cre/ubuntu-update.sh
+start: bash

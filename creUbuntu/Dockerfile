@@ -18,8 +18,6 @@ ENV LANGUAGE en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-RUN mkdir -p /cre && touch /cre/versions.txt && \
-    echo "$(date +'%F %R') \t creUbuntu \t $(cat /usr/lib/os-release | grep PRETTY | sed -e "s/^PRETTY_NAME=\"Ubuntu //" -e "s/\"$//")" >> /cre/versions.txt
 
 # Install.
 RUN \
@@ -27,7 +25,7 @@ RUN \
   apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y apt-transport-https build-essential locales software-properties-common && \
-  apt-get install -y byobu curl git htop libzip4 libssh2-1 logrotate man pwgen sudo unzip vim wget && \
+  apt-get install -y byobu curl git htop libzip4 libssh2-1 logrotate man openssl pwgen sudo unzip vim wget && \
   rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US en_US.UTF-8 && \ 
@@ -45,8 +43,8 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
  && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
  && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
 
-RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t creUbuntu \t $(lsb_release -a 2>&1 | grep Description | sed -e "s/^Description:\tUbuntu \///" )" >> /cre/versions.txt &&\ 
+RUN mkdir -p /cre && touch /cre/versions.txt && \
+    echo "$(date +'%F %R') \t creUbuntu \t $(cat /usr/lib/os-release | grep PRETTY | sed -e "s/^PRETTY_NAME=\"Ubuntu //" -e "s/\"$//")" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  $(openssl version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  docker-gen \t $(docker-gen -version)" >> /cre/versions.txt
 
@@ -63,4 +61,7 @@ WORKDIR /cre
 
 # Define default command.
 CMD ["bash"]
+
+#ENTRYPOINT ["/cre/ubuntu-entrypoint.sh"]
+#CMD ["shoreman", "/cre/ubuntu-procfile"]
 
