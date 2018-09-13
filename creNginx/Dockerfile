@@ -33,9 +33,12 @@ VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/conf.d", "/var/log/nginx", "/cre
 WORKDIR /cre/
 #WORKDIR /etc/nginx
 
-# Define default command.
-CMD ["nginx"]
-
-# Expose ports.
+# Expose ports (done by children). 
 #EXPOSE 80
 #EXPOSE 443
+
+# Define default command.
+#CMD ["nginx"]
+ENTRYPOINT ["/cre/nginx-entrypoint.sh"]
+CMD ["shoreman", "/cre/nginx-procfile"]
+
