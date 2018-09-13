@@ -60,8 +60,8 @@ ENV HOME /cre
 WORKDIR /cre
 
 # Define default command.
-CMD ["bash"]
+#CMD ["bash"]
 
-#ENTRYPOINT ["/cre/ubuntu-entrypoint.sh"]
-#CMD ["shoreman", "/cre/ubuntu-procfile"]
+ENTRYPOINT ["/cre/ubuntu-entrypoint.sh"]
+CMD ["shoreman", "/cre/ubuntu-procfile"]
 
