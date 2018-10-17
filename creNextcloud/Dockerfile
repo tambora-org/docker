@@ -6,7 +6,6 @@
 
 # Pull base image. 
 FROM tamboraorg/crephp:2010.0 
-
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ENV DEBIAN_FRONTEND noninteractive
