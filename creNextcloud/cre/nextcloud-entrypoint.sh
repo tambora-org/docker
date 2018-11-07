@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e 
 
 # version_greater A B returns whether A > B
 function version_greater() {

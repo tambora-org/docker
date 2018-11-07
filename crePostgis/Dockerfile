@@ -1,4 +1,5 @@
 # Adapted from mdillon/postgis:9.5
+# and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
 #FROM postgres:9.5
 FROM tamboraorg/crepostgres:2010.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
