@@ -1,5 +1,4 @@
-# Adapted from https://github.com/partlab/docker/blob/master/ubuntu-postgresql/Dockerfile
-# and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
+# Adapted from https://github.com/Leafney/ubuntu-mysql
 FROM tamboraorg/creubuntu:2010.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
