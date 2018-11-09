@@ -33,7 +33,7 @@ WORKDIR "/cre/www/myadmin"
 
 #RUN chmod +x /cre/myadmin-entrypoint.sh
 
-ENTRYPOINT ["/cre/myadm-entrypoint.sh"]
+ENTRYPOINT ["/cre/myadmin-entrypoint.sh"]
 
 # Open up fcgi port 
 EXPOSE 9000

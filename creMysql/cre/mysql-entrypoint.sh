@@ -8,6 +8,8 @@ MYSQL_USER_DB=${MYSQL_USER_DB:-""}
 
 echo "[i] Setting up new power user credentials."
 #service mysql start $ sleep 10
+/usr/bin/mysqld
+sleep 10
 
 echo "[i] Setting root new password."
 mysql --user=root --password=root -e "UPDATE mysql.user set authentication_string=password('$MYSQL_ROOT_PWD') where user='root'; FLUSH PRIVILEGES;"
@@ -34,8 +36,8 @@ else
 	fi
 fi
 
-#killall mysqld
-#sleep 5
+killall mysqld
+sleep 5
 echo "[i] Setting end,have fun."
 
 exec "$@"

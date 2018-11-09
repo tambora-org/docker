@@ -12,7 +12,7 @@ if ( id ${FTP_USER} ); then
 else
   echo "Creating user ${FTP_USER}"
   ENC_PASS=$(perl -e 'print crypt($ARGV[0], "password")' ${FTP_PASSWORD})
-  useradd -d /ftp/${FTP_USER} -m -p ${ENC_PASS} -u 1000 -s /bin/sh ${FTP_USER}
+  useradd -d /cre/ftp/${FTP_USER} -m -p ${ENC_PASS} -u 1000 -s /bin/sh ${FTP_USER}
 fi
 
 if [ $1 == 'vsftpd' ]; then
