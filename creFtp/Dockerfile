@@ -14,16 +14,13 @@ ENV FTP_VERSION 9999.9999
 #ENV FTP_PASSWORD changeme
 
 RUN apt-get update && \
-    apt-get install -y vsftpd supervisor && \
+    apt-get install -y vsftpd && \
     mkdir -p /var/run/vsftpd/empty
-
-RUN mkdir -p /var/log/supervisor
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creFtp \t $(FTP_VERSION)" >> /cre/versions.txt 
 
 COPY cre /cre
-COPY cre/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD cre/vsftpd.conf /etc/vsftpd.conf
 
 VOLUME ["/cre/ftp"]
@@ -42,6 +39,6 @@ EXPOSE 12020 12021 12022 12023 12024 12025
 
 # Define default command.
 ENTRYPOINT ["/cre/ftp-entrypoint.sh"]
-CMD ["/cre/run.sh"]
-#CMD ["shoreman", "/cre/nginx-procfile"]
+#CMD ["/cre/run.sh"]
+CMD ["shoreman", "/cre/ftp-procfile"]
 
