@@ -77,6 +77,7 @@ RUN apt-get update \
 # php$PHP_VERSION-apcu php$PHP_VERSION-apcu-bc  is depricated
 RUN apt-get update \
     && apt-get -y --no-install-recommends install php-mongodb php$PHP_VERSION-pgsql php$PHP_VERSION-mysql \
+    && apt-get -y --no-install-recommends install mysql-client \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 RUN echo "$(date +'%F %R') \t  $(php -version | head -n1)" >> /cre/versions.txt 
