@@ -1,5 +1,5 @@
 init:  /cre/openssl.ftp.sh
-start: vsftpd
+start: vsftpd /cre/vsftpd.conf
 
 
 

@@ -18,10 +18,11 @@ RUN apt-get update && \
     mkdir -p /var/run/vsftpd/empty
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t creFtp \t $(FTP_VERSION)" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t creFtp \t $(FTP_VERSION)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t vsftpd \t $(vsftpd -v)" >> /cre/versions.txt 
 
 COPY cre /cre
-ADD cre/vsftpd.conf /etc/vsftpd.conf
+#ADD cre/vsftpd.conf /etc/vsftpd.conf
 
 VOLUME ["/cre/ftp"]
 WORKDIR "/cre/ftp"
