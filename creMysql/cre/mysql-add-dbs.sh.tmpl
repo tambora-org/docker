@@ -1,0 +1,33 @@
+#!/bin/sh 
+
+echo "mysql add databases:"
+
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $rootPassword := or $CurrentContainer.Env.MYSQL_ROOT_PWD "_secret_" }}
+
+{{ range $mysqlDb, $containers := groupByMulti $ "Env.MYSQL_DB" "," }}
+##begin of all databases
+## add db: {{ $mysqlDb }}
+
+{{ range $index, $container := $containers }}
+## begin of all containers
+## add user and assign to db
+## user: MYSQL_USER, MYSQL_PWD ?
+{{ if $container.Env.MYSQL_USER }}
+## MYSQL_USER : {{ $container.Env.MYSQL_USER }}
+mysql_user="{{ $container.Env.MYSQL_USER }}"
+{{ else }}
+## NO USER: md5 of {{ $container.Env.MYSQL_DB }}
+mysql_user="U:$(printf '%s' '{{ $container.Env.MYSQL_DB }}' | md5sum | cut -d ' ' -f 1)"
+{{ end }}
+{{ if $container.Env.MYSQL_PWD }}
+## MYSQL_PWD : {{ $container.Env.MYSQL_PWD }}
+mysql_pwd="{{ $container.Env.MYSQL_PWD }}"
+{{else}}
+mysql_pwd="PWD:$(printf '%s' '$mysql_user {{$rootPassword}}' | md5sum | cut -d ' ' -f 1)"
+{{ end }}
+
+{{ end }} 
+##end of all containers
+{{ end }} 
+##end of all databases

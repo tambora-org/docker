@@ -43,4 +43,5 @@ ENTRYPOINT ["/cre/mysql-entrypoint.sh"]
 EXPOSE 3306
 ##CMD ["/usr/bin/mysqld_safe"]
 
-CMD ["/cre/run.sh"]
+#CMD ["/cre/run.sh"]
+CMD ["shoreman", "/cre/mysql-procfile"]
