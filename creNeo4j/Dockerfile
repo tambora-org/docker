@@ -1,4 +1,6 @@
 FROM tamboraorg/crejava:2010.0
+MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
+
 #FROM openjdk:8-jre-alpine
 
 # https://github.com/docker-library/docs/tree/master/neo4j

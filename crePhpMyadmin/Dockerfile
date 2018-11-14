@@ -23,7 +23,7 @@ RUN apt-get update && \
 	apt-get -y install phpmyadmin
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t crePhpMyadmin \t $(MYADMIN_VERSION)" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t crePhpMyadmin \t ${MYADMIN_VERSION}" >> /cre/versions.txt 
 
 COPY cre /cre
 
