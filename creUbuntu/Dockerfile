@@ -19,14 +19,14 @@ ENV LANGUAGE en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-
 # Install.
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y apt-transport-https build-essential locales software-properties-common && \
-  apt-get install -y byobu curl git htop libzip4 libssh2-1 logrotate man openssl pwgen sudo unzip vim wget && \
+  apt-get install -y byobu curl git htop libzip4  logrotate man pwgen sudo unzip vim wget && \
+  apt-get install -y libssh2-1 openssl openssh-server openssh-client && \
   rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US en_US.UTF-8 && \ 
@@ -36,8 +36,7 @@ RUN locale-gen en_US en_US.UTF-8 && \
 #ADD root/.bashrc /root/.bashrc
 #ADD root/.gitconfig /root/.gitconfig
 #ADD root/.scripts /root/.scripts
-
-##RUN apt-get update && apt-get -y install apt-transport-https curl libzip4 libssh2-1 # moved
+#? ssh-server:  /etc/ssh/sshd_config 
 
 # Install docker-gen (generates files from templates with docker data filled in)
 RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
@@ -59,9 +58,6 @@ ENV HOME /cre
 
 # Define working directory.
 WORKDIR /cre
-
-# Define default command.
-#CMD ["bash"]
 
 ENTRYPOINT ["/cre/ubuntu-entrypoint.sh"]
 CMD ["shoreman", "/cre/ubuntu-procfile"]
