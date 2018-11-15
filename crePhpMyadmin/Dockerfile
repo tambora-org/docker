@@ -40,4 +40,6 @@ EXPOSE 9000
 
 ##CMD ["/usr/bin/mysqld_safe"]
 
-CMD ["/cre/run.sh"]
+##CMD ["/cre/run.sh"]
+## use php-procfile ...
+CMD ["shoreman", "/cre/php-procfile"]
