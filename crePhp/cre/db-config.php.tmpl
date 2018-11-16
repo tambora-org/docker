@@ -1,0 +1,32 @@
+<?php
+  $dbData = [];
+  // add mySQL data
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ if $CurrentContainer.Env.MYSQL_DB }}
+ {{ range $mysqlServerPWD, $containers := groupByMulti $ "MYSQL_ROOT_PWD" "," }}
+  {{ $mySqlRootPWD := $mysqlServerPWD}}
+  {{ range $index, $container := $containers }}
+   {{ $mySqlPort := or $container.Env.MYSQL_PORT "3306" }}
+   {{ range $containerNetwork := $container.Networks }}
+    {{ $mySqlHost := $containerNetwork.IP }}
+   {{ end }}
+  {{ end }} 
+ {{ end }} 
+ {{ $mySqlDB := $CurrentContainer.Env.MYSQL_DB}}
+ {{ if $CurrentContainer.Env.MYSQL_USER }}
+   $user = '{{ $container.Env.MYSQL_USER }}';
+ {{ else }}
+   $user = md5("U:{{ $mySqlDB }}");
+ {{ end }}
+ {{ if $CurrentContainer.Env.MYSQL_PWD }}
+   $password = '{{ $container.Env.MYSQL_PWD }}';
+ {{ else }}
+   $password = md5("PWD:$user:{{$rootPassword}}");
+ {{ end }}
+   $dbData[] = 
+    ['type' => 'mysql', 'host' => {{ $mySqlHost}}, 'port' => {{ $mySqlPort }}, 
+     'dbname' => {{ $mySqlDB }}, 'user' => $user, 'password' => $password, 
+      'pdo' => "mysql:host={{ $mySqlHost}}:{{ $mySqlPort }};dbname={{ $mySqlDB }};user=".$user.";password=".$password];
+{{ end }}
+?>
+
