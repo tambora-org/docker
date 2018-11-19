@@ -8,11 +8,21 @@
   </head>
   <body>
     <h2>1: Database Test</p>
-    
+     <?php printDbResults(); ?>
   </body>
 </html>
 
 <?php
+ include("/cre/db-config.php");
+
+ function printDbResults()
+ {
+   foreach(inqDbConnections() as $db=>$connect)
+   {
+    echo "<p>DB: $db => $connect['pdo'] </p>";
+   }
+ }
+
  function testPostgresDb($dbname, $user, $password, $host, $port='5432')
   {
      $connectString = "host=".$host." port=".$port." dbname=".$dbname." user=".$user." password=".$password;
@@ -44,7 +54,7 @@
      {
        return false;
      }
-     return false
+     return false;
   }
 
 ?>

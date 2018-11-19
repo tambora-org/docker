@@ -1,4 +1,4 @@
-db: docker-gen -watch /cre/db-config.php.tmpl /cre/www/db-config.php
+db: docker-gen -watch /cre/db-config.php.tmpl /cre/db-config.php
 init: docker-gen -watch -notify "/cre/php-init.sh" /cre/php-init.sh.tmpl /cre/php-init.sh
 update: watch -n 600007 /cre/php-update.sh
 start: /cre/php-fpm.sh
