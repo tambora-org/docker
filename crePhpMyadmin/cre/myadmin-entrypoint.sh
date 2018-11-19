@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -e 
 
-rm -R -f /cre/www/myadmin/*
-cp -R -f /usr/share/phpmyadmin /cre/www/myadmin
+rm -R -f /cre/www/myadmin
+#cp -R -f /usr/share/phpmyadmin /cre/www/myadmin
+ln -s /usr/share/phpmyadmin/ /cre/www/myadmin
 
 exec "$@"
