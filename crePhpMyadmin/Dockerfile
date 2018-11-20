@@ -28,6 +28,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 # VOLUME ["/cre/www/myadmin"]
+VOLUME ["/usr/share/phpmyadmin"]
 # WORKDIR "/cre/www/myadmin"
 WORKDIR "/cre/www"
 
