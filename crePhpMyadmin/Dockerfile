@@ -27,9 +27,9 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
-VOLUME ["/cre/www/myadmin"]
-WORKDIR "/cre/www/myadmin"
-
+# VOLUME ["/cre/www/myadmin"]
+# WORKDIR "/cre/www/myadmin"
+WORKDIR "/cre/www"
 
 #RUN chmod +x /cre/myadmin-entrypoint.sh
 
