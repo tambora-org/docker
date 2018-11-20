@@ -4,7 +4,8 @@
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ if $CurrentContainer.Env.MYSQL_DB }}
  {{ range $mysqlServerPWD, $containers := groupByMulti $ "Env.MYSQL_ROOT_PWD" "," }}
-  $rootPwd = '{{ $mysqlServerPWD }}';
+  //$rootPwd = '{{ $mysqlServerPWD }}';
+
   {{ range $index, $container := $containers }}
    {{ $mySqlPort := or $container.Env.MYSQL_PORT "3306" }}
     $port = '{{ $mySqlPort }}';
@@ -14,12 +15,12 @@
     {{ if $CurrentContainer.Env.MYSQL_USER }}
     $user = '{{ $CurrentContainer.Env.MYSQL_USER }}';
     {{ else }}
-    $user = md5("U:$dbName");
+    $user = 'U:'.md5($dbName);
     {{ end }}
     {{ if $CurrentContainer.Env.MYSQL_PWD }}
     $password = '{{ $CurrentContainer.Env.MYSQL_PWD }}';
     {{ else }}
-    $password = md5("PWD:$user:$rootPwd");
+    $password = 'PWD:'.md5($user.":".'{{ sha1 $mysqlServerPWD }}');
     {{ end }}
     $dbData['mysql:'.$dbName] = 
      ['type' => 'mysql', 'host' => $host, 'port' => $port, 
@@ -31,6 +32,9 @@
 {{ end }}
 
   function inqDbConnections()
-  { return $dbData; }
+  {
+    global $dbData; 
+    return $dbData; 
+  }
 ?>
 

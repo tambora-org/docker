@@ -24,7 +24,7 @@ mysql_user="U:$(printf '%s' '{{ $container.Env.MYSQL_DB }}' | md5sum | cut -d ' 
 ## MYSQL_PWD : {{ $container.Env.MYSQL_PWD }}
 mysql_pwd="{{ $container.Env.MYSQL_PWD }}"
 {{else}}
-mysql_pwd="PWD:$(printf '%s' '$mysql_user {{$rootPassword}}' | md5sum | cut -d ' ' -f 1)"
+mysql_pwd="PWD:$(printf '%s' '$mysql_user:{{sha1 $rootPassword}}' | md5sum | cut -d ' ' -f 1)"
 {{ end }}
 
 {{ end }} 

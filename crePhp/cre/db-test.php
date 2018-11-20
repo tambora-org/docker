@@ -13,25 +13,25 @@
 </html>
 
 <?php
- include("/cre/db-config.php");
+ require("/cre/db-config.php");
 
  function printDbResults()
  {
    foreach(inqDbConnections() as $db=>$connect)
    {
-    echo "<p>DB: $db => $connect['pdo'] </p>";
+    echo "<p>DB: ".$db." => ".$connect['pdo']." </p>";
    }
  }
 
  function testPostgresDb($dbname, $user, $password, $host, $port='5432')
   {
-     $connectString = "host=".$host." port=".$port." dbname=".$dbname." user=".$user." password=".$password;
+     $connectString = 'host='.$host.' port='.$port.' dbname='.$dbname.' user='.$user.' password='.$password;
      return pg_connect($connectString);
   }
 
  function testMySqlDb($dbname, $user, $password, $host, $port='3306')
   {
-     $connectString = "".$host.":".$port.";dbname=".$dbname.";
+     $connectString = ''.$host.':'.$port.';dbname='.$dbname;
      return mysqli_connect($connectString, $user, $password);
   }
 
@@ -42,8 +42,8 @@
 
   function testPDO($type, $dbname, $user, $password, $host, $port)
   {
-     $connectionString = "".$type.":host=".$host.":".$port.";dbname=".$dbname.";user=".$user.";password=".$password;
-     //$connectionString = "".$type.":host=".$host.";port=".$port.";dbname=".$dbname.";user=".$user.";password=".$password;
+     $connectionString = ''.$type.':host='.$host.':'.$port.';dbname='.$dbname.';user='.$user.';password='.$password;
+     //$connectionString = ''.$type.':host='.$host.';port='.$port.';dbname='.$dbname.';user='.$user.';password='.$password;
      try {
        $connection = new PDO($connectionString); 
        //$connection = new PDO($connectionString, $user, $password);  
