@@ -1,26 +1,46 @@
-
+<?php
+ require("/cre/db-config.php");
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>1: DB Test</title>
-    <!-- weitere Kopfinformationen -->
-    <!-- Kommentare werden im Browser nicht angezeigt. -->
+    <title>DB Test</title>
   </head>
   <body>
-    <h2>1: Database Test</p>
+    <h2>Database Test</p>
      <?php printDbResults(); ?>
   </body>
 </html>
 
 <?php
- require("/cre/db-config.php");
 
  function printDbResults()
  {
-   foreach(inqDbConnections() as $db=>$connect)
+   echo "<style>";
+   echo "table {border-collapse: collapse;}";
+   echo "table, th, td {border: 1px solid black; padding: 10px;}";
+   echo "</style>";
+
+   echo "<table>";
+   echo "<tr><th>Type</th><th>Table</th><th>PDO</th><th>Classic</th></tr>";
+   foreach(inqDbConnections() as $db=>$c)
    {
-    echo "<p>DB: ".$db." => ".$connect['pdo']." </p>";
+    echo "<tr><td>".$c['type']."</td><td>".$c['dbname']."</td>";
+    $pdoTest = testPDO($c['pdo'], $c['user'], $c['password']);
+    echo "<td>".($pdoTest ? "ok" : "fail")."</td>";
+    $classicTest = false;
+    switch($c['type']) {
+     case "mysql":
+       $classicTest = testMySqlDb($c['dbname'], $c['user'], $c['password'], $c['host'], $c['port']);
+       break;
+     case "postgres":
+       $classicTest = testPostgresDb($c['dbname'], $c['user'], $c['password'], $c['host'], $c['port']);
+       break;
+    } 
+    echo "<td>".($classicTest ? "ok" : "fail")."</td>";
+    echo "</tr>";
    }
+   echo "</table>";
  }
 
  function testPostgresDb($dbname, $user, $password, $host, $port='5432')
@@ -40,13 +60,16 @@
      return testPDO('mysql', $dbname, $user, $password, $host, $port);
   }
 
-  function testPDO($type, $dbname, $user, $password, $host, $port)
+  function testPDO2($type, $dbname, $user, $password, $host, $port)
   {
-     $connectionString = ''.$type.':host='.$host.':'.$port.';dbname='.$dbname.';user='.$user.';password='.$password;
-     //$connectionString = ''.$type.':host='.$host.';port='.$port.';dbname='.$dbname.';user='.$user.';password='.$password;
+     $connectionString = ''.$type.':host='.$host.':'.$port.';dbname='.$dbname;
+     return testPDO($connectionString, $user, $password)
+  }
+
+  function testPDO($connect, $user, $password)
+  {
      try {
-       $connection = new PDO($connectionString); 
-       //$connection = new PDO($connectionString, $user, $password);  
+       $connection = new PDO($connect, $user, $password);  
        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        return true;
      }
