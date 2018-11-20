@@ -1,6 +1,8 @@
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
+# Name of 2nd-level nginx-proxy {{ $CurrentContainer.Name }}
+
 {{ range $phproot, $containers := groupByMulti $ "Env.CRE_PHP_ROOT" "," }}
 
 {{ $phproot := trim $phproot }}
@@ -12,6 +14,13 @@
 upstream {{ $phphost }} {
 
 {{ range $container := $containers }}
+
+    {{ if $container.Env.CRE_NGINX }}
+# Name of Wunsch-Proxy {{ $container.Env.CRE_NGINX }}';
+    {{ else }}
+# No Wunsch-Proxy defined
+    {{ end }}
+
 	{{ $addrLen := len $container.Addresses }}
 	{{ range $knownNetwork := $CurrentContainer.Networks }}
 		{{ range $containerNetwork := $container.Networks }}
