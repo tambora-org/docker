@@ -27,6 +27,7 @@ WORKDIR /cre/www
 
 # Define default command.
 #CMD ["nginx"]
+ENTRYPOINT ["/cre/nginx-php-entrypoint.sh"]
 CMD ["shoreman", "/cre/nginx-php-procfile"]
 
 # Expose ports.
