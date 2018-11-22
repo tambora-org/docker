@@ -63,7 +63,7 @@
   function testPDO2($type, $dbname, $user, $password, $host, $port)
   {
      $connectionString = ''.$type.':host='.$host.':'.$port.';dbname='.$dbname;
-     return testPDO($connectionString, $user, $password)
+     return testPDO($connectionString, $user, $password);
   }
 
   function testPDO($connect, $user, $password)

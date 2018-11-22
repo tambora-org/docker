@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash 
 
 echo "mysql add databases:"
 
@@ -19,12 +19,14 @@ mysql_user="{{ $container.Env.MYSQL_USER }}"
 {{ else }}
 ## NO USER: md5 of {{ $container.Env.MYSQL_DB }}
 mysql_user="U:$(printf '%s' '{{ $container.Env.MYSQL_DB }}' | md5sum | cut -d ' ' -f 1)"
+mysql_user="${mysql_user:0:24}"
 {{ end }}
 {{ if $container.Env.MYSQL_PWD }}
 ## MYSQL_PWD : {{ $container.Env.MYSQL_PWD }}
 mysql_pwd="{{ $container.Env.MYSQL_PWD }}"
 {{else}}
 mysql_pwd="PWD:$(printf '%s' '$mysql_user:{{sha1 $rootPassword}}' | md5sum | cut -d ' ' -f 1)"
+mysql_pwd="${pwd:0:32}"
 {{ end }}
 
 echo "[i] Creating datebase: {{ $mysqlDb }}"
