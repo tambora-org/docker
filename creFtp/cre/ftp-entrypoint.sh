@@ -18,6 +18,7 @@ else
   echo "Creating user ${FTP_USER}"
   ENC_PASS=$(perl -e 'print crypt($ARGV[0], "password")' ${FTP_PASSWORD})
   useradd -d /cre/ftp/${FTP_USER} -m -p ${ENC_PASS} -u 1000 -s /bin/sh ${FTP_USER}
+  echo "${FTP_USER}" | tee -a /cre/ftp.users
 fi
 
 if [ $1 == 'vsftpd' ]; then
