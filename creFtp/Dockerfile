@@ -3,6 +3,8 @@
 #
 # https://github.com/tamboraorg/docker/crenginx
 # https://github.com/emilybache/vsftpd-server/blob/master/Dockerfile
+# https://help.ubuntu.com/community/vsftpd
+# https://askubuntu.com/questions/575523/how-to-setup-virtual-users-for-vsftpd-with-access-to-a-specific-sub-directory
 
 # Pull base image.
 FROM tamboraorg/creubuntu:2010.0
@@ -14,7 +16,7 @@ ENV FTP_VERSION 9999.9999
 #ENV FTP_PASSWORD changeme
 
 RUN apt-get update && \
-    apt-get install -y vsftpd && \
+    apt-get install -y vsftpd apache2-utils libpam-pwdfile && \
     mkdir -p /var/run/vsftpd/empty
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
