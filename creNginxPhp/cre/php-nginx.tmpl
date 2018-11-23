@@ -47,15 +47,9 @@ upstream {{ $phphost }} {
     {{ else }}
 # No related NGINX-Proxy defined
     {{ end }}
-# Related Proxy found: server-section for {{ $phphost }} here 
-{{ else }}
-# No related proxy found: no server section for {{ $phphost }}
-{{ end }}
-
+# Related Proxy found: close upstrea and add server section
 
 }
-
-{{ if (ne $nginxProxy "empty") }}
 
 server {
     listen 80;
@@ -123,6 +117,12 @@ server {
     }
     
 }
+
+{{ else }}
+# No related proxy found: only close upstream
+
+}
+
 {{ end }}
 
 {{ end }}

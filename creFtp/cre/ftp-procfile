@@ -1,5 +1,6 @@
 init:  /cre/openssl.ftp.sh
 start: vsftpd /cre/vsftpd.conf
+sleep: sleep 2000000
 
 
 

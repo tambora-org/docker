@@ -1,6 +1,7 @@
 #!/bin/bash 
-
+export TERM=xterm
 echo "mysql add databases:"
+sleep 20
 
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $rootPassword := or $CurrentContainer.Env.MYSQL_ROOT_PWD "_secret_" }}
