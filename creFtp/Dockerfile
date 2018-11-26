@@ -25,6 +25,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 #ADD cre/vsftpd.conf /etc/vsftpd.conf
+COPY cre/vsftpd.pam /etc/pam.d/vsftpd
 
 VOLUME ["/cre/ftp"]
 WORKDIR "/cre/ftp"
