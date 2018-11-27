@@ -16,8 +16,8 @@ fi
 #later use admin or root here, add additional users from remote...
 mkdir /etc/vsftpd
 
-htpasswd -cbd /etc/vsftpd/ftpd.passwd ${FTP_USER} ${FTP_PASSWORD}
-#htpasswd -c -p -b /etc/vsftpd/ftpd.passwd ${FTP_USER} $(openssl passwd -1 -noverify ${FTP_PASSWORD})
+#htpasswd -cbd /etc/vsftpd/ftpd.passwd ${FTP_USER} ${FTP_PASSWORD}
+htpasswd -c -p -b /etc/vsftpd/ftpd.passwd ${FTP_USER} $(openssl passwd -1 -noverify ${FTP_PASSWORD})
 
 useradd --home /home/vsftpd --gid nogroup -m --shell /bin/false vsftpd
 mkdir /etc/vsftpd_user_conf
