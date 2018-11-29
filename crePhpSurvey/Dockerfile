@@ -21,7 +21,8 @@ COPY cre /cre
 
 RUN echo "${LS_SHA256} limesurvey.tar.gz" > survey256.txt 
 RUN curl -o limesurvey.tar.gz -L https://www.limesurvey.org/stable-release?download=${LS_DOWNLOAD}targz \
-        && sha256sum --status --strict -c survey256.txt && touch ok.txt \
+#        && sha256sum --status --strict -c survey256.txt && touch ok.txt \
+        && sha256sum ./limesurvey.tar.gz > cs_ls.txt \
 	&& mkdir limetmp \
 	&& tar -zxf limesurvey.tar.gz -C limetmp \
 	&& rm limesurvey.tar.gz \
