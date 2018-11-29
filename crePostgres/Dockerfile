@@ -10,7 +10,7 @@ ENV POSTGRES_VERSION 9.5
 ENV RANDOM_DOCKER_DEFAULT {$(pwgen -c -n -1 14)}
 
 LABEL Name="Postgres for CRE" \
-      org.label-schema.build-date=$BUILD_DATE \
+#      org.label-schema.build-date=$BUILD_DATE \
 #      Date=$(date +%F) \
 #      Year=$(date +%Y) \
 #      Month=$(date +%m) \
@@ -19,6 +19,18 @@ LABEL Name="Postgres for CRE" \
       Version=$POSTGRES_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build=$CRE_VERSION 
+
+# Labels.
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.build-date=$BUILD_DATE
+LABEL org.label-schema.name="tamboraorg/crepostgres"
+LABEL org.label-schema.description="Postgres for CRE"
+#LABEL org.label-schema.url="http://ballerinalang.org/"
+#LABEL org.label-schema.vcs-url="https://github.com/tamboraorg/docker"
+LABEL org.label-schema.vcs-ref=$VCS_REF
+#LABEL org.label-schema.vendor="?"
+LABEL org.label-schema.version=$BUILD_VERSION
+#LABEL org.label-schema.docker.cmd="docker run tamboraorg/postgres"
 
 RUN ENV RANDOM_DOCKER_RUN=$(pwgen -c -n -1 14)
 
