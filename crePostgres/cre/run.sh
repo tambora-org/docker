@@ -1,27 +1,14 @@
 #!/bin/bash
 
-POSTGRES_VERSION=9.5 
-POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-$(pwgen -c -n -1 14)}
+##POSTGRES_VERSION=9.5 
 
 POSTGRESQL_BIN=/usr/lib/postgresql/${POSTGRES_VERSION}/bin/postgres
 POSTGRESQL_CONFIG_FILE=/etc/postgresql/${POSTGRES_VERSION}/main/postgresql.conf
 POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
 
-if [ ! -d "$POSTGRESQL_DATA" ]; then
-  echo "${POSTGRES_PASSWORD}" > /var/lib/postgresql/pwfile
-
-  sudo -u postgres -H /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
-    --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
-    --username=postgres --encoding=unicode --auth=trust >/dev/null
-
-#  /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
-#    --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
-#    --username=postgres --encoding=unicode --auth=trust >/dev/null
- 
-  echo "========================================================================"
-  echo " postgres password is ${POSTGRES_PASSWORD}"
-  echo "========================================================================"
-fi
+echo "3* RANDOM_DOCKER_DEFAULT: $RANDOM_DOCKER_DEFAULT"
+echo "3* RANDOM_DOCKER_RUN: $RANDOM_DOCKER_RUN"
+echo "3* RANDOM_TEXT: $RANDOM_TEXT"
 
 exec sudo -u postgres $POSTGRESQL_BIN -D $POSTGRESQL_DATA -c config_file=$POSTGRESQL_CONFIG_FILE
 #exec $POSTGRESQL_BIN -D $POSTGRESQL_DATA -c config_file=$POSTGRESQL_CONFIG_FILE
