@@ -9,6 +9,15 @@ ENV INITRD No
 ENV POSTGRES_VERSION 9.5
 ENV RANDOM_DOCKER_DEFAULT {$(pwgen -c -n -1 14)}
 
+LABEL Name="Postgres for CRE" \
+      Date=$(date +%F) \
+      Year=$(date +%Y) \
+      Month=$(date +%m) \
+      Test=$(date +0.%Y.%m) \
+      Final=$(date +%Y.%m) \
+      Version=${POSTGRES_VERSION} \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build=${CRE_VERSION} 
 
 RUN ENV RANDOM_DOCKER_RUN=$(pwgen -c -n -1 14)
 
