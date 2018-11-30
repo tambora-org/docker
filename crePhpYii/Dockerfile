@@ -21,6 +21,7 @@ COPY cre /cre
 
 RUN mkdir yiitmp && cd ./yiitmp \
  && composer create-project --prefer-dist yiisoft/yii2-app-basic basic \
+ && cd .. \
  && mv -Rf ./yiitmp/*  /cre/www/yii
 #config/web.php
 
