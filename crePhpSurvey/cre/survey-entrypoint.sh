@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -e 
 
-#rm -R -f /cre/www/myadmin
-#cp -R -f /usr/share/phpmyadmin /cre/www/myadmin
-#ln -s /usr/share/phpmyadmin/ /cre/www/myadmin
+if [[ -n $MYSQL_DB ]]; then
+  cp -f /cre/config-mysql.php /cre/www/survey/application/config/config.php
+fi
+if [[ -n $POSTGRES_DB ]]; then
+  cp -f /cre/config-postgres.php /cre/www/survey/application/config/config.php
+fi
 
 exec "$@"

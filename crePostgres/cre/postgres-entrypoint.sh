@@ -3,7 +3,7 @@ set -e
 
 POSTGRES_ROOT_PWD=${POSTGRES_ROOT_PWD:-"postgres"}
 #POSTGRES_ROOT_PWD=${POSTGRES_ROOT_PWD:-$(pwgen -c -n -1 14)}
-ENV RANDOM_TEXT=$(pwgen -c -n -1 14)} 
+export RANDOM_TEXT=$(pwgen -c -n -1 14)}  
 #problem: env not available outside
 
 
