@@ -19,13 +19,13 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
-RUN echo "${LS_SHA256} limesurvey.tar.gz" > survey256.txt \
-        && curl -o limesurvey.tar.gz -L https://www.limesurvey.org/stable-release?download=${LS_DOWNLOAD}targz \
-#        && sha256sum --status --strict -c survey256.txt && touch ok.txt \
-        && sha256sum ./limesurvey.tar.gz > /cre/cs_ls.txt \     
+RUN echo "${LS_SHA256} /cre/limesurvey.tar.gz" > /cre/survey256.txt \
+        && curl -o /cre/limesurvey.tar.gz -L https://www.limesurvey.org/stable-release?download=${LS_DOWNLOAD}targz \
+        && sha256sum /cre/limesurvey.tar.gz > /cre/cs_ls.txt \  
+        && sha256sum --status --strict -c /cre/survey256.txt && touch ok.txt \   
 	&& mkdir limetmp \
-	&& tar -zxf limesurvey.tar.gz -C limetmp \
-	&& rm limesurvey.tar.gz \
+	&& tar -zxf /cre/limesurvey.tar.gz -C limetmp \
+	&& rm /cre/limesurvey.tar.gz \
 	&& LIME_TAG=$(ls limetmp) \
 	&& mv limetmp/$LIME_TAG /cre/www/survey \
 	&& rm -rf limetmp \
@@ -36,11 +36,7 @@ RUN echo "${LS_SHA256} limesurvey.tar.gz" > survey256.txt \
 #	&& chown -R www-data:www-data /uploadstruct \
 #       && chown www-data:www-data /var/lib/php5
 
-#COPY ./cs_ls.txt /cre/cs_ls.txt
-
 VOLUME ["/cre/www/survey"]
-#VOLUME ["/usr/share/phpmyadmin"]
-# WORKDIR "/cre/www/myadmin"
 WORKDIR "/cre/www"
 
 ENTRYPOINT ["/cre/survey-entrypoint.sh"]
