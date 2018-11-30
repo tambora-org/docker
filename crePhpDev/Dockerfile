@@ -23,4 +23,5 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
-WORKDIR "/var/www/cre"
+VOLUME ["/cre/www"]
+WORKDIR "/cre/www"
