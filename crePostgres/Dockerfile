@@ -32,7 +32,7 @@ LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.version=$BUILD_VERSION
 #LABEL org.label-schema.docker.cmd="docker run tamboraorg/postgres"
 
-RUN ENV RANDOM_DOCKER_RUN=$(pwgen -c -n -1 14)
+RUN export RANDOM_DOCKER_RUN=$(pwgen -c -n -1 14)
 
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
 #    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \
