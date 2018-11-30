@@ -7,7 +7,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV POSTGRES_VERSION 9.5
-ENV RANDOM_DOCKER_DEFAULT {$(pwgen -c -n -1 14)}
 
 LABEL Name="Postgres for CRE" \
 #      org.label-schema.build-date=$BUILD_DATE \
@@ -31,8 +30,6 @@ LABEL org.label-schema.vcs-ref=$VCS_REF
 #LABEL org.label-schema.vendor="?"
 LABEL org.label-schema.version=$BUILD_VERSION
 #LABEL org.label-schema.docker.cmd="docker run tamboraorg/postgres"
-
-RUN export RANDOM_DOCKER_RUN=$(pwgen -c -n -1 14)
 
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
 #    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \
@@ -64,7 +61,7 @@ VOLUME ["/var/lib/postgresql"]
 
 EXPOSE 5432
 
-#USER postgres
+USER postgres
 
 ENTRYPOINT ["/cre/postgres-entrypoint.sh"]
 
