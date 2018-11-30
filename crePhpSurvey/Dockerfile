@@ -36,6 +36,7 @@ RUN curl -o limesurvey.tar.gz -L https://www.limesurvey.org/stable-release?downl
 #	&& chown -R www-data:www-data /uploadstruct \
 #       && chown www-data:www-data /var/lib/php5
 
+COPY cs_ls.txt /cre/cs_ls.txt
 
 VOLUME ["/cre/www/survey"]
 #VOLUME ["/usr/share/phpmyadmin"]
