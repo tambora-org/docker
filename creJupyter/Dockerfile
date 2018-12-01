@@ -24,7 +24,7 @@ ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV JUPYTER_VERSION 999999 
 
-RUN apt-get update && apt-get -y --no-install-recommends install npm nodejs-legacy && apt-get clean
+RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-pip npm nodejs-legacy && apt-get clean
 
 # Install Jupyter Notebook first
 RUN pip3 install --upgrade pip
