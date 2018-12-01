@@ -29,9 +29,9 @@ RUN apt-get update && apt-get install npm nodejs-legacy && apt-get clean
 RUN pip3 install --upgrade pip
 RUN pip3 install jupyter
 # Install Jupyter Hub second
-python3 -m pip install jupyterhub
-npm install -g configurable-http-proxy
-python3 -m pip install notebook  # needed if running the notebook servers locally
+RUN python3 -m pip install jupyterhub
+RUN npm install -g configurable-http-proxy
+RUN python3 -m pip install notebook  # needed if running the notebook servers locally
 
 # check??
 #jupyterhub -h
