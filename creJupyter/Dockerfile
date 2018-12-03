@@ -14,7 +14,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2010.0
+FROM tamboraorg/crepython:2010.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
@@ -23,8 +23,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV JUPYTER_VERSION 999999 
-
-RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip npm nodejs-legacy && apt-get clean 
 
 # Install Jupyter Notebook first
 RUN pip3 install --upgrade pip
@@ -39,9 +37,7 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 #configurable-http-proxy -h
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt && \
-   echo "$(date +'%F %R') \t Python3 \t $(python3 --version)" >> /cre/versions.txt && \  
-   echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
+   echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt 
 
 #COPY cre /cre
 WORKDIR /cre/
