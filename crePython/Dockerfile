@@ -17,7 +17,7 @@ ENV PYTHON_VERSION 999999
 
 # npm >= 6 needed
 #RUN apt-get update && apt-get -y --no-install-recommends install npm nodejs-legacy && apt-get clean 
-RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && / 
+RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \
    apt-get install -y --no-install-recommends nodejs 
 
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip && apt-get clean 
