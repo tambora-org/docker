@@ -13,7 +13,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/yiitmp && \
- YII_TAG=$(ls /cre/yiitmp) && mv /cre/yiitmp/$YII_TAG /cre/www/yii 
+ YII_TAG=$(ls -d /cre/yiitmp/*) && mv /cre/yiitmp/$YII_TAG /cre/www/yii 
 # rm /cre/yiitmp
 
 #config/web.php
