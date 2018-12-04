@@ -39,7 +39,7 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt 
 
-#COPY cre /cre
+COPY cre /cre
 WORKDIR /cre/
 
 EXPOSE 8000
