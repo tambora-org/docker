@@ -7,6 +7,9 @@
 # https://github.com/fredokun/cl-jupyter/blob/master/about-cl-jupyter.ipynb
 #
 # https://irkernel.github.io/
+#
+# https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html
+# https://nbconvert.readthedocs.io/en/latest/install.html#installing-nbconvert
 
 # Jupyter Hub Dockerfile 
 #
@@ -27,10 +30,12 @@ ENV JUPYTER_VERSION 999999
 # Install Jupyter Notebook first
 RUN pip3 install --upgrade pip
 RUN pip3 install jupyter
+## RUN pip3 install jupyterlab # try jupyterlab
 # Install Jupyter Hub second
 RUN python3 -m pip install jupyterhub
 RUN npm install -g configurable-http-proxy
 RUN python3 -m pip install notebook  # needed if running the notebook servers locally
+#RUN jupyter labextension install @jupyterlab/hub-extension  # try jupyterlab
 
 # check??
 #jupyterhub -h
@@ -39,7 +44,7 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 #Install Lisp: sbcl
 RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.tar.bz2 -O /cre/sbcl.tar.bz2 && \
     mkdir /cre/sbcl && \
-    tar jxvf /tmp/sbcl.tar.bz2 --strip-components=1 -C /cre/sbcl/ && \
+    tar -jxvf /cre/sbcl.tar.bz2 --strip-components=1 -C /cre/sbcl/ && \
     cd /cre/sbcl && \
     sh ./install.sh && \
     cd /cre && \
