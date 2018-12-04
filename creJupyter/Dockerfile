@@ -36,6 +36,28 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 #jupyterhub -h
 #configurable-http-proxy -h
 
+#Install Lisp: sbcl
+RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.tar.bz2 -O /cre/sbcl.tar.bz2 && \
+    mkdir /cre/sbcl && \
+    tar jxvf /tmp/sbcl.tar.bz2 --strip-components=1 -C /cre/sbcl/ && \
+    cd /cre/sbcl && \
+    sh ./install.sh && \
+    cd /cre && \
+    rm -rf /cre/sbcl/
+
+# quicklisp
+RUN wget http://beta.quicklisp.org/quicklisp.lisp
+ADD install.lisp /cre/install.lisp
+RUN sbcl --non-interactive --load /cre/install.lisp
+
+RUN mkdir /cre/cl && \ 
+   wget https://github.com/fredokun/cl-jupyter/archive/master.zip -O /cre/cl-jupyter.zip && \
+   unzip /cre/cl-jupyter.zip -d /cre/cl && \
+   cd /cre/cl && \
+   python3 ./install-cl-jupyter.py
+    
+
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt 
 
