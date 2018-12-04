@@ -44,4 +44,5 @@ WORKDIR /cre/
 
 EXPOSE 8000
 
-CMD ["jupyterhub"]
+ENTRYPOINT ["/cre/jupyter-entrypoint.sh"]
+CMD ["shoreman", "/cre/jupyter-procfile"]
