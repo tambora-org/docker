@@ -12,10 +12,10 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
-RUN mkdir /cre/yiitmp 
-RUN  cd /cre/yiitmp 
-RUN  composer create-project --prefer-dist yiisoft/yii2-app-basic basic 
-RUN  cd .. 
+#RUN mkdir /cre/yiitmp 
+#RUN  cd /cre/yiitmp 
+RUN  composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/yiitmp
+#RUN  cd .. 
 #RUN  mv -Rf ./yiitmp/*  /cre/www/yii
 RUN YII_TAG=$(ls /cre/yiitmp) 
 RUN mv /cre/yiitmp/$YII_TAG /cre/www/yii 
