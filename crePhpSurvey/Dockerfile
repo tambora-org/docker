@@ -23,12 +23,12 @@ RUN echo "${LS_SHA256} /cre/limesurvey.tar.gz" > /cre/survey256.txt \
         && curl -o /cre/limesurvey.tar.gz -L https://www.limesurvey.org/stable-release?download=${LS_DOWNLOAD}targz \
         && sha256sum /cre/limesurvey.tar.gz > /cre/cs_ls.txt \  
 #        && sha256sum --status --strict -c /cre/survey256.txt && touch /cre/ok.txt \   
-	&& mkdir limetmp \
-	&& tar -zxf /cre/limesurvey.tar.gz -C limetmp \
+	&& mkdir /cre/limetmp \
+	&& tar -zxf /cre/limesurvey.tar.gz -C /cre/limetmp \
 	&& rm /cre/limesurvey.tar.gz \
-	&& LIME_TAG=$(ls limetmp) \
-	&& mv limetmp/$LIME_TAG /cre/www/survey \
-	&& rm -rf limetmp \
+	&& LIME_TAG=$(ls /cre/limetmp) \
+	&& mv /cre/limetmp/$LIME_TAG /cre/www/survey \
+	&& rm -rf /cre/limetmp \
 	&& chown -R www-data:www-data /cre/www/survey 
 
 #	&& mkdir -p /uploadstruct \
