@@ -1,5 +1,6 @@
 # https://jupyterhub.readthedocs.io/en/stable/quickstart.html#prerequisites
 # https://jupyter.readthedocs.io/en/latest/install.html
+# https://jupyterhub.readthedocs.io/en/stable/reference/config-proxy.html
 #
 # https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
 #
