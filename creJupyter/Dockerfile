@@ -63,7 +63,7 @@ RUN sbcl --non-interactive --load /cre/quicklisp.lisp
 RUN mkdir /cre/cl && \ 
    wget https://github.com/fredokun/cl-jupyter/archive/master.zip -O /cre/cl-jupyter.zip && \
    unzip /cre/cl-jupyter.zip -d /cre/cl && \
-   cd /cre/cl && \
+   cd /cre/cl/cl-jupyter-master && \
    python3 ./install-cl-jupyter.py
     
 
