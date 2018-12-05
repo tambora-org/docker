@@ -26,9 +26,11 @@ RUN echo "${LS_SHA256} /cre/limesurvey.tar.gz" > /cre/survey256.txt \
 	&& mkdir /cre/limetmp \
 	&& tar -zxf /cre/limesurvey.tar.gz -C /cre/limetmp \
 #	&& rm /cre/limesurvey.tar.gz \
-	&& LIME_TAG=$(ls -d /cre/limetmp/limesurvey/*) \
-	&& mv $LIME_TAG /cre/www/survey \
-	&& rm -rf /cre/limetmp \
+##	&& LIME_TAG=$(ls -d /cre/limetmp/limesurvey/*) \
+##	&& mv $LIME_TAG /cre/www/survey \
+   && LIME_TAG=$(ls /cre/limetmp/limesurvey) && cd /cre/limetmp/limesurvey && mv $LIME_TAG /cre/www/survey \
+
+#	&& rm -rf /cre/limetmp \
 	&& chown -R www-data:www-data /cre/www/survey 
 
 #	&& mkdir -p /uploadstruct \
