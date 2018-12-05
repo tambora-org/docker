@@ -12,15 +12,15 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
-RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/yiitmp && \
+RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/yiitmp 
 # YII_TAG=$(ls -d /cre/yiitmp/*) && mv $YII_TAG /cre/www/yii 
- YII_TAG=$(ls /cre/yiitmp) && cd /cre/yiitmp && mv -t /cre/www/yii $YII_TAG && cd /cre
+RUN YII_TAG=$(ls /cre/yiitmp) && cd /cre/yiitmp && mv -t /cre/www/yii $YII_TAG && cd /cre
 # rm /cre/yiitmp
 
 
 #config/web.php
 
-VOLUME ["/cre/www/yii"]
+#VOLUME ["/cre/www/yii"]
 WORKDIR "/cre/www"
 
 ENTRYPOINT ["/cre/yii-entrypoint.sh"]
