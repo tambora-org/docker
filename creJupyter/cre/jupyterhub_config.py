@@ -92,6 +92,7 @@
 #  
 #  This is the address on which the proxy will bind. Sets protocol, ip, base_url
 #c.JupyterHub.bind_url = 'http://:8000'
+c.JupyterHub.bind_url = '127.0.0.1:8000'
 
 ## Whether to shutdown the proxy when the Hub shuts down.
 #  
@@ -273,6 +274,7 @@
 #  .. deprecated: 0.9
 #      Use JupyterHub.bind_url
 #c.JupyterHub.ip = ''
+c.JupyterHub.ip = '127.0.0.1'
 
 ## Supply extra arguments that will be passed to Jinja environment.
 #c.JupyterHub.jinja_environment_options = {}
@@ -518,6 +520,7 @@
 #  - Start with `/notebooks` instead of `/tree` if `default_url` points to a notebook instead of a directory.
 #  - You can set this to `/lab` to have JupyterLab start by default, rather than Jupyter Notebook.
 #c.Spawner.default_url = ''
+#c.Spawner.default_url = '/lab'
 
 ## Disable per-user configuration of single-user servers.
 #  
@@ -768,7 +771,8 @@
 #  Admin access should be treated the same way root access is.
 #  
 #  Defaults to an empty set, in which case no user has admin access.
-#c.Authenticator.admin_users = {'admin'}
+#c.Authenticator.admin_users = set()
+c.Authenticator.admin_users = {'admin'}
 
 ## Automatically begin the login process
 #  

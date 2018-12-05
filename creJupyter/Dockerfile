@@ -52,9 +52,13 @@ RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.
     rm -rf /cre/sbcl/
 
 # quicklisp
-RUN wget http://beta.quicklisp.org/quicklisp.lisp
-ADD install.lisp /cre/install.lisp
-RUN sbcl --non-interactive --load /cre/install.lisp
+RUN wget http://beta.quicklisp.org/quicklisp.lisp -O /cre/quicklisp.lisp
+#ADD install.lisp /cre/install.lisp
+#RUN sbcl --non-interactive --load /cre/install.lisp
+RUN sbcl --non-interactive --load /cre/quicklisp.lisp
+# curl -O https://beta.quicklisp.org/quicklisp.lisp
+# curl -O https://beta.quicklisp.org/quicklisp.lisp.asc
+# gpg --verify quicklisp.lisp.asc quicklisp.lisp
 
 RUN mkdir /cre/cl && \ 
    wget https://github.com/fredokun/cl-jupyter/archive/master.zip -O /cre/cl-jupyter.zip && \
