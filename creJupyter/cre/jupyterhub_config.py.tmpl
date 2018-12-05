@@ -1,5 +1,5 @@
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
-{{ $CurrentNetwork := index $currentContainer.Networks 0 }}
+{{ $CurrentNetwork := index $CurrentContainer.Networks 0 }}
 {{ $CurrentIP := $CurrentNetwork.IP }}
 
 # Configuration file for jupyterhub.
