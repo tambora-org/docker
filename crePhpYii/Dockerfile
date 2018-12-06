@@ -12,13 +12,9 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
-RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/yiitmp 
-# YII_TAG=$(ls -d /cre/yiitmp/*) && mv $YII_TAG /cre/www/yii 
-#RUN YII_TAG=$(ls /cre/yiitmp) && cd /cre/yiitmp && mv -t /cre/www/yii $YII_TAG && cd /cre
-RUN rsync -rl /cre/yiitmp /cre/www/yii
-# later use --exclude /dir1/ --exclude /dir2/
-# rm /cre/yiitmp
-
+# mkdir -p /cre/tmp/yii && 
+RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
+# move to www in entry-point
 
 #config/web.php
 
