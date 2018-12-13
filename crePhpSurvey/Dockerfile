@@ -37,7 +37,7 @@ RUN echo "${LS_SHA256} /cre/limesurvey.tar.gz" > /cre/survey256.txt \
 #	&& chown -R www-data:www-data /uploadstruct \
 #       && chown www-data:www-data /var/lib/php5
 
-#VOLUME ["/cre/www/survey"]
+VOLUME ["/cre/www/survey"]
 WORKDIR "/cre/www"
 
 ENTRYPOINT ["/cre/survey-entrypoint.sh"]
