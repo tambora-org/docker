@@ -18,7 +18,7 @@ RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii
 
 #config/web.php
 
-#VOLUME ["/cre/www/yii"]
+VOLUME ["/cre/www/yii"]
 WORKDIR "/cre/www"
 
 ENTRYPOINT ["/cre/yii-entrypoint.sh"]
