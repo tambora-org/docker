@@ -1,0 +1,3 @@
+postgres: /cre/run.sh
+dbs: docker-gen -watch -notify "/cre/postgres-add-dbs.sh" /cre/postgres-add-dbs.sh.tmpl /cre/postgres-add-dbs.sh
+weekly: watch -n 600007 /cre/postgres-weekly.sh

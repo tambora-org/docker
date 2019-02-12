@@ -65,4 +65,4 @@ USER postgres
 
 ENTRYPOINT ["/cre/postgres-entrypoint.sh"]
 
-CMD ["/cre/run.sh"]
+CMD ["shoreman", "/cre/postgres-procfile"]

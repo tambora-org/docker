@@ -1,59 +1,105 @@
 #!/bin/bash 
 export TERM=xterm
 echo "mysql add databases:"
+POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
 sleep 20
 
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
-{{ $rootPassword := or $CurrentContainer.Env.MYSQL_ROOT_PWD "_secret_" }}
 
-{{ range $mysqlDb, $containers := groupByMulti $ "Env.MYSQL_DB" "," }}
+#First check if already running
+POSTGRES_RUNNING=0
+pg_ctl -D $POSTGRESQL_DATA status
+#if so, stop (slow)
+if [$? -eq 0]
+then
+ echo "Running"
+ POSTGRES_RUNNING=1
+ pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
+else
+ echo "Not running"
+fi
+
+#Start Postgres locally
+pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
+until pg_is_ready -h localhost -p 5432 -U postgres
+do
+ echo "Waiting for local postgres"
+ sleep 2;
+done
+
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $rootPassword := or $CurrentContainer.Env.POSTGRES_ROOT_PWD "_secret_" }}
+
+{{ range $postgresDb, $containers := groupByMulti $ "Env.POSTGRES_DB" "," }}
 ##begin of all databases
-## add db: {{ $mysqlDb }}
+## add db: {{ $postgresDb }}
 
 {{ range $index, $container := $containers }}
 ## begin of all containers
 ## add user and assign to db
-## user: MYSQL_USER, MYSQL_PWD ?
-{{ if $container.Env.MYSQL_USER }}
-## MYSQL_USER : {{ $container.Env.MYSQL_USER }}
-mysql_user="{{ $container.Env.MYSQL_USER }}"
+## user: POSTGRES_USER, POSTGRES_PWD ?
+{{ if $container.Env.POSTGRES_USER }}
+## POSTGRES_USER : {{ $container.Env.POSTGRES_USER }}
+postgres_user="{{ $container.Env.POSTGRES_USER }}"
 {{ else }}
-## NO USER: md5 of {{ $container.Env.MYSQL_DB }}
-mysql_user="U:$(printf '%s' '{{ $container.Env.MYSQL_DB }}' | md5sum | cut -d ' ' -f 1)"
-mysql_user="${mysql_user:0:24}"
+## NO USER: md5 of {{ $container.Env.POSTGRES_DB }}
+postgres_user="U:$(printf '%s' '{{ $container.Env.POSTGRES_DB }}' | md5sum | cut -d ' ' -f 1)"
+postgres_user="${postgres_user:0:24}"
 {{ end }}
-{{ if $container.Env.MYSQL_PWD }}
-## MYSQL_PWD : {{ $container.Env.MYSQL_PWD }}
-mysql_pwd="{{ $container.Env.MYSQL_PWD }}"
+{{ if $container.Env.POSTGRES_PWD }}
+## MYSQL_PWD : {{ $container.Env.POSTGRES_PWD }}
+postgres_pwd="{{ $container.Env.POSTGRES_PWD }}"
 {{else}}
-mysql_pwd="PWD:$(printf '%s' '$mysql_user:{{sha1 $rootPassword}}' | md5sum | cut -d ' ' -f 1)"
-mysql_pwd="${pwd:0:32}"
+postgres_pwd="PWD:$(printf '%s' '$postgres_user:{{sha1 $rootPassword}}' | md5sum | cut -d ' ' -f 1)"
+postgres_pwd="${pwd:0:32}"
 {{ end }}
 
-#maybe (??) import sql only if db did not exist before ??
-if [ $(mysqlshow -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}}  {{ $mysqlDb }} 1>/dev/null 2>/dev/null) -eq o ]; then
- echo "Database exists: {{ $mysqlDb }}"
+#check if database already exists?
+if [ $(psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
+ echo "Database exists: {{ $postgresDb }}"
 else
- echo "Database missing: {{ $mysqlDb }}"
+ echo "Database missing: {{ $postgresDb }}"
+ echo "Creating database: {{ $postgresDb }}"
+ psql -v ON_ERROR_STOP=1 --username postgres -c "CREATE DATABASE {{$postgresDb}}"
 fi
 
-echo "Creating database: {{ $mysqlDb }}"
-mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} -e "CREATE DATABASE IF NOT EXISTS \`{{ $mysqlDb }}\` CHARACTER SET utf8 COLLATE utf8_general_ci; FLUSH PRIVILEGES;"
-
-echo "Create new User: $mysql_user with password $mysql_pwd for new database {{ $mysqlDb }}."
-mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} -e "GRANT ALL PRIVILEGES ON \`{{ $mysqlDb }}\`.* TO '$mysql_user'@'%' IDENTIFIED BY '$mysql_pwd' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+#check if user already exists?
+if [ $(psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$postgres_user'") ]; then
+ echo "User exists: {{ $postgres_user }}"
+ echo "Adapt user: {{ $postgres_user }}"
+ psql -v ON_ERROR_STOP=1 --username postgres -c "Alter USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
+else
+ echo "User missing: {{ $postgres_user }}"
+ echo "Creating user: {{ $postgres_user }}"
+ psql -v ON_ERROR_STOP=1 --username postgres -c "CREATE USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
+fi
 
 ## if init sql file exists import data
-{{ if (exists "/cre/mysql/{{ $mysqlDb }}.init.sql") }}
-if [ -e /cre/mysql/{{ $mysqlDb }}.init.sql ]
+{{ if (exists "/cre/mysql/{{ $postgresDb }}.init.sql") }}
+if [ -e /cre/mysql/{{ $postgresDb }}.init.sql ]
 then
-   echo "Initialize datebase by file: {{ $mysqlDb }}"
-   mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} < /cre/mysql/{{ $mysqlDb }}.init.sql
-   mv /cre/mysql/{{ $mysqlDb }}.init.sql /cre/mysql/{{ $mysqlDb }}.done.sql
+   echo "Initialize datebase by file: {{ $postgresDb }}"
+   psql -v ON_ERROR_STOP=1 --username postgres -f /cre/mysql/{{ $postgresDb }}.init.sql   
+   # gunzip -c /cre/mysql/{{ $postgresDb }}.init.sql.gz | psql -v ON_ERROR_STOP=1 --username postgres  
+   mv /cre/mysql/{{ $postgresDb }}.init.sql /cre/mysql/{{ $postgresDb }}.done.sql
 fi
 {{ end }}
+
+## grant access for user to table
+psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIVILEGES ON DATABASE {{$postgresDb}} TO $postgres_user"
 
 {{ end }} 
 ##end of all containers
 {{ end }} 
 ##end of all databases
+
+#stop local postgres again
+pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
+
+#if had run, restart
+if [$POSTGRES_RUNNING -eq 1]
+then
+ echo "Was running"
+ /cre/run.sh
+else
+ echo "Was not running"
+fi
