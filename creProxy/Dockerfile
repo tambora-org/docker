@@ -34,7 +34,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 WORKDIR /cre/
 
-//ENV DOCKER_HOST unix:///tmp/docker.sock
+##ENV DOCKER_HOST unix:///tmp/docker.sock
 
 VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 
