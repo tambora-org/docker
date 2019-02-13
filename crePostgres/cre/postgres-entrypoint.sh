@@ -24,17 +24,20 @@ POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
 if [ ! -d "$POSTGRESQL_DATA" ]; then
   echo "${POSTGRES_ROOT_PWD}" > /var/lib/postgresql/pwfile
 
-  sudo -u postgres -H /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
-    --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
-    --username=postgres --encoding=unicode --auth=trust >/dev/null
+echo "Run initdb..."
 
-#  /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
+#  sudo -u postgres -H /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
 #    --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
 #    --username=postgres --encoding=unicode --auth=trust >/dev/null
+
+  /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
+    --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
+    --username=postgres --encoding=unicode --auth=trust >/dev/null
  
 #  echo "========================================================================"
 #  echo " postgres password is ${POSTGRES_PASSWORD}"
 #  echo "========================================================================"
+echo "... initdb done"
 fi
 
 sleep 5
