@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+chown -R postgres:postgres /tmp/docker.sock
+
 POSTGRES_ROOT_PWD=${POSTGRES_ROOT_PWD:-"postgres"}
 #POSTGRES_ROOT_PWD=${POSTGRES_ROOT_PWD:-$(pwgen -c -n -1 14)}
 export RANDOM_TEXT=$(pwgen -c -n -1 14)}  
