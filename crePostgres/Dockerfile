@@ -61,7 +61,7 @@ VOLUME ["/var/lib/postgresql"]
 
 EXPOSE 5432
 
-USER postgres
+#USER postgres
 
 ENTRYPOINT ["/cre/postgres-entrypoint.sh"]
 
