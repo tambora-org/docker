@@ -15,8 +15,8 @@ ENV DOCKER_GEN_VERSION 0.7.4
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
 LABEL Name="Glue for CRE" \
-#      org.label-schema.build-date=$BUILD_DATE \
-      Date=$(date +%F) \
+      org.label-schema.build-date=$BUILD_DATE \
+#      Date=$(date +%F) \
 #      Year=$(date +%Y) \
 #      Month=$(date +%m) \
 #      Test=$(date +0.%Y.%m) \
