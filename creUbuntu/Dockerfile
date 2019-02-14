@@ -14,8 +14,6 @@ ARG BUILD_MONTH=0
 #          0.yyyy for development - tagged automatically if base functionality is working 
 ENV CRE_VERSION 0.2010 
 ENV UBUNTU_VERSION 16.04
-ENV DOCKER_GEN_VERSION 0.7.4
-ENV DOCKER_HOST unix:///tmp/docker.sock
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
@@ -28,8 +26,6 @@ LABEL Name="Ubuntu for CRE" \
       Version=$UBUNTU_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
-
-
 
 # Install.
 RUN \
@@ -50,15 +46,11 @@ RUN locale-gen en_US en_US.UTF-8 && \
 #ADD root/.scripts /root/.scripts
 #? ssh-server:  /etc/ssh/sshd_config 
 
-# Install docker-gen (generates files from templates with docker data filled in) 
-RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
- && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
- && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
+
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creUbuntu \t $(cat /usr/lib/os-release | grep PRETTY | sed -e "s/^PRETTY_NAME=\"Ubuntu //" -e "s/\"$//")" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  $(openssl version)" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  docker-gen \t $(docker-gen -version)" >> /cre/versions.txt
+    echo "$(date +'%F %R') \t  $(openssl version)" >> /cre/versions.txt 
 
 COPY cre/ /cre/
 # Copy shoremen to handle Procfile (Process Managment)
