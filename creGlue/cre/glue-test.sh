@@ -36,5 +36,14 @@ if [ ! $(wc -c <"/cre/glue/test.txt") -ge 200 ]; then
     exit 1
 fi
 
+# Warn if the DOCKER_HOST socket does not exist
+if [[ $DOCKER_HOST = unix://* ]]; then
+    socket_file=${DOCKER_HOST#unix://}
+    if ! [ -S $socket_file ]; then
+        echo "[FAIL]: docker.sock not shared - see http://git.io/vZaG"
+        exit 1
+    fi
+fi
+
 echo "[SUCCESS]"
 exit 0

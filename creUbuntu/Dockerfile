@@ -8,7 +8,10 @@
 FROM ubuntu:16.04
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-# version: yyyy.n for stable versions / 0.yyyy for development
+ARG BUILD_YEAR=2010
+ARG BUILD_MONTH=0
+# version: yyyy.n for stable versions 
+#          0.yyyy for development - tagged automatically if base functionality is working 
 ENV CRE_VERSION 0.2010 
 ENV UBUNTU_VERSION 16.04
 ENV DOCKER_GEN_VERSION 0.7.4
@@ -18,6 +21,15 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+
+LABEL Name="Ubuntu for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$UBUNTU_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
+
+
 
 # Install.
 RUN \
@@ -38,7 +50,7 @@ RUN locale-gen en_US en_US.UTF-8 && \
 #ADD root/.scripts /root/.scripts
 #? ssh-server:  /etc/ssh/sshd_config 
 
-# Install docker-gen (generates files from templates with docker data filled in)
+# Install docker-gen (generates files from templates with docker data filled in) 
 RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
  && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
  && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
