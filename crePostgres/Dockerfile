@@ -3,33 +3,21 @@
 FROM tamboraorg/creubuntu:2010.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
+
+ARG BUILD_YEAR=2010
+ARG BUILD_MONTH=0
+
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV POSTGRES_VERSION 9.5
 
 LABEL Name="Postgres for CRE" \
-#      org.label-schema.build-date=$BUILD_DATE \
-#      Date=$(date +%F) \
-#      Year=$(date +%Y) \
-#      Month=$(date +%m) \
-#      Test=$(date +0.%Y.%m) \
-#      Final=$(date +%Y.%m) \
-      Version=$POSTGRES_VERSION \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$DOCKER_GEN_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build=$CRE_VERSION 
-
-# Labels.
-LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.build-date=$BUILD_DATE
-LABEL org.label-schema.name="tamboraorg/crepostgres"
-LABEL org.label-schema.description="Postgres for CRE"
-#LABEL org.label-schema.url="http://ballerinalang.org/"
-#LABEL org.label-schema.vcs-url="https://github.com/tamboraorg/docker"
-LABEL org.label-schema.vcs-ref=$VCS_REF
-#LABEL org.label-schema.vendor="?"
-LABEL org.label-schema.version=$BUILD_VERSION
-#LABEL org.label-schema.docker.cmd="docker run tamboraorg/postgres"
+      Build_=$CRE_VERSION 
 
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
 #    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \
