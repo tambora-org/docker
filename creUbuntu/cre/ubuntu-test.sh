@@ -5,7 +5,7 @@ if [ ! -f /cre/versions.txt ]; then
     exit 1
 fi
 
-if [ ! -f /cre/glue-procfile ]; then
+if [ ! -f /cre/ubuntu-procfile ]; then
     echo "[FAIL]: File /cre/ubuntu-procfile not found!"
     exit 1
 fi
