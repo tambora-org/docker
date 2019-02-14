@@ -1,17 +1,12 @@
-sleep 5
+sleep 2
+
+if [ ! -f /cre/glue-procfile ]; then
+    echo "[FAIL]: File /cre/glue-procfile not found!"
+    exit 1
+fi
 
 if [ ! -f /cre/versions.txt ]; then
     echo "[FAIL]: File /cre/versions.txt not found!"
-    exit 1
-fi
-if [ ! -f /cre/glue/test.txt ]; then
-    echo "[FAIL]: File /cre/glue/test.txt not found!"
-    exit 1
-fi
-
-actualsize=$(wc -c <"/cre/glue/test.txt")
-if [ ! $actualsize -ge 200 ]; then
-    echo "[FAIL]: File /cre/glue/test.txt is too small!"
     exit 1
 fi
 
@@ -22,6 +17,21 @@ fi
 
 if [! grep -P "docker-gen \T DOCKER_GEN_VERSION" /cre/versions.txt > /dev/null]; then
     echo "[FAIL]: Wrong version of docker-gen installed!"
+    exit 1
+fi
+
+shoreman /cre/glue-procfile
+
+sleep 2
+
+if [ ! -f /cre/glue/test.txt ]; then
+    echo "[FAIL]: File /cre/glue/test.txt not found!"
+    exit 1
+fi
+
+#actualsize=$(wc -c <"/cre/glue/test.txt")
+if [ ! $(wc -c <"/cre/glue/test.txt") -ge 200 ]; then
+    echo "[FAIL]: File /cre/glue/test.txt is too small!"
     exit 1
 fi
 
