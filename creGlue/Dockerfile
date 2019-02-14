@@ -9,6 +9,9 @@ FROM tamboraorg/creubuntu:2010.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
+ARG BUILD_DATE
+ARG VCS_REF
+
 # version: yyyy.n for stable versions / 0.yyyy for development
 #ENV CRE_VERSION 0.2010 
 ENV DOCKER_GEN_VERSION 0.7.4
