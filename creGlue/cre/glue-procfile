@@ -1,0 +1,2 @@
+glue: docker-gen -watch /cre/glue/test.txt.tmpl /cre/glue/test.txt
+
