@@ -9,7 +9,7 @@
 # Current Build: {{ $CurrentContainer.Labels.Build }}
 
 # try finding by Name
-{{ $NamedContainer := where $ "Name" "/creglue" | first }}
+{{ $NamedContainer := where $ "Name" "creglue" | first }}
 
 # Named Name : {{ $NamedContainer.Name }}
 # Named Image: {{ $NamedContainer.Image }}
