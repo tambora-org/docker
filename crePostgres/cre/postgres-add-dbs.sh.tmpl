@@ -2,25 +2,26 @@
 export TERM=xterm
 echo "mysql add databases:"
 POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
+POSTGRESQL_BIN=/usr/lib/postgresql/${POSTGRES_VERSION}/bin
 sleep 20
 
 
 #First check if already running
 POSTGRES_RUNNING=0
-pg_ctl -D $POSTGRESQL_DATA status
+${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
 #if so, stop (slow)
 if [$? -eq 0]
 then
  echo "Running"
  POSTGRES_RUNNING=1
- pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
+ ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 else
  echo "Not running"
 fi
 
 #Start Postgres locally
 pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
-until pg_is_ready -h localhost -p 5432 -U postgres
+until ${POSTGRESQL_BIN}/pg_is_ready -h localhost -p 5432 -U postgres
 do
  echo "Waiting for local postgres"
  sleep 2;
@@ -54,7 +55,7 @@ postgres_pwd="${pwd:0:32}"
 {{ end }}
 
 #check if database already exists?
-if [ $(psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
+if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
  echo "Database exists: {{ $postgresDb }}"
 else
  echo "Database missing: {{ $postgresDb }}"
@@ -63,7 +64,7 @@ else
 fi
 
 #check if user already exists?
-if [ $(psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$postgres_user'") ]; then
+if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$postgres_user'") ]; then
  echo "User exists: $postgres_user"
  echo "Adapt user:  $postgres_user"
  psql -v ON_ERROR_STOP=1 --username postgres -c "Alter USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
@@ -78,8 +79,8 @@ fi
 if [ -e /cre/mysql/{{ $postgresDb }}.init.sql ]
 then
    echo "Initialize datebase by file: {{ $postgresDb }}"
-   psql -v ON_ERROR_STOP=1 --username postgres -f /cre/mysql/{{ $postgresDb }}.init.sql   
-   # gunzip -c /cre/mysql/{{ $postgresDb }}.init.sql.gz | psql -v ON_ERROR_STOP=1 --username postgres  
+   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/mysql/{{ $postgresDb }}.init.sql   
+   # gunzip -c /cre/mysql/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
    mv /cre/mysql/{{ $postgresDb }}.init.sql /cre/mysql/{{ $postgresDb }}.done.sql
 fi
 {{ end }}
