@@ -6,21 +6,20 @@
 
 # Pull base image.
 FROM tamboraorg/creubuntu:2010.0
-
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_DATE
-ARG VCS_REF
-
+ARG BUILD_DATE=2010-01-01T12:00:00Z
 # version: yyyy.n for stable versions / 0.yyyy for development
-#ENV CRE_VERSION 0.2010 
+#ENV CRE_VERSION 0.2010 # Derrived from Ubuntu Base Image creubuntu
+ENV DATE BUILD_DATE
+ENV YEAR $(date +%Y)
 ENV DOCKER_GEN_VERSION 0.7.4
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
 LABEL Name="Glue for CRE" \
       org.label-schema.build-date=$BUILD_DATE \
 #      Date=$(date +%F) \
-#      Year=$(date +%Y) \
+      Year=$(date +%Y) \
 #      Month=$(date +%m) \
 #      Test=$(date +0.%Y.%m) \
 #      Final=$(date +%Y.%m) \
