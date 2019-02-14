@@ -2,5 +2,6 @@
 
 #https://docs.docker.com/docker-hub/builds/advanced/
 
-docker tag $IMAGE_NAME $DOCKER_REPO:0.$YEAR
-docker push $DOCKER_REPO:0.$YEAR
+year=`date -u +%Y`
+docker tag $IMAGE_NAME $DOCKER_REPO:0.$year
+docker push $DOCKER_REPO:0.$year
