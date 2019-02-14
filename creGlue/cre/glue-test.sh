@@ -1,12 +1,12 @@
 sleep 2
 
-if [ ! -f /cre/glue-procfile ]; then
-    echo "[FAIL]: File /cre/glue-procfile not found!"
+if [ ! -f /cre/versions.txt ]; then
+    echo "[FAIL]: File /cre/versions.txt not found!"
     exit 1
 fi
 
-if [ ! -f /cre/versions.txt ]; then
-    echo "[FAIL]: File /cre/versions.txt not found!"
+if [ ! -f /cre/glue-procfile ]; then
+    echo "[FAIL]: File /cre/glue-procfile not found!"
     exit 1
 fi
 
@@ -20,7 +20,8 @@ if [! grep -P "docker-gen \T DOCKER_GEN_VERSION" /cre/versions.txt > /dev/null];
     exit 1
 fi
 
-shoreman /cre/glue-procfile
+shoreman /cre/glue-procfile &
+#docker-gen -watch /cre/glue/test.txt.tmpl /cre/glue/test.txt &
 
 sleep 2
 
