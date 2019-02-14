@@ -19,7 +19,7 @@ ENV DOCKER_HOST unix:///tmp/docker.sock
 
 LABEL Name="Glue for CRE" \
       Year=$BUILD_YEAR \
-      Month=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
       Version=$DOCKER_GEN_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
