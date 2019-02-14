@@ -16,8 +16,8 @@ if [! grep "docker-gen" /cre/versions.txt > /dev/null]; then
 fi
 
 if [! grep -P "docker-gen \T DOCKER_GEN_VERSION" /cre/versions.txt > /dev/null]; then
-    echo "[FAIL]: Wrong version of docker-gen installed!"
-    exit 1
+    echo "[WARNING]: Wrong version of docker-gen installed!"
+    #exit 1
 fi
 
 shoreman /cre/glue-procfile &
