@@ -21,7 +21,7 @@ fi
 
 #Start Postgres locally
 pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
-until ${POSTGRESQL_BIN}/pg_is_ready -h localhost -p 5432 -U postgres
+until ${POSTGRESQL_BIN}/pg_isready -h localhost -p 5432 -U postgres
 do
  echo "Waiting for local postgres"
  sleep 2;

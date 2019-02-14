@@ -50,6 +50,9 @@ RUN apt-get update && \
 #ADD run /usr/local/bin/run
 #RUN chmod +x /usr/local/bin/run
 
+RUN mkdir -p /var/run/postgresql/${POSTGRES_VERSION}-main.pg_stat_tmp
+RUN chown postgres.postgres /var/run/postgresql/${POSTGRES_VERSION}-main.pg_stat_tmp -R
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t crePostgres \t $(/usr/lib/postgresql/${POSTGRES_VERSION}/bin/postgres --version)" >> /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  psql \t $(psql --version)" >> /cre/versions.txt 
