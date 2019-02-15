@@ -4,10 +4,15 @@
 # First parameter is file name (with path)
 # Created file is same, but without *.tmpl extension
 
+if [[ -z "$1" ]]; then
+    echo "[FAIL]: No filename given !"
+    exit 1
+fi
+
 filename=$1
 
 if [ ! -f $filename ]; then
-    echo "[FAIL]: File $filename not found inside /cre !"
+    echo "[FAIL]: File $filename not found !"
     exit 1
 fi
 
