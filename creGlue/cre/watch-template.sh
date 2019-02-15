@@ -4,7 +4,7 @@
 # First parameter is file name (with path)
 # Created file is same, but without *.tmpl extension
 
-let filename = $1
+let filename=$1
 
 if [ ! -f $filename ]; then
     echo "[FAIL]: File $filename not found inside /cre !"
@@ -16,6 +16,6 @@ if [ ! ${filename: -5} == ".tmpl" ]; then
   exit 1
 fi
 
-let newname = $(echo "$filename" | rev | cut -f 2- -d '.' | rev)
+let newname=$(echo "$filename" | rev | cut -f 2- -d '.' | rev)
 
 docker-gen -watch $filename $newname
