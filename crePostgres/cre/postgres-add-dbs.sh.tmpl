@@ -9,21 +9,18 @@ sleep 20
 #First check if already running
 POSTGRES_RUNNING=0
 ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
-#exec sudo -u postgres ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
 #if so, stop (slow)
 if [ $? -eq 0 ]
 then
  echo "Running"
  POSTGRES_RUNNING=1
  ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
- #exec sudo -u postgres ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 else
  echo "Not running"
 fi
 
 #Start Postgres locally
 ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
-#exec sudo -u postgres ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
 until ${POSTGRESQL_BIN}/pg_isready -h localhost -p 5432 -U postgres
 do
  echo "Waiting for local postgres"
@@ -59,13 +56,11 @@ postgres_pwd="${pwd:0:32}"
 
 #check if database already exists?
 if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
-#if [exec sudo -u postgres $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
  echo "Database exists: {{ $postgresDb }}"
 else
  echo "Database missing: {{ $postgresDb }}"
  echo "Creating database: {{ $postgresDb }}"
  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "CREATE DATABASE {{$postgresDb}}"
- #exec sudo -u postgres ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "CREATE DATABASE {{$postgresDb}}"
 fi
 
 #check if user already exists?
@@ -73,14 +68,10 @@ if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$postg
  echo "User exists: $postgres_user"
  echo "Adapt user:  $postgres_user"
  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "Alter USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
- #exec sudo -u postgres ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "Alter USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
-
 else
  echo "User missing: $postgres_user"
  echo "Creating user: $postgres_user"
  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "CREATE USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
- #exec sudo -u postgres ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "CREATE USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
-
 fi
 
 ## if init sql file exists import data
@@ -89,7 +80,6 @@ if [ -e /cre/mysql/{{ $postgresDb }}.init.sql ]
 then
    echo "Initialize datebase by file: {{ $postgresDb }}"
    ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/mysql/{{ $postgresDb }}.init.sql  
-   #exec sudo -u postgres ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/mysql/{{ $postgresDb }}.init.sql   
    # gunzip -c /cre/mysql/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
    mv /cre/mysql/{{ $postgresDb }}.init.sql /cre/mysql/{{ $postgresDb }}.done.sql
 fi
@@ -97,7 +87,6 @@ fi
 
 ## grant access for user to table
 ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIVILEGES ON DATABASE {{$postgresDb}} TO $postgres_user"
-#exec sudo -u postgres ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIVILEGES ON DATABASE {{$postgresDb}} TO $postgres_user"
 
 {{ end }} 
 ##end of all containers
@@ -106,7 +95,6 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIV
 
 #stop local postgres again
 ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
-#exec sudo -u postgres ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 #if had run, restart
 if [ $POSTGRES_RUNNING -eq 1 ]
 then
