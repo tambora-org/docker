@@ -38,8 +38,15 @@ do
   $@
 done &
 
-cp /cre/$filename /cre/glue/$filename
+echo "Now to copy file: /cre/$filename to ..."
 
+cp /cre/$filename /cre/glue/$filename &
+
+echo "... to destination: /cre/glue/$filename "
+
+wait
+
+echo "Upps - finished, but should not..."
 
 
 
