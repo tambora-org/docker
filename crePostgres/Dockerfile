@@ -9,7 +9,6 @@ ARG BUILD_MONTH=0
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
-#ENV LANG en_US.UTF-8
 ENV POSTGRES_VERSION 9.5
 
 LABEL Name="Postgres for CRE" \
@@ -52,7 +51,7 @@ VOLUME ["/var/lib/postgresql"]
 
 EXPOSE 5432
 
-#USER postgres
+USER postgres
 
 ENTRYPOINT ["/cre/postgres-entrypoint.sh"]
 

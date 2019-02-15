@@ -18,4 +18,6 @@ fi
 
 newname=$(echo "$filename" | rev | cut -f 2- -d '.' | rev)
 
+echo "Do docker-gen for $filename and $newname ."
+
 docker-gen -watch $filename $newname

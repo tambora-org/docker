@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-#Not working.....
-#chown -R postgres:postgres /tmp/docker.sock
-
 POSTGRES_ROOT_PWD=${POSTGRES_ROOT_PWD:-"postgres"}
 
 echo "Setting up new power user credentials."
@@ -17,13 +14,13 @@ if [ ! -d "$POSTGRESQL_DATA" ]; then
 
 echo "Run initdb..."
 
-  sudo -u postgres -H ${POSTGRESQL_BIN}/initdb \
+# sudo -u postgres -H ${POSTGRESQL_BIN}/initdb \
+#   --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
+#   --username=postgres --encoding=unicode --auth=trust >/dev/null
+
+/usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
     --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
     --username=postgres --encoding=unicode --auth=trust >/dev/null
-
-#  /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
-#    --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
-#    --username=postgres --encoding=unicode --auth=trust >/dev/null
  
 #  echo "========================================================================"
 #  echo " postgres password is ${POSTGRES_PASSWORD}"
