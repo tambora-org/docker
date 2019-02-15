@@ -41,6 +41,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t  docker-gen \t $(docker-gen -version)" >> /cre/versions.txt 
 
 COPY cre /cre
+VOLUME ["/cre/glue"]
 WORKDIR /cre/glue
 
 ENTRYPOINT ["/cre/glue-entrypoint.sh"]
