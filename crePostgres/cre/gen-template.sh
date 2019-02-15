@@ -5,8 +5,8 @@
 # Also a dummy file of the destination file must be located there
 # Rest of parameters is command and parameters to execute on change
 
-filename = $1
-newname = $(echo "$filename" | rev | cut -f 2- -d '.' | rev)
+let filename = $1
+let newname = $(echo "$filename" | rev | cut -f 2- -d '.' | rev)
 
 if [ ! -f /cre/$filename ]; then
     echo "[FAIL]: File $filename not found inside /cre !"
