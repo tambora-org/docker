@@ -30,23 +30,28 @@ fi
 
 cp /cre/$newname /cre/glue/$newname
 
-shift
-#inotifywait -e modify /cre/glue/$newname && "$@" &
-inotifywait -mrq -e modify --format %w%f /cre/glue/$newname | while read FILE
-do
-  echo "$File has changed, execute: $@"
+## shift to get rid of first parameter - only the rest is needed
+shift 
+##inotifywait -mq -e modify --format %w%f /cre/glue/$newname | while read FILE
+##do
+##  echo "$File has changed, execute: $@"
+##  $@
+##done &
+
+while true; do 
+ inotifywait -q --format %e /cre/glue/$newname | while read EVENT
+ do
+  echo "$EVENT has triggered for File $newname, execute: $@"
   $@
+ done
 done &
 
+
+
+sleep 1
 echo "Now to copy file: /cre/$filename to ..."
-
 cp /cre/$filename /cre/glue/$filename &
-
 echo "... to destination: /cre/glue/$filename "
-
 wait
 
 echo "Upps - finished, but should not..."
-
-
-
