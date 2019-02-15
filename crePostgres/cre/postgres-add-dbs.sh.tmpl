@@ -11,7 +11,7 @@ POSTGRES_RUNNING=0
 ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
 #exec sudo -u postgres ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
 #if so, stop (slow)
-if [$? -eq 0]
+if [ $? -eq 0 ]
 then
  echo "Running"
  POSTGRES_RUNNING=1
@@ -108,7 +108,7 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIV
 ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 #exec sudo -u postgres ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 #if had run, restart
-if [$POSTGRES_RUNNING -eq 1]
+if [ $POSTGRES_RUNNING -eq 1 ]
 then
  echo "Was running"
  /cre/run.sh
