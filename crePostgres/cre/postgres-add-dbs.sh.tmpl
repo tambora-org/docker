@@ -13,14 +13,14 @@ ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
 if [ $? -eq 0 ]
 then
  echo "Running"
- POSTGRES_RUNNING=1
- ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
+ ## POSTGRES_RUNNING=1
+ ## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 else
  echo "Not running"
 fi
 
 #Start Postgres locally
-${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
+## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
 until ${POSTGRESQL_BIN}/pg_isready -h localhost -p 5432 -U postgres
 do
  echo "Waiting for local postgres"
@@ -94,7 +94,7 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIV
 ##end of all databases
 
 #stop local postgres again
-${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
+## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 #if had run, restart
 if [ $POSTGRES_RUNNING -eq 1 ]
 then
