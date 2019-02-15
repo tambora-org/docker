@@ -31,7 +31,12 @@ fi
 cp /cre/$newname /cre/glue/$newname
 
 shift
-inotifywait -e modify /cre/glue/$newname && "$@" &
+#inotifywait -e modify /cre/glue/$newname && "$@" &
+inotifywait -mrq -e modify --format %w%f /cre/glue/$newname | while read FILE
+do
+  echo "$File has changed, execute: $@"
+  $@
+done &
 
 cp /cre/$filename /cre/glue/$filename
 
