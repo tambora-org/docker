@@ -14,7 +14,7 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creNginxPhp \t " >> /cre/versions.txt
 
-COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
+COPY /cre/nginx-php.conf /etc/nginx/conf.d/default.conf
 COPY cre/ /cre/
 
 #ENV DOCKER_HOST unix:///tmp/docker.sock
