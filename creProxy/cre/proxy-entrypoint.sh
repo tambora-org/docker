@@ -2,7 +2,7 @@
 set -e
 
 # Warn if the DOCKER_HOST socket does not exist
-/cre/docker-socket.sh
+#/cre/docker-socket.sh
 
 # Generate dhparam file if required
 # Note: if $DHPARAM_BITS is not defined, generate-dhparam.sh will use 2048 as a default
@@ -16,8 +16,8 @@ if [ "x$RESOLVERS" = "x" ]; then
 fi
 
 # If the user has run the default command and the socket doesn't exist, fail
-if [ "$socketMissing" = 1 -a "$1" = forego -a "$2" = start -a "$3" = '-r' ]; then
-	exit 1
-fi
+#if [ "$socketMissing" = 1 -a "$1" = forego -a "$2" = start -a "$3" = '-r' ]; then
+#	exit 1
+#fi
 
 exec "$@"

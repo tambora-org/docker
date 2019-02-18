@@ -4,13 +4,12 @@
 # https://github.com/tamboraorg/docker/creProxy
 # (adapted from https://github.com/jwilder/nginx-proxy )
 
-FROM tamboraorg/crenginx:2010.0
+FROM tamboraorg/crenginx:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 # version: yyyy.n for stable versions / 0.yyyy for development
-## ENV CRE_VERSION 0.2010   
-
-
+## ENV CRE_VERSION 0.2010  
+ENV CERTBOT_VERSION 0.27.1
 
 # Fix issue due to server_names_hash_bucket_size
 # see also proxy.tmpl -  https://github.com/certbot/certbot/issues/5199

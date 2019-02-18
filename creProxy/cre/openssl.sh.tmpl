@@ -15,7 +15,7 @@ fi
 {{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
-openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/openssl/{{ $CurrentDomain }}.key.pem -days 365 -out /etc/letsencrypt/openssl/{{ $CurrentDomain }}.cert.pem
+openssl req -batch -config /cre/glue/openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/openssl/{{ $CurrentDomain }}.key.pem -days 365 -out /etc/letsencrypt/openssl/{{ $CurrentDomain }}.cert.pem
 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
 
@@ -24,7 +24,7 @@ openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -node
 
 # {{ $host }}
 # for localhost create openssl self-signed
-openssl req -batch -config openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/openssl/{{ $host }}.key.pem -days 365 -out /etc/letsencrypt/openssl/{{ $host }}.cert.pem
+openssl req -batch -config /cre/glue/openssl.cfg -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout /etc/letsencrypt/openssl/{{ $host }}.key.pem -days 365 -out /etc/letsencrypt/openssl/{{ $host }}.cert.pem
 
 {{ end }}
 

@@ -6,7 +6,7 @@ if [ ! -f /cre/versions.txt ]; then
 fi
 
 if [ ! -f /cre/nginx-procfile ]; then
-    echo "[FAIL]: File /cre/postgres-procfile not found!"
+    echo "[FAIL]: File /cre/nginx-procfile not found!"
     exit 1
 fi
 
@@ -15,7 +15,7 @@ if [ ! grep "creNginx" /cre/versions.txt > /dev/null]; then
     exit 1
 fi
 
-if [ ! grep -P "creNginx \t NGINX_VERSION" /cre/versions.txt > /dev/null]; then
+if [ ! grep -P "creNginx \t $NGINX_VERSION" /cre/versions.txt > /dev/null]; then
     echo "[WARNING]: Wrong version of nginx installed!"
     #exit 1
 fi
