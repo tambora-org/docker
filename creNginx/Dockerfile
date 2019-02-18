@@ -30,7 +30,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/conf.d", "/var/log/nginx", "/cre/www"]
 
 # Define working directory.
-#COPY cre /cre
+COPY cre /cre
 WORKDIR /cre/
 #WORKDIR /etc/nginx
 
