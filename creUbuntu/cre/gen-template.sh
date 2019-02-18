@@ -42,8 +42,10 @@ while true; do
  inotifywait -q --format %e /cre/glue/$newname | while read EVENT
  do
   echo "$EVENT has triggered for File $newname, execute: $@"
+  sleep 0.25 
   $@
  done
+ echo "Restart inotifywait for /cre/glue/$newname"
 done &
 
 

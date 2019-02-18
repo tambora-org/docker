@@ -3,24 +3,18 @@ export TERM=xterm
 echo "mysql add databases:"
 POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
 POSTGRESQL_BIN=/usr/lib/postgresql/${POSTGRES_VERSION}/bin
-sleep 20
-
+sleep 2
 
 #First check if already running
-POSTGRES_RUNNING=0
+POSTGRES_LOCAL_RUNNING=0
 ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
-#if so, stop (slow)
-if [ $? -eq 0 ]
+if [ ! $? -eq 0 ]
 then
- echo "Running"
- ## POSTGRES_RUNNING=1
- ## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
-else
- echo "Not running"
+ echo "Postgres not running yet"
+ POSTGRES_LOCAL_RUNNING=1
+ ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
 fi
 
-#Start Postgres locally
-## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
 until ${POSTGRESQL_BIN}/pg_isready -h localhost -p 5432 -U postgres
 do
  echo "Waiting for local postgres"
@@ -93,13 +87,9 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIV
 {{ end }} 
 ##end of all databases
 
-#stop local postgres again
-## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
-#if had run, restart
-if [ $POSTGRES_RUNNING -eq 1 ]
+#stop local postgres again (if used)
+if [ $POSTGRES_LOCAL_RUNNING -eq 1 ]
 then
- echo "Was running"
- /cre/run.sh
-else
- echo "Was not running"
+ echo "Stop local Postgres"
+ ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
 fi
