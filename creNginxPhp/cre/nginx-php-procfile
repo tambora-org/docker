@@ -1,2 +1,2 @@
-phpnginx: docker-gen -watch -notify "nginx -s reload" /cre/php-nginx.tmpl /etc/nginx/conf.d/default.conf
+phpnginx: /cre/gen-template.sh /cre/nginx-php.conf.tmpl /cre/nginx-php-config.sh
 nginx: nginx

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1
+
+# $IMAGE_NAME var is injected into the build so the tag is correct. 
+docker build --build-arg BUILD_YEAR=`date -u +%Y` --build-arg BUILD_MONTH=`date -u +%m` -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+

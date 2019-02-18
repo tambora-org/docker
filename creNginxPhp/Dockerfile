@@ -5,11 +5,11 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crenginx:2010.0
+FROM tamboraorg/crenginx:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 # version: yyyy.n for stable versions / 0.yyyy for development
-ENV CRE_VERSION 0.2010 
+#ENV CRE_VERSION 0.2010 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creNginxPhp \t " >> /cre/versions.txt
@@ -17,7 +17,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY /cre/php-nginx.conf /etc/nginx/conf.d/default.conf
 COPY cre/ /cre/
 
-ENV DOCKER_HOST unix:///tmp/docker.sock
+#ENV DOCKER_HOST unix:///tmp/docker.sock
 
 # Define mountable directories.
 VOLUME ["/cre/www"]
