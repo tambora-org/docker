@@ -1,4 +1,4 @@
-config: docker-gen -watch /cre/nginx-config.txt.tmpl /cre/nginx-config.txt
-init: docker-gen -watch -notify "/cre/nginx-init.sh" /cre/nginx-init.sh.tmpl /cre/nginx-init.sh
-update: watch -n 600007 /cre/nginx-update.sh
+config: /cre/gen-template.sh /cre/nginx.config.tmpl 
+init: /cre/gen-template.sh /cre/nginx-init.sh.tmpl /cre/nginx-init.sh
+weekly: watch -n 600007 /cre/nginx-weekly.sh
 start: nginx
