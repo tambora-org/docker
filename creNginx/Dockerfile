@@ -9,7 +9,8 @@ FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 # version: yyyy.n for stable versions / 0.yyyy for development
-ENV CRE_VERSION 0.2010 
+#ENV CRE_VERSION 0.2010 
+ENV NGINX_VERSION 1.14.1
 
 # Install Nginx
 RUN \
