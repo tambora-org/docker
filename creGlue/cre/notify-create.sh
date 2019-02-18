@@ -8,7 +8,7 @@ if [ ! -d /cre/glue ]; then
   exit 1
 fi
 
-inotifywait -mrq -e create --exclude '/cre/glue/docker-gen\.' --format %w%f /cre/glue | while read FILE
+inotifywait -mrq -e create --exclude 'docker-gen\.' --format %w%f /cre/glue | while read FILE
 do
   /cre/watch-template.sh $FILE
 done
