@@ -32,12 +32,6 @@ cp /cre/$newname /cre/glue/$newname
 
 ## shift to get rid of first parameter - only the rest is needed
 shift 
-##inotifywait -mq -e modify --format %w%f /cre/glue/$newname | while read FILE
-##do
-##  echo "$File has changed, execute: $@"
-##  $@
-##done &
-
 while true; do 
  inotifywait -q --format %e /cre/glue/$newname | while read EVENT
  do
@@ -52,8 +46,13 @@ done &
 
 sleep 1
 echo "Now to copy file: /cre/$filename to ..."
-cp /cre/$filename /cre/glue/$filename &
-echo "... to destination: /cre/glue/$filename "
+
+{ echo -n '{{ $CurrentContainer := where $ "Config.Hostname" '; cat /etc/hostname; echo -n -e ' | first }} \n'; cat /cre/$filename; } > /cre/$filename.temporary
+
+#cp /cre/$filename.temporary /cre/glue/$filename 
+cp /cre/$filename /cre/glue/$filename 
+
+echo "... to destination: /cre/glue/$filename " &
 wait
 
 echo "Upps - finished, but should not..."
