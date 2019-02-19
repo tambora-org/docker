@@ -8,11 +8,19 @@
 FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-# version: yyyy.n for stable versions / 0.yyyy for development
-#ENV CRE_VERSION 0.2010 
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV PHP_VERSION 7.0    
+
+LABEL Name="PHP for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$PHP_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t crePhp \t $PHP_VERSION " >> /cre/versions.txt
