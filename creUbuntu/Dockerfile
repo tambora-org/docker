@@ -14,6 +14,7 @@ ARG BUILD_MONTH=0
 #          0.yyyy for development - tagged automatically if base functionality is working 
 ENV CRE_VERSION 0.2010 
 ENV UBUNTU_VERSION 16.04
+ENV OPENSSL_VERSION 1.0.2g
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
