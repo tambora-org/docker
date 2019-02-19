@@ -5,20 +5,24 @@
 # Also a dummy file of the destination file must be located there
 # Rest of parameters is command and parameters to execute on change
 
-filename=$1
-newname=$(echo "$filename" | rev | cut -f 2- -d '.' | rev)
+# Every container should have it's own set of files inside glue
+hostname=$(cat /etc/hostname | tr '\n' ' ')
+file_tmpl=$1
+file_result=$(echo "$file_tmpl" | rev | cut -f 2- -d '.' | rev)
+host_tmpl="${hostname}_${file_tmpl}"
+host_result="${hostname}_${file_result}"
 
 if [ ! -f /cre/$filename ]; then
-    echo "[FAIL]: File $filename not found inside /cre !"
+    echo "[FAIL]: File $file_tmpl not found inside /cre !"
     exit 1
 fi
 
-if [ ! -f /cre/$newname ]; then
-    echo "[FAIL]: File $newname not found inside /cre !"
+if [ ! -f /cre/$file_result ]; then
+    echo "[FAIL]: File $file_result not found inside /cre !"
     exit 1
 fi
 
-if [ ! ${filename: -5} == ".tmpl" ]; then
+if [ ! ${file_tmpl: -5} == ".tmpl" ]; then
   echo "[FAIL]: Filename must end with *.tmpl"
   exit 1
 fi
@@ -28,31 +32,36 @@ if [ ! -d /cre/glue ]; then
   exit 1
 fi
 
-cp /cre/$newname /cre/glue/$newname
+cp /cre/$file_result /cre/glue/$host_result
 
 ## shift to get rid of first parameter - only the rest is needed
 shift 
 while true; do 
- inotifywait -q --format %e /cre/glue/$newname | while read EVENT
+ inotifywait -q --format %e /cre/glue/$host_result | while read EVENT
  do
-  echo "$EVENT has triggered for File $newname, execute: $@"
-  sleep 0.25 
+  echo "$EVENT has triggered for File $host_result - copy back"
+  sleep 0.20 
+  cp -f /cre/glue/$host_result /cre/$file_result
+  sleep 0.05 
   $@
  done
- echo "Restart inotifywait for /cre/glue/$newname"
+ echo "Restart inotifywait for /cre/glue/$host_result"
 done &
 
 
 
 sleep 1
-echo "Now to copy file: /cre/$filename to ..."
+echo "Now to copy file: /cre/$file_tmpl to ..."
+# Add code to add CurrentContainer in front of file.
+{ echo -n '{{ $CurrentContainer := where $ "Config.Hostname" ';
+  cat /etc/hostname | tr '\n' ' ';
+  echo -n -e '" | first }} \n';
+  cat /cre/$file_tmpl; } > /cre/$host_tmpl
 
-{ echo -n '{{ $CurrentContainer := where $ "Config.Hostname" '; cat /etc/hostname; echo -n -e ' | first }} \n'; cat /cre/$filename; } > /cre/$filename.temporary
+mv /cre/$host_tmpl /cre/glue/$host_tmpl 
+#cp /cre/$filename /cre/glue/$filename 
 
-#cp /cre/$filename.temporary /cre/glue/$filename 
-cp /cre/$filename /cre/glue/$filename 
-
-echo "... to destination: /cre/glue/$filename " &
+echo "... to destination: /cre/glue/$host_tmpl " &
 wait
 
 echo "Upps - finished, but should not..."
