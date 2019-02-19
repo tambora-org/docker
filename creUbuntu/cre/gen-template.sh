@@ -6,7 +6,7 @@
 # Rest of parameters is command and parameters to execute on change
 
 # Every container should have it's own set of files inside glue
-hostname=$(cat /etc/hostname | tr '\n' ' ')
+hostname=$(cat /etc/hostname | tr -d '\n' )
 file_tmpl=$1
 file_result=$(echo "$file_tmpl" | rev | cut -f 2- -d '.' | rev)
 host_tmpl="${hostname}_$(basename $file_tmpl)"
