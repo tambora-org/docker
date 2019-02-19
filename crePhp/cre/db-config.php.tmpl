@@ -1,7 +1,7 @@
 <?php
   $dbData = [];
   // add mySQL data
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }} 
 {{ if $CurrentContainer.Env.MYSQL_DB }}
  {{ range $mysqlServerPWD, $containers := groupByMulti $ "Env.MYSQL_ROOT_PWD" "," }}
   {{ range $index, $container := $containers }}

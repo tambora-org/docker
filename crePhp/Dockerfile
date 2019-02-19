@@ -5,11 +5,11 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2010.0
+FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 # version: yyyy.n for stable versions / 0.yyyy for development
-ENV CRE_VERSION 0.2010 
+#ENV CRE_VERSION 0.2010 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV PHP_VERSION 7.0    
@@ -77,7 +77,6 @@ RUN apt-get update \
 # php$PHP_VERSION-apcu php$PHP_VERSION-apcu-bc  is depricated
 RUN apt-get update \
     && apt-get -y --no-install-recommends install php-mongodb php$PHP_VERSION-pgsql php$PHP_VERSION-mysql \
-    && apt-get -y --no-install-recommends install mysql-client \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 RUN echo "$(date +'%F %R') \t  $(php -version | head -n1)" >> /cre/versions.txt 
