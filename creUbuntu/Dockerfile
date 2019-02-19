@@ -8,11 +8,12 @@
 FROM ubuntu:16.04
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2010
+ARG BUILD_YEAR=2011
 ARG BUILD_MONTH=0
+
 # version: yyyy.n for stable versions 
 #          0.yyyy for development - tagged automatically if base functionality is working 
-ENV CRE_VERSION 0.2010 
+ENV CRE_VERSION 0.2011 
 ENV UBUNTU_VERSION 16.04
 ENV OPENSSL_VERSION 1.0.2g
 

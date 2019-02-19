@@ -1,2 +1,2 @@
-update: watch -n 600007 /cre/ubuntu-update.sh
+update: watch -n 600007 /cre/ubuntu-weekly.sh
 start: bash
