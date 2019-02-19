@@ -53,8 +53,8 @@ done &
 sleep 1
 echo "Now to copy file: $file_tmpl to ..."
 # Add code to add CurrentContainer in front of file.
-{ echo -n '{{ $CurrentContainer := where $ "Config.Hostname" ';
-  cat /etc/hostname | tr '\n' ' ';
+{ echo -n '{{ $CurrentContainer := where $ "Config.Hostname" "';
+  cat /etc/hostname | tr '\n' '';
   echo -n -e '" | first }} \n';
   cat $file_tmpl; } > /cre/$host_tmpl
 
