@@ -1,23 +1,23 @@
 #!/bin/bash
 
 # Use Glue to create the template file
-# First parameter is file name - must be located in /cre
-# Also a dummy file of the destination file must be located there
+# First parameter is file name  with path - best practise: located in /cre
+# Also a dummy file of the destination file must be located at same path
 # Rest of parameters is command and parameters to execute on change
 
 # Every container should have it's own set of files inside glue
 hostname=$(cat /etc/hostname | tr '\n' ' ')
 file_tmpl=$1
 file_result=$(echo "$file_tmpl" | rev | cut -f 2- -d '.' | rev)
-host_tmpl="${hostname}_${file_tmpl}"
-host_result="${hostname}_${file_result}"
+host_tmpl="${hostname}_$(basename $file_tmpl)"
+host_result="${hostname}_$(basename $file_result)"
 
-if [ ! -f /cre/$filename ]; then
+if [ ! -f $file_tmpl ]; then
     echo "[FAIL]: File $file_tmpl not found inside /cre !"
     exit 1
 fi
 
-if [ ! -f /cre/$file_result ]; then
+if [ ! -f $file_result ]; then
     echo "[FAIL]: File $file_result not found inside /cre !"
     exit 1
 fi
@@ -32,7 +32,7 @@ if [ ! -d /cre/glue ]; then
   exit 1
 fi
 
-cp /cre/$file_result /cre/glue/$host_result
+cp $file_result /cre/glue/$host_result
 
 ## shift to get rid of first parameter - only the rest is needed
 shift 
@@ -41,7 +41,7 @@ while true; do
  do
   echo "$EVENT has triggered for File $host_result - copy back"
   sleep 0.20 
-  cp -f /cre/glue/$host_result /cre/$file_result
+  cp -f /cre/glue/$host_result $file_result
   sleep 0.05 
   $@
  done
@@ -51,15 +51,14 @@ done &
 
 
 sleep 1
-echo "Now to copy file: /cre/$file_tmpl to ..."
+echo "Now to copy file: $file_tmpl to ..."
 # Add code to add CurrentContainer in front of file.
 { echo -n '{{ $CurrentContainer := where $ "Config.Hostname" ';
   cat /etc/hostname | tr '\n' ' ';
   echo -n -e '" | first }} \n';
-  cat /cre/$file_tmpl; } > /cre/$host_tmpl
+  cat $file_tmpl; } > /cre/$host_tmpl
 
 mv /cre/$host_tmpl /cre/glue/$host_tmpl 
-#cp /cre/$filename /cre/glue/$filename 
 
 echo "... to destination: /cre/glue/$host_tmpl " &
 wait
