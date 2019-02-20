@@ -10,32 +10,38 @@ if [ ! -f /cre/proxy-procfile ]; then
     exit 1
 fi
 
-if [ ! grep "creNginx" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -c "creNginx")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: nginx not installed!"
     exit 1
 fi
 
-if [ ! grep -P "creNginx \t $NGINX_VERSION" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -cP "creNginx \t $NGINX_VERSION")
+if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of nginx installed!"
     #exit 1
 fi
 
-if [ ! grep "OpenSSL" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -c "OpenSSL")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: OpenSSL not installed!"
     exit 1
 fi
 
-if [ ! grep -P "OpenSSL $OPENSSL_VERSION" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -cP "OpenSSL $OPENSSL_VERSION")
+if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of OpenSSL installed!"
     #exit 1
 fi
 
-if [ ! grep "certbot" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -c "certbot")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: certbot not installed!"
     exit 1
 fi
 
-if [ ! grep -P "certbot $CERTBOT_VERSION" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -cP "certbot $CERTBOT_VERSION")
+if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of certbot installed!"
     #exit 1
 fi

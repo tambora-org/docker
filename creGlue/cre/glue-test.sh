@@ -10,12 +10,14 @@ if [ ! -f /cre/glue-procfile ]; then
     exit 1
 fi
 
-if [ ! grep "docker-gen" /cre/versions.txt > /dev/null ]; then
+isInFile=$(cat /cre/versions.txt | grep -c "docker-gen")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: docker-gen not installed!"
     exit 1
 fi
 
-if [ ! grep -P "docker-gen \T DOCKER_GEN_VERSION" /cre/versions.txt > /dev/null ]; then
+isInFile=$(cat /cre/versions.txt | grep -cP "docker-gen \T $DOCKER_GEN_VERSION")
+if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of docker-gen installed!"
     #exit 1
 fi
