@@ -7,7 +7,7 @@ if [ -z $CRE_PHP_ROOT ]; then
 fi
 
 
-if [! -d /cre/$CRE_PHP_ROOT ]; 
+if [! -d "/cre/$CRE_PHP_ROOT" ]; 
 then
   mkdir -p "/cre/$CRE_PHP_ROOT"
 fi

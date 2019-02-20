@@ -17,6 +17,7 @@ fi
 
 if grep -P "PHP $PHP_VERSION" /cre/versions.txt > /dev/null
 then
+    sleep 0.1
 else
     echo "[WARNING]: Wrong version of php installed!"
     #exit 1
