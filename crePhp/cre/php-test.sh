@@ -10,18 +10,14 @@ if [ ! -f /cre/php-procfile ]; then
     exit 1
 fi
 
-if grep -P "crePhp" /cre/versions.txt > /dev/null
-then
-    sleep 0.1
-else
+isInFile=$(cat /cre/versions.txt | grep -c "crePhp")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: Php not installed!"
     exit 1
 fi
 
-if grep -P "PHP $PHP_VERSION" /cre/versions.txt > /dev/null
-then
-    sleep 0.1
-else
+isInFile=$(cat /cre/versions.txt | grep -cP "PHP $PHP_VERSION")
+if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of php installed!"
     #exit 1
 fi
