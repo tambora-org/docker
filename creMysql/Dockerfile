@@ -1,11 +1,21 @@
 # Adapted from https://github.com/Leafney/ubuntu-mysql
-FROM tamboraorg/creubuntu:2010.0
+FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
+
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV MYSQL_VERSION 5.7
+
+LABEL Name="MySql for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$MYSQL_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 #RUN echo "deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 
@@ -36,12 +46,9 @@ WORKDIR /cre/
 
 VOLUME /var/lib/mysql
 
-#RUN chmod +x /cre/mysql-entrypoint.sh
-
 ENTRYPOINT ["/cre/mysql-entrypoint.sh"]
 
 EXPOSE 3306
-##CMD ["/usr/bin/mysqld_safe"]
 
 #CMD ["/cre/run.sh"]
 CMD ["shoreman", "/cre/mysql-procfile"]
