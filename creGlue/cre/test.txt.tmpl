@@ -1,12 +1,17 @@
 # processed with docker-gen
 # docker inspect creglue
 
-# Finds itself - not working for remote files!
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
-
 # Current Name : {{ $CurrentContainer.Name }}
 # Current Image: {{ $CurrentContainer.Image }}
 # Current Build: {{ $CurrentContainer.Labels.Build }}
+
+# Finds itself - not working for remote files! 
+# Allways returns glue container!
+{{ $IdContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+
+# Id Name : {{ $IdContainer.Name }}
+# Id Image: {{ $IdContainer.Image }}
+# Id Build: {{ $IdContainer.Labels.Build }}
 
 # try finding by Name
 {{ $NamedContainer := where $ "Name" "creglue" | first }}

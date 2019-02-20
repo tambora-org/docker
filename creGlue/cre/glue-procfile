@@ -1,3 +1,2 @@
-glue: docker-gen -watch /cre/glue/test.txt.tmpl /cre/glue/test.txt
 notify: /cre/notify-create.sh /cre/glue 
 
