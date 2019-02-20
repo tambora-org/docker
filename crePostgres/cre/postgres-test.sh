@@ -16,12 +16,14 @@ if [ $isInFile -eq 0 ]; then
     exit 1
 fi
 
-if [ ! grep -P "postgres (PostgreSQL) $POSTGRES_VERSION" /cre/versions.txt > /dev/null ]; then
+isInFile=$(cat /cre/versions.txt | grep -cP "postgres (PostgreSQL) $POSTGRES_VERSION")
+if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of postgres installed!"
     #exit 1
 fi
 
-if [ ! grep "psql (PostgreSQL)" /cre/versions.txt > /dev/null ]; then
+isInFile=$(cat /cre/versions.txt | grep -c "psql (PostgreSQL)")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: psql not installed!"
     exit 1
 fi
