@@ -10,17 +10,18 @@ if [ ! -f /cre/postgres-procfile ]; then
     exit 1
 fi
 
-if [ ! grep "postgres (PostgreSQL)" /cre/versions.txt > /dev/null]; then
+isInFile=$(cat /cre/versions.txt | grep -c "postgres (PostgreSQL)")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: postgres not installed!"
     exit 1
 fi
 
-if [ ! grep -P "postgres (PostgreSQL) POSTGRES_VERSION" /cre/versions.txt > /dev/null]; then
+if [ ! grep -P "postgres (PostgreSQL) $POSTGRES_VERSION" /cre/versions.txt > /dev/null ]; then
     echo "[WARNING]: Wrong version of postgres installed!"
     #exit 1
 fi
 
-if [ ! grep "psql (PostgreSQL)" /cre/versions.txt > /dev/null]; then
+if [ ! grep "psql (PostgreSQL)" /cre/versions.txt > /dev/null ]; then
     echo "[FAIL]: psql not installed!"
     exit 1
 fi
