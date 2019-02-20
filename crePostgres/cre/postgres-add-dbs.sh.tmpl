@@ -1,4 +1,6 @@
 #!/bin/bash 
+
+# Current Name : {{ $CurrentContainer.Name }}
 export TERM=xterm
 echo "mysql add databases:"
 POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
@@ -21,7 +23,6 @@ do
  sleep 2;
 done
 
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $rootPassword := or $CurrentContainer.Env.POSTGRES_ROOT_PWD "_secret_" }}
 
 {{ range $postgresDb, $containers := groupByMulti $ "Env.POSTGRES_DB" "," }}
