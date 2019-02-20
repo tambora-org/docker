@@ -16,7 +16,7 @@ if [ $isInFile -eq 0 ]; then
     exit 1
 fi
 
-isInFile=$(cat /cre/versions.txt | grep -cP "Distrib 5.7 $MYSQL_VERSION")
+isInFile=$(cat /cre/versions.txt | grep -cP "Distrib $MYSQL_VERSION")
 if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of mysql installed!"
     #exit 1

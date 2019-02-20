@@ -16,7 +16,7 @@ if [ $isInFile -eq 0 ]; then
     exit 1
 fi
 
-isInFile=$(cat /cre/versions.txt | grep -cP "docker-gen \T $DOCKER_GEN_VERSION")
+isInFile=$(cat /cre/versions.txt | grep -cP "docker-gen \t $DOCKER_GEN_VERSION")
 if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of docker-gen installed!"
     #exit 1
