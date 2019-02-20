@@ -8,16 +8,21 @@
 FROM tamboraorg/crenginx:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-# version: yyyy.n for stable versions / 0.yyyy for development
-#ENV CRE_VERSION 0.2010 
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
+LABEL Name="Nginx-Php for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$NGINX_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creNginxPhp \t " >> /cre/versions.txt
 
 COPY /cre/nginx-php.conf /etc/nginx/conf.d/default.conf
 COPY cre/ /cre/
-
-#ENV DOCKER_HOST unix:///tmp/docker.sock
 
 # Define mountable directories.
 VOLUME ["/cre/www"]

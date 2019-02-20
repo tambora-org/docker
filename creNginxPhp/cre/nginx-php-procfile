@@ -1,2 +1,2 @@
-phpnginx: /cre/gen-template.sh nginx-php.conf.tmpl /cre/nginx-php-config.sh
+phpnginx: /cre/gen-template.sh /cre/nginx-php.conf.tmpl /cre/nginx-php-config.sh
 nginx: nginx

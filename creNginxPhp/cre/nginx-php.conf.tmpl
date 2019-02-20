@@ -1,4 +1,4 @@
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+# Current Name : {{ $CurrentContainer.Name }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
 # Name of 2nd-level nginx-proxy {{ $CurrentContainer.Name }}
