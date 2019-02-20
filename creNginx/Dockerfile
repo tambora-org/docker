@@ -8,9 +8,17 @@
 FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-# version: yyyy.n for stable versions / 0.yyyy for development
-#ENV CRE_VERSION 0.2010 
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
 ENV NGINX_VERSION 1.14.1
+
+LABEL Name="Nginx for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$NGINX_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 # Install Nginx
 RUN \

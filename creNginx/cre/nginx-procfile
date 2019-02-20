@@ -1,4 +1,4 @@
-config: /cre/gen-template.sh nginx.config.tmpl 
-init: /cre/gen-template.sh nginx-init.sh.tmpl /cre/nginx-init.sh
+config: /cre/gen-template.sh /cre/nginx.config.tmpl 
+init: /cre/gen-template.sh /cre/nginx-init.sh.tmpl /cre/nginx-init.sh
 weekly: watch -n 600007 /cre/nginx-weekly.sh
 start: nginx
