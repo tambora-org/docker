@@ -10,8 +10,11 @@ if [ ! -f /cre/php-procfile ]; then
     exit 1
 fi
 
-if [ ! grep "crePhp" /cre/versions.txt > /dev/null ]; then
-    echo "[FAIL]: php not installed!"
+if grep -P "crePhp" /cre/versions.txt > /dev/null
+then
+    sleep 0.1
+else
+    echo "[FAIL]: Php not installed!"
     exit 1
 fi
 
@@ -23,7 +26,6 @@ else
     #exit 1
 fi
 
-#shoreman /cre/postgres-procfile &
 
 sleep 2
 
