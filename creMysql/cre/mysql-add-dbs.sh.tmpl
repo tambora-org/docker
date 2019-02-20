@@ -32,7 +32,7 @@ mysql_pwd="${mysql_pwd:0:32}"
 {{ end }}
 
 #maybe (??) import sql only if db did not exist before ??
-if [ $(mysqlshow -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}}  {{ $mysqlDb }} 1>/dev/null 2>/dev/null) -eq o ]; then
+if [ $(mysqlshow -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}}  {{ $mysqlDb }} 1>/dev/null 2>/dev/null) -eq 0 ]; then
  echo "Database exists: {{ $mysqlDb }}"
 else
  echo "Database missing: {{ $mysqlDb }}"
