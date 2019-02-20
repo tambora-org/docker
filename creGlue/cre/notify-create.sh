@@ -18,7 +18,7 @@ while true; do
   inotifywait -mrq -e create --exclude 'docker-gen.*' --format %w%f $watch_path | while read FILE
   do
     echo "[WATCH]: New file created: $FILE"
-    /cre/watch-template.sh $FILE
+    /cre/watch-template.sh $FILE &
   done
 done
 

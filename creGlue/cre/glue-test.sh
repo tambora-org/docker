@@ -10,12 +10,12 @@ if [ ! -f /cre/glue-procfile ]; then
     exit 1
 fi
 
-if [ ! grep "docker-gen" /cre/versions.txt > /dev/null]; then
+if [ ! grep "docker-gen" /cre/versions.txt > /dev/null ]; then
     echo "[FAIL]: docker-gen not installed!"
     exit 1
 fi
 
-if [ ! grep -P "docker-gen \T DOCKER_GEN_VERSION" /cre/versions.txt > /dev/null]; then
+if [ ! grep -P "docker-gen \T DOCKER_GEN_VERSION" /cre/versions.txt > /dev/null ]; then
     echo "[WARNING]: Wrong version of docker-gen installed!"
     #exit 1
 fi
@@ -30,7 +30,7 @@ if [[ $DOCKER_HOST = unix://* ]]; then
 fi
 
 shoreman /cre/glue-procfile &
-#docker-gen -watch /cre/glue/test.txt.tmpl /cre/glue/test.txt &
+sleep 1
 /cre/gen-template.sh /cre/test.txt.tmpl &
 
 sleep 2
