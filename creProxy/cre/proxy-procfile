@@ -1,6 +1,6 @@
-https: /cre/gen-template.sh openssl.cfg.tmpl 
-openssl: /cre/gen-template.sh openssl.sh.tmpl /cre/glue/openssl.sh
-proxy: /cre/gen-template.sh proxy.conf.tmpl /cre/proxy-config.sh
-certbot: /cre/gen-template.sh certbot.sh.tmpl /cre/glue/certbot.sh
+https: /cre/gen-template.sh /cre/openssl.cfg.tmpl 
+openssl: /cre/gen-template.sh /cre/openssl.sh.tmpl /cre/openssl.sh
+proxy: /cre/gen-template.sh /cre/proxy.conf.tmpl /cre/proxy-config.sh
+certbot: /cre/gen-template.sh /cre/certbot.sh.tmpl /cre/certbot.sh
 weekly: watch -n 600007 /cre/proxy-weekly.sh
 nginx: nginx

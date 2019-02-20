@@ -1,5 +1,6 @@
 #!/bin/sh 
 
+# Current Container Name : {{ $CurrentContainer.Name }}
 if ! [ -e /etc/letsencrypt/live ]
 then
    mkdir /etc/letsencrypt/live
@@ -12,8 +13,6 @@ then
 fi
 {{ end }}
 
-
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead

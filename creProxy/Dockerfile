@@ -7,9 +7,17 @@
 FROM tamboraorg/crenginx:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-# version: yyyy.n for stable versions / 0.yyyy for development
-## ENV CRE_VERSION 0.2010  
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
 ENV CERTBOT_VERSION 0.27.1
+
+LABEL Name="Proxy for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$CERTBOT_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 # Fix issue due to server_names_hash_bucket_size
 # see also proxy.tmpl -  https://github.com/certbot/certbot/issues/5199
@@ -32,8 +40,6 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
  
 COPY cre /cre
 WORKDIR /cre/
-
-##ENV DOCKER_HOST unix:///tmp/docker.sock
 
 VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 

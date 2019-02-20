@@ -1,3 +1,4 @@
+# Current Container Name : {{ $CurrentContainer.Name }}
 [ req ]
 default_bits        = 2048
 default_keyfile     = server-key.pem
@@ -79,7 +80,6 @@ nsComment           = "OpenSSL Generated Certificate"
 #DNS.1       = localhost
 #DNS.2       = 127.0.0.1
 
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 DNS.1 = {{ $CurrentDomain }}
 
