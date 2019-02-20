@@ -43,7 +43,7 @@ fi
 #actualsize=$(wc -c <"/cre/glue/test.txt")
 if [ ! $(wc -c <"/cre/test.txt") -ge 200 ]; then
     echo "[FAIL]: File /cre/glue/test.txt is too small!"
-    #exit 1
+    exit 1
 fi
 
 echo "[SUCCESS]"
