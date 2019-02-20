@@ -1,15 +1,24 @@
 #!/bin/bash
 
 # Use inotifywait to detect new files
-# First parameter is path
+# (First parameter is path) // should be /cre/glue
 
-if [ ! -d /cre/glue ]; then
-  echo "[FAIL]: Directory /cre/glue not found!"
+watch_path=$1
+watch_path=/cre/glue
+
+if [ ! -d $watch_path ]; then
+  echo "[FAIL]: Directory $watch_path not found!"
   exit 1
 fi
 
-inotifywait -mrq -e create --exclude 'docker-gen.*' --format %w%f /cre/glue | while read FILE
-do
-  /cre/watch-template.sh $FILE
+rm -f $watch_path/*.*
+
+while true; do
+  echo "[WATCH]ing files in $watch_path"
+  inotifywait -mrq -e create --exclude 'docker-gen.*' --format %w%f $watch_path | while read FILE
+  do
+    echo "[WATCH]: New file created: $FILE"
+    /cre/watch-template.sh $FILE
+  done
 done
 
