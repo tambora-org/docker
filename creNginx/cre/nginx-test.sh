@@ -10,12 +10,17 @@ if [ ! -f /cre/nginx-procfile ]; then
     exit 1
 fi
 
-if [ ! grep "creNginx" /cre/versions.txt > /dev/null ]; then
+if grep "creNginx" /cre/versions.txt > /dev/null 
+then
+    sleep 0.1
+else
     echo "[FAIL]: nginx not installed!"
     exit 1
 fi
 
 if grep -P "creNginx \t $NGINX_VERSION" /cre/versions.txt > /dev/null 
+then
+    sleep 0.1
 else
     echo "[WARNING]: Wrong version of nginx installed!"
     #exit 1
