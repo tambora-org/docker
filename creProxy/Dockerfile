@@ -10,7 +10,7 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 ARG BUILD_YEAR=2011
 ARG BUILD_MONTH=0
 
-ENV CERTBOT_VERSION 0.27.1
+ENV CERTBOT_VERSION 0.31.0
 
 LABEL Name="Proxy for CRE" \
       Year=$BUILD_YEAR \

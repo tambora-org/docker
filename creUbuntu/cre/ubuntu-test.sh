@@ -10,7 +10,8 @@ if [ ! -f /cre/ubuntu-procfile ]; then
     exit 1
 fi
 
-if [ ! grep "OpenSSL" /cre/versions.txt > /dev/null ]; then
+isInFile=$(cat /cre/versions.txt | grep -c "OpenSSL")
+if [ $isInFile -eq 0 ]; then
     echo "[FAIL]: OpenSSL not installed!"
     exit 1
 fi
@@ -21,7 +22,7 @@ if [ $isInFile -eq 0 ]; then
     exit 1
 fi
 
-isInFile=$(cat /cre/versions.txt | grep -cP "creUbuntu \T $UBUNTU_VERSION")
+isInFile=$(cat /cre/versions.txt | grep -cP "creUbuntu \t $UBUNTU_VERSION")
 if [ $isInFile -eq 0 ]; then
     echo "[WARNING]: Wrong version of Ubuntu installed!"
     #exit 1
