@@ -1,5 +1,7 @@
 sut:
   build: .
-  command: /cre/postgres-test.sh
+  command: /cre/tests/postgres-test.sh
+  volumes:
+    - ./tests:/cre/tests
 
 

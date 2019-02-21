@@ -1,5 +1,6 @@
 sut:
   build: .
-  command: /cre/mysql-test.sh
-
+  command: /cre/tests/mysql-test.sh
+  volumes:
+    - ./tests:/cre/tests
 

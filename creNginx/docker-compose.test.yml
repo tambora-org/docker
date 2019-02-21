@@ -1,5 +1,6 @@
 sut:
   build: .
-  command: /cre/nginx-test.sh
-
+  command: /cre/tests/nginx-test.sh
+  volumes:
+    - ./tests:/cre/tests
 
