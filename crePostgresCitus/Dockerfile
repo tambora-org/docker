@@ -21,6 +21,8 @@ LABEL Name="Postgres Citus for CRE" \
 #    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \
 #      | tee /etc/apt/sources.list.d/postgresql.list 
 
+USER root
+
 #RUN curl https://install.citusdata.com/community/deb.sh | bash
 RUN apt-get -y install postgresql-${POSTGRES_VERSION}-citus
 RUN pg_conftool ${POSTGRES_VERSION} main set shared_preload_libraries citus
