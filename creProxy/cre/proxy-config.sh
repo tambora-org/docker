@@ -1,7 +1,8 @@
 #!/bin/sh 
 
-if ! [ -e /cre/glue/proxy.conf ]
+if [ -e /cre/proxy.conf ]
 then
-   cp -f /cre/glue/proxy.conf /etc/nginx/conf.d/default.conf
+   cp -f /cre/proxy.conf /etc/nginx/conf.d/default.conf
+   sleep 0.1
    nginx -s reload
 fi

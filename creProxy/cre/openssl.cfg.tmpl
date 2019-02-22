@@ -1,4 +1,5 @@
 # Current Container Name : {{ $CurrentContainer.Name }}
+{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 [ req ]
 default_bits        = 2048
 default_keyfile     = server-key.pem
@@ -26,18 +27,23 @@ O = University Freiburg
 organizationName         = University Freiburg
 organizationName_default    = University Freiburg
 OU = Geography
-CN = www.tambora.org
+## CN = www.tambora.org
+CN = www.{{ $CurrentDomain }}
 
 # Use a friendly name here because its presented to the user. The server's DNS
 #   names are placed in Subject Alternate Names. Plus, DNS names here is deprecated
 #   by both IETF and CA/Browser Forums. If you place a DNS name here, then you 
 #   must include the DNS name in the SAN too (otherwise, Chrome and others that
 #   strictly follow the CA/Browser Baseline Requirements will fail).
-commonName              = tambora.org
-commonName_default      = tambora.org
+## commonName              = tambora.org
+## commonName_default      = tambora.org
+commonName              = {{ $CurrentDomain }}
+commonName_default      = {{ $CurrentDomain }}
 
-emailAddress            = test@example.com
-emailAddress_default    = test@example.com
+## emailAddress            = test@example.com
+## emailAddress_default    = test@example.com
+emailAddress            = admin@{{ $CurrentDomain }}
+emailAddress_default    = admin@{{ $CurrentDomain }}
 
 # Section x509_ext is used when generating a self-signed certificate. I.e., openssl req -x509 ...
 [ x509_ext ]

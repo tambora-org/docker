@@ -41,7 +41,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 WORKDIR /cre/
 
-VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
+#VOLUME ["/etc/nginx/certs", "/etc/nginx/dhparam"]
 
 ENTRYPOINT ["/cre/proxy-entrypoint.sh"]
 CMD ["shoreman", "/cre/proxy-procfile"]

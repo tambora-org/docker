@@ -1,23 +1,28 @@
 #!/bin/sh 
 
+until [ $(pgrep nginx | wc -l)  > 0 ]
+do
+ echo "Waiting for nginx"
+ sleep 2
+done
+sleep 2
+
 # Current Container Name : {{ $CurrentContainer.Name }}
 if ! [ -e /etc/letsencrypt/live ]
 then
    mkdir /etc/letsencrypt/live
 fi
 
-{{ if (not (exists "/etc/letsencrypt/live/dhparam.pem")) }}
-if ! [ -e /etc/letsencrypt/live/dhparam.pem ]
-then
-   openssl dhparam -out /etc/letsencrypt/live/dhparam.pem 4096
-fi
-{{ end }}
+## if ! [ -e /etc/letsencrypt/live/dhparam.pem ]
+## then
+##    openssl dhparam -out /etc/letsencrypt/live/dhparam.pem 4096
+## fi
 
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead
 # staging does not work with Strict-Transport-Security - see proxy.tmpl
-certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+certbot --staging --noninteractive --nginx --agree-tos -m admion@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
 
@@ -27,7 +32,7 @@ certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain
 # {{ $host }}
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead
-certbot --staging --noninteractive --nginx --agree-tos -m mail@{{ $CurrentDomain }} --domains {{ $host }}
+certbot --staging --noninteractive --nginx --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
 
 {{ end }}
 
