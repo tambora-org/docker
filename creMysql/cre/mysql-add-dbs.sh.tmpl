@@ -31,25 +31,25 @@ mysql_pwd="PWD:$(printf '%s' '$mysql_user:{{sha1 $rootPassword}}' | md5sum | cut
 mysql_pwd="${mysql_pwd:0:32}"
 {{ end }}
 
-#maybe (??) import sql only if db did not exist before ??
-if [ $(mysqlshow -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}}  {{ $mysqlDb }} 1>/dev/null 2>/dev/null) -eq 0 ]; then
- echo "Database exists: {{ $mysqlDb }}"
+#maybe (??) import sql only if db did not exist before ?? 
+RESULT=`mysql -u root -p{{$rootPassword}} --skip-column-names -e "SHOW DATABASES LIKE '{{ $mysqlDb }}'"`
+if [ "$RESULT" == "{{ $mysqlDb }}" ]; then
+    echo "Database [{{ $mysqlDb }}] exist"
 else
- echo "Database missing: {{ $mysqlDb }}"
+    echo "Database [{{ $mysqlDb }}] does not exist"
 fi
+
 
 echo "Creating database: {{ $mysqlDb }}"
 mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} -e "CREATE DATABASE IF NOT EXISTS \`{{ $mysqlDb }}\` CHARACTER SET utf8 COLLATE utf8_general_ci; FLUSH PRIVILEGES;"
 
 ## if init sql file exists import data
-{{ if (exists (printf "/cre/mysql/dumps/%s/database.init.sql" $mysqlDb)) }}
 if [ -e /cre/mysql/dumps/{{ $mysqlDb }}/database.init.sql ]
 then
    echo "Initialize datebase by file: {{ $mysqlDb }}"
    mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} < /cre/mysql/dumps/{{ $mysqlDb }}/database.init.sql
    mv {{ (printf "/cre/mysql/dumps/%s/database.init.sql" $mysqlDb) }} {{ (printf "/cre/mysql/dumps/%s/database.done.sql" $mysqlDb) }}
 fi
-{{ end }}
 
 echo "Create new User: $mysql_user with password $mysql_pwd for new database {{ $mysqlDb }}."
 mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} -e "GRANT ALL PRIVILEGES ON \`{{ $mysqlDb }}\`.* TO '$mysql_user'@'%' IDENTIFIED BY '$mysql_pwd' WITH GRANT OPTION; FLUSH PRIVILEGES;"
