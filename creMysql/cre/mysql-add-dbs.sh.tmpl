@@ -47,7 +47,8 @@ mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} -e "CREATE D
 if [ -e /cre/mysql/dumps/{{ $mysqlDb }}/database.init.sql ]
 then
    echo "Initialize datebase by file: {{ $mysqlDb }}"
-   mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} < /cre/mysql/dumps/{{ $mysqlDb }}/database.init.sql
+   ## mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} --database={{ $mysqlDb }} < /cre/mysql/dumps/{{ $mysqlDb }}/database.init.sql
+   mysql -h 127.0.0.1 -P 3306 --user=root --password={{$rootPassword}} {{ $mysqlDb }} < /cre/mysql/dumps/{{ $mysqlDb }}/database.init.sql
    mv {{ (printf "/cre/mysql/dumps/%s/database.init.sql" $mysqlDb) }} {{ (printf "/cre/mysql/dumps/%s/database.done.sql" $mysqlDb) }}
 fi
 
