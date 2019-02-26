@@ -17,11 +17,6 @@ if [ ! -f $file_tmpl ]; then
     exit 1
 fi
 
-if [ ! -f $file_result ]; then
-    echo "[FAIL]: File $file_result not found inside /cre !"
-    exit 1
-fi
-
 if [ ! ${file_tmpl: -5} == ".tmpl" ]; then
   echo "[FAIL]: Filename must end with *.tmpl"
   exit 1
@@ -32,7 +27,12 @@ if [ ! -d /cre/glue ]; then
   exit 1
 fi
 
-cp $file_result /cre/glue/$host_result
+if [ ! -f $file_result ]; then
+    echo "[WARNING]: File $file_result not found inside /cre !"
+    touch /cre/glue/$host_result
+else
+    cp $file_result /cre/glue/$host_result
+fi
 
 ## shift to get rid of first parameter - only the rest is needed
 shift 

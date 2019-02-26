@@ -19,6 +19,8 @@ fi
 ## fi
 
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
+{{ $LocalHost :=  or (hasSuffix "localhost" $CurrentDomain) (hasPrefix "localhost" $CurrentDomain))
+## Localhost?: $LocalHost ## 
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead
 # staging does not work with Strict-Transport-Security - see proxy.tmpl
