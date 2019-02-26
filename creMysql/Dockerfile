@@ -22,7 +22,7 @@ LABEL Name="MySql for CRE" \
 RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 
-VOLUME /var/lib/mysql
+##VOLUME /var/lib/mysql
 
 RUN apt-get update && \
 	apt-get -y install mysql-server-$MYSQL_VERSION && \
@@ -46,7 +46,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 WORKDIR /cre/
 
-##VOLUME /var/lib/mysql
+VOLUME /var/lib/mysql
 
 ENTRYPOINT ["/cre/mysql-entrypoint.sh"]
 
