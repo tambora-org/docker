@@ -34,13 +34,14 @@ RUN \
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creNginx \t $(/usr/sbin/nginx -v 2>&1 | sed -e "s/^nginx version: nginx\///" )" >> /cre/versions.txt 
 
-# Define mountable directories.
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/conf.d", "/var/log/nginx", "/cre/www"]
-
+COPY cre/nginx.conf /etc/nginx/conf.d/default.conf
 # Define working directory.
 COPY cre /cre
 WORKDIR /cre/
 #WORKDIR /etc/nginx
+
+# Define mountable directories.
+VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/conf.d", "/var/log/nginx", "/cre/www"]
 
 # Expose ports (done by children). 
 #EXPOSE 80

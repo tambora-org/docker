@@ -38,6 +38,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 # /usr/local/bin/certbot-auto --no-self-upgrade ; 
 # certbot --noninteractive --nginx --agree-tos -m mail@domain.tld --domains domain.tld
  
+COPY cre/proxy.conf /etc/nginx/conf.d/default.conf
 COPY cre /cre
 WORKDIR /cre/
 
