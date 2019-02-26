@@ -13,7 +13,7 @@ host_tmpl="${hostname}_$(basename $file_tmpl)"
 host_result="${hostname}_$(basename $file_result)"
 
 if [ ! -f $file_tmpl ]; then
-    echo "[FAIL]: File $file_tmpl not found inside /cre !"
+    echo "[FAIL]: File $file_tmpl not found !"
     exit 1
 fi
 
@@ -28,7 +28,7 @@ if [ ! -d /cre/glue ]; then
 fi
 
 if [ ! -f $file_result ]; then
-    echo "[WARNING]: File $file_result not found inside /cre !"
+    echo "[WARNING]: File $file_result not found !"
     touch /cre/glue/$host_result
 else
     cp $file_result /cre/glue/$host_result
@@ -43,6 +43,7 @@ while true; do
   sleep 0.20 
   cp -f /cre/glue/$host_result $file_result
   sleep 0.05 
+  echo "Execute $@" 
   $@
  done
  echo "Restart inotifywait for /cre/glue/$host_result"
