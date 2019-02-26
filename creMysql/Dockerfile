@@ -47,6 +47,7 @@ COPY cre /cre
 WORKDIR /cre/
 
 VOLUME /var/lib/mysql
+RUN chown -R mysql:mysql /var/lib/mysql
 
 ENTRYPOINT ["/cre/mysql-entrypoint.sh"]
 
