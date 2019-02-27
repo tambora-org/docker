@@ -3,4 +3,4 @@ Still in prototype status
 
 Todo:
 =====
-
+* Adapt proxy for local usage and testing
