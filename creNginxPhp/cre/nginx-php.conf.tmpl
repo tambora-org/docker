@@ -1,13 +1,17 @@
 # Current Name : {{ $CurrentContainer.Name }}
-{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
+{{ $CurrentServer := $CurrentContainer.Name }}
 
 # Name of 2nd-level nginx-proxy {{ $CurrentContainer.Name }}
+
+{{ range $phproot2 := split $CurrentContainer.Env.CRE_PHP_ROOT2 "," }}
+  # newphproot: {{ $phproot2 }}
+{{ end }} 
 
 {{ range $phproot, $containers := groupByMulti $ "Env.CRE_PHP_ROOT" "," }}
 
 {{ $phproot := trim $phproot }}
 {{ $phpdomain := replace $phproot "/" "-" -1}}
-{{ $phphost := (printf "php.%s.%s" $phpdomain $CurrentDomain) }}
+{{ $phphost := (printf "php.%s.%s" $CurrentServer $phpdomain) }}
 {{ $rootpath := (printf "/cre/%s" $phproot) }}
 {{ $nginxProxy := "emp-ty" }} 
 
