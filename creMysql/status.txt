@@ -3,4 +3,8 @@ Still in prototype status
 
 Todo:
 =====
+* Volume share of database directory does not work...
+* Daily Rotating Dump
+
+
 

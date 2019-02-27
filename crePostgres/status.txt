@@ -3,4 +3,8 @@ Still in prototype status
 
 Todo:
 =====
+* Daily dump
+* Check init db
+* Postgis
+* Citus
 

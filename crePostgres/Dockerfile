@@ -13,7 +13,7 @@ ENV POSTGRES_VERSION 9.5
 LABEL Name="Postgres for CRE" \
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
-      Version=$DOCKER_GEN_VERSION \
+      Version=$POSTGRES_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 

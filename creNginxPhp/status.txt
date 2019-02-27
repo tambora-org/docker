@@ -3,4 +3,6 @@ Still in prototype status
 
 Todo:
 =====
-
+* Move db settings from php to here
+* Add db settings for postgres
+* Add db settings for sqlite

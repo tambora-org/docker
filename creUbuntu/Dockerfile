@@ -21,6 +21,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+ENV TERM xterm
 
 LABEL Name="Ubuntu for CRE" \
       Year=$BUILD_YEAR \
@@ -41,14 +42,6 @@ RUN \
 
 RUN locale-gen en_US en_US.UTF-8 && \ 
     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-
-# Add files.
-#ADD root/.bashrc /root/.bashrc
-#ADD root/.gitconfig /root/.gitconfig
-#ADD root/.scripts /root/.scripts
-#? ssh-server:  /etc/ssh/sshd_config 
-
-
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creUbuntu \t $(cat /usr/lib/os-release | grep PRETTY | sed -e "s/^PRETTY_NAME=\"Ubuntu //" -e "s/\"$//")" >> /cre/versions.txt && \

@@ -4,3 +4,4 @@ Still in prototype status
 Todo:
 =====
 * Adapt proxy for local usage and testing
+* Real certbot for production.... (test mode in the moment)
