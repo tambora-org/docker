@@ -1,24 +1,17 @@
 # Current Name : {{ $CurrentContainer.Name }}
 {{ $CurrentServer := $CurrentContainer.Name }}
 
-# Name of 2nd-level nginx-proxy {{ $CurrentContainer.Name }}
-
-{{ range $phproot := split $CurrentContainer.Env.CRE_PHP_ROOT "," }}
-
+{{ $phproot := or $CurrentContainer.Env.CRE_PHP_ROOT "www" }}
 {{ $phproot := trim $phproot }}
 {{ $phpdomain := replace $phproot "/" "-" -1}}
 {{ $phphost := (printf "php.%s.%s" $CurrentServer $phpdomain) }}
 {{ $rootpath := (printf "/cre/%s" $phproot) }}
-{{ $nginxProxy := "emp-ty" }} 
+
 
 # {{ $phphost }}
 upstream {{ $phphost }} {
 
 {{ range $container := where $ "Env.CRE_NGINX" $CurrentContainer.Name }}
-
-    {{ if $container.Env.CRE_NGINX }}
-# Name of Wunsch-Proxy {{ $container.Env.CRE_NGINX }}
-        {{ $nginxProxy := $container.Env.CRE_NGINX }}
 
 	{{ $addrLen := len $container.Addresses }}
 	{{ range $knownNetwork := $CurrentContainer.Networks }}
@@ -44,11 +37,10 @@ upstream {{ $phphost }} {
 		{{ end }}
 	{{ end }}
 
-    {{ else }}
+{{ else }}
 # No related NGINX-Proxy defined
-    {{ end }}
-# Related Proxy found: close upstrea and add server section
-
+{{ end }}
+# close upstream and add server section
 }
 
 server {
@@ -118,11 +110,6 @@ server {
     
 }
 
-{{ else }}
-# No related proxy found: only close upstream
 
-}
 
-{{ end }}
 
-{{ end }}
