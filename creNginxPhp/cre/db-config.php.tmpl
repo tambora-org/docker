@@ -1,7 +1,7 @@
 <?php
+  // Current Container Name : {{ $CurrentContainer.Name }}
   $dbData = [];
   // add mySQL data
-  // Current Container Name : {{ $CurrentContainer.Name }}
 {{ if $CurrentContainer.Env.MYSQL_DB }}
  {{ range $mysqlServerPWD, $containers := groupByMulti $ "Env.MYSQL_ROOT_PWD" "," }}
   {{ range $index, $container := $containers }}
@@ -24,6 +24,34 @@
      ['type' => 'mysql', 'host' => $host, 'port' => $port, 
       'dbname' => $dbName, 'user' => $user, 'password' => $password, 
        'pdo' => "mysql:host=$host:$port;dbname=$dbName;user=$user;password=$password"];
+   {{ end }}
+  {{ end }} 
+ {{ end }} 
+{{ end }}
+
+  // add postgres data
+{{ if $CurrentContainer.Env.POSTGRES_DB }}
+ {{ range $pgsqlServerPWD, $containers := groupByMulti $ "Env.POSTGRES_ROOT_PWD" "," }}
+  {{ range $index, $container := $containers }}
+   {{ $pgSqlPort := or $container.Env.MYSQL_PORT "5432" }}
+    $port = '{{ $pgSqlPort }}';
+   {{ range $containerNetwork := $container.Networks }}
+    $host = '{{ $containerNetwork.IP }}';
+    $dbName = '{{ $CurrentContainer.Env.POSTGRES_DB }}';
+    {{ if $CurrentContainer.Env.POSTGRES_USER }}
+    $user = '{{ $CurrentContainer.Env.POSTGRES_USER }}';
+    {{ else }}
+    $user = substr('U:'.md5($dbName),0,24); 
+    {{ end }}
+    {{ if $CurrentContainer.Env.POSTGRES_PWD }}
+    $password = '{{ $CurrentContainer.Env.POSTGRES_PWD }}';
+    {{ else }}
+    $password = substr('PWD:'.md5($user.":".'{{ sha1 $pgsqlServerPWD }}'),0,32); 
+    {{ end }}
+    $dbData['pgsql:'.$dbName] = 
+     ['type' => 'pgsql', 'host' => $host, 'port' => $port, 
+      'dbname' => $dbName, 'user' => $user, 'password' => $password, 
+       'pdo' => "pgsql:host=$host:$port;dbname=$dbName;user=$user;password=$password"];
    {{ end }}
   {{ end }} 
  {{ end }} 

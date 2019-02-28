@@ -1,3 +1,3 @@
-db: /cre/gen-template.sh /cre/www/db-config.php.tmpl 
+db: /cre/gen-template.sh /cre/db-config.php.tmpl 
 phpnginx: /cre/gen-template.sh /cre/nginx-php.conf.tmpl /cre/nginx-php-config.sh
 nginx: nginx
