@@ -3,11 +3,7 @@
 
 # Name of 2nd-level nginx-proxy {{ $CurrentContainer.Name }}
 
-{{ range $phproot2 := split $CurrentContainer.Env.CRE_PHP_ROOT2 "," }}
-  # newphproot: {{ $phproot2 }}
-{{ end }} 
-
-{{ range $phproot, $containers := groupByMulti $ "Env.CRE_PHP_ROOT" "," }}
+{{ range $phproot := split $CurrentContainer.Env.CRE_PHP_ROOT "," }}
 
 {{ $phproot := trim $phproot }}
 {{ $phpdomain := replace $phproot "/" "-" -1}}
@@ -18,7 +14,7 @@
 # {{ $phphost }}
 upstream {{ $phphost }} {
 
-{{ range $container := where $containers "Env.CRE_NGINX" $CurrentContainer.Name }}
+{{ range $container := where $ "Env.CRE_NGINX" $CurrentContainer.Name }}
 
     {{ if $container.Env.CRE_NGINX }}
 # Name of Wunsch-Proxy {{ $container.Env.CRE_NGINX }}
