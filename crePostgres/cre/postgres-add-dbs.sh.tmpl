@@ -42,7 +42,7 @@ postgres_user="U:$(printf '%s' '{{ $container.Env.POSTGRES_DB }}' | md5sum | cut
 postgres_user="${postgres_user:0:24}"
 {{ end }}
 {{ if $container.Env.POSTGRES_PWD }}
-## MYSQL_PWD : {{ $container.Env.POSTGRES_PWD }}
+## POSTGRES_PWD : {{ $container.Env.POSTGRES_PWD }}
 postgres_pwd="{{ $container.Env.POSTGRES_PWD }}"
 {{else}}
 postgres_pwd="PWD:$(printf '%s' '$postgres_user:{{sha1 $rootPassword}}' | md5sum | cut -d ' ' -f 1)"
@@ -70,14 +70,33 @@ else
 fi
 
 ## if init sql file exists import data
-{{ if (exists "/cre/mysql/{{ $postgresDb }}.init.sql") }}
-if [ -e /cre/mysql/{{ $postgresDb }}.init.sql ]
+{{ if (exists "/cre/postgres/{{ $postgresDb }}.init.sql") }}
+if [ -e /cre/postgres/{{ $postgresDb }}.init.sql ]
 then
    echo "Initialize datebase by file: {{ $postgresDb }}"
-   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/mysql/{{ $postgresDb }}.init.sql  
-   # gunzip -c /cre/mysql/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
-   mv /cre/mysql/{{ $postgresDb }}.init.sql /cre/mysql/{{ $postgresDb }}.done.sql
+   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/postgres/{{ $postgresDb }}.init.sql  
+   # gunzip -c /cre/postgres/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
+   mv /cre/postgres/{{ $postgresDb }}.init.sql /cre/postgres/{{ $postgresDb }}.done.sql
 fi
+{{ end }}
+
+## Install (or Upgrade) Postgis extensions
+{{ if $container.Env.POSTGIS_VERSION }}
+  {{ $postgisVerson := $container.Env.POSTGIS_VERSION }}
+
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS postgis VERSION \"{{ $postgisVerson }}\" "
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "ALTER EXTENSION postgis UPDATE TO '{{ $postgisVerson }}' "
+
+  {{ $postgisVerson := $container.Env.POSTGIS_VERSION }}
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS postgis_topology VERSION \"{{ $postgisVerson }}\" "
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "ALTER EXTENSION postgis_topology UPDATE TO '{{ $postgisVerson }}' "
+
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS fuzzystrmatch "
+
+  {{ $postgisVerson := $container.Env.POSTGIS_VERSION }}
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS postgis_tiger_geocoder VERSION \"{{ $postgisVerson }}\" "
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "ALTER EXTENSION postgis_tiger_geocoder UPDATE TO '{{ $postgisVerson }}' "
+
 {{ end }}
 
 ## grant access for user to table

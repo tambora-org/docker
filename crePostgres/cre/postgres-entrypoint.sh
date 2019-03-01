@@ -14,17 +14,10 @@ if [ ! -d "$POSTGRESQL_DATA" ]; then
 
 echo "Run initdb..."
 
-# sudo -u postgres -H ${POSTGRESQL_BIN}/initdb \
-#   --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
-#   --username=postgres --encoding=unicode --auth=trust >/dev/null
-
 /usr/lib/postgresql/${POSTGRES_VERSION}/bin/initdb \
     --pgdata=/var/lib/postgresql/${POSTGRES_VERSION}/main --pwfile=/var/lib/postgresql/pwfile \
     --username=postgres --encoding=unicode --auth=trust >/dev/null
- 
-#  echo "========================================================================"
-#  echo " postgres password is ${POSTGRES_PASSWORD}"
-#  echo "========================================================================"
+
 echo "... initdb done"
 fi
 
