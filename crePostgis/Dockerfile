@@ -1,13 +1,14 @@
 # Adapted from mdillon/postgis:9.5
 # and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
 #FROM postgres:9.5
-FROM tamboraorg/crepostgres:2010.0
+FROM tamboraorg/crepostgres:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ENV POSTGIS_MAJOR 2.3
-#ENV POSTGIS_MAJOR 2.2
+ENV POSTGIS_MAJOR 2.5
+#ENV POSTGIS_MAJOR 2.3
 #ENV POSTGIS_VERSION 2.3.2+dfsg-1~exp2.pgdg80+1
 #ENV POSTGIS_VERSION 2.3.2+dfsg-1~exp2.pgdg16.04+1
+ENV POSTGIS_VERSION 2.5.1
 
 
 #RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
