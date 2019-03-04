@@ -12,7 +12,7 @@ ENV POSTGIS_VERSION 2.5.1
 
 
 #RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
-RUN add-apt-repository ppa:ubuntugis/ppa
+#RUN add-apt-repository ppa:ubuntugis/ppa
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
