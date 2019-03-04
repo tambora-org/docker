@@ -25,10 +25,11 @@ RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
 
-USER postgres
-
 COPY cre /cre
 WORKDIR /cre/
+RUN chown -R postgres.postgres /cre 
+
+USER postgres
 
 #RUN mkdir -p /docker-entrypoint-initdb.d
 #COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/postgis.sh

@@ -45,6 +45,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 WORKDIR /cre/
+RUN chown -R postgres.postgres /cre 
 
 VOLUME ["/var/lib/postgresql"]
 
