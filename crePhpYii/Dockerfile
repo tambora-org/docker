@@ -1,5 +1,5 @@
 # Adapted from 
-FROM tamboraorg/crephpdev:2010.0
+FROM tamboraorg/crephpdev:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV DEBIAN_FRONTEND noninteractive
