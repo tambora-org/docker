@@ -17,9 +17,9 @@ RUN add-apt-repository ppa:ubuntugis/ppa
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
-           postgresql-$PG_VERSION-postgis-$POSTGIS_MAJOR 
+           postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR 
 RUN apt-get install -y --no-install-recommends \
-           postgresql-$PG_VERSION-postgis-$POSTGIS_MAJOR-scripts 
+           postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR-scripts 
 RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
