@@ -10,9 +10,10 @@ ENV POSTGIS_MAJOR 2.5
 #ENV POSTGIS_VERSION 2.3.2+dfsg-1~exp2.pgdg16.04+1
 ENV POSTGIS_VERSION 2.5.1
 
+USER root
 
 #RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
-#RUN add-apt-repository ppa:ubuntugis/ppa
+RUN add-apt-repository ppa:ubuntugis/ppa
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
@@ -22,6 +23,8 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
+
+USER postgres
 
 COPY cre /cre
 WORKDIR /cre/
