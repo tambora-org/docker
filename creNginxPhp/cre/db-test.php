@@ -1,5 +1,5 @@
 <?php
- require("/cre/db-config.php");
+ require("/cre/www/db-config.php");
 ?>
 <!DOCTYPE html>
 <html>
