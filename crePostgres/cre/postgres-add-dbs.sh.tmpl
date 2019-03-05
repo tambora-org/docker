@@ -2,7 +2,7 @@
 
 # Current Name : {{ $CurrentContainer.Name }}
 export TERM=xterm
-echo "mysql add databases:"
+echo "postgres add databases:"
 POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
 POSTGRESQL_BIN=/usr/lib/postgresql/${POSTGRES_VERSION}/bin
 sleep 2
@@ -46,7 +46,7 @@ postgres_user="${postgres_user:0:24}"
 postgres_pwd="{{ $container.Env.POSTGRES_PWD }}"
 {{else}}
 postgres_pwd="PWD:$(printf '%s' '$postgres_user:{{sha1 $rootPassword}}' | md5sum | cut -d ' ' -f 1)"
-postgres_pwd="${pwd:0:32}"
+postgres_pwd="${postgres_pwd:0:32}"
 {{ end }}
 
 #check if database already exists?

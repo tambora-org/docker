@@ -51,7 +51,7 @@
     $dbData['pgsql:'.$dbName] = 
      ['type' => 'pgsql', 'host' => $host, 'port' => $port, 
       'dbname' => $dbName, 'user' => $user, 'password' => $password, 
-       'pdo' => "pgsql:host=$host:$port;dbname=$dbName;user=$user;password=$password"];
+       'pdo' => "pgsql:host=$host;port=$port;dbname=$dbName;user=$user;password=$password"];
    {{ end }}
   {{ end }} 
  {{ end }} 

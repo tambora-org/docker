@@ -8,3 +8,7 @@ Todo:
 * Postgis
 * Citus
 
+* Safety: /etc/postgresql/9.5/main/pg_hba.conf  
+ * postgres: proxy & local
+ * all:  users, ip  
+

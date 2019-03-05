@@ -33,7 +33,7 @@
      case "mysql":
        $classicTest = testMySqlDb($c['dbname'], $c['user'], $c['password'], $c['host'], $c['port']);
        break;
-     case "postgres":
+     case "pgsql":
        $classicTest = testPostgresDb($c['dbname'], $c['user'], $c['password'], $c['host'], $c['port']);
        break;
     } 
