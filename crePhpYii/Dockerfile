@@ -13,12 +13,12 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 # mkdir -p /cre/tmp/yii && 
-RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
+##RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
 # move to www in entry-point
 
 #config/web.php
 
-VOLUME ["/cre/www/yii"]
+##VOLUME ["/cre/www/yii"]
 WORKDIR "/cre/www"
 
 ENTRYPOINT ["/cre/yii-entrypoint.sh"]
