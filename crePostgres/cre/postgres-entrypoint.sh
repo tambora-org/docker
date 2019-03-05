@@ -2,6 +2,11 @@
 set -e
 
 POSTGRES_ROOT_PWD=${POSTGRES_ROOT_PWD:-"postgres"}
+if [ ! -e /etc/postgresql/${POSTGRES_VERSION}/main/pg_hba.conf.bck ]; 
+then
+  cp -f /etc/postgresql/${POSTGRES_VERSION}/main/pg_hba.conf /etc/postgresql/${POSTGRES_VERSION}/main/pg_hba.conf.bck
+fi
+cp -f /cre/pg_hba.conf /etc/postgresql/${POSTGRES_VERSION}/main/pg_hba.conf
 
 echo "Setting up new power user credentials."
 
@@ -22,6 +27,5 @@ echo "... initdb done"
 fi
 
 sleep 5
-echo "[i] Setting end,have fun."
 
 exec "$@"

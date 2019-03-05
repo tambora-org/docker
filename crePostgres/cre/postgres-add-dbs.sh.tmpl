@@ -1,4 +1,5 @@
 #!/bin/bash 
+##sleep 5
 
 # Current Name : {{ $CurrentContainer.Name }}
 export TERM=xterm
@@ -8,14 +9,14 @@ POSTGRESQL_BIN=/usr/lib/postgresql/${POSTGRES_VERSION}/bin
 sleep 2
 
 #First check if already running
-POSTGRES_LOCAL_RUNNING=0
-${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
-if [ ! $? -eq 0 ]
-then
- echo "Postgres not running yet"
- POSTGRES_LOCAL_RUNNING=1
- ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
-fi
+##POSTGRES_LOCAL_RUNNING=0
+##${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA status
+##if [ ! $? -eq 0 ]
+##then
+## echo "Postgres not running yet"
+## POSTGRES_LOCAL_RUNNING=1
+## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -o "-c listen_addresses='localhost'" -w start
+##fi
 
 until ${POSTGRESQL_BIN}/pg_isready -h localhost -p 5432 -U postgres
 do
@@ -108,8 +109,8 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIV
 ##end of all databases
 
 #stop local postgres again (if used)
-if [ $POSTGRES_LOCAL_RUNNING -eq 1 ]
-then
- echo "Stop local Postgres"
- ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
-fi
+##if [ $POSTGRES_LOCAL_RUNNING -eq 1 ]
+##then
+## echo "Stop local Postgres"
+## ${POSTGRESQL_BIN}/pg_ctl -D $POSTGRESQL_DATA -m fast -w stop
+##fi
