@@ -36,6 +36,9 @@
      case "pgsql":
        $classicTest = testPostgresDb($c['dbname'], $c['user'], $c['password'], $c['host'], $c['port']);
        break;
+     case "sqlite":
+       $classicTest = testSqliteDb($c['dbname'], $c['user'], $c['password'], $c['host'], $c['port']);
+       break;
     } 
     echo "<td>".($classicTest ? "ok" : "fail")."</td>";
     echo "</tr>";
@@ -55,15 +58,10 @@
      return mysqli_connect($connectString, $user, $password);
   }
 
-  function testMySqlPDO($dbname, $user, $password, $host, $port='3306')
+ function testSqliteDb($dbname, $user, $password, $host, $port='3306')
   {
-     return testPDO('mysql', $dbname, $user, $password, $host, $port);
-  }
-
-  function testPDO2($type, $dbname, $user, $password, $host, $port)
-  {
-     $connectionString = ''.$type.':host='.$host.':'.$port.';dbname='.$dbname;
-     return testPDO($connectionString, $user, $password);
+     $connectString = '/cre/www/sqlite/'.$dbname.'.db';
+     return sqlite_open($connectString);
   }
 
   function testPDO($connect, $user, $password)

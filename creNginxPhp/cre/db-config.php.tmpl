@@ -57,6 +57,17 @@
  {{ end }} 
 {{ end }}
 
+  // add sqlite data
+{{ if $CurrentContainer.Env.SQLITE_DB }}
+    $dbName = '{{ $CurrentContainer.Env.POSTGRES_DB }}';
+    $host = '{{ $CurrentContainer.IP }}';
+    $fileName='/cre/www/sqlite/'.$dbName.'.db'; 
+    $dbData['pgsql:'.$dbName] = 
+     ['type' => 'sqlite', 'host' => $host, 'port' => null, 
+      'dbname' => $dbName, 'user' => $dbName, 'password' => null, 
+       'pdo' => "sqlite:$fileName"];
+{{ end }}
+
   function inqDbConnections()
   {
     global $dbData; 
