@@ -71,9 +71,9 @@ fi
 {{ end }}
 
 ## Install (or Upgrade) Postgis extensions
-{{ if $container.Env.POSTGIS_VERSION }}
+{{ if $CurrentContainer.Env.POSTGIS_VERSION }}
   echo "Upgrade database to PostGIS: {{ $postgresDb }}"
-  {{ $postgisVerson := $container.Env.POSTGIS_VERSION }}
+  {{ $postgisVerson := $CurrentContainer.Env.POSTGIS_VERSION }}
 
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS postgis VERSION \"{{ $postgisVerson }}\" "
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "ALTER EXTENSION postgis UPDATE TO '{{ $postgisVerson }}' "

@@ -4,7 +4,7 @@
 # TYPE 	 DATABASE 	 USER 	 ADDRESS 	 METHOD
 # Database administrative login by Unix domain socket
 local 	 all 	 postgres 	 peer
-{{ if $container.Env.CRE_SUBDOMAIN }}
+{{ if $CurrentContainer.Env.CRE_SUBDOMAIN }}
 host 	 all 	 postgres 	 all 	 md5
 {{ end }}
 {{ range $postgresDb, $containers := groupByMulti $ "Env.POSTGRES_DB" "," }}
