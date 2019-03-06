@@ -3,4 +3,4 @@ Still in prototype status
 
 Todo:
 =====
-
+available Versions are here:  /usr/share/postgresql/$POSTGRES_VERSION/extension/

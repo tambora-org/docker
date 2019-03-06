@@ -72,20 +72,17 @@ fi
 
 ## Install (or Upgrade) Postgis extensions
 {{ if $CurrentContainer.Env.POSTGIS_VERSION }}
-  echo "Upgrade database to PostGIS: {{ $postgresDb }}"
   {{ $postgisVerson := $CurrentContainer.Env.POSTGIS_VERSION }}
-
-  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS postgis VERSION \"{{ $postgisVerson }}\" "
+  echo "Upgrade database: {{ $postgresDb }} to PostGIS version: {{ $postgisVerson }}"
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c 'CREATE EXTENSION IF NOT EXISTS postgis VERSION "{{ $postgisVerson }}" '
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "ALTER EXTENSION postgis UPDATE TO '{{ $postgisVerson }}' "
 
-  {{ $postgisVerson := $container.Env.POSTGIS_VERSION }}
-  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS postgis_topology VERSION \"{{ $postgisVerson }}\" "
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c 'CREATE EXTENSION IF NOT EXISTS postgis_topology VERSION "{{ $postgisVerson }}" '
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "ALTER EXTENSION postgis_topology UPDATE TO '{{ $postgisVerson }}' "
 
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS fuzzystrmatch "
 
-  {{ $postgisVerson := $container.Env.POSTGIS_VERSION }}
-  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "CREATE EXTENSION IF NOT EXISTS postgis_tiger_geocoder VERSION \"{{ $postgisVerson }}\" "
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c 'CREATE EXTENSION IF NOT EXISTS postgis_tiger_geocoder VERSION "{{ $postgisVerson }}" '
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres --dbname="{{$postgresDb}}" -c "ALTER EXTENSION postgis_tiger_geocoder UPDATE TO '{{ $postgisVerson }}' "
 
 {{ end }}
