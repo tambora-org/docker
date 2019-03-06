@@ -8,7 +8,7 @@ ARG BUILD_MONTH=0
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
-ENV CITUS_VERSION 5.0
+ENV CITUS_VERSION 6.0
 
 LABEL Name="Postgres Citus for CRE" \
       Year=$BUILD_YEAR \
@@ -23,7 +23,7 @@ LABEL Name="Postgres Citus for CRE" \
 
 USER root
 
-#RUN curl https://install.citusdata.com/community/deb.sh | bash
+RUN curl https://install.citusdata.com/community/deb.sh | bash
 RUN apt-get -y install postgresql-${POSTGRES_VERSION}-citus
 RUN pg_conftool ${POSTGRES_VERSION} main set shared_preload_libraries citus
 
