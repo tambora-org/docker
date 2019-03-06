@@ -41,6 +41,7 @@ while true; do
  do
   echo "$EVENT has triggered for File $host_result - copy back"
   sleep 0.20 
+  touch /cre/glue/$host_result
   cp -f /cre/glue/$host_result $file_result
   sleep 0.05 
   echo "Execute $@" 
