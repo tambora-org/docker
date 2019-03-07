@@ -8,7 +8,7 @@ ENV INITRD No
 ENV VUE_VERSION 3.15.5
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t crePhpYii \t ${YII_VERSION}" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t creVue \t ${VUE_VERSION}" >> /cre/versions.txt 
 
 COPY cre /cre
 

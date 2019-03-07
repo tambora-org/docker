@@ -1,3 +1,1 @@
-init: /cre/gen-template.sh /cre/php-init.sh.tmpl /cre/php-init.sh
-update: watch -n 600007 /cre/php-weekly.sh
 start: /cre/php-fpm.sh
