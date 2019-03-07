@@ -41,6 +41,6 @@ WORKDIR "/cre/www"
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 
 # Open up fcgi port 
-#EXPOSE 9000
+EXPOSE 8080
 
 CMD ["shoreman", "/cre/vue-procfile"]

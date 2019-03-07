@@ -28,10 +28,15 @@ module.exports = {
       {
         test: /\.styl(us)?$/,
         use: ['vue-style-loader', 'css-loader', 'stylus-loader']
-      }
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader'
+      },
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
