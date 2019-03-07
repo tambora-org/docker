@@ -20,9 +20,6 @@ h1 {
 </style>
 
 <style lang="stylus" scoped>
-h1 
+h1
   color green
-
 </style>
-
-   

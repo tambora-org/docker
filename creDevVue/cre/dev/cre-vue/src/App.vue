@@ -1,6 +1,6 @@
 <template>
   <div class="full-width center-content">
-    <hello-component name="World" /> 
+    <hello-component name="World" />
     <h2>Hello CRE !</h2>
   </div>
 </template>
@@ -14,5 +14,3 @@ export default {
   }
 }
 </script>
-
-
