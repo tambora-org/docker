@@ -14,7 +14,7 @@ npm set init.license "Apache-2.0"
 
 # https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory
 npm init -y
-npm install npm-add-script # https://www.npmjs.com/package/npm-add-script
+npm install -g npm-add-script # -g needed; https://www.npmjs.com/package/npm-add-script 
 npm install --save-dev vue vue-cli vue-router       #vue-vuex
 npm install --save-dev webpack webpack-cli
 npm install --save-dev vue-loader vue-template-compiler 
