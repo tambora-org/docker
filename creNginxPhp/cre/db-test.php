@@ -61,7 +61,9 @@
  function testSqliteDb($dbname, $user, $password, $host, $port='3306')
   {
      $connectString = '/cre/www/sqlite/'.$dbname.'.db';
-     return sqlite_open($connectString);
+     // PDO does not work with encryption - so we don't test it classical either
+     // return new SQLite3($connectString, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE, $password);
+     return new SQLite3($connectString);
   }
 
   function testPDO($connect, $user, $password)

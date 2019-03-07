@@ -4,7 +4,7 @@ set -e
 # /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
 
 #composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
-mkdir /cre/tmp/vue
+mkdir -p /cre/tmp/vue
 cd /cre/tmp/vue
 npm init
 npm install --save-dev vue vue-router
