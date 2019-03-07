@@ -22,8 +22,8 @@ npm install --save-dev vue-style-loader css-loader stylus stylus-loader
 npm install --save-dev webpack-dev-server html-webpack-plugin
 npm install --save-dev @babel/core babel-loader @babel/preset-env  #js-ES5
 
-npmAddScript -k dev -v "webpack-dev-server --config build/webpack.config.dev.js"
-
+npmAddScript -k "dev" -v "webpack-dev-server --config build/webpack.config.dev.js"
+npmAddScript -k "cre" -v "webpack --config build/webpack.config.dev.js"
 
 #npm run dev ## run in procfile
 
