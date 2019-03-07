@@ -18,8 +18,9 @@ npm install -g npm-add-script # https://www.npmjs.com/package/npm-add-script
 npm install --save-dev vue vue-router       #vue-vuex
 npm install --save-dev webpack webpack-cli
 npm install --save-dev vue-loader vue-template-compiler vue-style-loader css-loader
+npm install --save-dev webpack-dev-server html-webpack-plugin
 
-npmAddScript -k build -v "webpack --config build/webpack.config.dev.js"
+npmAddScript -k dev -v "webpack-dev-server --config build/webpack.config.dev.js"
 
 
 npm run build
