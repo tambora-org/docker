@@ -36,7 +36,7 @@ COPY cre /cre
 #config/web.php
 
 ##VOLUME ["/cre/www/yii"]
-WORKDIR "/cre/www"
+WORKDIR "/cre/dev/cre-vue"
 
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 
