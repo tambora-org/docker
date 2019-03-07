@@ -1,1 +1,1 @@
-start: /cre/php-fpm.sh
+start: /cre/run.sh
