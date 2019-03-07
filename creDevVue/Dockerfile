@@ -20,10 +20,12 @@ LABEL Name="Vue Dev for CRE" \
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs 
-#RUN apt-get update && apt-get install npm && apt-get clean
+#RUN apt-get update && apt-get install npm && apt-get clean ## included in nodejs
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t creVue \t ${VUE_VERSION}" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t creVue \t ${VUE_VERSION}" >> /cre/versions.txt  && \
+    echo "$(date +'%F %R') \t  node \t $(node --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
 
 COPY cre /cre
 

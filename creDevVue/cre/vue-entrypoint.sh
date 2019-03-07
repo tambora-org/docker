@@ -6,7 +6,7 @@ set -e
 #composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
 mkdir -p /cre/tmp/vue
 cd /cre/tmp/vue
-npm init
+npm init -y
 npm install --save-dev vue vue-router
 
 
