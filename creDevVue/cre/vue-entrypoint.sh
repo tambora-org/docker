@@ -3,12 +3,16 @@ set -e
 
 # /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
 
-#composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
-mkdir -p /cre/tmp/vue
-cd /cre/tmp/vue
+mkdir -p /cre/tmp/cre-vue
+cd /cre/tmp/cre-vue
+
+## npm set init.author.email "example-user@example.com"
+## npm set init.author.name "example_user"
+## npm set init.license "MIT"
+
+# https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory
 npm init -y
 npm install --save-dev vue vue-router
-
 
 ##rsync -r /cre/tmp/yii/ /cre/www/yii
 # later use --exclude /dir1/ --exclude /dir2/
