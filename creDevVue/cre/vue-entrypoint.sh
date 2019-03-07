@@ -3,8 +3,8 @@ set -e
 
 # /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
 
-mkdir -p /cre/tmp/cre-vue
-cd /cre/tmp/cre-vue
+mkdir -p /cre/dev/cre-vue
+cd /cre/dev/cre-vue
 
 ## npm set init.author.email "example-user@example.com"
 ## npm set init.author.name "example_user"
@@ -14,8 +14,15 @@ npm set init.license "Apache-2.0"
 
 # https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory
 npm init -y
-npm install --save-dev vue vue-router
+npm install -g npm-add-script # https://www.npmjs.com/package/npm-add-script
+npm install --save-dev vue vue-router       #vue-vuex
 npm install --save-dev webpack webpack-cli
+npm install --save-dev vue-loader vue-template-compiler vue-style-loader css-loader
+
+npmAddScript -k build -v "webpack --config build/webpack.config.dev.js"
+
+
+npm run build
 
 
 ##rsync -r /cre/tmp/yii/ /cre/www/yii
