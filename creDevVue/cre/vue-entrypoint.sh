@@ -23,7 +23,7 @@ npm install --save-dev webpack-dev-server html-webpack-plugin
 npmAddScript -k dev -v "webpack-dev-server --config build/webpack.config.dev.js"
 
 
-npm run build
+npm run dev
 
 
 ##rsync -r /cre/tmp/yii/ /cre/www/yii
