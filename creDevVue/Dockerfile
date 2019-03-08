@@ -38,7 +38,7 @@ COPY cre /cre
 ##VOLUME ["/cre/www/yii"]
 WORKDIR "/cre/dev/cre-vue"
 
-ENTRYPOINT ["/cre/vue-entrypoint.sh"]
+ENTRYPOINT ["/cre/vue-entrypoint-cli.sh"]
 
 # Open up fcgi port 
 EXPOSE 8080
