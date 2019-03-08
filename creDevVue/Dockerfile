@@ -1,5 +1,5 @@
 # Adapted from 
-FROM tamboraorg/crephpdev:2011.0
+FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2011
