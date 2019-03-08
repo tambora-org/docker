@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 # Use docker-gen to create the template file
 # First parameter is file name (with path)

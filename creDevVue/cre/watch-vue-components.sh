@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 # Use inotifywait to detect new files
 # (First parameter is path) // should be /cre/glue
