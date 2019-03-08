@@ -3,7 +3,7 @@ set -e
 
 # /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
 
-mkdir -p /cre/dev/cre-vue
+mkdir -p /cre/dev/cre-components
 cd /cre/dev
 
 ## npm set init.author.email "example-user@example.com"
@@ -17,9 +17,12 @@ npm set init.license "Apache-2.0"
 npm install -g npm-add-script # -g needed; https://www.npmjs.com/package/npm-add-script 
 npm install -g @vue/cli       # @ for 3.0 
 
-vue create -d -f cre-vue
+# preset? ./vuerc
+vue create -d -f cre-components
 
-cd /cre/dev/cre-vue
+cd /cre/dev/cre-components
+npm install --save-dev @vue/web-component-wrapper
+
 
 ##npm install --save-dev vue vue-router       #vue-vuex
 ##npm install --save-dev webpack webpack-cli
