@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephp:2011.0
+FROM tamboraorg/crephp:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ARG BUILD_YEAR=2011
@@ -20,6 +20,10 @@ LABEL Name="Php Dev for CRE" \
       Version=$PHP_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
+
+# Install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y nodejs 
 
 # Install selected debug extensions and other stuff
 RUN apt-get update \
