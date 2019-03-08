@@ -4,4 +4,4 @@ yii3 is in alpha state
 
 Todo:
 =====
-add test
+needs php >=7.1

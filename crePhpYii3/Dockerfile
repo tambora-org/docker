@@ -1,5 +1,5 @@
 # Adapted from 
-FROM tamboraorg/crephpdev:2011.0
+FROM tamboraorg/crephpdev:2012.0 #needs 7.1 at least....
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV DEBIAN_FRONTEND noninteractive
