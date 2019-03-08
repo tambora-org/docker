@@ -25,7 +25,12 @@ fi
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead
 # staging does not work with Strict-Transport-Security - see proxy.tmpl
+{{ if $CurrentContainer.Env.CRE_DEVELOPMENT }}
 certbot --staging --noninteractive --nginx --agree-tos -m admion@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+{{ else }}
+certbot --noninteractive --nginx --agree-tos -m admion@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+{{end}}
+
 
 {{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
 
@@ -35,7 +40,12 @@ certbot --staging --noninteractive --nginx --agree-tos -m admion@{{ $CurrentDoma
 # {{ $host }}
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead
+{{ if $CurrentContainer.Env.CRE_DEVELOPMENT }}
 certbot --staging --noninteractive --nginx --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
+{{ else }}
+certbot --noninteractive --nginx --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
+{{end}}
+
 
 {{ end }}
 

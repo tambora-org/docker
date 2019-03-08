@@ -125,10 +125,14 @@ server {
 	ssl_session_cache shared:SSL:50m;
 	ssl_session_tickets off;
 
+{{ if $CurrentContainer.Env.CRE_DEVELOPMENT }}
         # only for real certificates - disable for the moment ...
 	# add_header Strict-Transport-Security "max-age=31536000";
+{{ else }}
+        add_header Strict-Transport-Security "max-age=31536000";
+{{ end }}
 
-        # openssl certificates
+        # openssl certificates // certbot will change these lines later
         ssl_certificate {{ printf "/etc/letsencrypt/openssl/%s.cert.pem" $host }};    # openssl
         ssl_certificate_key {{ printf "/etc/letsencrypt/openssl/%s.key.pem" $host }}; # openssl
 
