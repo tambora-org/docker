@@ -13,7 +13,7 @@ ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
-ENV PHP_VERSION 7.1    
+ENV PHP_VERSION 7.0    
 
 LABEL Name="PHP for CRE" \
       Year=$BUILD_YEAR \
@@ -31,7 +31,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 #    && apt-get clean \
 #&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-RUN add-apt-repository ppa:ondrej/php # for 7.1
+## RUN add-apt-repository ppa:ondrej/php # for 7.1
 
 # Install dotdeb repo, PHP7, composer and selected extensions
 RUN apt-get update \
