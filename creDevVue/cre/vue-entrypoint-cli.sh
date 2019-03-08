@@ -15,18 +15,16 @@ npm set init.license "Apache-2.0"
 # https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory
 #npm init -y
 npm install -g npm-add-script # -g needed; https://www.npmjs.com/package/npm-add-script 
-npm install -g @vue/cli       # @ for 3.0 
-
+npm install -g @vue/cli @vue/cli-service     # @ for 3.0 
+npm install -g 
 
 # preset? ./vuerc
 vue create -d -f cre-components
 
 cd /cre/dev/cre-components
-npm install --save-dev @vue/web-component-wrapper
-npm install --save-dev @vue/cli-service
-npm install --save-dev @vue/cli-plugin-babel
-npm install --save-dev @vue/cli-plugin-eslint
-npm install --save-dev vue-template-compiler
+
+npm install --save-dev @vue/web-component-wrapper vue-template-compiler
+npm install --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 
 ##npm install --save-dev vue vue-router       #vue-vuex
 ##npm install --save-dev webpack webpack-cli

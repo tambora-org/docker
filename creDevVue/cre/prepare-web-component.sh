@@ -22,8 +22,9 @@ if [ ! ${filename: -4} == ".vue" ]; then
 fi
 
 nakedname=$(echo "$filename" | rev | cut -f 2- -d '.' | rev)         # /cre/vue-component/MyComponent
+ownscript="$nakedname.js"                                            # /cre/vue-component/MyComponent.js
 camelcase=$(basename "$nakedname")                                   # MyComponent      
-minuscase=$(echo $camelcase | sed 's/\(.\)\([A-Z]\)/\1-\2/g')       # My-Component
+minuscase=$(echo $camelcase | sed 's/\(.\)\([A-Z]\)/\1-\2/g')        # My-Component
 kebabcase=$(echo $minuscase  | tr '[:upper:]' '[:lower:]')           # my-component 
 buildscript="/cre/dev/cre-components/src/$camelcase.js"              # /cre/tmp/dev/vue-component/src/MyComponent.js
 buildfile="/cre/dev/cre-components/src/components/$camelcase.vue"    # /cre/tmp/dev/vue-component/src/components/MyComponent.vue
@@ -34,9 +35,15 @@ echo "import $camelcase from './components/$camelcase';"  >> $buildfile
 echo "const MyWebElement = wrap(Vue, $camelcase);" >> $buildfile
 echo "window.customElements.define('$kebabcase', MyWebElement);" >> $buildfile
 
+if [ -f $ownscript ]; then
+    cp -f $ownscript $buildfile
+fi
+
 cd /cre/dev/cre-components
 echo "Build web component '$kebabcase' from $filename"
 vue-cli-service build --target wc --name $kebabcase ./src/$camelcase.js
+
+## results:  /cre/dev/cre-components/dist/my-custom-element.js  &  my-custom-element.min.js
 #copy to /cre/web-component/*.js
 #collect all into single file
 
