@@ -1,6 +1,6 @@
 sut:
   build: .
-  command: /cre/test/php-dev-test.sh
+  command: /cre/tests/php-dev-test.sh
   volumes:
     - ./tests:/cre/tests
 
