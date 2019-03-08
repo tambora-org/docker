@@ -4,6 +4,13 @@
     <div>{{ msg }}</div>
   </div>
 </template>
+
+<style scoped>
+  h1 {
+    background: red;
+  }
+</style>
+
 <script>
   export default {
     props: ['msg'] 
