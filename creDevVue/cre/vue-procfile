@@ -1,1 +1,2 @@
+watch: /cre/watch-vue-components.sh
 start: /cre/run.sh

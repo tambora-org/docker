@@ -1,3 +1,3 @@
 #!/usr/bin/env bash 
 #npm run dev
-sleep 1000
+sleep 10000
