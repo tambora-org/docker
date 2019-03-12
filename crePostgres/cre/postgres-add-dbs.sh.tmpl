@@ -61,8 +61,7 @@ else
  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "CREATE USER $postgres_user WITH ENCRYPTED PASSWORD '$postgres_pwd'"
 fi
 
-## if init sql file exists import data
-{{ if (exists "/cre/postgres/dumps/{{ $postgresDb }}/database.init.dump") }}
+## if init dump file exists import data
 if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ]
 then
    echo "Initialize datebase by file: {{ $postgresDb }}"
@@ -70,7 +69,6 @@ then
    # gunzip -c /cre/postgres/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
    mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump
 fi
-{{ end }}
 
 ## Install (or Upgrade) Postgis extensions
 {{ if $CurrentContainer.Env.POSTGIS_VERSION }}
