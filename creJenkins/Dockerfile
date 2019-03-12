@@ -9,11 +9,21 @@ FROM tamboraorg/crejava:2010.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
 # version: yyyy.n for stable versions / 0.yyyy for development
-ENV CRE_VERSION 0.2010 
+#ENV CRE_VERSION 0.2010 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
+ENV JENKINS_VERSION 0
 
+LABEL Name="Jenkins for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$JENKINS_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key add - && \
     echo deb https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list
@@ -34,7 +44,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ rc main" | tee /etc/apt/sources.list.d/yarn.list 
 RUN apt-get update && apt-get install yarn && apt-get clean
-#RUN apt-get update && apt-get install npm && apt-get clean
+#RUN apt-get update && apt-get install npm && apt-get clean  ## included in nodejs
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 

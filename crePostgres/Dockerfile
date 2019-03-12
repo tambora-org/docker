@@ -47,7 +47,7 @@ COPY cre /cre
 WORKDIR /cre/
 RUN chown -R postgres.postgres /cre 
 
-VOLUME ["/var/lib/postgresql"]
+VOLUME ["/var/lib/postgresql", "/cre/postgres"]
 
 EXPOSE 5432
 
