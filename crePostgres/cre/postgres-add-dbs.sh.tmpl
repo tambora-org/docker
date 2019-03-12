@@ -65,7 +65,8 @@ fi
 if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ]
 then
    echo "Initialize datebase by file: {{ $postgresDb }}"
-   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump  
+   ##${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --single-transaction --username postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump 
+   ${POSTGRESQL_BIN}/psql --username postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump
    # gunzip -c /cre/postgres/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
    mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump
 fi

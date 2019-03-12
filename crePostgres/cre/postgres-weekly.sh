@@ -8,15 +8,18 @@ echo "Postgres weekly"
  # psql -f backup_file postgres
 
 
-## docker exec postgres pg_dump -U clim-admin  -f /cre/pg_gisdata_2019_03_01.bak gisdata
- # psql -1 empty_database < backup_file
+## docker exec postgres pg_dump --no-privileges --no-owner -U clim-admin  -f /cre/pg_gisdata_2019_03_01.bak gisdata
+ # psql empty_database < backup_file
+ # psql  --single-transaction empty_database < backup_file
 
-### pg_dump dbname | gzip > filename.gz
+### pg_dump --no-privileges --no-owner dbname | gzip > filename.gz
  ## gunzip -c filename.gz | psql dbname
  ## cat filename.gz | gunzip | psql dbname
 
 # needs zlib
-### pg_dump -Fc dbname > filename
- ## pg_restore -d dbname filename
+### pg_dump --no-privileges --no-owner -Fc dbname > filename
+ ## pg_restore --no-owner -d dbname filename
+ ## pg_restore --role=rolename -d dbname filename
+          
 
 pg_ctl -D $POSTGRESQL_DATA status

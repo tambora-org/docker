@@ -27,13 +27,13 @@ if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$
    mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump
  fi
  mkdir -p /cre/postgres/dumps/{{ $postgresDb }}
- pg_dump -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump {{ $postgresDb }}
+ pg_dump --no-privileges --no-owner -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump {{ $postgresDb }}
  ## try compressed here:
  if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip ]
  then
    mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump.zip
  fi
- pg_dump -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+ pg_dump --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
  ## end compressed
 
  ## optionally copy dumpfile to other server (daily -> update)
