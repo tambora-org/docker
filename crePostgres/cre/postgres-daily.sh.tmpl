@@ -13,6 +13,8 @@ do
  sleep 2;
 done
 
+touch /cre/database-busy.txt
+
 {{ range $postgresDb, $containers := groupByMulti $ "Env.POSTGRES_DB" "," }}
 ##begin of all databases
 ## backup db: {{ $postgresDb }}
@@ -24,6 +26,7 @@ if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$
  then
    mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump
  fi
+ mkdir -p /cre/postgres/dumps/{{ $postgresDb }}
  pg_dump -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump {{ $postgresDb }}
  ## try compressed here:
  if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip ]
@@ -44,4 +47,5 @@ fi
 {{ end }} 
 ##end of all databases
 
+rm -f /cre/database-busy.txt
 echo "Database backup finished"

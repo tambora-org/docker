@@ -13,6 +13,8 @@ do
  sleep 2;
 done
 
+touch /cre/database-busy.txt
+
 {{ $rootPassword := or $CurrentContainer.Env.POSTGRES_ROOT_PWD "_secret_" }}
 
 {{ range $postgresDb, $containers := groupByMulti $ "Env.POSTGRES_DB" "," }}
@@ -94,5 +96,7 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -c "GRANT ALL PRIV
 ##end of all containers
 {{ end }} 
 ##end of all databases
+
+rm -f /cre/database-busy.txt
 
 echo "Database setup finished"
