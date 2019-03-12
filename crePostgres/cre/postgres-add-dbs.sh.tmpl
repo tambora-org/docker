@@ -60,13 +60,13 @@ else
 fi
 
 ## if init sql file exists import data
-{{ if (exists "/cre/postgres/{{ $postgresDb }}.init.sql") }}
-if [ -e /cre/postgres/{{ $postgresDb }}.init.sql ]
+{{ if (exists "/cre/postgres/dumps/{{ $postgresDb }}/database.init.dump") }}
+if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ]
 then
    echo "Initialize datebase by file: {{ $postgresDb }}"
-   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/postgres/{{ $postgresDb }}.init.sql  
+   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump  
    # gunzip -c /cre/postgres/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
-   mv /cre/postgres/{{ $postgresDb }}.init.sql /cre/postgres/{{ $postgresDb }}.done.sql
+   mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump
 fi
 {{ end }}
 

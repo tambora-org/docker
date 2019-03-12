@@ -1,0 +1,47 @@
+#!/bin/bash 
+
+# Current Name : {{ $CurrentContainer.Name }}
+export TERM=xterm
+echo "postgres add databases:"
+POSTGRESQL_DATA=/var/lib/postgresql/${POSTGRES_VERSION}/main
+POSTGRESQL_BIN=/usr/lib/postgresql/${POSTGRES_VERSION}/bin
+sleep 5
+
+until ${POSTGRESQL_BIN}/pg_isready -h localhost -p 5432 -U postgres
+do
+ echo "Waiting for local postgres"
+ sleep 2;
+done
+
+{{ range $postgresDb, $containers := groupByMulti $ "Env.POSTGRES_DB" "," }}
+##begin of all databases
+## backup db: {{ $postgresDb }}
+
+#check if database already exists?
+if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
+ echo "Database exists: {{ $postgresDb }}"
+ if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump ]
+ then
+   mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump
+ fi
+ pg_dump -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump {{ $postgresDb }}
+ ## try compressed here:
+ if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip ]
+ then
+   mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump.zip
+ fi
+ pg_dump -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+ ## end compressed
+
+ ## optionally copy dumpfile to other server (daily -> update)
+
+ ## later add reading of database.update.dump here 
+
+else
+ echo "Database missing: {{ $postgresDb }}"
+fi
+
+{{ end }} 
+##end of all databases
+
+echo "Database backup finished"

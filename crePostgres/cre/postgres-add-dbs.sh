@@ -1,3 +1,3 @@
 #!/bin/sh 
   
-echo "Mysql: No databases to add"
+echo "Postgres: No databases to add"
