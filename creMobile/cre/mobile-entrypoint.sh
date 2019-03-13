@@ -20,7 +20,7 @@ npm set init.license "Apache-2.0"
 ##npm install -g vue-template-compiler @vue/cli @vue/cli-service     # @ for 3.0 
 ##npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 
-npm install -g expo-cli
+npm install -g --unsafe expo-cli 
 npm install -g vue-native-cli
 #npm install -g react-native-cli
 

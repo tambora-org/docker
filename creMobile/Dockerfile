@@ -29,7 +29,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
-##WORKDIR "/cre/dev"
+WORKDIR "/cre/dev"
 
 ENTRYPOINT ["/cre/mobile-entrypoint.sh"]
 
