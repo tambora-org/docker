@@ -24,6 +24,8 @@ LABEL Name="QGIS for CRE" \
 
 RUN apt-get -y update
 RUN apt-get install -y -q --no-install-recommends qgis qgis-server python-qgis 
+RUN apt-get install -y -q --no-install-recommends qgis-mapserver
+RUN apt-get install -y -q --no-install-recommends spawn-fcgi
 ##qgis-plugin-grass
 
 
