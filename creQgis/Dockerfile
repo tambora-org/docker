@@ -23,7 +23,8 @@ LABEL Name="QGIS for CRE" \
 
 
 RUN apt-get -y update
-RUN apt-get install -y -q --no-install-recommends qgis qgis-server python-qgis qgis-plugin-grass
+RUN apt-get install -y -q --no-install-recommends qgis qgis-server python-qgis 
+##qgis-plugin-grass
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
