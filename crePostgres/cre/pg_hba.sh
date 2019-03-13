@@ -5,7 +5,7 @@ sleep 12
 until [ ! -e /cre/database-busy.txt ]
 do
  echo "Database is busy"
- sleep 2;
+ sleep 10;
 done
 
 if [ /cre/pg_hba.conf -nt /etc/postgresql/${POSTGRES_VERSION}/main/pg_hba.conf ]

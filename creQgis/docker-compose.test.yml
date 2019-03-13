@@ -1,0 +1,7 @@
+sut:
+  build: .
+  command: /cre/tests/qgis-test.sh
+  volumes:
+    - ./tests:/cre/tests
+
+

@@ -1,0 +1,33 @@
+# Adapted from https://github.com/qgis/QGIS-Web-Client
+# and https://github.com/opengisch/QGIS-Web-Client
+FROM tamboraorg/creubuntu:2011.0
+MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
+
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV INITRD No
+ENV QGIS_VERSION 2.14
+
+LABEL Name="QGIS for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$QGIS_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
+
+#RUN add-apt-repository ppa:ubuntugis/ppa
+##RUN echo "deb http://qgis.org/debian xenial main" >> /etc/apt/sources.list
+##RUN echo "deb-src http://qgis.org/debian xenial main" >> /etc/apt/sources.list
+
+
+RUN apt-get -y update
+RUN apt-get install -y -q --no-install-recommends qgis qgis-server python-qgis qgis-plugin-grass
+
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t creQgis \t $QGIS_VERSION" >> /cre/versions.txt  
+
+COPY cre /cre
+WORKDIR /cre/
