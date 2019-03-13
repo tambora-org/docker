@@ -34,3 +34,12 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 WORKDIR /cre/
+
+EXPOSE 9993
+
+#USER postgres
+
+#ENTRYPOINT ["/cre/postgres-entrypoint.sh"]
+
+CMD ["shoreman", "/cre/qgis-procfile"]
+
