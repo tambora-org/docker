@@ -1,7 +1,22 @@
 Still in prototype status
 
 
+https://vue-native.io/
+https://vue-native.io/getting-started.html
+https://github.com/GeekyAnts/KitchenSink-Vue-Native
+https://facebook.github.io/react-native/docs/getting-started.html
+https://docs.expo.io/versions/latest/introduction/installation/
+https://docs.expo.io/versions/latest/workflow/configuration/
+https://www.nativescript.org/vue
+
 Todo:
 =====
 
-...
+https://vue-native.io/docs/installation.html
+
+npm run android -> emulator...
+https://linoxide.com/ubuntu-how-to/install-android-sdk-manager-linux-ubuntu-16-04/
+
+https://www.thepolyglotdeveloper.com/2018/07/releasing-android-application-built-nativescript-vuejs/
+
+

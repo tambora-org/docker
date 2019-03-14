@@ -19,22 +19,28 @@ npm set init.license "Apache-2.0"
 ##npm install -g vue-template-compiler @vue/cli @vue/cli-service     # @ for 3.0 
 ##npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 
-npm install -g --unsafe expo-cli 
+npm install -g --unsafe expo-cli
+npm install -g react-native 
+## npm install nodejs-mobile-react-native --save
 npm install -g react-native-cli
 npm install -g create-react-native-app 
 npm install -g vue-native-cli
+## npm install -g yarn
 
 cd /cre/dev
 rm -Rf mobile-app # make sure directory does not exist
 #vue-native init mobile-app #interactive needs prompts, so use script with expect instead
 /cre/vue-native-init.sh mobile-app mApp
 
+cd /cre/dev/mobile-app
+npm install --save
+
+#npm i expo
+
 ## EXPO only...
 # expo init --non-interactive --template bare-minimum --name creApp creApp works....
 ##expo init demoProject --template blank --workflow managed
 
-
-cd /cre/dev/mobile-app
 
 ##npm install --save-dev @vue/web-component-wrapper 
 ##npm install --save-dev vue vue-router       #vue-vuex
