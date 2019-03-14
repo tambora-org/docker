@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 set -e 
 
-# /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
+/cre/vue-entrypoint.sh
 
-/cre/vue-entrypoint-cli.sh
-
-mkdir -p /cre/dev/mobile-app
+#mkdir -p /cre/dev/mobile-app # vue-native needs directory not existing yet
+mkdir -p /cre/dev
 cd /cre/dev
 
 ## npm set init.author.email "example-user@example.com"
@@ -21,12 +20,19 @@ npm set init.license "Apache-2.0"
 ##npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 
 npm install -g --unsafe expo-cli 
+npm install -g react-native-cli
+npm install -g create-react-native-app 
 npm install -g vue-native-cli
-#npm install -g react-native-cli
 
-# preset
 cd /cre/dev
-vue-native init mobile-app
+rm -Rf mobile-app # make sure directory does not exist
+#vue-native init mobile-app #interactive needs prompts, so use script with expect instead
+/cre/vue-native-init.sh mobile-app mApp
+
+## EXPO only...
+# expo init --non-interactive --template bare-minimum --name creApp creApp works....
+##expo init demoProject --template blank --workflow managed
+
 
 cd /cre/dev/mobile-app
 
