@@ -3,7 +3,13 @@ Still in prototype status
 
 Todo:
 =====
+
 Pipeline with webpack
 web components
 vue
+
+https://bootstrap-vue.js.org/docs/components/tabs/   #bootstrap components
+use or adapt react-native components for web as well?
+i.e. tabs:  https://github.com/spatie/vue-tabs-component  -> see implementation may use mechanism for webgeo-pages inside webgeo-module
+Which tabs to use? react-native, bootstrap, spatie, ... ???
 ...

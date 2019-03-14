@@ -14,12 +14,13 @@ npm set init.license "Apache-2.0"
 # https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory
 #npm init -y
 
-npm install -g n # can be used to update node
-n stable # update node
+### Try to move the following commands to Dockerfile...
+###npm install -g n # can be used to update node
+###n stable # update node
 
-npm install -g npm-add-script # -g needed; https://www.npmjs.com/package/npm-add-script 
-npm install -g vue-template-compiler @vue/cli @vue/cli-service     # @ for 3.0 
-npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
+###npm install -g npm-add-script # -g needed; https://www.npmjs.com/package/npm-add-script 
+###npm install -g vue-template-compiler @vue/cli @vue/cli-service     # @ for 3.0 
+###npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 
 # preset? ./vuerc
 vue create -d -f cre-components
