@@ -35,7 +35,7 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y apt-transport-https build-essential inotify-tools locales software-properties-common && \
+  apt-get install -y apt-transport-https build-essential inotify-tools locales software-properties-common expect && \
   apt-get install -y byobu curl git htop libzip4 zlib1g logrotate man pwgen sudo unzip vim wget && \
   apt-get install -y libssh2-1 openssl openssh-server openssh-client && \
   rm -rf /var/lib/apt/lists/*
