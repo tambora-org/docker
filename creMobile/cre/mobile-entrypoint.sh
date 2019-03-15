@@ -19,13 +19,15 @@ npm set init.license "Apache-2.0"
 ##npm install -g vue-template-compiler @vue/cli @vue/cli-service     # @ for 3.0 
 ##npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 
-npm install -g --unsafe expo-cli
-npm install -g react-native 
-## npm install nodejs-mobile-react-native --save
-npm install -g react-native-cli
-npm install -g create-react-native-app 
-npm install -g vue-native-cli
-## npm install -g yarn
+### MOVE tO DOckerfile
+###npm install -g --unsafe expo-cli
+###npm install -g react-native 
+### ## npm install nodejs-mobile-react-native --save
+###npm install -g react-native-cli
+###npm install -g create-react-native-app 
+###npm install -g vue-native-cli
+### ## npm install -g yarn
+### END MOVE
 
 cd /cre/dev
 rm -Rf mobile-app # make sure directory does not exist
