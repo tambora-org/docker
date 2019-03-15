@@ -43,8 +43,8 @@ cd /cre/dev/cre-components
 echo "Build web component '$kebabcase' from $filename"
 vue-cli-service build --target wc --name $kebabcase ./src/$camelcase.js
 
-## results:  /cre/dev/cre-components/dist/my-custom-element.js  &  my-custom-element.min.js
-#copy to /cre/web-component/*.js
+## results:  /cre/dev/cre-components/dist/my-custom-element.js  &  my-custom-element.min.js & js.map
+cp /cre/dev/cre-components/dist/{$kebabcase}.* /cre/web-component/
 #collect all into single file
 
 

@@ -10,11 +10,11 @@ if [ ! -f /cre/vue-procfile ]; then
     exit 1
 fi
 
-##isInFile=$(cat /cre/versions.txt | grep -c "npm")
-##if [ $isInFile -eq 0 ]; then
-##    echo "[FAIL]: Php not installed!"
-##    exit 1
-##fi
+isInFile=$(cat /cre/versions.txt | grep -c "npm")
+if [ $isInFile -eq 0 ]; then
+    echo "[FAIL]: npm not installed!"
+    exit 1
+fi
 
 ##isInFile=$(cat /cre/versions.txt | grep -cP "PHP $PHP_VERSION")
 ##if [ $isInFile -eq 0 ]; then
@@ -22,10 +22,29 @@ fi
 ##    #exit 1
 ##fi
 
+/cre/watch-vue-components.sh
 
-sleep 2
+sleep 20
 
-#Do some fancy tests....?
+if [ ! -f /cre/web-component/my-custom-element.min.js ]; then
+    echo "[FAIL]: File /cre/web-component/my-custom-element.min.js not found!"
+    exit 1
+fi
+
+if [ ! -f /cre/web-component/my-custom-element.js ]; then
+    echo "[FAIL]: File /cre/web-component/my-custom-element.js not found!"
+    exit 1
+fi
+
+if [ ! -f /cre/web-component/my-custom-element.min.js.map ]; then
+    echo "[FAIL]: File /cre/web-component/my-custom-element.min.js.map not found!"
+    exit 1
+fi
+
+if [ ! -f /cre/web-component/my-custom-element.js.map ]; then
+    echo "[FAIL]: File /cre/web-component/my-custom-element.js.map not found!"
+    exit 1
+fi
 
 echo "[SUCCESS]"
 exit 0
