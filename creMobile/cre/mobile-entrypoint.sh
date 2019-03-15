@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e 
 
-/cre/vue-entrypoint.sh
+## /cre/vue-entrypoint.sh ## needed?
 
 #mkdir -p /cre/dev/mobile-app # vue-native needs directory not existing yet
 mkdir -p /cre/dev
