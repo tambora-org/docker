@@ -28,7 +28,8 @@ LABEL Name="Mobile for CRE" \
 
 
 RUN npm install -g --unsafe expo-cli
-RUN npm install -g react react-native react-native-cli
+RUN npm install -g react 
+RUN npm install -g react-native react-native-cli
 ## npm install nodejs-mobile-react-native --save
 RUN npm install -g create-react-native-app 
 RUN npm install -g vue-native-cli
@@ -36,9 +37,9 @@ RUN npm install -g vue-native-cli
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creMobile \t ${MOBILE_VERSION}" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  expo \t ${expo --version}" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  expo \t ${vue-native --version}" >> /cre/versions.txt && \
-    echo "$(date +'%F %R') \t  expo \t ${react-native --version  | grep react-native-cli}" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t  expo \t $(expo --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  vue-native \t $(vue-native --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  react-native \t $(react-native --version  | grep react-native-cli)" >> /cre/versions.txt 
 
 COPY cre /cre
 
