@@ -46,6 +46,10 @@ RUN npm install -g npm-add-script
 RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
 RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 
+RUN mkdir -p /cre && touch /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  vue \t $(vue --version)" >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  typescript \t $(tsc -v)" >> /cre/versions.txt 
+
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 
 # Open up fcgi port 
