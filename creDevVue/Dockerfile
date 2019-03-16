@@ -41,7 +41,7 @@ RUN npm install -g n
 RUN n stable # update node
 
 # -g needed; https://www.npmjs.com/package/npm-add-script
-RUN npm install -g typescript 
+RUN npm install -g typescript webpack
 RUN npm install -g npm-add-script  
 RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
 RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
