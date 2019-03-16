@@ -21,6 +21,11 @@ rm -Rf mobile-app # make sure directory does not exist
 /cre/vue-native-init.sh mobile-app mApp
 
 cd /cre/dev/mobile-app
+
+npm link react 
+npm link react-native
+#npm link webpack
+
 npm install --save
 
 #npm i expo
