@@ -44,7 +44,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ rc main" | tee /etc/apt/sources.list.d/yarn.list 
 RUN apt-get update && apt-get install yarn && apt-get clean
-#RUN apt-get update && apt-get install npm && apt-get clean  ## included in nodejs
+#RUN apt-get update && apt-get install npm nodejs-legacy && apt-get clean
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
