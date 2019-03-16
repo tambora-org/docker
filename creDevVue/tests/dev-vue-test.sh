@@ -26,23 +26,23 @@ fi
 
 sleep 20
 
-if [ ! -f /cre/web-component/my-custom-element.min.js ]; then
-    echo "[FAIL]: File /cre/web-component/my-custom-element.min.js not found!"
+if [ ! -f /cre/web-components/my-custom-element.min.js ]; then
+    echo "[FAIL]: File /cre/web-components/my-custom-element.min.js not found!"
     exit 1
 fi
 
-if [ ! -f /cre/web-component/my-custom-element.js ]; then
-    echo "[FAIL]: File /cre/web-component/my-custom-element.js not found!"
+if [ ! -f /cre/web-components/my-custom-element.js ]; then
+    echo "[FAIL]: File /cre/web-components/my-custom-element.js not found!"
     exit 1
 fi
 
-if [ ! -f /cre/web-component/my-custom-element.min.js.map ]; then
-    echo "[FAIL]: File /cre/web-component/my-custom-element.min.js.map not found!"
+if [ ! -f /cre/web-components/my-custom-element.min.js.map ]; then
+    echo "[FAIL]: File /cre/web-components/my-custom-element.min.js.map not found!"
     exit 1
 fi
 
-if [ ! -f /cre/web-component/my-custom-element.js.map ]; then
-    echo "[FAIL]: File /cre/web-component/my-custom-element.js.map not found!"
+if [ ! -f /cre/web-components/my-custom-element.js.map ]; then
+    echo "[FAIL]: File /cre/web-components/my-custom-element.js.map not found!"
     exit 1
 fi
 
