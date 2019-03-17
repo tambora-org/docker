@@ -24,8 +24,7 @@ LABEL Name="Mobile for CRE" \
 
 # https://medium.com/@aguidrevitch/when-installation-of-global-package-using-npm-inside-docker-fails-b551b5dda389
 # Dockerfile sometimes run npm as nobody.
-##RUN npm -g config set user root
-
+RUN npm -g config set user root 
 
 RUN npm install -g --unsafe expo-cli
 RUN npm install -g react 

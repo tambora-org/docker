@@ -34,7 +34,7 @@ WORKDIR "/cre/dev"
 
 # https://medium.com/@aguidrevitch/when-installation-of-global-package-using-npm-inside-docker-fails-b551b5dda389
 # Dockerfile sometimes run npm as nobody.
-##RUN npm -g config set user root
+RUN npm -g config set user root 
 
 # can be used to update node
 RUN npm install -g n 
