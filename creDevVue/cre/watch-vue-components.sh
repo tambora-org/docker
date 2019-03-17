@@ -22,7 +22,14 @@ while true; do
   inotifywait -mrq -e create -e modify -e moved_to --exclude 'docker-gen.*' --format %w%f $watch_path | while read FILE
   do
     echo "[WATCH]: File recognized: $FILE"
+    if [ -e $watch_path/watch_once.txt ]; then
+      mv $watch_path/watch_once.txt $watch_path/break_watch.txt
+    fi
     /cre/prepare-web-component.sh $FILE &
   done
+  if [ -e $watch_path/break_watch.txt ]; then
+    sleep 10
+    break
+  fi
 done
 
