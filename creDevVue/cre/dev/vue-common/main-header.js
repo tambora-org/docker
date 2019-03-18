@@ -1,3 +1,5 @@
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "Vue|wrap" }]*/
+
 import Vue from 'vue';
 import wrap from '@vue/web-component-wrapper';
 

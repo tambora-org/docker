@@ -22,7 +22,6 @@ fi
 ##    #exit 1
 ##fi
 
-touch /cre/vue-components/watch_once.txt
 /cre/watch-vue-components.sh &
 
 sleep 20
