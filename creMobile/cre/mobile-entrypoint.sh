@@ -24,6 +24,7 @@ cd /cre/dev/mobile-app
 
 npm link react 
 npm link react-native
+chmod -R 777 /cre/dev/mobile-app/react-native  
 #npm link webpack
 
 npm install --save
