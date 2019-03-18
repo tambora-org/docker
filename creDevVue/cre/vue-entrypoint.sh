@@ -20,5 +20,6 @@ vue create -d -f cre-components
 cd /cre/dev/cre-components
 
 npm install --save-dev @vue/web-component-wrapper 
+npm-install-peers
 
 exec "$@"

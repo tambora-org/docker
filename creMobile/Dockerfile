@@ -32,6 +32,8 @@ RUN npm install -g create-react-native-app
 RUN npm install -g vue-native-cli
 ## npm install -g yarn
 
+#npm-install-peers
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creMobile \t ${MOBILE_VERSION}" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  expo \t $(expo --version)" >> /cre/versions.txt && \

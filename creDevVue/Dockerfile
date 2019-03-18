@@ -43,6 +43,7 @@ RUN npm -g config set user root
 # can be used to update node
 RUN npm install -g n 
 RUN n stable # update node
+RUN npm install -g npm-install-peers
 
 # -g needed; https://www.npmjs.com/package/npm-add-script
 RUN npm install -g typescript ajv webpack

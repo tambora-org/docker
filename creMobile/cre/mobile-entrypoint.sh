@@ -22,9 +22,12 @@ rm -Rf mobile-app # make sure directory does not exist
 
 cd /cre/dev/mobile-app
 
-npm link react 
-npm link react-native
-chmod -R 777 /cre/dev/mobile-app/react-native  
+npm-install-peers
+
+##npm link react 
+##npm link react-native
+##chmod -R 777 /cre/dev/mobile-app/react-native  
+
 #npm link webpack
 
 npm install --save
