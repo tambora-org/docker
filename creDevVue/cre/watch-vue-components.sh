@@ -27,9 +27,9 @@ while true; do
     fi
     /cre/prepare-web-component.sh $FILE &
   done
-  if [ -e $watch_path/break_watch.txt ]; then
-    sleep 10
-    break
-  fi
+#  if [ -e $watch_path/break_watch.txt ]; then
+#    sleep 10
+#    break
+#  fi
 done
 
