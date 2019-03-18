@@ -20,6 +20,7 @@ LABEL Name="Mobile for CRE" \
 # https://medium.com/@aguidrevitch/when-installation-of-global-package-using-npm-inside-docker-fails-b551b5dda389
 # Dockerfile sometimes run npm as nobody.
 ENV NPM_CONFIG_PREFIX=/cre/node/.npm-global
+ENV PATH=$PATH:/cre/node/.npm-global/bin
 RUN mkdir -p /cre/node/.npm-global
 RUN npm -g config set user root 
 
