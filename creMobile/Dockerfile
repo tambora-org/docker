@@ -17,13 +17,10 @@ LABEL Name="Mobile for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-# Install nodejs
-##RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-##    apt-get install -y nodejs 
-#RUN apt-get update && apt-get install npm && apt-get clean ## included in nodejs
-
 # https://medium.com/@aguidrevitch/when-installation-of-global-package-using-npm-inside-docker-fails-b551b5dda389
 # Dockerfile sometimes run npm as nobody.
+ENV NPM_CONFIG_PREFIX=/cre/node/.npm-global
+RUN mkdir -p /cre/node/.npm-global
 RUN npm -g config set user root 
 
 RUN npm install -g --unsafe expo-cli
