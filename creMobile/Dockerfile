@@ -50,5 +50,7 @@ WORKDIR "/cre/dev/cre-app"
 
 # Open up fcgi port 
 #EXPOSE 8080
+EXPOSE 19001
+EXPOSE 19002
 
 CMD ["shoreman", "/cre/mobile-procfile"]
