@@ -3,4 +3,9 @@ Still in prototype status
 Todo:
 =====
 * Mail: connect with ssmtp from php
+* https://www.exim.org/exim-html-current/doc/html/spec_html/ch-the_exim_command_line.html
+* https://help.directadmin.com/item.php?id=112
+* https://www.exim.org/exim-html-current/doc/html/spec_html/ch-how_exim_receives_and_delivers_mail.html
+* https://technpol.wordpress.com/2013/03/09/part-three-configuring-exim-to-accept-and-deliver-mail-and-for-secure-outbound-smtp-mail/
+
 

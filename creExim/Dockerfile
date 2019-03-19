@@ -28,9 +28,8 @@ RUN set -ex; \
     apt-get clean
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
-    echo "$(date +'%F %R') \t crePhp \t $EXIM_VERSION " >> /cre/versions.txt 
-## && \
-## echo "$(date +'%F %R') \t  $(exim -v)" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t crePhp \t $EXIM_VERSION " >> /cre/versions.txt && \
+    echo "$(date +'%F %R') \t  $(exim --version)" >> /cre/versions.txt 
 
 # File permissions workaround
 # RUN usermod -u 1000 www-data
