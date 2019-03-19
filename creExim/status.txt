@@ -1,0 +1,6 @@
+Still in prototype status
+
+Todo:
+=====
+* Mail: connect with ssmtp from php
+
