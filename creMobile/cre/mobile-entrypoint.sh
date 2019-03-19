@@ -3,7 +3,7 @@ set -e
 
 ## /cre/vue-entrypoint.sh ## needed?
 
-#mkdir -p /cre/dev/mobile-app # vue-native needs directory not existing yet
+#mkdir -p /cre/dev/cre-app # vue-native needs directory not existing yet
 mkdir -p /cre/dev
 cd /cre/dev
 
@@ -16,17 +16,17 @@ npm set init.license "Apache-2.0"
 # https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory
 #npm init -y
 
-rm -Rf mobile-app # make sure directory does not exist
-#vue-native init mobile-app #interactive needs prompts, so use script with expect instead
-/cre/vue-native-init.sh mobile-app mApp
+rm -Rf cre-app # make sure directory does not exist
+#vue-native init cre-app #interactive needs prompts, so use script with expect instead
+/cre/vue-native-init.sh cre-app creApp
 
-cd /cre/dev/mobile-app
+cd /cre/dev/cre-app
 
 npm-install-peers
 
 ##npm link react 
 ##npm link react-native
-##chmod -R 777 /cre/dev/mobile-app/react-native  
+##chmod -R 777 /cre/dev/cre-app/react-native  
 
 #npm link webpack
 

@@ -17,6 +17,11 @@ https://vue-native.io/docs/installation.html
 npm run android -> emulator...
 https://linoxide.com/ubuntu-how-to/install-android-sdk-manager-linux-ubuntu-16-04/
 
+"internal" publishing 
+https://docs.expo.io/versions/v32.0.0/workflow/publishing/
+
+"official" publishing
+
 https://www.thepolyglotdeveloper.com/2018/07/releasing-android-application-built-nativescript-vuejs/
 
 

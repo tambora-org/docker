@@ -5,7 +5,13 @@ if [ ! -f /cre/versions.txt ]; then
     exit 1
 fi
 
-sleep 2
+npm start -no-interactive &
+sleep 20
+
+if [ ! -f /cre/dev/cre-app/app.json ]; then
+    echo "[FAIL]: File /cre/dev/mobile-app/app.json not found!"
+    exit 1
+fi
 
 #Do some fancy tests....?
 

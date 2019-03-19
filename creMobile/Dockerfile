@@ -10,7 +10,7 @@ ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV MOBILE_VERSION 0.0
 
-LABEL Name="Mobile for CRE" \
+LABEL Name="Mobile App for CRE" \
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$MOBILE_VERSION \
@@ -43,9 +43,10 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
-WORKDIR "/cre/dev"
 
 ENTRYPOINT ["/cre/mobile-entrypoint.sh"]
+
+WORKDIR "/cre/dev/cre-app"
 
 # Open up fcgi port 
 #EXPOSE 8080
