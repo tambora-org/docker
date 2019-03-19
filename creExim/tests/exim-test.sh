@@ -1,3 +1,5 @@
+#!/bin/sh 
+
 sleep 2
 
 if [ ! -f /cre/versions.txt ]; then
