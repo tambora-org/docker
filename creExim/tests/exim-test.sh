@@ -7,7 +7,7 @@ if [ ! -f /cre/versions.txt ]; then
     exit 1
 fi
 
-if [ ! -f /cre/php-procfile ]; then
+if [ ! -f /cre/exim-procfile ]; then
     echo "[FAIL]: File /cre/exim-procfile not found!"
     exit 1
 fi
