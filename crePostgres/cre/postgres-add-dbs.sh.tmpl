@@ -91,6 +91,11 @@ fi
 ## grant access for user to table
 ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "GRANT ALL PRIVILEGES ON DATABASE {{$postgresDb}} TO \"$postgres_user\" "
 
+## MISSING!!
+## GRANT USAGE ON SCHEMA locating TO user
+## GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA locating TO user
+## GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA locating TO user
+
 {{ end }} 
 ##end of all containers
 {{ end }} 

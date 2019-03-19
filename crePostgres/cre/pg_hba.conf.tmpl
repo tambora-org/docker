@@ -10,11 +10,15 @@ host 	 all 	 postgres 	 all 	 md5
 {{ range $postgresDb, $containers := groupByMulti $ "Env.POSTGRES_DB" "," }}
 ## add db: {{ $postgresDb }}
 {{ range $index, $container := $containers }}
-{{ if $container.Env.POSTGRES_USER }}
+ {{ if $container.Env.POSTGRES_USER }}
+  {{ if $container.Env.POSTGRES_EXT }}
+host 	 {{ $postgresDb }} 	 {{ $container.Env.POSTGRES_USER }} 	 all 	 md5
+  {{ else }}
 host 	 {{ $postgresDb }} 	 {{ $container.Env.POSTGRES_USER }} 	 samenet 	 md5
-{{ else }}
+  {{ end }}
+ {{ else }}
 host 	 {{ $postgresDb }} 	 all 	 samenet 	 md5
-{{ end }}
+ {{ end }}
 {{ end }} 
 ##end of all containers
 {{ end }} 
