@@ -1,0 +1,2 @@
+update: watch -n 600007 /cre/exim-weekly.sh
+start: /cre/run.sh
