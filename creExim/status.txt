@@ -8,4 +8,6 @@ Todo:
 * https://www.exim.org/exim-html-current/doc/html/spec_html/ch-how_exim_receives_and_delivers_mail.html
 * https://technpol.wordpress.com/2013/03/09/part-three-configuring-exim-to-accept-and-deliver-mail-and-for-secure-outbound-smtp-mail/
 
+* https://docs.nginx.com/nginx/admin-guide/mail-proxy/mail-proxy/
+* 
 

@@ -22,10 +22,9 @@ LABEL Name="Exim for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-# exim4-daemon-light
 RUN set -ex; \
     apt-get update; \
-    apt-get install -y postfix mailutils ; \
+    apt-get install -y exim4-daemon-light mailutils ; \
     apt-get clean
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
