@@ -24,7 +24,7 @@ LABEL Name="Exim for CRE" \
 
 RUN set -ex; \
     apt-get update; \
-    apt-get install -y exim4-daemon-light  mailutils ; \
+    apt-get install -y exim4-daemon-light postfix mailutils ; \
     apt-get clean
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
