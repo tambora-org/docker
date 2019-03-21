@@ -31,12 +31,12 @@ buildfile="/cre/dev/cre-components/src/components/$camelcase.vue"    # /cre/tmp/
 
 cp -f $filename $buildfile
 cp -f /cre/dev/vue-common/main-header.js $buildscript
-echo "import $camelcase from './components/$camelcase';"  >> $buildfile
-echo "const MyWebElement = wrap(Vue, $camelcase);" >> $buildfile
-echo "window.customElements.define('$kebabcase', MyWebElement);" >> $buildfile
+echo "import $camelcase from './components/$camelcase';"  >> $buildscript
+echo "const MyWebElement = wrap(Vue, $camelcase);" >> $buildscript
+echo "window.customElements.define('$kebabcase', MyWebElement);" >> $buildscript
 
 if [ -f $ownscript ]; then
-    cp -f $ownscript $buildfile
+    cp -f $ownscript $buildscript
 fi
 
 cd /cre/dev/cre-components
