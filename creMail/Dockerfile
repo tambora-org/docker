@@ -21,9 +21,8 @@ LABEL Name="Mail for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-RUN set -ex; \
-    apt-get update; \
-    apt-get install -y postfix mailutils ; \
+RUN apt-get update; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y postfix mailutils ; \
     apt-get clean
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
