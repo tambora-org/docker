@@ -15,6 +15,10 @@ fi
 for filename in $watch_path/*.vue; do
   /cre/prepare-web-component.sh $filename
 done
+#Copy all js
+for filename in $watch_path/*.js; do
+  /cre/prepare-web-component.sh $filename
+done
 
 #Then watch changes
 while true; do

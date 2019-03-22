@@ -16,18 +16,24 @@ if [ ! -f $filename ]; then
     exit 1
 fi
 
+if [ ! ${filename: -3} == ".js" ]; then
+  echo "[JS]: Only copy javascript file $filename"
+  cp $filename "/cre/dev/cre-components/src/components/$filename"
+  exit 0
+fi
+
 if [ ! ${filename: -4} == ".vue" ]; then
   echo "[FAIL]: Filename must end with *.vue"
   exit 1
 fi
 
-nakedname=$(echo "$filename" | rev | cut -f 2- -d '.' | rev)         # /cre/vue-component/MyComponent
-ownscript="$nakedname.js"                                            # /cre/vue-component/MyComponent.js
+nakedname=$(echo "$filename" | rev | cut -f 2- -d '.' | rev)         # /cre/vue-components/MyComponent
+ownscript="$nakedname.js"                                            # /cre/vue-components/MyComponent.js
 camelcase=$(basename "$nakedname")                                   # MyComponent      
 minuscase=$(echo $camelcase | sed 's/\(.\)\([A-Z]\)/\1-\2/g')        # My-Component
 kebabcase=$(echo $minuscase  | tr '[:upper:]' '[:lower:]')           # my-component 
-buildscript="/cre/dev/cre-components/src/$camelcase.js"              # /cre/tmp/dev/vue-component/src/MyComponent.js
-buildfile="/cre/dev/cre-components/src/components/$camelcase.vue"    # /cre/tmp/dev/vue-component/src/components/MyComponent.vue
+buildscript="/cre/dev/cre-components/src/$camelcase.js"              # /cre/dev/cre-components/src/MyComponent.js
+buildfile="/cre/dev/cre-components/src/components/$camelcase.vue"    # /cre/dev/cre-components/src/components/MyComponent.vue
 
 cp -f $filename $buildfile
 cp -f /cre/dev/vue-common/main-header.js $buildscript
