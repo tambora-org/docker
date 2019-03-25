@@ -16,7 +16,7 @@ if [ ! -f $filename ]; then
     exit 1
 fi
 
-if [ ! ${filename: -3} == ".js" ]; then
+if [ ${filename: -3} == ".js" ]; then
   echo "[JS]: Only copy javascript file $filename"
   cp $filename "/cre/dev/cre-components/src/components/$filename"
   exit 0
