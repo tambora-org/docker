@@ -27,6 +27,7 @@ while true; do
   do
     echo "[WATCH]: File recognized: $FILE"
     /cre/prepare-web-component.sh $FILE &
+    /cre/prepare-multiple-web-component.sh $FILE &
   done
 done
 
