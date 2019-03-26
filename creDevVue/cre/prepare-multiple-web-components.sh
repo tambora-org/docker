@@ -65,9 +65,10 @@ done
 
 cd /cre/dev/cre-components
 echo "Build web components in directory: $directory"
-vue-cli-service build --target wc --name AllMk ./src/all-mk.js   #target lib?
+## vue-cli-service build --target wc --name AllMk ./src/all-mk.js   #target lib?
+vue-cli-service build --target wc --name AllMk 'src/components/*.vue'
 vue-cli-service build --target wc-async --name AsyncMk 'src/components/*.vue'
-cp /cre/dev/cre-components/dist/all-mk.* /cre/web-components/
+cp /cre/dev/cre-components/dist/*.* /cre/web-components/
 
 ## https://cli.vuejs.org/guide/build-targets.html  -> Multiple & Bundle!
 
