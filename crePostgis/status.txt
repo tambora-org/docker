@@ -4,3 +4,4 @@ Still in prototype status
 Todo:
 =====
 available Versions are here:  /usr/share/postgresql/$POSTGRES_VERSION/extension/
+* Install more extensions (as i.e. needed for regmod)

@@ -1,8 +1,7 @@
 Still in prototype status
 
-
 Todo:
 =====
 * Adapt proxy for local usage and testing
-* Real certbot for production.... (test mode in the moment)
+* certbot for domain only not working for i.e. clim-ability.eu 
 * maybe optionally use cloudflare

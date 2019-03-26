@@ -3,6 +3,7 @@ Still in prototype status
 Todo:
 =====
 * Access rights GRANT for user not enough (i.e. Schema) - i.e. tambora
+* dump directory?
 * Daily dump - Permission of directory cre/postgres/dump/db/....
 * Check init db
 * Citus

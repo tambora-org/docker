@@ -26,9 +26,9 @@ fi
 # use --staging for development and during implementation - works not for localhost / use openssl instead
 # staging does not work with Strict-Transport-Security - see proxy.tmpl
 {{ if $CurrentContainer.Env.CRE_DEVELOPMENT }}
-certbot --staging --noninteractive --nginx --agree-tos -m admion@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+certbot --staging --noninteractive --nginx --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
 {{ else }}
-certbot --noninteractive --nginx --agree-tos -m admion@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+certbot --noninteractive --nginx --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
 {{end}}
 
 
@@ -40,6 +40,7 @@ certbot --noninteractive --nginx --agree-tos -m admion@{{ $CurrentDomain }} --do
 # {{ $host }}
 
 # use --staging for development and during implementation - works not for localhost / use openssl instead
+## TODO: domain only does only work if domain is really mapped - i.e. does not work for clim-ability.eu....
 {{ if $CurrentContainer.Env.CRE_DEVELOPMENT }}
 certbot --staging --noninteractive --nginx --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
 {{ else }}
