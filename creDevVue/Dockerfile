@@ -22,7 +22,7 @@ COPY cre /cre
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
 WORKDIR "/cre/dev"
 
-RUN npm install -g typescript ajv webpack
+RUN npm install -g typescript ajv webpack core-js@3 #or 2
 RUN npm install -g npm-add-script  
 RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
 RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
