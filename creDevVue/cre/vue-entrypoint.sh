@@ -23,7 +23,7 @@ npm install --save-dev @vue/web-component-wrapper
 npm install --save-dev @babel/plugin-transform-runtime
 npm install --save @babel/runtime
 npm install --save core-js@3
-//npm install --save-dev core-js/modules/es6.function.name core-js/modules/es6.regexp.replace
+#npm install --save-dev core-js/modules/es6.function.name core-js/modules/es6.regexp.replace
 npm-install-peers
 
 exec "$@"
