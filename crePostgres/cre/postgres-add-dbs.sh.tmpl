@@ -93,11 +93,11 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "GRANT ALL PRIV
 
 ## handle all schemes in db
 pg_schemes=$(${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres --dbname={{$postgresDb}} -c "\dn")
-postgres_schemes=$(echo "$pg_schemes" | head -n -2 | tail -n +4 | | cut -d '|' -f 1 | tr -d ' ')
-echo "postgres_schemes" | while read -r scheme; do
+postgres_schemes=$(echo "$pg_schemes" | head -n -2 | tail -n +4 | cut -d '|' -f 1 | tr -d ' ')
+echo "$postgres_schemes" | while read -r scheme; do
   echo "Adapt privileges for scheme $scheme in database {{ $postgresDb }}" 
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres --dbname="{{$postgresDb}}" -c "GRANT USAGE ON SCHEMA $scheme TO \"$postgres_user\" "
-  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres --dbname="{{$postgresDb}}" -c "ALL PRIVILEGES ON ALL TABLES IN SCHEMA $scheme TO \"$postgres_user\" "
+  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres --dbname="{{$postgresDb}}" -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA $scheme TO \"$postgres_user\" "
   ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres --dbname="{{$postgresDb}}" -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA $scheme TO \"$postgres_user\" "
 done
 
