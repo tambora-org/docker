@@ -1,0 +1,7 @@
+## RewriteEngine On
+## Redirect 301 /alter-pfad/ http://www.domain.de/neuer-pfad/
+## ---
+# location /alter-pfad/ {
+#   rewrite ^(.*)$ http://www.domain.de/neuer-pfad/ redirect;
+# }
+## ---
