@@ -12,7 +12,9 @@ then
 fi
 
 # allow redirection
-cp -f /cre/$CRE_PHP_ROOT/*.conf.redirect /etc/nginx/conf.d/
+for file in /cre/$CRE_PHP_ROOT/*.conf.redirect; do
+  if [ -f "$file" ]; then cp -f $file /etc/nginx/conf.d/ ; fi
+done
 
 cp -f /cre/db-test.php "/cre/$CRE_PHP_ROOT/db-test.php"
 cp -f /cre/info.php "/cre/$CRE_PHP_ROOT/info.php"
