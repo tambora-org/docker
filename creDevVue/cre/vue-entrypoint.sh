@@ -22,10 +22,11 @@ cd /cre/dev/cre-components
 npm install --save-dev @vue/web-component-wrapper 
 npm install --save-dev @babel/plugin-transform-runtime
 npm install --save @babel/runtime
-npm install --save core-js@3
+npm install --save core-js@2
+##npm install --save core-js@3
 #npm install --save core-js/modules/es6.function.name 
-npm install --save core-js/modules/es6.regexp.replace 
-npm install --save core-js/modules/web.dom.iterable
+#npm install --save core-js/modules/es6.regexp.replace 
+#npm install --save core-js/modules/web.dom.iterable
 
 npm-install-peers
 
