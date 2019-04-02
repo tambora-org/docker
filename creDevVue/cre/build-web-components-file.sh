@@ -54,4 +54,3 @@ vue-cli-service build --target wc --name $kebabcase ./src/$camelcase.js
 cp /cre/dev/cre-components/dist/$kebabcase.* $dest_path
 
 
-

@@ -14,6 +14,7 @@ fi
 #Initially once do for all subdirectories
 find $root_path -maxdepth 5 -type d -print0 | while IFS= read -rd '' wc_path; do 
   /cre/build-web-components-directory.sh $wc_path $root_path
+  sleep 0.0137
 done
 /cre/build-web-components-directory.sh $root_path $root_path
 
@@ -24,6 +25,7 @@ while true; do
   do
     echo "[WATCH]: File recognized: $wc_file"
     /cre/handle-web-components-file.sh $wc_file $root_path &
+    sleep 0.0137
   done
 done
 
