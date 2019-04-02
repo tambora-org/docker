@@ -1,8 +1,5 @@
 #!/bin/bash 
 
-# Use docker-gen to create the template file
-# First parameter is file name (with path)
-# Created file is same, but without *.tmpl extension
 
 if [[ -z "$1" ]]; then
     echo "[FAIL]: No filename given !"
@@ -27,7 +24,7 @@ camelcase=$(basename "$nakedname")                                   # MyCompone
 buildfile="/cre/dev/cre-components/src/components/$camelcase.vue"    # /cre/dev/cre-components/src/components/MyComponent.vue
 
 if [ ${filename: -4} == ".vue" ]; then
-  echo "[VUE]: Filename must end with *.vue"
+  echo "[VUE]: Copy vue file $filename"
   cp -f $filename $buildfile
 fi
 
@@ -67,6 +64,7 @@ cd /cre/dev/cre-components
 echo "Build web components in directory: $directory"
 ## vue-cli-service build --target wc --name AllMk ./src/all-mk.js   #target lib?
 vue-cli-service build --target wc --name AllMk 'src/components/*.vue'
+cp /cre/dev/cre-components/dist/*.* /cre/web-components/
 vue-cli-service build --target wc-async --name AsyncMk 'src/components/*.vue'
 cp /cre/dev/cre-components/dist/*.* /cre/web-components/
 
