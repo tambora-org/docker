@@ -26,8 +26,11 @@ root_path=$2
 #
 subdir_path=${wc_path#"$root_path"}
 dst_path="/cre/web-components/$subdir_path"
-last_path=$(echo "$wc_path" | rev | cut -f 1 -d '/' | rev)
-wc_name=$(echo "cre-$last_path"  | tr '[:upper:]' '[:lower:]')
+wc_name="wc-main"
+if [[ ! -z "$subdir_path" ]]; then
+  last_path=$(echo "$dst_path" | rev | cut -f 1 -d '/' | rev)
+  wc_name=$(echo "wc-$last_path"  | tr '[:upper:]' '[:lower:]')
+fi
 
 # wait till untouched
 until [ ! -e /cre/web-components-build-busy.txt ]
@@ -42,16 +45,11 @@ touch /cre/web-components-build-busy.txt
 ##rm -rf /cre/dev/cre-components/src/components/* 
 rm -rf /cre/dev/cre-components/src/* 
 mkdir -p /cre/dev/cre-components/src/components
-# then copy files (may add more types)
-cp $wc_path/*.js  /cre/dev/cre-components/src/components/
-cp $wc_path/*.vue /cre/dev/cre-components/src/components/
-
-#for filename in $wc_path/*.js; do
-#  cp $filename "/cre/dev/cre-components/src/components/$(basename $filename)" 
-#done
-#for filename in $wc_path/*.vue; do
-#  cp $filename "/cre/dev/cre-components/src/components/$(basename $filename)" 
-#done
+# then copy local files and those in subdirs (may add more types)
+find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path; do 
+  cp $subdir_path/*.js  /cre/dev/cre-components/src/components/
+  cp $subdir_path/*.vue /cre/dev/cre-components/src/components/
+done
 
 cd /cre/dev/cre-components
 echo "Build web components in sub-directory: $subdir_path"
@@ -64,6 +62,14 @@ rm -rf /cre/dev/cre-components/dist/*
 vue-cli-service build --target wc-async --name $wc_name 'src/components/*.vue'
 mkdir -p $dst_path/async
 cp -f /cre/dev/cre-components/dist/*.* $dst_path/async/
+
+
+#build single files (in local dir only)
+rm -rf /cre/dev/cre-components/src/* 
+mkdir -p /cre/dev/cre-components/src/components
+# then copy files (may add more types)
+cp $wc_path/*.js  /cre/dev/cre-components/src/components/
+cp $wc_path/*.vue /cre/dev/cre-components/src/components/
 
 rm -rf /cre/dev/cre-components/dist/*
 mkdir -p $dst_path/single/
