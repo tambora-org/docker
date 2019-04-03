@@ -24,25 +24,27 @@ fi
 
 /cre/watch-vue-components.sh &
 
-sleep 20
+sleep 60
+
+echo "$(ls -l /cre/web-components/single)"
 
 if [ ! -f /cre/web-components/single/my-custom-element.min.js ]; then
-    echo "[FAIL]: File /cre/web-components/my-custom-element.min.js not found!"
+    echo "[FAIL]: File /cre/web-components/single/my-custom-element.min.js not found!"
     exit 0
 fi
 
 if [ ! -f /cre/web-components/single/my-custom-element.js ]; then
-    echo "[FAIL]: File /cre/web-components/my-custom-element.js not found!"
+    echo "[FAIL]: File /cre/web-components/single/my-custom-element.js not found!"
     exit 0
 fi
 
 if [ ! -f /cre/web-components/single/my-custom-element.min.js.map ]; then
-    echo "[FAIL]: File /cre/web-components/my-custom-element.min.js.map not found!"
+    echo "[FAIL]: File /cre/web-components/single/my-custom-element.min.js.map not found!"
     exit 0
 fi
 
 if [ ! -f /cre/web-components/single/my-custom-element.js.map ]; then
-    echo "[FAIL]: File /cre/web-components/my-custom-element.js.map not found!"
+    echo "[FAIL]: File /cre/web-components/single/my-custom-element.js.map not found!"
     exit 0
 fi
 
