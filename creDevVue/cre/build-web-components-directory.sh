@@ -51,6 +51,9 @@ find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path
   cp $subdir_path/*.vue /cre/dev/cre-components/src/components/
 done
 
+# Here comes a crazy workaround
+# vue-cli-service uses name for filename AND as components prefix
+# check if single file needs special handling?
 crazy_camel="PleaseRemoveMeAsSoonAsPossible"
 crazy_minus=$(echo $crazy_camel | sed 's/\(.\)\([A-Z]\)/\1-\2/g')        
 crazy_kebab=$(echo $crazy_minus  | tr '[:upper:]' '[:lower:]')    
@@ -59,13 +62,21 @@ cd /cre/dev/cre-components
 echo "Build web components in sub-directory: $subdir_path"
 rm -rf /cre/dev/cre-components/dist/*
 ##vue-cli-service build --target wc --name $wc_name 'src/components/*.vue'
-vue-cli-service build --target wc --name $crazy_camel 'src/components/*.vue'
+vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
+
+# sed -i -- 's/foo/bar/g' *.*
+# rename 's/old/new/' *.*
+
 mkdir -p $dst_path/sync
 cp -f /cre/dev/cre-components/dist/*.* $dst_path/sync/
 
 rm -rf /cre/dev/cre-components/dist/*
 ##vue-cli-service build --target wc-async --name $wc_name 'src/components/*.vue'
-vue-cli-service build --target wc-async --name $crazy_camel 'src/components/*.vue'
+vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
+
+# sed -i -- 's/foo/bar/g' *
+# rename 's/old/new/' *.*
+
 mkdir -p $dst_path/async
 cp -f /cre/dev/cre-components/dist/*.* $dst_path/async/
 
