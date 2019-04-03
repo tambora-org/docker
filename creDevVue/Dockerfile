@@ -20,7 +20,14 @@ LABEL Name="Vue Dev for CRE" \
 COPY cre /cre
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
-WORKDIR "/cre/dev"
+
+RUN npm set init.version "${CRE_VERSION}.0" 
+RUN npm set init.license "Apache-2.0" 
+# npm set init.author.email "example-user@example.com" 
+# npm set init.author.name "example_user" 
+# npm config set init.author.url http://iamsim.me/ 
+# https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory 
+
 
 RUN npm install -g typescript ajv webpack 
 #RUN npm install -g core-js@3 #or 2
@@ -36,14 +43,17 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 ## FROM entrypoint
 RUN mkdir -p /cre/dev/cre-components
 RUN cd /cre/dev
+
 RUN vue create -d -f cre-components
 RUN cd /cre/dev/cre-components
+RUN npm version "${CRE_VERSION}.0"
 RUN npm install --save-dev @vue/web-component-wrapper 
 RUN npm install --save-dev @babel/plugin-transform-runtime
 RUN npm install --save @babel/runtime
 RUN npm install --save core-js@2
 RUN npm-install-peers
 ##
+WORKDIR "/cre/dev/cre-components"
 
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 

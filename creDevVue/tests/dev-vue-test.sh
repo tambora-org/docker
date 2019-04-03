@@ -30,23 +30,26 @@ echo "$(ls -l /cre/web-components/single)"
 
 if [ ! -f /cre/web-components/single/my-custom-element.min.js ]; then
     echo "[FAIL]: File /cre/web-components/single/my-custom-element.min.js not found!"
-    exit 0
+    exit 1
 fi
 
 if [ ! -f /cre/web-components/single/my-custom-element.js ]; then
     echo "[FAIL]: File /cre/web-components/single/my-custom-element.js not found!"
-    exit 0
+    exit 1
 fi
 
 if [ ! -f /cre/web-components/single/my-custom-element.min.js.map ]; then
     echo "[FAIL]: File /cre/web-components/single/my-custom-element.min.js.map not found!"
-    exit 0
+    exit 1
 fi
 
 if [ ! -f /cre/web-components/single/my-custom-element.js.map ]; then
     echo "[FAIL]: File /cre/web-components/single/my-custom-element.js.map not found!"
-    exit 0
+    exit 1
 fi
+
+echo "$(ls -l /cre/web-components/sync)"
+echo "$(ls -l /cre/web-components/async)"
 
 echo "[SUCCESS]"
 exit 0
