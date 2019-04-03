@@ -33,6 +33,18 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t  vue \t $(vue --version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t  typescript \t $(tsc -v)" >> /cre/versions.txt 
 
+## FROM entrypoint
+RUN mkdir -p /cre/dev/cre-components
+RUN cd /cre/dev
+RUN vue create -d -f cre-components
+RUN cd /cre/dev/cre-components
+RUN npm install --save-dev @vue/web-component-wrapper 
+RUN npm install --save-dev @babel/plugin-transform-runtime
+RUN npm install --save @babel/runtime
+RUN npm install --save core-js@2
+RUN npm-install-peers
+##
+
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 
 # Open up fcgi port 
