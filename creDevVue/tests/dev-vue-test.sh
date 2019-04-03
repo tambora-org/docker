@@ -51,5 +51,11 @@ fi
 echo "$(ls -l /cre/web-components/sync)"
 echo "$(ls -l /cre/web-components/async)"
 
+echo "$(ls -l /cre/web-components/sub-components/single)"
+echo "$(ls -l /cre/web-components/sub-components/sync)"
+echo "$(ls -l /cre/web-components/sub-components/async)"
+
+#echo "$(ls -l /cre/dev/cre-components)"
+
 echo "[SUCCESS]"
 exit 0
