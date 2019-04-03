@@ -55,13 +55,13 @@ cd /cre/dev/cre-components
 echo "Build web components in sub-directory: $subdir_path"
 rm -rf /cre/dev/cre-components/dist/*
 ##vue-cli-service build --target wc --name $wc_name 'src/components/*.vue'
-vue-cli-service build --target wc 'src/components/*.vue'
+vue-cli-service build --target wc --name '' 'src/components/*.vue'
 mkdir -p $dst_path/sync
 cp -f /cre/dev/cre-components/dist/*.* $dst_path/sync/
 
 rm -rf /cre/dev/cre-components/dist/*
 ##vue-cli-service build --target wc-async --name $wc_name 'src/components/*.vue'
-vue-cli-service build --target wc-async 'src/components/*.vue'
+vue-cli-service build --target wc-async --name '' 'src/components/*.vue'
 mkdir -p $dst_path/async
 cp -f /cre/dev/cre-components/dist/*.* $dst_path/async/
 
