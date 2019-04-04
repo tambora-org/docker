@@ -32,7 +32,8 @@ counter=0
 #maybe more file types to be added 
 if [ ${filename: -3} == ".js" ] || [ ${filename: -4} == ".vue" ] ; then
   echo "[WC]: Detected modified file $filename"
-  until [ ! ${#wc_path} -lt ${#root_path} ]
+##  until [ ! ${#wc_path} -lt ${#root_path} ]
+  until [ ${#wc_path} -lt ${#root_path} ]
   do
     /cre/build-web-components-directory.sh $wc_path $root_path
     wc_path=$(dirname "$wc_path") 
