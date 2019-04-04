@@ -34,6 +34,7 @@ RUN npm install -g typescript ajv webpack
 RUN npm install -g npm-add-script  
 RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
 RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
+#RUN npm install --save-dev @babel/preset-env ## compatibility / useBuiltIns 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creVue \t ${VUE_VERSION}" >> /cre/versions.txt  && \
@@ -51,7 +52,9 @@ RUN npm install --save vue vuex
 RUN npm install --save-dev @vue/web-component-wrapper 
 RUN npm install --save-dev @babel/plugin-transform-runtime
 RUN npm install --save @babel/runtime
+RUN npm install --save es6-promise   # vuex
 RUN npm install --save core-js@2
+#RUN npm install --save babel-polyfill
 RUN npm-install-peers
 ##
 WORKDIR "/cre/dev/cre-components"
