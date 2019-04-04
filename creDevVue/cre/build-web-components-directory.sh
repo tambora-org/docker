@@ -64,6 +64,7 @@ rm -rf /cre/dev/cre-components/dist/*
 ##vue-cli-service build --target wc --name $wc_name 'src/components/*.vue'
 vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
 sed -i -e "s/${crazy_kebab}-//g" /cre/dev/cre-components/dist/*.*
+sed -i -e "s/${crazy_kebab}.js/${$wc_name}.js/g" /cre/dev/cre-components/dist/*.*
 rename "s/$crazy_kebab/$wc_name/" /cre/dev/cre-components/dist/*.*
 mkdir -p $dst_path/sync
 cp -f /cre/dev/cre-components/dist/*.* $dst_path/sync/
@@ -71,7 +72,8 @@ cp -f /cre/dev/cre-components/dist/*.* $dst_path/sync/
 rm -rf /cre/dev/cre-components/dist/*
 ##vue-cli-service build --target wc-async --name $wc_name 'src/components/*.vue'
 vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
-sed -i -e 's/${crazy_kebab}-//g' /cre/dev/cre-components/dist/*.*
+sed -i -e "s/${crazy_kebab}-//g" /cre/dev/cre-components/dist/*.*
+sed -i -e "s/${crazy_kebab}.js/${$wc_name}.js/g" /cre/dev/cre-components/dist/*.*
 rename "s/$crazy_kebab/$wc_name/" /cre/dev/cre-components/dist/*.*
 mkdir -p $dst_path/async
 cp -f /cre/dev/cre-components/dist/*.* $dst_path/async/

@@ -46,7 +46,8 @@ RUN cd /cre/dev
 
 RUN vue create -d -f cre-components
 RUN cd /cre/dev/cre-components
-##RUN npm version "${CRE_VERSION}.0"
+##RUN npm version "${CRE_VERSION}.0"  ## DOES NOT WORK
+RUN npm install --save vue vuex
 RUN npm install --save-dev @vue/web-component-wrapper 
 RUN npm install --save-dev @babel/plugin-transform-runtime
 RUN npm install --save @babel/runtime
