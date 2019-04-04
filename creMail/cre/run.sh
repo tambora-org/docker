@@ -2,9 +2,9 @@
 #postfix start
 #service postfix start
 
-#/sbin/service postfix start
+/sbin/service postfix start
 
-sleep 10000
+sleep 100000
 
 
 

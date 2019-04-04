@@ -1,2 +1,3 @@
-update: watch -n 600007 /cre/exim-weekly.sh
+main: /cre/gen-template.sh /cre/main.cf.tmpl /cre/main-cf.sh
+update: watch -n 600007 /cre/mail-weekly.sh
 start: /cre/run.sh
