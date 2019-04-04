@@ -4,6 +4,11 @@ Still in prototype status
 Todo:
 =====
 
+Add polyfills for compatibility reasons
+https://github.com/webcomponents/webcomponentsjs
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-loader.js"></script>
+   
+
 Version init with CRE_VERSION not working?
 
 Pipeline with webpack
@@ -15,4 +20,8 @@ use or adapt react-native components for web as well?
 i.e. tabs:  https://github.com/spatie/vue-tabs-component  -> see implementation may use mechanism for webgeo-pages inside webgeo-module
 Which tabs to use? react-native, bootstrap, spatie, ... ???
 ...
+
+https://github.com/vuejs/vue-cli/issues/2304
+https://stackoverflow.com/questions/53341395/how-can-i-use-vue-i18n-in-a-vue-web-component
+
 
