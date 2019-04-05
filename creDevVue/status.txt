@@ -25,3 +25,10 @@ https://github.com/vuejs/vue-cli/issues/2304
 https://stackoverflow.com/questions/53341395/how-can-i-use-vue-i18n-in-a-vue-web-component
 
 
+
+eventBus seems to work somehow.
+Try vuex
+Inject & Provide seems to fail.
+
+
+
