@@ -40,6 +40,11 @@ RUN npm install -g npm-install-peers
 ## npm config set init.author.url http://iamsim.me/
 RUN npm set init.version "${CRE_VERSION}.0"
 RUN npm set init.license "Apache-2.0"
+# npm set init.author.email "example-user@example.com" 
+# npm set init.author.name "example_user" 
+# npm config set init.author.url http://iamsim.me/ 
+# https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory 
+
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creNode \t ${NODE_VERSION}" >> /cre/versions.txt  && \
