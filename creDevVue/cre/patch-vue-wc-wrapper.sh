@@ -10,6 +10,7 @@ patchfile=$2
 functionname=$3
 
 if [ -f $jsfile ]; then
+  currentdir=$(pwd)
   nakedfile=$(echo "$jsfile" | rev | cut -f 2- -d '.' | rev)
   origfile="$nakedfile.orig.js"
   namefile=$(basename "$jsfile") 
@@ -18,6 +19,7 @@ if [ -f $jsfile ]; then
 
   mkdir -p $tempdir
   rm -rf $tempdir/* 
+  cd $tempdir
 
   cp -f $jsfile $origfile
   cp -f $jsfile $tempdir/$namefile
@@ -26,11 +28,13 @@ if [ -f $jsfile ]; then
   # xx00 & xx01
 
   if [ -f $tempdir/xx01 ]; then
-    echo $tempdir/xx00 > $tempdir/$namefile
-    echo $patchfile >> $tempdir/$namefile
-    echo $tempdir/xx01 >> $tempdir/$namefile
+    cat $tempdir/xx00 > $tempdir/$namefile
+    cat $patchfile >> $tempdir/$namefile
+    cat $tempdir/xx01 >> $tempdir/$namefile
     cp -f $tempdir/$namefile $jsfile
   fi
+  
+  cd $currentdir
 else
   echo "File to patch not found: $jsfile"  
 fi
