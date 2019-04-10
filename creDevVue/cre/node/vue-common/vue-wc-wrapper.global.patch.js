@@ -73,7 +73,7 @@ function toVNodes (h, children) {
 // hopefully only needed temporary
 function toVNode (h, node) {
   if (node.nodeType === 3) {
-    return node.data.trim() ? node.data : null
+    return node.data.trim() ? node : null
   } else if (node.nodeType === 1) {
     const slotName = node.getAttribute('slot')
     const data = {
@@ -215,7 +215,7 @@ function wrap (Vue, Component) {
           ));
           // ADD PATCHED
           if(wrapper.slotChildren.length > 0) {
-            wrapper.slotChildren.forEach((it) => {
+            wrapper.slotChildren.forEach(it => {
               it !== null && wrapper.$el.appendChild(it); 
              })
           } 

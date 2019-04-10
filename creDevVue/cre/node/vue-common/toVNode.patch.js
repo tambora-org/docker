@@ -3,7 +3,7 @@
 // hopefully only needed temporary
 function toVNode (h, node) {
   if (node.nodeType === 3) {
-    return node.data.trim() ? node.data : null
+    return node.data.trim() ? node : null
   } else if (node.nodeType === 1) {
     const slotName = node.getAttribute('slot')
     const data = {
