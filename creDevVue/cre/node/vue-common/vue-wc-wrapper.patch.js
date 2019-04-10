@@ -212,7 +212,7 @@ function wrap (Vue, Component) {
           ));
           // ADD PATCHED
           if(wrapper.slotChildren.length > 0) {
-            wrapper.slotChildren.forEach(it => {
+            wrapper.slotChildren.forEach((it) => {
               it !== null && wrapper.$el.appendChild(it); 
              })
           } 
