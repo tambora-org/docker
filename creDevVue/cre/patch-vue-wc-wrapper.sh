@@ -15,15 +15,14 @@ if [ -f $jsfile ]; then
   namefile=$(basename "$jsfile") 
   findstring="function $functionname ("
   replacestring="function ${functionname}Orig ("
-  splitstring="/function ${functionname}Orig (/"
 
   mkdir -p $tempdir
   rm -rf $tempdir/* 
 
   cp -f $jsfile $origfile
   cp -f $jsfile $tempdir/$namefile
-  sed -i -- "s/$findstring/replacestring/g" $tempdir/$namefile
-  csplit -s $tempdir/$namefile $splitstring
+  sed -i -- "s/$findstring/$replacestring/g" $tempdir/$namefile
+  csplit -s $tempdir/$namefile "/$replacestring/"
   # xx00 & xx01
 
   if [ -f $tempdir/xx01 ]; then
