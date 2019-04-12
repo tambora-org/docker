@@ -55,7 +55,8 @@ WORKDIR "/cre/node/cre-components"
 ## init once ??
 ##vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
 ## patch 
-RUN /cre/patch-vue-wc-wrapper.sh
+
+#RUN /cre/patch-vue-wc-wrapper.sh
 
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 
