@@ -69,6 +69,10 @@ function toVNodes (h, children) {
 // this function was changed to handle slot content
 // hopefully only needed temporary
 function toVNode (h, node) {
+  var backToNode = false;
+  if (backToNode) {
+    return node;
+  }
   if (node.nodeType === 3) {
     return node.data.trim() ? node : null
   } else if (node.nodeType === 1) {
@@ -80,7 +84,8 @@ function toVNode (h, node) {
       }
     };
     if (slotName) {
-      if (data.attrs.slot) {
+      var deleteAttr = true;
+      if (deleteAttr && data.attrs.slot) {
         data.slot = data.attrs.slot;
         delete data.attrs.slot;
       }
@@ -88,6 +93,26 @@ function toVNode (h, node) {
     } else {
       return node;
     }
+  } else {
+    return null
+  }
+}
+
+function toVNode2 (h, node) {
+  if (node.nodeType === 3) {
+    return node.data.trim() ? node.data : null
+  } else if (node.nodeType === 1) {
+    const data = {
+      attrs: getAttributes(node),
+      domProps: {
+        innerHTML: node.innerHTML
+      }
+    };
+    if (data.attrs.slot) {
+      data.slot = data.attrs.slot;
+      delete data.attrs.slot;
+    }
+    return h(node.tagName, data)
   } else {
     return null
   }
@@ -205,17 +230,30 @@ function wrap (Vue, Component) {
             hasChildrenChange = true;
           }
         }
+        var handleShadow = false;
         if (hasChildrenChange) {
+          if (handleShadow) {
           wrapper.slotChildren = Object.freeze(toVNodes(
             wrapper.$createElement,
-            this.childNodes
+            this.shadowRoot.childNodes
           ));
-          // ADD PATCHED
-          if(wrapper.slotChildren.length > 0) {
-            wrapper.slotChildren.forEach((it) => {
-              it !== null && wrapper.$el.appendChild(it); 
-             })
+          } else {
+          wrapper.slotChildren = Object.freeze(toVNodes(
+            wrapper.$createElement,
+            this.childNodes 
+          ));
           } 
+          // ADD PATCHED
+ 
+          var handleChildren = false;
+          if (handleChildren) {
+            if(wrapper.slotChildren.length > 0) {
+              wrapper.slotChildren.forEach((it) => {
+                it !== null && wrapper.$el.appendChild(it); 
+               })
+            } 
+          }
+
           // END PATCH
         }
       });
@@ -257,7 +295,8 @@ function wrap (Vue, Component) {
         // initialize children
         wrapper.slotChildren = Object.freeze(toVNodes(
           wrapper.$createElement,
-          this.childNodes
+          //this.childNodes // PATCH
+          this.shadowRoot.childNodes
         ));
         wrapper.$mount();
         this.shadowRoot.appendChild(wrapper.$el);
