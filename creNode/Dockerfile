@@ -34,6 +34,9 @@ RUN npm -g config set user root
 RUN npm install -g n 
 RUN n stable # update node
 RUN npm install -g npm-install-peers
+RUN npm install -g npm-add-script  
+RUN npm install -g set-version
+RUN npm install -g npm-get-version
 
 ## npm set init.author.email "example-user@example.com"
 ## npm set init.author.name "example_user"
