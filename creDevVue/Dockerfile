@@ -21,11 +21,7 @@ COPY cre /cre
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
 
-
 RUN npm install -g typescript ajv webpack 
-#RUN npm install -g core-js@3 #or 2
-RUN npm install -g npm-add-script  # moved to node
-RUN npm install -g set-version     # moved to node
 RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
 RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 #RUN npm install --save-dev @babel/preset-env ## compatibility / useBuiltIns 
@@ -47,8 +43,9 @@ RUN npm install --save-dev @vue/web-component-wrapper
 RUN npm install --save-dev @babel/plugin-transform-runtime
 RUN npm install --save @babel/runtime
 RUN npm install --save es6-promise   # vuex
-RUN npm install --save core-js@2
+RUN npm install --save core-js@2 # needs version 2 for now (instead of 3)
 #RUN npm install --save babel-polyfill
+RUN npm install --save c4u-glue
 RUN npm-install-peers
 RUN v ${CRE_VERSION}.0
 ##
