@@ -24,7 +24,8 @@ COPY cre /cre
 
 RUN npm install -g typescript ajv webpack 
 #RUN npm install -g core-js@3 #or 2
-RUN npm install -g npm-add-script  
+RUN npm install -g npm-add-script  # moved to node
+RUN npm install -g set-version     # moved to node
 RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
 RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 #RUN npm install --save-dev @babel/preset-env ## compatibility / useBuiltIns 
@@ -49,10 +50,11 @@ RUN npm install --save es6-promise   # vuex
 RUN npm install --save core-js@2
 #RUN npm install --save babel-polyfill
 RUN npm-install-peers
+RUN v ${CRE_VERSION}.0
 ##
 WORKDIR "/cre/node/cre-components"
 
-## init once ??
+## init once ?? -> done by vue create
 ##vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
 ## patch 
 RUN /cre/patch-vue-wc-wrapper.sh
