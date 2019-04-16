@@ -21,9 +21,9 @@ COPY cre /cre
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
 
-RUN npm install -g typescript ajv webpack 
-RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
-RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
+RUN npm install -g typescript ajv webpack && \
+    npm install -g vue-template-compiler @vue/cli @vue/cli-service && \    
+    npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 #RUN npm install --save-dev @babel/preset-env ## compatibility / useBuiltIns 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
@@ -32,17 +32,17 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t  typescript \t $(tsc -v)" >> /cre/versions.txt 
 
 ## FROM entrypoint
-RUN mkdir -p /cre/node/cre-components
-RUN cd /cre/node
+RUN mkdir -p /cre/node/cre-components && \
+    cd /cre/node && \
+    vue create -d -f cre-components
 
-RUN vue create -d -f cre-components
-WORKDIR "/cre/node/cre-components"  ## Moved
-RUN cd /cre/node/cre-components
-RUN npm install --save vue vuex
-RUN npm install --save ucid ## REMOVE #################################################################################
-RUN npm install --save-dev @vue/web-component-wrapper 
-RUN npm install --save-dev @babel/plugin-transform-runtime
-RUN npm install --save @babel/runtime
+WORKDIR "/cre/node/cre-components"  
+RUN cd /cre/node/cre-components  && \ 
+    npm install --save vue vuex  && \ 
+    npm install --save ucid  && \ 
+    npm install --save-dev @vue/web-component-wrapper  && \ 
+    npm install --save-dev @babel/plugin-transform-runtime  && \ 
+    npm install --save @babel/runtime   
 RUN npm install --save es6-promise   # vuex
 RUN npm install --save core-js@2 # needs version 2 for now (instead of 3)
 #RUN npm install --save babel-polyfill

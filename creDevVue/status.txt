@@ -35,6 +35,8 @@ Add npm-component directory (o.a) for compiled directories - add to npm
   * change name to directory/filename -> kebab
   * npm-get-version & patch ?
 
+Remove ucid
+
 
 
 
