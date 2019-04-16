@@ -233,7 +233,7 @@ function wrap (Vue, Component) {
             hasChildrenChange = true;
           }
         }
-        var handleShadow = true;  // PATCH: orig=false
+        var handleShadow = false;  // PATCH: orig=false
         var freezeObject = false; // PATCH: orig=true 
         if (hasChildrenChange) {
           var vnodes = null;
