@@ -233,7 +233,7 @@ function wrap (Vue, Component) {
             hasChildrenChange = true;
           }
         }
-        var handleShadow = false;  // PATCH: orig=false
+        var handleShadow = true;  // PATCH: orig=false
         if (hasChildrenChange) {
           if (handleShadow) {
           wrapper.slotChildren = Object.freeze(toVNodes(
