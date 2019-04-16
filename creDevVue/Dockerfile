@@ -36,9 +36,10 @@ RUN mkdir -p /cre/node/cre-components
 RUN cd /cre/node
 
 RUN vue create -d -f cre-components
+WORKDIR "/cre/node/cre-components"  ## Moved
 RUN cd /cre/node/cre-components
 RUN npm install --save vue vuex
-RUN npm install --save ucid
+RUN npm install --save ucid ## REMOVE #################################################################################
 RUN npm install --save-dev @vue/web-component-wrapper 
 RUN npm install --save-dev @babel/plugin-transform-runtime
 RUN npm install --save @babel/runtime
@@ -49,7 +50,7 @@ RUN npm install --save c4u-glue
 RUN npm-install-peers
 RUN v "${CRE_VERSION}.0"
 ##
-WORKDIR "/cre/node/cre-components"
+#WORKDIR "/cre/node/cre-components"
 
 ## init once ?? -> done by vue create
 ##vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
