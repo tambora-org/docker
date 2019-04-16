@@ -291,12 +291,22 @@ function wrap (Vue, Component) {
             syncInitialAttributes();
           });
         }
+
         // initialize children
-        wrapper.slotChildren = Object.freeze(toVNodes(
-          wrapper.$createElement,
-          //this.childNodes // PATCH
-          this.shadowRoot.childNodes
-        ));
+        var handleShadow = false;  // PATCH: orig=false
+        var freezeObject = false;  // PATCH: orig=true 
+        var vnodes = null;
+        if (handleShadow) {
+           vnodes = toVNodes(wrapper.$createElement,this.shadowRoot.childNodes);
+        } else {
+           vnodes = toVNodes(wrapper.$createElement,this.childNodes);
+        } 
+        if (freezeObject) {
+           wrapper.slotChildren = Object.freeze(vnodes);
+        } else {
+           wrapper.slotChildren = vnodes;
+        }
+
         wrapper.$mount();
         this.shadowRoot.appendChild(wrapper.$el);
       } else {
