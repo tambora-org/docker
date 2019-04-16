@@ -72,7 +72,7 @@ function toVNodes (h, children) {
 // this function was changed to handle slot content
 // hopefully only needed temporary
 function toVNode (h, node) {
-  var backToNode = false;
+  var backToNode = false;  // PATCH: orig=false
   if (backToNode) {
     return node;
   }
@@ -87,7 +87,7 @@ function toVNode (h, node) {
       }
     };
     if (slotName) {
-      var deleteAttr = true;
+      var deleteAttr = true;    // PATCH: orig=true
       if (deleteAttr && data.attrs.slot) {
         data.slot = data.attrs.slot;
         delete data.attrs.slot;
@@ -233,7 +233,7 @@ function wrap (Vue, Component) {
             hasChildrenChange = true;
           }
         }
-        var handleShadow = false;
+        var handleShadow = false;  // PATCH: orig=false
         if (hasChildrenChange) {
           if (handleShadow) {
           wrapper.slotChildren = Object.freeze(toVNodes(
@@ -247,8 +247,7 @@ function wrap (Vue, Component) {
           ));
           } 
           // ADD PATCHED
- 
-          var handleChildren = false;
+          var handleChildren = true;  // PATCH: orig=false
           if (handleChildren) {
             if(wrapper.slotChildren.length > 0) {
               wrapper.slotChildren.forEach((it) => {
@@ -256,7 +255,6 @@ function wrap (Vue, Component) {
                })
             } 
           }
-
           // END PATCH
         }
       });

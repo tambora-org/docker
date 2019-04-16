@@ -10,6 +10,7 @@ https://github.com/webcomponents/webcomponentsjs
    
 
 Version init with CRE_VERSION not working?
+Use v instead.
 
 Pipeline with webpack
 web components
@@ -25,10 +26,16 @@ https://github.com/vuejs/vue-cli/issues/2304
 https://stackoverflow.com/questions/53341395/how-can-i-use-vue-i18n-in-a-vue-web-component
 
 
-
 eventBus seems to work somehow.
-Try vuex
+vuex works
 Inject & Provide seems to fail.
+
+Add npm-component directory (o.a) for compiled directories - add to npm
+ * add script build-sync, build-async, build-single
+  * change name to directory/filename -> kebab
+  * npm-get-version & patch ?
+
+
 
 
 
