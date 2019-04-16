@@ -234,20 +234,21 @@ function wrap (Vue, Component) {
           }
         }
         var handleShadow = true;  // PATCH: orig=false
+        var freezeObject = false; // PATCH: orig=true 
         if (hasChildrenChange) {
+          var vnodes = null;
           if (handleShadow) {
-          wrapper.slotChildren = Object.freeze(toVNodes(
-            wrapper.$createElement,
-            this.shadowRoot.childNodes
-          ));
+             vnodes = toVNodes(wrapper.$createElement,this.shadowRoot.childNodes);
           } else {
-          wrapper.slotChildren = Object.freeze(toVNodes(
-            wrapper.$createElement,
-            this.childNodes 
-          ));
+             vnodes = toVNodes(wrapper.$createElement,this.childNodes);
           } 
+          if (freezeObject) {
+             wrapper.slotChildren = Object.freeze(vnodes);
+          } else {
+             wrapper.slotChildren = vnodes;
+          }
           // ADD PATCHED
-          var handleChildren = true;  // PATCH: orig=false
+          var handleChildren = true; // PATCH: orig=false
           if (handleChildren) {
             if(wrapper.slotChildren.length > 0) {
               wrapper.slotChildren.forEach((it) => {
