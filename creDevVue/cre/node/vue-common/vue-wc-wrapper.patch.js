@@ -293,8 +293,8 @@ function wrap (Vue, Component) {
         }
 
         // initialize children
-        var handleShadow = false;  // PATCH: orig=false
-        var freezeObject = false;  // PATCH: orig=true 
+        var handleShadow = true;  // PATCH: orig=?false
+        var freezeObject = true;  // PATCH: orig=true 
         var vnodes = null;
         if (handleShadow) {
            vnodes = toVNodes(wrapper.$createElement,this.shadowRoot.childNodes);
