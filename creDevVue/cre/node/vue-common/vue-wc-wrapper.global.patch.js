@@ -87,7 +87,7 @@ function toVNode (h, node) {
       }
     };
     if (slotName) {
-      var deleteAttr = true;    // PATCH: orig=true
+      var deleteAttr = false;    // PATCH: orig=true
       if (deleteAttr && data.attrs.slot) {
         data.slot = data.attrs.slot;
         delete data.attrs.slot;
