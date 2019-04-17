@@ -24,7 +24,7 @@ fi
 
 /cre/watch-vue-components.sh &
 
-sleep 60
+sleep 120
 
 echo "$(ls -l /cre/web-components/single)"
 
@@ -51,11 +51,10 @@ fi
 echo "$(ls -l /cre/web-components/sync)"
 echo "$(ls -l /cre/web-components/async)"
 
+echo "$(ls -l /cre/web-components)"
 echo "$(ls -l /cre/web-components/sub-components/single)"
 echo "$(ls -l /cre/web-components/sub-components/sync)"
 echo "$(ls -l /cre/web-components/sub-components/async)"
-
-#echo "$(ls -l /cre/dev/cre-components)"
 
 echo "[SUCCESS]"
 exit 0
