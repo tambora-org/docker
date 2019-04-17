@@ -24,22 +24,22 @@
         },
     mixins: [C4uGlue], 
     methods: { 
-       addOne: function(event) {
+       addOne: function(ignoreEvent) {
           this.counter += 1;
        },
     },
-    created() {
-         console.log("***** Elem-1st-created #" + this.c4uUid);
-    },
-    mounted() {
-         console.log("***** Elem-1st-mounted #" + this.c4uUid);
-    },
-    updated() {
-         console.log("***** Elem-1st-updated #" + this.c4uUid);
-    },
-    beforeDestroy() {
-         console.log("***** Elem-1st-destroyed #" + this.c4uUid);
-    },
+//    created() {
+//         console.log("***** Elem-1st-created #" + this.c4uUid);
+//    },
+//    mounted() {
+//         console.log("***** Elem-1st-mounted #" + this.c4uUid);
+//    },
+//    updated() {
+//         console.log("***** Elem-1st-updated #" + this.c4uUid);
+//    },
+//    beforeDestroy() {
+//         console.log("***** Elem-1st-destroyed #" + this.c4uUid);
+//    },
 
   }
 </script>

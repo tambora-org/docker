@@ -24,25 +24,25 @@
         },
     mixins: [C4uGlue], 
     methods: { 
-       addOne: function(event) {
+       addOne: function(ignoreEvent) {
           this.counter += 1;
           if (this.c4uParent) {
             this.c4uParent.counter += 100;
           }
        },
     },
-    created() {
-         console.log("***** Slot-2nd-created " + this.msg + " #" + this.c4uUid);
-    },
-    mounted() {
-         console.log("***** Slot-2nd-mounted " + this.msg + " #" + this.c4uUid);
-    },
-    updated() {
-         console.log("***** Slot-2nd-updated " + this.msg + " #" + this.c4uUid);
-    },
-    beforeDestroy() {
-         console.log("***** Slot-2nd-destroyed " + this.msg + " #" + this.c4uUid);
-    },
+//    created() {
+//         console.log("***** Slot-2nd-created " + this.msg + " #" + this.c4uUid);
+//    },
+//    mounted() {
+//         console.log("***** Slot-2nd-mounted " + this.msg + " #" + this.c4uUid);
+//    },
+//    updated() {
+//         console.log("***** Slot-2nd-updated " + this.msg + " #" + this.c4uUid);
+//    },
+//    beforeDestroy() {
+//         console.log("***** Slot-2nd-destroyed " + this.msg + " #" + this.c4uUid);
+//    },
 
   }
 </script>
