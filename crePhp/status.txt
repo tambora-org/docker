@@ -2,7 +2,7 @@ Still in prototype status
 
 Todo:
 =====
-* Mail: ssmtp and/or postfix
+* Mail: ssmtp and/or postfix and/or exim
  fetchmail & procmail
  https://binfalse.de/2016/11/25/mail-support-for-docker-s-php-fpm/
  https://hub.docker.com/r/geschke/php-fpm-swrm/dockerfile

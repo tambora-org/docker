@@ -24,6 +24,7 @@
         },
     mixins: [C4uGlue], 
     methods: { 
+       // eslint-disable-next-line
        addOne: function(ignoreEvent) {
           this.counter += 1;
           if (this.c4uParent) {

@@ -1,6 +1,8 @@
 Still in prototype status
 
 yii3 is in alpha state
+https://www.yiiframework.com/wiki/2547/draft-understanding-yii-3
+https://github.com/machour/yii3-kitchen-sink
 
 Todo:
 =====
