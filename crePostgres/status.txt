@@ -6,6 +6,7 @@ Todo:
 * dump directory?
 * Daily dump - Permission of directory cre/postgres/dump/db/....
 * Check init db
+ * init from bz2-file -> bzip2 -dk file.bz2  / gz -> tar -xvzf file.tar.gz
 * Citus
 * POSTGRES_EXT allows to access DB for user globally by proxy/url (todo: specify list of dbs) 
  

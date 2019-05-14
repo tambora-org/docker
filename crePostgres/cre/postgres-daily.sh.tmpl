@@ -38,7 +38,7 @@ if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$
 
  ## optionally copy dumpfile to other server (daily -> update)
 
- ## later add reading of database.update.dump here 
+ ## later add reading of database.update.dump (from other server) here 
 
 else
  echo "Database missing: {{ $postgresDb }}"

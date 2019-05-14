@@ -21,19 +21,10 @@ COPY cre /cre
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
 
-RUN npm set init.version "${CRE_VERSION}.0" 
-RUN npm set init.license "Apache-2.0" 
-# npm set init.author.email "example-user@example.com" 
-# npm set init.author.name "example_user" 
-# npm config set init.author.url http://iamsim.me/ 
-# https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory 
-
-
-RUN npm install -g typescript ajv webpack 
-#RUN npm install -g core-js@3 #or 2
-RUN npm install -g npm-add-script  
-RUN npm install -g vue-template-compiler @vue/cli @vue/cli-service    
-RUN npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
+RUN npm install -g typescript ajv webpack && \
+    npm install -g vue-template-compiler @vue/cli @vue/cli-service && \    
+    npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
+#RUN npm install --save-dev @babel/preset-env ## compatibility / useBuiltIns 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creVue \t ${VUE_VERSION}" >> /cre/versions.txt  && \
@@ -41,19 +32,30 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t  typescript \t $(tsc -v)" >> /cre/versions.txt 
 
 ## FROM entrypoint
-RUN mkdir -p /cre/dev/cre-components
-RUN cd /cre/dev
+RUN mkdir -p /cre/node/cre-components && \
+    cd /cre/node && \
+    vue create -d -f cre-components
 
-RUN vue create -d -f cre-components
-RUN cd /cre/dev/cre-components
-##RUN npm version "${CRE_VERSION}.0"
-RUN npm install --save-dev @vue/web-component-wrapper 
-RUN npm install --save-dev @babel/plugin-transform-runtime
-RUN npm install --save @babel/runtime
-RUN npm install --save core-js@2
+WORKDIR "/cre/node/cre-components"  
+RUN cd /cre/node/cre-components  && \ 
+    npm install --save vue vuex axios && \ 
+    npm install --save ucid  && \ 
+    npm install --save-dev @vue/web-component-wrapper  && \ 
+    npm install --save-dev @babel/plugin-transform-runtime  && \ 
+    npm install --save @babel/runtime   
+RUN npm install --save es6-promise   # vuex
+RUN npm install --save core-js@2 # needs version 2 for now (instead of 3)
+#RUN npm install --save babel-polyfill
+RUN npm install --save c4u-glue
 RUN npm-install-peers
+RUN v "${CRE_VERSION}.0"
 ##
-WORKDIR "/cre/dev/cre-components"
+#WORKDIR "/cre/node/cre-components"
+
+## init once ?? -> done by vue create
+##vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
+## patch 
+RUN /cre/patch-vue-wc-wrapper.sh
 
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 

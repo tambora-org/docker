@@ -61,6 +61,10 @@ else
  ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "CREATE USER \"$postgres_user\" WITH ENCRYPTED PASSWORD '$postgres_pwd'"
 fi
 
+#maybe only when environment set
+echo "Superuser: $postgres_user"
+${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "ALTER USER \"$postgres_user\" WITH SUPERUSER"
+
 ## if init dump file exists import data
 if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ]
 then

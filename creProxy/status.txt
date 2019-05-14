@@ -5,3 +5,6 @@ Todo:
 * Adapt proxy for local usage and testing
 * certbot for domain only not working for i.e. clim-ability.eu 
 * maybe optionally use cloudflare
+
+
+* Timing & Container restart -> config, certificates, etc.

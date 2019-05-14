@@ -4,3 +4,4 @@ Still in prototype status
 Todo:
 =====
 Add test
+Adapt/Integrate docker-db settings (see climability)

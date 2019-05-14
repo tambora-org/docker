@@ -2,9 +2,11 @@
 #postfix start
 #service postfix start
 
-#/sbin/service postfix start
+/sbin/service postfix start
 
-sleep 10000
+## echo "Nachricht " mail -s "subject" admin@domain.tbl
+
+sleep 100000
 
 
 
