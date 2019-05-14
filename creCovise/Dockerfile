@@ -29,11 +29,20 @@ RUN apt-get -y install libqt5webkit5 libqt5gui5 libqt5svg5 libqt5printsupport5 l
 RUN apt-get -y install libqt5core5a libqt5network5 libqt5xml5 libqt5widgets5  libqt5webkit5 libqt5gui5 libqt5svg5 libqt5printsupport5  libqt5script5 libqt5scripttools5
 
 RUN apt-get -y install libboost-all-dev  
-RUN apt-get -y install libopenscenegraph-3.4-131 libopenscenegraph-3.4-dev openscenegraph-3.4 openscenegraph-3.4-doc openscenegraph-3.4-examples 
+#RUN apt-get -y install libopenscenegraph-3.4-131 libopenscenegraph-3.4-dev openscenegraph-3.4 openscenegraph-3.4-doc openscenegraph-3.4-examples 
+
+RUN apt-get -y install libopenscenegraph-dev openscenegraph openscenegraph-doc openscenegraph-3.4-examples
+
+#libopenscenegraph
+
 RUN apt-get -y install libinventor1 inventor-clients inventor-data inventor-demo inventor-dev inventor-doc libxerces-c-dev libxerces-c-doc libxerces-c-samples libtiff-dev  
 RUN apt-get -y install freeglut3 freeglut3-dev
 RUN apt-get -y install qttools5-dev qtscript5-dev libqt5scripttools5 libqt5svg5-dev libqt5opengl5-dev libqt5webkit5-dev
-RUN apt-get -y install libglew-dev libglew2.0
+#RUN apt-get -y install libglew-dev libglew2.0
+
+RUN apt-get -y install libglew-dev 
+RUN apt-get -y install libthread-stubs0-dev 
+
 RUN apt-get -y install pyqt5-dev pyqt5-dev-tools
 RUN cd /cre
 RUN git clone https://github.com/hlrs-vis/covise.git --recursive
