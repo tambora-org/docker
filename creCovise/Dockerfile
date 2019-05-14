@@ -41,7 +41,7 @@ RUN apt-get -y install libqt5core5a libqt5network5 libqt5xml5 libqt5widgets5  li
 RUN apt-get -y install libboost-all-dev  
 #RUN apt-get -y install libopenscenegraph-3.4-131 libopenscenegraph-3.4-dev openscenegraph-3.4 openscenegraph-3.4-doc openscenegraph-3.4-examples 
 
-RUN apt-get -y install libopenscenegraph-dev openscenegraph openscenegraph-doc openscenegraph-3.4-examples
+RUN apt-get -y install libopenscenegraph-dev openscenegraph openscenegraph-doc openscenegraph-examples
 
 #libopenscenegraph
 
