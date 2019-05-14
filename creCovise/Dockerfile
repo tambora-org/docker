@@ -7,11 +7,21 @@ FROM tamboraorg/crepython:2010.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 #ENV LANG en_US.UTF-8
-ENV COVICE_VERSION 999999 
+ENV COVISE_VERSION 999999 
+
+LABEL Name="Covise for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$COVISE_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 RUN sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
 RUN add-apt-repository http://dl.openfoam.org/ubuntu

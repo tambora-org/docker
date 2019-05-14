@@ -8,12 +8,22 @@ FROM tamboraorg/creubuntu:2010.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
+ARG BUILD_YEAR=2011
+ARG BUILD_MONTH=0
+
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV NPM_VERSION 6
 ENV PYTHON_VERSION 999999 
+
+LABEL Name="Python for CRE" \
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$PYTHON_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$CRE_VERSION 
 
 # npm >= 6 needed
 #RUN apt-get update && apt-get -y --no-install-recommends install npm nodejs-legacy && apt-get clean 
