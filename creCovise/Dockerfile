@@ -51,7 +51,7 @@ RUN apt-get -y install qttools5-dev qtscript5-dev libqt5scripttools5 libqt5svg5-
 #RUN apt-get -y install libglew-dev libglew2.0
 
 RUN apt-get -y install libglew-dev 
-RUN apt-get -y install libthread-stubs0-dev 
+RUN apt-get -y install libpthread-stubs0-dev 
 
 RUN apt-get -y install pyqt5-dev pyqt5-dev-tools
 RUN cd /cre
