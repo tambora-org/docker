@@ -45,6 +45,8 @@ RUN apt-get -y install libopenscenegraph-dev openscenegraph openscenegraph-doc o
 
 #libopenscenegraph
 
+RUN apt-get -y install paraview
+
 RUN apt-get -y install libinventor1 inventor-clients inventor-data inventor-demo inventor-dev inventor-doc libxerces-c-dev libxerces-c-doc libxerces-c-samples libtiff-dev  
 RUN apt-get -y install freeglut3 freeglut3-dev
 RUN apt-get -y install qttools5-dev qtscript5-dev libqt5scripttools5 libqt5svg5-dev libqt5opengl5-dev libqt5webkit5-dev
@@ -58,11 +60,12 @@ RUN cd /cre
 RUN git clone https://github.com/hlrs-vis/covise.git --recursive
 RUN cd /cre/covise
 #RUN source .covise.sh
-SHELL ["/bin/bash", "-c", "source .covise.sh"]
+SHELL ["/bin/bash", "-c", "source /cre/covise/covise.sh"]
 
 RUN export QT_SELECT=qt5
-RUN make
-
 WORKDIR /cre/covise
+RUN cd /cre/covise; make
+
+
 
 CMD ["sleep 1000000"]
