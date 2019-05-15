@@ -32,7 +32,7 @@ RUN apt-get -y install build-essential git gfortran libopenmpi-dev openmpi-commo
 
 #RUN apt-get -y install libQt5WebKitWidgets5 libQt5Gui5 libQt5Svg5 libQt5PrintSupport5 libQt5UiTools5 libQt5Script5 libQt5ScriptTools5
 
-RUN apt-get -y install libqt5webkit5 libqt5gui5 libqt5svg5 libqt5printsupport5 libqt5script5 libqt5webkit5-dev libqt5widgets5 qttools5-dev qtscript5-dev qtdeclarative5-dev
+RUN apt-get -y install libqt5webkit5 libqt5gui5 libqt5svg5-dev libqt5printsupport5 libqt5script5 libqt5webkit5-dev libqt5widgets5 qttools5-dev qtscript5-dev qtdeclarative5-dev libqt5opengl5-dev
 
 #libQt5WebKitWidgets5 libQt5UiTools5 libqt5scripttools5
 
@@ -57,7 +57,9 @@ RUN apt-get -y install pyqt5-dev pyqt5-dev-tools
 RUN cd /cre
 RUN git clone https://github.com/hlrs-vis/covise.git --recursive
 RUN cd /cre/covise
-RUN source .covise.sh
+#RUN source .covise.sh
+SHELL ["/bin/bash", "-c", "source .covise.sh"]
+
 RUN export QT_SELECT=qt5
 RUN make
 
