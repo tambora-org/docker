@@ -38,7 +38,7 @@ RUN mkdir -p /cre/node/cre-components && \
 
 WORKDIR "/cre/node/cre-components"  
 RUN cd /cre/node/cre-components  && \ 
-    npm install --save vue vuex axios && \ 
+    npm install --save vue vuex axios vue-resource && \ 
     npm install --save ucid  && \ 
     npm install --save-dev @vue/web-component-wrapper  && \ 
     npm install --save-dev @babel/plugin-transform-runtime  && \ 
