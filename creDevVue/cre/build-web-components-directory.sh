@@ -49,6 +49,10 @@ mkdir -p /cre/node/cre-components/src/components
 find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path; do 
   cp $subdir_path/*.js  /cre/node/cre-components/src/components/
   cp $subdir_path/*.vue /cre/node/cre-components/src/components/
+  #hook for installing more npm modules
+  if [ -e "$subdir_path/install.sh" ]
+    $subdir_path/install.sh
+  fi  
 done
 # Only necassary if only one vue file exists
 vue_number=${ls -1 *.vue | wc -l}
