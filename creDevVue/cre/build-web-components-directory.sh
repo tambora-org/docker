@@ -26,6 +26,7 @@ root_path=$2
 #
 subdir_path=${wc_path#"$root_path"}
 dst_path="/cre/web-components/$subdir_path"
+npm_path="/cre/npm-components/$subdir_path"
 wc_name="wc-main"
 if [[ ! -z "$subdir_path" ]]; then
   last_path=$(echo "$dst_path" | rev | cut -f 1 -d '/' | rev)
@@ -55,7 +56,7 @@ find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path
   fi  
 done
 # Only necassary if only one vue file exists
-vue_number=${ls -1 *.vue | wc -l}
+vue_number=$(ls -1 /cre/node/cre-components/src/components/*.vue | wc -l)
 if [[ 1 -eq $vue_number ]]; then
   cp /cre/node/vue-common/WcDummy.vue /cre/node/cre-components/src/components/
 fi
@@ -77,6 +78,19 @@ sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
 rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
 mkdir -p $dst_path/sync
 cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
+
+slash_number=$(echo "$subdir_path" | tr -cd '/' | wc -c)
+if [[ 1 -eq $slash_number ]]; then
+  echo "first level sub-directory detected: $subdir_path"
+  npmAddScript -k build1 -v "vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'" -f
+  npmAddScript -k build2 -v "sed -i -e \"s/${crazy_kebab}-//g\" /cre/node/cre-components/dist/*.*" -f
+  npmAddScript -k build3 -v "sed -i -e \"s/${crazy_kebab}/${wc_name}/g\" /cre/node/cre-components/dist/*.*" -f
+  npmAddScript -k build4 -v "rename \"s/$crazy_kebab/$wc_name/\" /cre/node/cre-components/dist/*.*" -f
+  npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
+  mkdir -p $npm_path
+  rm -rf $npm_path/*
+  cp -f -r /cre/node/cre-components/* $npm_path
+fi
 
 rm -rf /cre/node/cre-components/dist/*
 ##vue-cli-service build --target wc-async --name $wc_name 'src/components/*.vue'
