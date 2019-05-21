@@ -50,6 +50,11 @@ find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path
   cp $subdir_path/*.js  /cre/node/cre-components/src/components/
   cp $subdir_path/*.vue /cre/node/cre-components/src/components/
 done
+# Only necassary if only one vue file exists
+vue_number=${ls -1 *.vue | wc -l}
+if [[ 1 -eq $vue_number ]]; then
+  cp /cre/node/vue-common/WcDummy.vue /cre/node/cre-components/src/components/
+fi
 
 # Here comes a crazy workaround
 # vue-cli-service uses name for filename AND as components prefix
