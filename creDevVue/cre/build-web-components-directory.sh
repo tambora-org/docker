@@ -50,7 +50,7 @@ find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path
   cp $subdir_path/*.js  /cre/node/cre-components/src/components/
   cp $subdir_path/*.vue /cre/node/cre-components/src/components/
   #hook for installing more npm modules
-  if [ -e "$subdir_path/install.sh" ]
+  if [[ -e "$subdir_path/install.sh" ]]; then
     $subdir_path/install.sh
   fi  
 done
