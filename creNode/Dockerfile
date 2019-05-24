@@ -35,6 +35,8 @@ RUN npm install -g n
 RUN n stable # update node
 RUN npm install -g npm-install-peers
 RUN npm install -g npm-add-script  
+RUN npm install -g keywords
+RUN npm install -g json
 RUN npm install -g set-version
 RUN npm install -g npm-get-version
 
