@@ -1,3 +1,4 @@
 main: /cre/gen-template.sh /cre/main.cf.tmpl /cre/main-cf.sh
+main2: /cre/gen-template.sh /cre/main-cf2.sh.tmpl /cre/main-cf2.sh
 update: watch -n 600007 /cre/mail-weekly.sh
 start: /cre/run.sh
