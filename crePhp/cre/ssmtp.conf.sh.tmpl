@@ -2,11 +2,11 @@
 
 # Current Container Name : {{ $CurrentContainer.Name }}
 
-$domain2='localhost'
+domain2='localhost'
 {{ $domain := "localhost" }}
 {{ range $creDomain, $containers := groupByMulti $ "Env.CRE_DOMAIN" "," }}
   {{ $domain := $creDomain }}
-  $domain2='{{$creDomain}}'
+  domain2='{{$creDomain}}'
 {{ end }} 
 
 {{ $mailhub := or $CurrentContainer.Env.MAIL_HUB "mail.$domain2"}}
