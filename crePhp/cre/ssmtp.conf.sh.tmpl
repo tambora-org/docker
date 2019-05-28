@@ -2,25 +2,27 @@
 
 # Current Container Name : {{ $CurrentContainer.Name }}
 
-{{ $domain = "localhost" }}
+$domain2='localhost'
+{{ $domain := "localhost" }}
 {{ range $creDomain, $containers := groupByMulti $ "Env.CRE_DOMAIN" "," }}
-  {{ $domain = $creDomain }}
+  {{ $domain := $creDomain }}
+  $domain2='{{$creDomain}}'
 {{ end }} 
 
-{{ $mailhub = or $CurrentContainer.Env.MAIL_HUB (printf "mail.%s" $domain)}}
-{{ $authuser = or $CurrentContainer.Env.MAIL_USER ""}}
-{{ $authpass = or $CurrentContainer.Env.MAIL_PWD ""}}
+{{ $mailhub := or $CurrentContainer.Env.MAIL_HUB "mail.$domain2"}}
+{{ $authuser := or $CurrentContainer.Env.MAIL_USER ""}}
+{{ $authpass := or $CurrentContainer.Env.MAIL_PWD ""}}
 
 #root=postmaster
-echo "FromLineOverride=YES" > /etc/ssmtp/ssmtp.conf
+echo "FromLineOverride=YES" > /etc/ssmtp/ssmtp.conf;
 
 ##Bei creMail:
-##echo "mailhub=mail.{{ $domain }}:587" >> /etc/ssmtp/ssmtp.conf
-##echo "hostname={{ $domain }}" >> /etc/ssmtp/ssmtp.conf
+##echo "mailhub=mail.$domain2:587" >> /etc/ssmtp/ssmtp.conf
+##echo "hostname=$domain2" >> /etc/ssmtp/ssmtp.conf
 
 ## Use external mailhub
 echo "mailhub={{ $mailhub }}" >> /etc/ssmtp/ssmtp.conf 
-echo "hostname={{ $domain }}" >> /etc/ssmtp/ssmtp.conf 
+echo "hostname=$domain2" >> /etc/ssmtp/ssmtp.conf 
 {{ if (and (ne $authuser "") (ne $authpass "")) }}
  echo "AuthUser={{ $authuser }}" >> /etc/ssmtp/ssmtp.conf  
  echo "AuthPass={{ $authpass }}" >> /etc/ssmtp/ssmtp.conf 
@@ -30,7 +32,7 @@ echo "AuthMethod=cram-md5" >> /etc/ssmtp/ssmtp.conf
 
 echo "UseTLS=YES" >> /etc/ssmtp/ssmtp.conf
 echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
-echo "rewriteDomain={{ $domain }}" >> /etc/ssmtp/ssmtp.conf
+echo "rewriteDomain=$domain2" >> /etc/ssmtp/ssmtp.conf
 
 
 # https://blog.doenselmann.com/emails-automatisch-mit-ssmtp-versenden/
