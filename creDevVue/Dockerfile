@@ -36,6 +36,10 @@ RUN mkdir -p /cre/node/cre-components && \
     cd /cre/node && \
     vue create -d -f cre-components
 
+RUN mkdir -p /cre/node/js-components && \
+    cd /cre/node/js-components && \
+    npm init -yes
+
 WORKDIR "/cre/node/cre-components"  
 RUN cd /cre/node/cre-components  && \ 
     npm install --save vue vuex axios vue-resource && \ 

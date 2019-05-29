@@ -43,14 +43,16 @@ done
 touch /cre/web-components-build-busy.txt
 
 # clear directory first
-##rm -rf /cre/dev/cre-components/src/components/* 
 rm -rf /cre/node/cre-components/src/* 
+rm -rf /cre/node/js-components/src/* 
 mkdir -p /cre/node/cre-components/src/components
 # then copy local files and those in subdirs (may add more types)
 find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path; do 
   cp $subdir_path/*.js  /cre/node/cre-components/src/components/
   cp $subdir_path/*.vue /cre/node/cre-components/src/components/
-  #hook for installing more npm modules
+  cp $subdir_path/*.js  /cre/node/js-components/src/
+  #hook for installing more npm modules 
+  ## may better copy/merge first... (current dir js vs wc)
   if [[ -e "$subdir_path/install.sh" ]]; then
     $subdir_path/install.sh
   fi  
@@ -67,17 +69,25 @@ fi
 crazy_camel="PleaseRemoveMeAsSoonAsPossible"
 crazy_minus=$(echo $crazy_camel | sed 's/\(.\)\([A-Z]\)/\1-\2/g')        
 crazy_kebab=$(echo $crazy_minus  | tr '[:upper:]' '[:lower:]')    
-
-cd /cre/node/cre-components
-echo "Build web components in sub-directory: $subdir_path"
-rm -rf /cre/node/cre-components/dist/*
-##vue-cli-service build --target wc --name $wc_name 'src/components/*.vue'
-vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
-sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
-sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
-rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
 mkdir -p $dst_path/sync
-cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
+
+if [[ 0 -eq $vue_number ]]; then
+  cd /cre/node/js-components
+  echo "Build js components in sub-directory: $subdir_path"
+  rm -rf /cre/node/js-components/dist/*
+  npm build
+  cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
+elif
+  cd /cre/node/cre-components
+  echo "Build web components in sub-directory: $subdir_path"
+  rm -rf /cre/node/cre-components/dist/*
+  vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
+  sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
+  sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
+  rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
+  cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
+fi
+
 
 slash_number=$(echo "$subdir_path" | tr -cd '/' | wc -c)
 if [[ 1 -eq $slash_number ]]; then
@@ -88,22 +98,33 @@ if [[ 1 -eq $slash_number ]]; then
   npmAddScript -k build4 -v "rename \"s/$crazy_kebab/$wc_name/\" /cre/node/cre-components/dist/*.*" -f
   npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
 
-  json -I -f package.json -e 'this.name="${subdir_path:1}"'
+  json -I -f package.json -e "this.name='${subdir_path:1}'"
   json -I -f package.json -e 'this.private=false'
   # if env git-url set
+  json -I -f package.json -e "this.repository={}"
   json -I -f package.json -e 'this.repository.type="git"'
-  json -I -f package.json -e 'this.repository.url="git=https://github.com/webedu/npm.git"'
-
-  keywords "web-components" 
-  keywords --add "${subdir_path:1}"
+  json -I -f package.json -e "this.repository.url='git=https://github.com/webedu/npm.git'"
+  #add keywords
+  json -I -f package.json -e 'this.keywords=[]'
+  json -I -f package.json -e 'this.keywords.push("web-components")'
+  json -I -f package.json -e "this.keywords.push('${subdir_path:1}')"
   # if c4u
-  keywords --add components4you,c4u
-  # if w4u
-  #keywords --add webedu,w4u
+  if [ ${subdir_path:1:3} == "c4u" ]; then
+    json -I -f package.json -e 'this.keywords.push("components4you")'
+    json -I -f package.json -e 'this.keywords.push("c4u")'
+  fi
+  if [ ${subdir_path:1:3} == "w4u" ]; then 
+    json -I -f package.json -e 'this.keywords.push("webedu")'
+    json -I -f package.json -e 'this.keywords.push("w4u")' 
+  fi
 
   mkdir -p $npm_path
   rm -rf $npm_path/*
-  cp -f -r /cre/node/cre-components/* $npm_path
+  if [[ 0 -eq $vue_number ]]; then
+    cp -f -r /cre/node/js-components/* $npm_path
+  elif
+    cp -f -r /cre/node/cre-components/* $npm_path
+  fi
 fi
 
 rm -rf /cre/node/cre-components/dist/*
