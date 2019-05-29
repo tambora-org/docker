@@ -55,6 +55,7 @@ find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path
   ## may better copy/merge first... (current dir js vs wc)
   if [[ -e "$subdir_path/install.sh" ]]; then
     $subdir_path/install.sh
+    # npm-install-peers
   fi  
 done
 # Only necassary if only one vue file exists
@@ -77,7 +78,7 @@ if [[ 0 -eq $vue_number ]]; then
   rm -rf /cre/node/js-components/dist/*
   npm build
   cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
-elif
+else
   cd /cre/node/cre-components
   echo "Build web components in sub-directory: $subdir_path"
   rm -rf /cre/node/cre-components/dist/*
@@ -92,6 +93,14 @@ fi
 slash_number=$(echo "$subdir_path" | tr -cd '/' | wc -c)
 if [[ 1 -eq $slash_number ]]; then
   echo "first level sub-directory detected: $subdir_path"
+
+ #if exists $npm_path/package.json
+  ## cp
+  ## npm version patch
+ #else
+  ## v "${CRE_VERSION}.0"
+
+
   npmAddScript -k build1 -v "vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'" -f
   npmAddScript -k build2 -v "sed -i -e \"s/${crazy_kebab}-//g\" /cre/node/cre-components/dist/*.*" -f
   npmAddScript -k build3 -v "sed -i -e \"s/${crazy_kebab}/${wc_name}/g\" /cre/node/cre-components/dist/*.*" -f
@@ -117,6 +126,8 @@ if [[ 1 -eq $slash_number ]]; then
     json -I -f package.json -e 'this.keywords.push("webedu")'
     json -I -f package.json -e 'this.keywords.push("w4u")' 
   fi
+ ## end if package.json exists
+
 
   mkdir -p $npm_path
   rm -rf $npm_path/*
