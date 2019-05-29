@@ -87,6 +87,20 @@ if [[ 1 -eq $slash_number ]]; then
   npmAddScript -k build3 -v "sed -i -e \"s/${crazy_kebab}/${wc_name}/g\" /cre/node/cre-components/dist/*.*" -f
   npmAddScript -k build4 -v "rename \"s/$crazy_kebab/$wc_name/\" /cre/node/cre-components/dist/*.*" -f
   npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
+
+  json -I -f package.json -e 'this.name="${subdir_path:1}"'
+  json -I -f package.json -e 'this.private=false'
+  # if env git-url set
+  json -I -f package.json -e 'this.repository.type="git"'
+  json -I -f package.json -e 'this.repository.url="git=https://github.com/webedu/npm.git"'
+
+  keywords "web-components" 
+  keywords --add "${subdir_path:1}"
+  # if c4u
+  keywords --add components4you,c4u
+  # if w4u
+  #keywords --add webedu,w4u
+
   mkdir -p $npm_path
   rm -rf $npm_path/*
   cp -f -r /cre/node/cre-components/* $npm_path
