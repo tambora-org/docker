@@ -133,7 +133,7 @@ if [[ 1 -eq $slash_number ]]; then
   rm -rf $npm_path/*
   if [[ 0 -eq $vue_number ]]; then
     cp -f -r /cre/node/js-components/* $npm_path
-  elif
+  else
     cp -f -r /cre/node/cre-components/* $npm_path
   fi
 fi
