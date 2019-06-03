@@ -30,6 +30,7 @@ RUN composer global config prefer-stable true
 RUN composer global config repositories.nmp composer https://asset-packagist.org
 
 # npm
+RUN composer global require --prefer-stable --update-with-all-dependencies "foxy/foxy"
 RUN composer global require --prefer-stable --update-with-all-dependencies "npm-asset/jquery"
 #RUN composer global require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
