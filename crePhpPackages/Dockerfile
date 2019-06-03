@@ -22,9 +22,11 @@ LABEL Name="Php Packages for CRE" \
       Build_=$CRE_VERSION 
 
 #RUN composer global require letudiant/composer-shared-package-plugin
-##RUN composer global require --optimize-autoloader yiisoft/yii2-app-basic  #yii2
-RUN composer global require --optimize-autoloader yiisoft/yii-project-template #yii3
-RUN composer global require --optimize-autoloader yiisoft/yii-base-web         #yii3
+# yii2
+RUN composer global require --optimize-autoloader yiisoft/yii2-app-basic  
+# yii3
+RUN composer global require --optimize-autoloader yiisoft/yii-project-template 
+RUN composer global require --optimize-autoloader yiisoft/yii-base-web         
 
 RUN composer global install
 #RUN composer global update
