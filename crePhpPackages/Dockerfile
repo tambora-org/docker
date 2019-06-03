@@ -21,7 +21,7 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-RUN composer global install --optimize-autoloader yiisoft/yii2-app-basic
+RUN composer global require --optimize-autoloader yiisoft/yii2-app-basic
 
 RUN composer global update
 
