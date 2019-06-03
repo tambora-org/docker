@@ -21,6 +21,9 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
+RUN composer config minimum-stability dev
+RUN composer config prefer-stable true
+
 #RUN composer global require letudiant/composer-shared-package-plugin
 # yii2
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
