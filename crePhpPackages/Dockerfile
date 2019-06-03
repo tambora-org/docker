@@ -21,6 +21,10 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
+RUN mkdir -p /cre/tmp/php/packages
+echo "{}" /cre/tmp/php/packages/composer.json
+cd /cre/tmp/php/packages
+
 RUN composer config minimum-stability dev
 RUN composer config prefer-stable true
 
@@ -93,6 +97,10 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 
 RUN composer global install
 #RUN composer global update
+
+#for using:
+#RUN composer config repositories path /cre/php/packages 
+#RUN composer config repositories {"type:" "path", "url:" "/cre/php/packages"} 
 
 COPY cre /cre
 
