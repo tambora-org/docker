@@ -36,6 +36,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
+RUN composer install global letudiant/composer-shared-package-plugin
+
 COPY cre /cre
 
 VOLUME ["/cre/www"]
