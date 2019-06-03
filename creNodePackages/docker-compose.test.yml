@@ -1,0 +1,7 @@
+sut:
+  build: .
+  command: /cre/tests/node-packages-test.sh
+  volumes:
+    - ./tests:/cre/tests
+
+
