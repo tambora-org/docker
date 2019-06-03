@@ -44,7 +44,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies codec
 RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/phpunit
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/verify
 RUN composer global require --prefer-stable --update-with-all-dependencies symfony/browser-kit
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
 
 # yii3
 ##bower-asset/jquery
