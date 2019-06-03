@@ -36,7 +36,7 @@ RUN composer global config prefer-stable true
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
