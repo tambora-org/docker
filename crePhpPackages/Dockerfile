@@ -50,7 +50,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
 
 # yii3
-## needs php 7.2
+## needs php 7.2 / Ubuntu 18.04
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
