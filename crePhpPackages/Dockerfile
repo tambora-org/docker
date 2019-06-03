@@ -23,7 +23,7 @@ LABEL Name="Php Packages for CRE" \
 
 #RUN composer global require letudiant/composer-shared-package-plugin
 # yii2
-RUN composer global require --optimize-autoloader yiisoft/yii2-app-basic 
+#RUN composer global require --optimize-autoloader yiisoft/yii2-app-basic 
 RUN composer global require --optimize-autoloader yiisoft/yii2
 RUN composer global require --optimize-autoloader yiisoft/yii2-bootstrap
 RUN composer global require --optimize-autoloader yiisoft/yii2-swiftmailer
@@ -34,8 +34,10 @@ RUN composer global require --optimize-autoloader codeception/base
 RUN composer global require --optimize-autoloader phpunit/phpunit
 RUN composer global require --optimize-autoloader codeception/verify
 RUN composer global require --optimize-autoloader symfony/browser-kit
+RUN composer global require --optimize-autoloader yiisoft/yii2-queue
 
 # yii3
+bower-asset/jquery
 RUN composer global require --optimize-autoloader yiisoft/yii-project-template 
 RUN composer global require --optimize-autoloader yiisoft/yii-core
 RUN composer global require --optimize-autoloader yiisoft/yii-base-web
@@ -81,6 +83,10 @@ RUN composer global require --optimize-autoloader yiisoft/active-record
 RUN composer global require --optimize-autoloader ezyang/htmlpurifier
 RUN composer global require --optimize-autoloader yiisoft/db
 RUN composer global require --optimize-autoloader ext-intl
+RUN composer global require --optimize-autoloader yiisoft/event-dispatcher
+RUN composer global require --optimize-autoloader yiisoft/router
+RUN composer global require --optimize-autoloader yiisoft/router-fastroute
+
 
 RUN composer global install
 #RUN composer global update
