@@ -37,7 +37,7 @@ RUN composer global require --optimize-autoloader symfony/browser-kit
 RUN composer global require --optimize-autoloader yiisoft/yii2-queue
 
 # yii3
-bower-asset/jquery
+##bower-asset/jquery
 RUN composer global require --optimize-autoloader yiisoft/yii-project-template 
 RUN composer global require --optimize-autoloader yiisoft/yii-core
 RUN composer global require --optimize-autoloader yiisoft/yii-base-web
