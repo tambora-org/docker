@@ -22,11 +22,14 @@ LABEL Name="Php Packages for CRE" \
       Build_=$CRE_VERSION 
 
 RUN mkdir -p /cre/tmp/php/packages
-echo "{}" /cre/tmp/php/packages/composer.json
-cd /cre/tmp/php/packages
+RUN echo "{}" /cre/tmp/php/packages/composer.json
+RUN cd /cre/tmp/php/packages
 
-RUN composer config minimum-stability dev
-RUN composer config prefer-stable true
+#RUN composer config minimum-stability dev
+#RUN composer config prefer-stable true
+
+RUN composer global config minimum-stability dev
+RUN composer global config prefer-stable true
 
 #RUN composer global require letudiant/composer-shared-package-plugin
 # yii2
