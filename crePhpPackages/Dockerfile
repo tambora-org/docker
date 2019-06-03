@@ -21,9 +21,13 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-RUN composer global require --optimize-autoloader yiisoft/yii2-app-basic
+RUN composer global require letudiant/composer-shared-package-plugin
+RUN composer global require --optimize-autoloader yiisoft/yii2-app-basic  #yii2
+RUN composer global require --optimize-autoloader yiisoft/yii-project-template #yii3
+RUN composer global require --optimize-autoloader yiisoft/yii-base-web         #yii3
 
-RUN composer global update
+RUN composer global install
+#RUN composer global update
 
 COPY cre /cre
 

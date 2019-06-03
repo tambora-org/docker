@@ -36,7 +36,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
-RUN composer require global letudiant/composer-shared-package-plugin
+RUN composer global require "foxy/foxy:^1.0.0"
+RUN composer global install
 
 COPY cre /cre
 
