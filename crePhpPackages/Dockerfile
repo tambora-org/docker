@@ -51,6 +51,9 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 
 # yii3
 ## needs php 7.2
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/cache
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/di
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
@@ -60,9 +63,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap3
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-jquery
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-console
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/cache
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/di
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
+
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log-target-file
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log-target-db 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/rbac
