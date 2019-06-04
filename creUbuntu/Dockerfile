@@ -21,7 +21,9 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+ENV TZ=Europe/Berlin
 ENV TERM xterm
+ENV DEBIAN_FRONTEND noninteractive
 
 LABEL Name="Ubuntu for CRE" \
       Year=$BUILD_YEAR \
@@ -32,6 +34,8 @@ LABEL Name="Ubuntu for CRE" \
 
 # Install.
 
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# tzdata
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
