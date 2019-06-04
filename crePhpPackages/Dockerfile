@@ -51,9 +51,11 @@ RUN composer global require --prefer-stable --update-with-all-dependencies "npm-
 
 # yii3
 ## needs php 7.2 AND conflicts with yii2
+
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/di
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
+
 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
