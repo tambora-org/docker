@@ -36,21 +36,21 @@ RUN composer global require --prefer-stable --update-with-all-dependencies "npm-
 
 #RUN composer global require letudiant/composer-shared-package-plugin
 # yii2
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
-RUN composer global require --prefer-stable --update-with-all-dependencies codeception/base
-RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/phpunit
-RUN composer global require --prefer-stable --update-with-all-dependencies codeception/verify
-RUN composer global require --prefer-stable --update-with-all-dependencies symfony/browser-kit
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
+#RUN composer global require --prefer-stable --update-with-all-dependencies codeception/base
+#RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/phpunit
+#RUN composer global require --prefer-stable --update-with-all-dependencies codeception/verify
+#RUN composer global require --prefer-stable --update-with-all-dependencies symfony/browser-kit
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
 
 # yii3
-## needs php 7.2
+## needs php 7.2 AND conflicts with yii2
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
@@ -99,8 +99,10 @@ RUN composer global require --prefer-stable --update-with-all-dependencies ext-i
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/event-dispatcher
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/router
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute
+
 #RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-factory-implementation
 #RUN composer global require --prefer-stable --update-with-all-dependencies psr/container-implementation
+
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 
