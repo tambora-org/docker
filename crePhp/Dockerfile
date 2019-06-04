@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2012.0
+FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ARG BUILD_YEAR=2011
@@ -13,8 +13,8 @@ ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
-#ENV PHP_VERSION 7.0    
-ENV PHP_VERSION 7.2 
+ENV PHP_VERSION 7.0    
+#ENV PHP_VERSION 7.2 
 
 LABEL Name="PHP for CRE" \
       Year=$BUILD_YEAR \
@@ -38,11 +38,21 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 RUN apt-get update \
     && apt-get -y --no-install-recommends install php$PHP_VERSION-cli php$PHP_VERSION-curl \
         php$PHP_VERSION-intl php$PHP_VERSION-bz2 php$PHP_VERSION-imap php$PHP_VERSION-gmp ffmpeg \
-        php$PHP_VERSION-json php$PHP_VERSION-mcrypt php$PHP_VERSION-opcache php$PHP_VERSION-readline \ 
-        php$PHP_VERSION-xml php$PHP_VERSION-zip ssmtp  mailutils \
+        php$PHP_VERSION-json php$PHP_VERSION-opcache php$PHP_VERSION-readline \ 
+        php$PHP_VERSION-xml php$PHP_VERSION-zip ssmtp libsodium-dev mailutils \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* 
  
+# php$PHP_VERSION-mcrypt 
+# https://lukasmestan.com/install-mcrypt-extension-in-php7-2/
+#
+# apt-get -y install gcc make autoconf libc-dev pkg-config
+# apt-get -y install php-dev libmcrypt-dev php-pear
+# pecl channel-update pecl.php.net
+# pecl install mcrypt-1.0.1
+#
+# Add to php.ini as well....
+
 #CMD ["php", "-a"]
 
 # If you'd like to be able to use this container on a docker-compose environment as a quiescent PHP CLI container
