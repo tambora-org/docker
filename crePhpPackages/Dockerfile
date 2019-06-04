@@ -51,7 +51,8 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 
 # yii3
 ## needs php 7.2
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
+
+RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-factory-implementation
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
@@ -99,6 +100,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies ext-i
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/event-dispatcher
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/router
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
 
 RUN composer global install
 #RUN composer global update
