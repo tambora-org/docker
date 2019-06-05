@@ -53,7 +53,6 @@ RUN composer global require --prefer-stable --update-with-all-dependencies "npm-
 ## needs php 7.2 AND conflicts with yii2
 
 RUN composer global require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
-
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/di
@@ -61,7 +60,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/view   
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/db
 
-RUN composer global require --prefer-stable --update-with-all-dependencies hiqdev/composer-config-plugin
+#RUN composer global require --prefer-stable --update-with-all-dependencies hiqdev/composer-config-plugin
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-api
