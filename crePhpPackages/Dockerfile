@@ -107,8 +107,8 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
-#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-twig
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-twig
 
 RUN composer global install
 #RUN composer global update
