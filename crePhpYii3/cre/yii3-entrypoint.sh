@@ -6,6 +6,15 @@ set -e
 # https://www.yiiframework.com/wiki/2547/draft-understanding-yii-3
 composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii
 cd /cre/tmp/yii
+
+RUN composer config minimum-stability dev
+RUN composer config prefer-stable true
+#RUN composer config repositories path /cre/php/packages 
+#RUN composer config repositories.cre {"type:" "path", "url:" "/cre/php/packages"} 
+RUN composer config repositories.cre {"type:" "path", "url:" "/cre/tmp/php/packages"} 
+RUN composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
+
+
 composer require "foxy/foxy:^1.0.0"
 composer require yiisoft/yii-base-web
 

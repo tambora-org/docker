@@ -123,4 +123,5 @@ RUN composer global update
 COPY cre /cre
 
 #VOLUME ["/cre/www"]
+VOLUME ["/cre/tmp/php/packages"]
 WORKDIR "/cre/tmp/php/packages"
