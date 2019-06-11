@@ -111,7 +111,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-twig
 
 RUN composer global install
-#RUN composer global update
+RUN composer global update
 
 #for using:
 #RUN composer config minimum-stability dev
