@@ -22,8 +22,9 @@ chown -R www-data:www-data /cre/www/yii/web/assets
 chmod -R 774 /cre/www/yii/runtime
 chown -R www-data:www-data /cre/www/yii/runtime
 
-chmod -R 774 /cre/www/yii/data
-chown -R www-data:www-data /cre/www/yii/data
+#mkdir -p /cre/www/yii/data
+#chmod -R 774 /cre/www/yii/data
+#chown -R www-data:www-data /cre/www/yii/data
 
 exec "$@"
 
