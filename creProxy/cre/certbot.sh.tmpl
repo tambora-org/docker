@@ -28,7 +28,12 @@ fi
 {{ if $CurrentContainer.Env.CRE_DEVELOPMENT }}
 certbot --staging --noninteractive --nginx --keep-until-expiring --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
 {{ else }}
-certbot --noninteractive --nginx --keep-until-expiring --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+isInvalid=$(certbot --domain {{ $CurrentDomain }} | grep "Expiry Date" | grep -c "INVALID")
+if [ $isInvalid -eq 0 ]; then
+  certbot --noninteractive --nginx --keep-until-expiring --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+else
+  certbot --noninteractive --nginx --force-renewal --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $CurrentDomain }}
+fi
 {{end}}
 
 
@@ -44,7 +49,14 @@ certbot --noninteractive --nginx --keep-until-expiring --agree-tos -m admin@{{ $
 {{ if $CurrentContainer.Env.CRE_DEVELOPMENT }}
 certbot --staging --noninteractive --nginx --keep-until-expiring --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
 {{ else }}
-certbot --noninteractive --nginx --keep-until-expiring --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
+isInvalid=$(certbot --domain {{ $host }} | grep "Expiry Date" | grep -c "INVALID")
+if [ $isInvalid -eq 0 ]; then
+  certbot --noninteractive --nginx --keep-until-expiring --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
+else
+  certbot --noninteractive --nginx --force-renewal --agree-tos -m admin@{{ $CurrentDomain }} --domains {{ $host }}
+fi
+
+
 {{end}}
 
 

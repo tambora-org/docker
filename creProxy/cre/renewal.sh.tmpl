@@ -1,0 +1,33 @@
+#!/bin/sh 
+sleep 8
+
+until [ $(pgrep nginx | wc -l)  > 0 ]
+do
+ echo "Waiting for nginx"
+ sleep 2
+done
+sleep 5
+
+{{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
+{{ $LocalHost :=  or (hasSuffix "localhost" $CurrentDomain) (hasPrefix "localhost" $CurrentDomain) }}
+## Localhost?: {{ $LocalHost }} ## 
+
+{{ range $subdomain, $containers := groupByMulti $ "Env.CRE_SUBDOMAIN" "," }}
+
+{{ $subdomain := trim $subdomain }}
+{{ $host := (printf "%s.%s" $subdomain $CurrentDomain) }}
+
+# {{ $host }}
+# Force renewal randomly between 45 and 30 days / RANDOM 32767 max
+remainingDays=$(certbot --domain {{ $host }} | grep "Expiry Date" | sed -e 's/.*VALID: \(.*\) days)/\1/' )
+if [ $remainingDays -lt 45 ]; then
+  if [ $RANDOM -gt 31000 ]; then
+    certbot renew --noninteractive --nginx --force-renewal --agree-tos --domains {{ $host }}
+  fi
+fi
+
+{{ end }}
+
+{{ end }}
+# Standard renewal from 30 days on
+certbot renew --noninteractive --nginx --agree-tos

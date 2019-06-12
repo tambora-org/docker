@@ -1,5 +1,6 @@
 https: /cre/gen-template.sh /cre/openssl.cfg.tmpl 
 openssl: /cre/gen-template.sh /cre/openssl.sh.tmpl /cre/openssl.sh
+renewal: /cre/gen-template.sh /cre/renewal.sh.tmpl
 proxy: /cre/gen-template.sh /cre/proxy.conf.tmpl /cre/proxy-config.sh
 certbot: /cre/gen-template.sh /cre/certbot.sh.tmpl /cre/certbot.sh
 weekly: watch -n 600007 /cre/proxy-weekly.sh
