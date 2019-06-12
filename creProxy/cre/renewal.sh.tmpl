@@ -18,6 +18,7 @@ sleep 5
 {{ $host := (printf "%s.%s" $subdomain $CurrentDomain) }}
 
 # {{ $host }}
+RANDOM=$$
 # Force renewal randomly between 45 and 30 days / RANDOM 32767 max
 remainingDays=$(certbot --domain {{ $host }} | grep "Expiry Date" | sed -e 's/.*VALID: \(.*\) days)/\1/' )
 if [ $remainingDays -lt 45 ]; then
