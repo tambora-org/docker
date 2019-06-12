@@ -16,6 +16,15 @@ composer config repositories.cre  '{"type:" "path", "url:" "/cre/tmp/php/package
 composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 composer require "foxy/foxy:^1.0.0"
 composer require php-extended/php-http-message-factory-psr17
+
+composer require yiisoft/log
+composer require yiisoft/cache
+composer require yiisoft/di
+composer require yiisoft/rbac
+composer require yiisoft/view   
+composer require yiisoft/db
+
+
 composer require yiisoft/yii-base-web
 composer install
 
