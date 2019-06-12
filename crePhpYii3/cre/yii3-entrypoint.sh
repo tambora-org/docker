@@ -15,6 +15,7 @@ composer config prefer-stable true
 composer config repositories.cre  '{"type:" "path", "url:" "/cre/tmp/php/packages"}' 
 composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 composer require "foxy/foxy:^1.0.0"
+composer require php-extended/php-http-message-factory-psr17
 composer require yiisoft/yii-base-web
 composer install
 
