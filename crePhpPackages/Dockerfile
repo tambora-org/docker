@@ -60,7 +60,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/view   
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/db
 
-#RUN composer global require --prefer-stable --update-with-all-dependencies hiqdev/composer-config-plugin
+
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-api
@@ -104,9 +104,11 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute
 
 #RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-factory-implementation
+#RUN composer global require --prefer-stable --update-with-all-dependencies hiqdev/composer-config-plugin
 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
+
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-twig
 

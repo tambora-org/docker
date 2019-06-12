@@ -37,6 +37,12 @@ Add npm-component directory (o.a) for compiled directories - add to npm
 
 Remove ucid
 
+###########################################
+Add ENV: GIT_URL -> clone, pull npm (if not yet .git)
+prepublish: version patch, then git
+directory structure npm: packages & CamelCase
+node/npm-c:init & node/web-c:init -> cp this into build-c, or if exists copy from /cre/npm-dir
+
 
 
 

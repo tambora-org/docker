@@ -4,6 +4,12 @@ set -e
 # /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
 
 composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
+cd /cre/tmp/yii
+composer config minimum-stability dev
+composer config prefer-stable true
+composer config repositories.cre  '{"type:" "path", "url:" "/cre/tmp/php/packages"}' 
+composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
+composer install
 
 ##rsync -rl /cre/tmp/yii/ /cre/www/yii
 rsync -r /cre/tmp/yii/ /cre/www/yii
@@ -13,4 +19,12 @@ rsync -r /cre/tmp/yii/ /cre/www/yii
 chmod -R 774 /cre/www/yii/web/assets 
 chown -R www-data:www-data /cre/www/yii/web/assets
 
+chmod -R 774 /cre/www/yii/runtime
+chown -R www-data:www-data /cre/www/yii/runtime
+
+chmod -R 774 /cre/www/yii/data
+chown -R www-data:www-data /cre/www/yii/data
+
 exec "$@"
+
+
