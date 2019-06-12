@@ -8,6 +8,7 @@ do
 done
 sleep 5
 
+RANDOM=$$
 {{ $CurrentDomain := or $CurrentContainer.Env.CRE_DOMAIN "localhost" }}
 {{ $LocalHost :=  or (hasSuffix "localhost" $CurrentDomain) (hasPrefix "localhost" $CurrentDomain) }}
 ## Localhost?: {{ $LocalHost }} ## 
@@ -18,15 +19,21 @@ sleep 5
 {{ $host := (printf "%s.%s" $subdomain $CurrentDomain) }}
 
 # {{ $host }}
-RANDOM=$$
+
 # Force renewal randomly between 45 and 30 days / RANDOM 32767 max
-remainingDays=$(certbot --domain {{ $host }} | grep "Expiry Date" | sed -e 's/.*VALID: \(.*\) days)/\1/' )
-if [ $remainingDays -lt 45 ]; then
-  if [ $RANDOM -gt 31000 ]; then
-    certbot renew --noninteractive --nginx --force-renewal --agree-tos --domains {{ $host }}
+isInvalid=$(certbot --domain {{ $host }} | grep "Expiry Date" | grep -c "INVALID")
+if [ $isInvalid -eq 0 ]; then
+  remainingDays=$(certbot certificates --domain {{ $host }} | grep "Expiry Date" | sed -e 's/.*VALID: \(.*\) days)/\1/' )
+  if [ $remainingDays -lt 45 ]; then
+    if [ $RANDOM -gt 31000 ]; then
+      certbot renew --noninteractive --nginx --force-renewal --agree-tos --domains {{ $host }}
+      # only update one domain per day
+      exit 0 
+    fi
   fi
 fi
 
 {{ end }}
 # Standard renewal from 30 days on
 certbot renew --noninteractive --nginx --agree-tos
+exit 0
