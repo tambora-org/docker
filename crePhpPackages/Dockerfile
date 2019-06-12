@@ -39,12 +39,19 @@ RUN composer global require --prefer-stable --update-with-all-dependencies "npm-
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
+# Not loaded from cache ???
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/base
-RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/phpunit
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/verify
+RUN composer global require --prefer-stable --update-with-all-dependencies codeception/specify
+RUN composer global require --prefer-stable --update-with-all-dependencies codeception/stub
+RUN composer global require --prefer-stable --update-with-all-dependencies behat/gherkin
+
+RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/phpunit
+RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
 RUN composer global require --prefer-stable --update-with-all-dependencies symfony/browser-kit
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
+RUN composer global require --prefer-stable --update-with-all-dependencies true/punycode
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
