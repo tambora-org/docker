@@ -23,8 +23,9 @@ LABEL Name="Php Packages for CRE" \
 
 VOLUME ["/cre/tmp/php/packages"]
 RUN mkdir -p /cre/tmp/php/packages
-RUN echo "{}" /cre/tmp/php/packages/composer.json
+RUN echo "{}" > /cre/tmp/php/packages/composer.json
 RUN cd /cre/tmp/php/packages
+WORKDIR "/cre/tmp/php/packages"
 
 RUN composer global config minimum-stability dev
 RUN composer global config prefer-stable true
@@ -161,4 +162,4 @@ COPY cre /cre
 
 #VOLUME ["/cre/www"]
 
-WORKDIR "/cre/tmp/php/packages"
+
