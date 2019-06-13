@@ -1,5 +1,4 @@
 #!/bin/sh 
-sleep 8
 
 until [ $(pgrep nginx | wc -l)  > 0 ]
 do
@@ -21,14 +20,19 @@ RANDOM=$$
 # {{ $host }}
 
 # Force renewal randomly between 45 and 30 days / RANDOM 32767 max
-isInvalid=$(certbot --domain {{ $host }} | grep "Expiry Date" | grep -c "INVALID")
-if [ $isInvalid -eq 0 ]; then
-  remainingDays=$(certbot certificates --domain {{ $host }} | grep "Expiry Date" | sed -e 's/.*VALID: \(.*\) days)/\1/' )
-  if [ $remainingDays -lt 45 ]; then
-    if [ $RANDOM -gt 31000 ]; then
-      certbot renew --noninteractive --nginx --force-renewal --agree-tos --domains {{ $host }}
-      # only update one domain per day
-      exit 0 
+certInfo=$(certbot certificates --domain {{ $host }} )
+echo "$certInfo"
+doesExist=$(echo "$certInfo" | grep "Domains" | grep -c "{{ $host }}")
+if [ $doesExist -gt 0 ]; then
+  isInvalid=$(echo "$certInfo" | grep "Expiry Date" | grep -c "INVALID")
+  if [ $isInvalid -eq 0 ]; then
+    remainingDays=$(echo "$certInfo" | grep "Expiry Date" | sed -e 's/.*VALID: \(.*\) days)/\1/' )
+    if [ $remainingDays -lt 45 ]; then
+      if [ $RANDOM -gt 31000 ]; then
+        certbot renew --noninteractive --nginx --force-renewal --agree-tos --domains {{ $host }}
+        # only update one domain per day
+        exit 0 
+      fi
     fi
   fi
 fi
