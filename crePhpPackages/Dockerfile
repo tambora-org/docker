@@ -42,9 +42,9 @@ RUN composer config repositories.npm '{"type": "composer", "url": "https://asset
 # npm
 RUN composer require --prefer-stable --update-with-all-dependencies "foxy/foxy"
 RUN composer global require --prefer-stable --update-with-all-dependencies "npm-asset/jquery"
-RUN composer require --update-with-all-dependencies "npm-asset/jquery"
+#RUN composer require --update-with-all-dependencies "npm-asset/jquery"
 RUN composer global require --prefer-stable --update-with-all-dependencies npm-asset/bootstrap
-RUN composer require --update-with-all-dependencies npm-asset/bootstrap
+#RUN composer require --update-with-all-dependencies npm-asset/bootstrap
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
 #RUN composer require letudiant/composer-shared-package-plugin
@@ -58,6 +58,7 @@ RUN echo "Cjr: $(cat ./composer.json)"
 ## needs php 7.2 AND conflicts with yii2
 
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
 RUN composer require --update-with-all-dependencies yiisoft/log
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
