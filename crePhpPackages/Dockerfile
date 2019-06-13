@@ -32,9 +32,7 @@ RUN composer global config minimum-stability dev
 RUN composer global config prefer-stable true
 RUN composer global config repositories.npm composer https://asset-packagist.org
 
-RUN echo "Current dir: $(pwd)"
-RUN echo "Cja: $(cat /cre/tmp/php/packages/composer.json)"
-RUN echo "Cjr: $(cat ./composer.json)"
+
 
 RUN composer config minimum-stability dev
 RUN composer config prefer-stable true
@@ -44,17 +42,23 @@ RUN composer config repositories.npm '{"type": "composer", "url": "https://asset
 # npm
 RUN composer require --prefer-stable --update-with-all-dependencies "foxy/foxy"
 RUN composer global require --prefer-stable --update-with-all-dependencies "npm-asset/jquery"
+RUN composer require --update-with-all-dependencies "npm-asset/jquery"
 RUN composer global require --prefer-stable --update-with-all-dependencies npm-asset/bootstrap
+RUN composer require --update-with-all-dependencies npm-asset/bootstrap
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
 #RUN composer require letudiant/composer-shared-package-plugin
 
 
+RUN echo "Current dir: $(pwd)"
+RUN echo "Cja: $(cat /cre/tmp/php/packages/composer.json)"
+RUN echo "Cjr: $(cat ./composer.json)"
+
 # yii3
 ## needs php 7.2 AND conflicts with yii2
 
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log
+RUN composer require --update-with-all-dependencies yiisoft/log
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
