@@ -23,6 +23,8 @@ composer require yiisoft/di
 composer require yiisoft/rbac
 composer require yiisoft/view   
 composer require yiisoft/db
+composer require yiisoft/mutex
+composer require yiisoft/active-record
 
 
 composer require yiisoft/yii-base-web
