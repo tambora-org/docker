@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephpdev:2011.0
+FROM tamboraorg/crephpdev:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ARG BUILD_YEAR=2011
@@ -58,8 +58,7 @@ RUN echo "Cjr: $(cat ./composer.json)"
 ## needs php 7.2 AND conflicts with yii2
 
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/log
-RUN composer require --update-with-all-dependencies yiisoft/log
+
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
@@ -125,6 +124,10 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-ser
 #RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 
 ###Possible conflicts with yii2
+
+
+###Conflicts with php<7.2
+#RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
 
 ##Real fails
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
