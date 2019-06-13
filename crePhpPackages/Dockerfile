@@ -118,7 +118,8 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
 
-RUN composer global require --prefer-stable --update-with-all-dependencies vlucas/phpdotenv
+##RUN composer global require --prefer-stable --update-with-all-dependencies vlucas/phpdotenv
+
 RUN composer global require --prefer-stable --update-with-all-dependencies twig/twig
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/container
