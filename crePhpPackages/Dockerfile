@@ -21,6 +21,7 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
+VOLUME ["/cre/tmp/php/packages"]
 RUN mkdir -p /cre/tmp/php/packages
 RUN echo "{}" /cre/tmp/php/packages/composer.json
 RUN cd /cre/tmp/php/packages
@@ -43,7 +44,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 # Not loaded from cache ???
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/base
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/verify
-RUN composer global require --prefer-stable --update-with-all-dependencies codeception/specify
+# RUN composer global require --prefer-stable --update-with-all-dependencies codeception/specify
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/stub
 RUN composer global require --prefer-stable --update-with-all-dependencies behat/gherkin
 
@@ -137,5 +138,5 @@ RUN composer global update
 COPY cre /cre
 
 #VOLUME ["/cre/www"]
-VOLUME ["/cre/tmp/php/packages"]
+
 WORKDIR "/cre/tmp/php/packages"
