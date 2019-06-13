@@ -41,8 +41,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies npm-a
 
 ### test conflicts....
 
-###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
-###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
+
 # Not loaded from cache ???
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/base
 RUN composer global require --prefer-stable --update-with-all-dependencies codeception/verify
@@ -53,15 +52,20 @@ RUN composer global require --prefer-stable --update-with-all-dependencies behat
 RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/phpunit
 RUN composer global require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
 RUN composer global require --prefer-stable --update-with-all-dependencies symfony/browser-kit
-###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
-###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
+
 RUN composer global require --prefer-stable --update-with-all-dependencies true/punycode
-###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
-###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
-###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
 
 #Real conflicts with yii3
 #RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2
+
+###Possible Conflicts with yii3
+###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
+###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
+###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
+###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
+###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
+###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
+###RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
 
 # yii3
 ## needs php 7.2 AND conflicts with yii2
@@ -123,9 +127,8 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 RUN composer global require --prefer-stable --update-with-all-dependencies twig/twig
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/container
-RUN composer global require --prefer-stable --update-with-all-dependencies psr/container-implementation
+
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-factory
-RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-factory-implementation
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-message
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-message-implementation
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-server-handler
@@ -134,12 +137,14 @@ RUN composer global require --prefer-stable --update-with-all-dependencies psr/h
 #Real conflicts with yii2
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 
+###Possible conflicts with yii2
 
+##Real fails
 ##RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
 ##RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-twig
 ##RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-factory-implementation
 ##RUN composer global require --prefer-stable --update-with-all-dependencies hiqdev/composer-config-plugin
-
+##RUN composer global require --prefer-stable --update-with-all-dependencies psr/container-implementation
 
 RUN composer global install
 RUN composer global update
