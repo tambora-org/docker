@@ -4,6 +4,7 @@ set -e
 # /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
 
 composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
+echo "Yii2: project created"
 cd /cre/tmp/yii
 composer config minimum-stability dev
 composer config prefer-stable true
@@ -18,6 +19,7 @@ else
 fi
 
 composer install
+echo "Yii2: project installed"
 
 ##rsync -rl /cre/tmp/yii/ /cre/www/yii
 rsync -r /cre/tmp/yii/ /cre/www/yii
