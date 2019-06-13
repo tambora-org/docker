@@ -30,7 +30,7 @@ WORKDIR "/cre/tmp/php/packages"
 
 RUN composer global config minimum-stability dev
 RUN composer global config prefer-stable true
-RUN composer global config repositories.nmp composer https://asset-packagist.org
+RUN composer global config repositories.npm composer https://asset-packagist.org
 
 RUN echo "Current dir: $(pwd)"
 RUN echo "Cja: $(cat /cre/tmp/php/packages/composer.json)"
@@ -38,11 +38,11 @@ RUN echo "Cjr: $(cat ./composer.json)"
 
 RUN composer config minimum-stability dev
 RUN composer config prefer-stable true
-RUN composer config repositories.nmp composer https://asset-packagist.org
+RUN composer config repositories.npm composer https://asset-packagist.org
 
 # npm
 RUN composer require --prefer-stable --update-with-all-dependencies "foxy/foxy"
-RUN composer require --prefer-stable --update-with-all-dependencies "npm-asset/jquery"
+RUN composer global require --prefer-stable --update-with-all-dependencies "npm-asset/jquery"
 RUN composer require --prefer-stable --update-with-all-dependencies npm-asset/bootstrap
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
