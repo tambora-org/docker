@@ -7,7 +7,9 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii
 cd /cre/tmp/yii
 composer config minimum-stability dev
 composer config prefer-stable true
-composer config repositories.cre  '{"type": "path", "url": "/cre/tmp/php/packages"}' 
+if [ -d /cre/tmp/php/packages ]; then
+  composer config repositories.cre  '{"type": "path", "url": "/cre/tmp/php/packages"}' 
+fi
 composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 composer install
 

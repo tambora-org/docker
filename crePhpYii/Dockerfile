@@ -1,6 +1,6 @@
 # Adapted from 
-#FROM tamboraorg/crephpdev:2011.0
-FROM tamboraorg/crephppackages:2011.0
+FROM tamboraorg/crephpdev:2011.0
+#FROM tamboraorg/crephppackages:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2011
