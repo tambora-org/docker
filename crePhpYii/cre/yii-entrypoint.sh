@@ -11,6 +11,7 @@ if [ -d /cre/tmp/php/packages ]; then
   composer config repositories.cre  '{"type": "path", "url": "/cre/tmp/php/packages"}' 
 fi
 composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
+composer config repo.packagist false
 composer install
 
 ##rsync -rl /cre/tmp/yii/ /cre/www/yii
