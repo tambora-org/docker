@@ -38,7 +38,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies npm-a
 
 #RUN composer global require letudiant/composer-shared-package-plugin
 # yii2
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2
+
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
 # Not loaded from cache ???
@@ -57,6 +57,9 @@ RUN composer global require --prefer-stable --update-with-all-dependencies true/
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
+
+#Real conflicts with yii3
+#RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 
 # yii3
 ## needs php 7.2 AND conflicts with yii2
@@ -111,7 +114,6 @@ RUN composer global require --prefer-stable --update-with-all-dependencies yiiso
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/router
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute
 
-RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
 RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
 
 RUN composer global require --prefer-stable --update-with-all-dependencies vlucas/phpdotenv
@@ -125,6 +127,10 @@ RUN composer global require --prefer-stable --update-with-all-dependencies psr/h
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-message-implementation
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-server-handler
 RUN composer global require --prefer-stable --update-with-all-dependencies psr/http-server-middleware
+
+#Real conflicts with yii2
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
+
 
 ##RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
 ##RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/yii-twig
