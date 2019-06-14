@@ -5,14 +5,14 @@ set -e
 
 # https://www.yiiframework.com/wiki/2547/draft-understanding-yii-3
 
-composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii
+composer create-project --prefer-dist --stability=dev --no-install yiisoft/yii-project-template /cre/tmp/yii
 #instead: git clone, composer config repositories path /cre/..., composer install
 
 
 cd /cre/tmp/yii
 composer config minimum-stability dev
 composer config prefer-stable true
-composer config repositories.cre  '{"type:" "path", "url:" "/cre/tmp/php/packages"}' 
+composer config repositories.cre  '{"type:" "path", "url:" "/cre/php/packages"}' 
 composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 composer require "foxy/foxy:^1.0.0"
 composer require php-extended/php-http-message-factory-psr17
