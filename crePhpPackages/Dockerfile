@@ -21,6 +21,13 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
+#move to ununtu base later
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install bc \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+
 RUN if [ $(echo " $PHP_VERSION >= 7.2" | bc) -eq 1 ]; then echo "new php0" ; else echo "old php0" ; fi 
 RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php1" ; else echo "new php1" ; fi 
 
@@ -88,7 +95,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-ser
 
 
 
-RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
+RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2 \ 
 ; else echo "new php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/di && \
