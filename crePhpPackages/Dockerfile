@@ -87,7 +87,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-ser
 
 
 RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
- composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2  && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2 \ 
 ; else echo "new php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/di && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/view && \ 
@@ -132,7 +132,7 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/router && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template  && \ 
- composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper  && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper \ 
 ; fi
 
 
