@@ -64,8 +64,8 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-api
+
+
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap4
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap3
@@ -132,6 +132,8 @@ RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/view 
 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-api
 
 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
@@ -177,7 +179,8 @@ RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 ###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
 ###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
 ###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
-
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap3
 
 RUN composer install
 RUN composer update
