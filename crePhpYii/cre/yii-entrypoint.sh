@@ -12,7 +12,7 @@ composer config prefer-stable true
 if [ -d /cre/php/packages/vendor ]; then
   echo "Yii2: Use local (cached) repository"
   composer config repositories.cre  '{"type": "path", "url": "/cre/php/packages/vendor"}' 
-  #composer config repo.packagist false 
+  composer config repo.packagist false 
 else
   echo "Yii2: Use web repository"
   composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
