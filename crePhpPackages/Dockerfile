@@ -66,19 +66,7 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mongodb 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-elasticsearch 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex  
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-mysql 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-pgsql 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-file 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-web
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-rest
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/active-record
+
 RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier
 
 RUN composer require --prefer-stable --update-with-all-dependencies ext-intl
@@ -131,6 +119,20 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-gii && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/arrays && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/strings && \ 
+
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mongodb && \  
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/db-elasticsearch && \  
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql && \  
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex && \   
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-mysql && \  
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-pgsql && \  
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-file && \  
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-web && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-rest && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/active-record && \ 
 ; fi
 
 
