@@ -28,13 +28,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 
-RUN if [ $(echo " $PHP_VERSION >= 7.2" | bc) -eq 1 ]; then echo "new php0" ; else echo "old php0" ; fi 
-RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php1" ; else echo "new php1" ; fi 
-
-RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php2" && echo "old php3" ; else echo "new php2" && echo "new php3" ; fi
-
-RUN fjhflsjkldsjldsjd
-
 RUN mkdir -p /cre/tmp/php/packages
 #RUN echo "{}" > /cre/tmp/php/packages/composer.json
 COPY cre/empty-composer.json /cre/tmp/php/packages/composer.json
@@ -61,24 +54,10 @@ RUN composer global require --prefer-stable --update-with-all-dependencies npm-a
 #RUN composer require letudiant/composer-shared-package-plugin
 
 
-RUN echo "Current dir: $(pwd)"
-RUN echo "Cja: $(cat /cre/tmp/php/packages/composer.json)"
-RUN echo "Cjr: $(cat ./composer.json)"
-
 # yii3
 ## needs php 7.2 AND conflicts with yii2
 
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
-
-RUN echo "Current dir: $(pwd)"
-RUN echo "Cja: $(cat /cre/tmp/php/packages/composer.json)"
-RUN echo "Cjr: $(cat ./composer.json)"
-RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
-
-
-
-
-
 
 
 RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier
@@ -186,8 +165,8 @@ RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 
 RUN composer install
 RUN composer update
-#RUN composer global install
-#RUN composer global update
+RUN composer global install
+RUN composer global update
 
 
 COPY cre /cre
