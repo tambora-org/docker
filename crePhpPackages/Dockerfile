@@ -59,7 +59,12 @@ RUN echo "Cjr: $(cat ./composer.json)"
 
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
+RUN echo "Current dir: $(pwd)"
+RUN echo "Cja: $(cat /cre/tmp/php/packages/composer.json)"
+RUN echo "Cjr: $(cat ./composer.json)"
+RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
+
+RUN composer require --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/view  
@@ -127,7 +132,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-ser
 
 
 ###Conflicts with php<7.2
-#RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
 
 ##Real fails
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
