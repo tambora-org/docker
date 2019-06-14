@@ -21,10 +21,12 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
+RUN if [ $(echo " $PHP_VERSION >= 7.2" | bc) -eq 1 ]; then echo "new php0" ; else echo "old php0" ; fi 
 RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php1" ; else echo "new php1" ; fi 
 
 RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php2" && echo "old php3" ; else echo "new php2" && echo "new php3" ; fi
 
+RUN fjhflsjkldsjldsjd
 
 RUN mkdir -p /cre/tmp/php/packages
 #RUN echo "{}" > /cre/tmp/php/packages/composer.json
