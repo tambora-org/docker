@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephpdev:2012.0
+FROM tamboraorg/crephpdev:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ARG BUILD_YEAR=2011
@@ -131,7 +131,6 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-ser
 ###Conflicts with php<7.2
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
 
-
 # psr/log-implementation 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
@@ -162,6 +161,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies symfony/brow
 RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
 
 #Real conflicts with yii3
+# also needs mcrypt, php < 7.2
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 
 ###Possible Conflicts with yii3
