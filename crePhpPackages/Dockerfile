@@ -65,8 +65,7 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/arrays
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/strings
+
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mongodb 
@@ -130,7 +129,8 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-auth-client && \    
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-debug && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-gii && \ 
-
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/arrays && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/strings && \ 
 ; fi
 
 
