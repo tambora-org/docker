@@ -72,11 +72,28 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-mes
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-handler
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-middleware
 
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/base
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/verify
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/stub
+RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
+RUN composer require --prefer-stable --update-with-all-dependencies phpunit/phpunit
+RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
+
+RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
 
 
 RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2 && \
- composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4 && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker \
 ; else echo "new php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/di && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/view && \ 
@@ -126,7 +143,7 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
 
 
 
-##Real fails
+##Real fails yii3
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-twig
 ##RUN composer require --prefer-stable --update-with-all-dependencies psr/http-factory-implementation
@@ -135,33 +152,7 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
 ##RUN composer require --prefer-stable --update-with-all-dependencies psr/http-message-implementation
 
 ## real fails yii2 - not exist
-# RUN composer require --prefer-stable --update-with-all-dependencies codeception/specify
-
-# yii2
-
-# Not loaded from cache ???
-RUN composer require --prefer-stable --update-with-all-dependencies codeception/base
-RUN composer require --prefer-stable --update-with-all-dependencies codeception/verify
-RUN composer require --prefer-stable --update-with-all-dependencies codeception/stub
-RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
-RUN composer require --prefer-stable --update-with-all-dependencies phpunit/phpunit
-RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
-RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
-
-RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
-
-#Real conflicts with yii3
-# also needs mcrypt, php < 7.2
-
-###Possible Conflicts with yii3
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4
+## RUN composer require --prefer-stable --update-with-all-dependencies codeception/specify
 
 
 RUN composer install
