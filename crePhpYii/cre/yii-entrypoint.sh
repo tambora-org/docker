@@ -9,7 +9,7 @@ cd /cre/tmp/yii
 composer config minimum-stability dev
 composer config prefer-stable true
 
-if [ -d /cre/php/packages ]; then
+if [ -d /crexxx/php/packages ]; then
   echo "Yii2: Use local (cached) repository"
   composer config repositories.cre  '{"type": "path", "url": "/cre/php/packages"}' 
   #composer config repo.packagist false 
