@@ -21,12 +21,11 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-
 RUN mkdir -p /cre/tmp/php/packages
 #RUN echo "{}" > /cre/tmp/php/packages/composer.json
 COPY cre/empty-composer.json /cre/tmp/php/packages/composer.json
 RUN cd /cre/tmp/php/packages
-
+WORKDIR "/cre/tmp/php/packages"
 
 RUN composer global config minimum-stability dev
 RUN composer global config prefer-stable true
