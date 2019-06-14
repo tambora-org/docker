@@ -3,11 +3,11 @@ sut:
   command: /cre/tests/php-yii3-test.sh
   volumes:
     - ./tests:/cre/tests
-#  volumes_from: 
-#    - phppack
+  volumes_from: 
+    - phppack
 
-#phppack:
-#  image: tamboraorg/crephppackages:2012.0
-#  container_name: phppack 
+phppack:
+  image: tamboraorg/crephppackages:2012
+  container_name: phppack 
 
 
