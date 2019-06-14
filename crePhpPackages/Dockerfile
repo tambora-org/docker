@@ -63,7 +63,6 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/view  
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db
 
@@ -122,8 +121,6 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-mes
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-handler
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-middleware
 
-#
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
 
 #Real conflicts with yii2
 #RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-core
@@ -133,6 +130,12 @@ RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cach
 
 ###Conflicts with php<7.2
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
+
+
+# psr/log-implementation 
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
+
 
 ##Real fails
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
