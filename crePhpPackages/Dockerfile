@@ -63,13 +63,7 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-captcha
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-masked-input
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-swiftmailer
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-auth-client   
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-debug
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-gii
+
 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/arrays
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/strings
@@ -128,6 +122,14 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-file && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-db && \ 
+
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview && \  
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-captcha && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-masked-input && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-swiftmailer && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-auth-client && \    
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-debug && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-gii && \ 
 
 ; fi
 
