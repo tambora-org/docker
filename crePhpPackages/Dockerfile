@@ -68,14 +68,10 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
 RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier
-
 RUN composer require --prefer-stable --update-with-all-dependencies ext-intl
-
-
 ##RUN composer require --prefer-stable --update-with-all-dependencies vlucas/phpdotenv
 
 RUN composer require --prefer-stable --update-with-all-dependencies twig/twig
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper
 RUN composer require --prefer-stable --update-with-all-dependencies psr/container
 
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-factory
@@ -131,7 +127,7 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/router && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template  && \ 
-
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper  && \ 
 ; fi
 
 
@@ -164,13 +160,13 @@ RUN composer require --prefer-stable --update-with-all-dependencies true/punycod
 # also needs mcrypt, php < 7.2
 
 ###Possible Conflicts with yii3
-###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
-###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
-###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
-###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
-###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
-###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
-###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic 
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap3
 
