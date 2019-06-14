@@ -64,7 +64,7 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/view  
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db
+
 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
@@ -135,7 +135,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log
 # psr/log-implementation 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
-
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db
 
 ##Real fails
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
