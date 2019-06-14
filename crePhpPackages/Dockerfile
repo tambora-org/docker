@@ -23,7 +23,7 @@ LABEL Name="Php Packages for CRE" \
 
 #move to ununtu base later
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install bc \
+    && apt-get -y --no-install-recommends install bc rsync \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
