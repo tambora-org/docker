@@ -9,7 +9,7 @@ cd /cre/tmp/yii
 composer config minimum-stability dev
 composer config prefer-stable true
 
-if [ -d /crexxx/php/packages ]; then
+if [ -d /cre/php/packages ]; then
   echo "Yii2: Use local (cached) repository"
   composer config repositories.cre  '{"type": "path", "url": "/cre/php/packages"}' 
   #composer config repo.packagist false 
@@ -17,6 +17,15 @@ else
   echo "Yii2: Use web repository"
   composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 fi
+
+RUN echo "pck: $(ls -l /cre/php/packages)"
+RUN echo "pck2 $(cat /cre/php/packages/composer.json)"
+RUN echo "Current dir: $(pwd)" 
+RUN echo "Cja: $(cat /cre/tmp/yii/composer.json)" 
+RUN echo "Cjr: $(cat ./composer.json)"
+RUN echo "Pja: $(cat /cre/tmp/yii/package.json)" 
+RUN echo "Pjr: $(cat ./package.json)"
+
 
 composer install
 echo "Yii2: project installed"
