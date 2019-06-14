@@ -62,7 +62,7 @@ RUN echo "Cjr: $(cat ./composer.json)"
 RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
+
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/view  
 
 
@@ -129,9 +129,10 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-ser
 
 
 ###Conflicts with php<7.2
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
 
-# psr/log-implementation 
+# psr/log-implementation -> yiisoft/log
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db
