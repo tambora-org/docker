@@ -62,7 +62,7 @@ RUN echo "Cjr: $(cat ./composer.json)"
 RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-jquery
+
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console
 
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-file
@@ -129,7 +129,7 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap4 && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap3 && \      
-
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-jquery && \
 
 ; fi
 
