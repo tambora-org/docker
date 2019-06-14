@@ -133,6 +133,8 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
 ##RUN composer require --prefer-stable --update-with-all-dependencies psr/container-implementation
 ##RUN composer require --prefer-stable --update-with-all-dependencies psr/http-message-implementation
 
+## real fails yii2 - not exist
+##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap3
 
 # yii2
 
@@ -161,7 +163,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap3
+
 
 RUN composer install
 RUN composer update
