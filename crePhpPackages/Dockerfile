@@ -64,7 +64,7 @@ RUN echo "Cja: $(cat /cre/tmp/php/packages/composer.json)"
 RUN echo "Cjr: $(cat ./composer.json)"
 RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
-RUN composer require --update-with-all-dependencies yiisoft/cache
+RUN composer global require --prefer-stable --update-with-all-dependencies yiisoft/cache
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/view  
