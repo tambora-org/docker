@@ -21,18 +21,16 @@ LABEL Name="Php Packages for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-VOLUME ["/cre/tmp/php/packages"]
+
 RUN mkdir -p /cre/tmp/php/packages
 #RUN echo "{}" > /cre/tmp/php/packages/composer.json
 COPY cre/empty-composer.json /cre/tmp/php/packages/composer.json
 RUN cd /cre/tmp/php/packages
-WORKDIR "/cre/tmp/php/packages"
+
 
 RUN composer global config minimum-stability dev
 RUN composer global config prefer-stable true
 RUN composer global config repositories.npm composer https://asset-packagist.org
-
-
 
 RUN composer config minimum-stability dev
 RUN composer config prefer-stable true
@@ -180,5 +178,7 @@ RUN composer update
 COPY cre /cre
 
 #VOLUME ["/cre/www"]
+WORKDIR "/cre/php/packages"
+VOLUME ["/cre/php/packages"]
 
-
+ENTRYPOINT ["/cre/php-packages-entrypoint.sh"]
