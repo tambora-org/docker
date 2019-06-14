@@ -5,10 +5,10 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephpdev:2011.0
+FROM tamboraorg/crephpdev:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
@@ -135,16 +135,16 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
 
 ## real fails yii2 - not exist
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap3
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap
+# RUN composer require --prefer-stable --update-with-all-dependencies codeception/specify
 
 # yii2
 
 # Not loaded from cache ???
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/base
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/verify
-# RUN composer require --prefer-stable --update-with-all-dependencies codeception/specify
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/stub
 RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
-
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/phpunit
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
