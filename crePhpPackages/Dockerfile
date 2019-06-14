@@ -62,11 +62,6 @@ RUN echo "Cjr: $(cat ./composer.json)"
 RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 
 
-
-
-
-
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap4
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap3
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-jquery
@@ -125,23 +120,22 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-ser
 ###Possible conflicts with yii2
 
 
-RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" ; else echo "new php"; fi
+RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2  && \ 
+; else echo "new php" && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/di && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/view && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/log && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/cache && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/db && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-api && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview && \
+; fi
 
-###Conflicts with php<7.2
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/di
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/view 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-web
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-cli
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-base-api
-
-
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log 
-
-# psr/log-implementation -> requires yiisoft/log
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/cache
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/db
 
 ##Real fails
 ##RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dev
@@ -169,7 +163,6 @@ RUN composer require --prefer-stable --update-with-all-dependencies true/punycod
 
 #Real conflicts with yii3
 # also needs mcrypt, php < 7.2
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2
 
 ###Possible Conflicts with yii3
 ###RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug 
