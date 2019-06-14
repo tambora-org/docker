@@ -70,11 +70,7 @@ RUN echo "LS: $(ls -l /cre/tmp/php/packages/)"
 RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier
 
 RUN composer require --prefer-stable --update-with-all-dependencies ext-intl
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/event-dispatcher
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/router
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template 
 
 ##RUN composer require --prefer-stable --update-with-all-dependencies vlucas/phpdotenv
 
@@ -109,7 +105,6 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-file && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-db && \ 
-
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview && \  
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-captcha && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-masked-input && \ 
@@ -119,7 +114,6 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-gii && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/arrays && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/strings && \ 
-
  composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mongodb && \  
@@ -133,6 +127,11 @@ RUN if [ $PHP_VERSION -lt 7.2 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-web && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-rest && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/active-record && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/event-dispatcher && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/router && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template  && \ 
+
 ; fi
 
 
