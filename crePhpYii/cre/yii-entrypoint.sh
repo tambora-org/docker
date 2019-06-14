@@ -18,13 +18,13 @@ else
   composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 fi
 
-RUN echo "pck: $(ls -l /cre/php/packages)"
-RUN echo "pck2 $(cat /cre/php/packages/composer.json)"
-RUN echo "Current dir: $(pwd)" 
-RUN echo "Cja: $(cat /cre/tmp/yii/composer.json)" 
-RUN echo "Cjr: $(cat ./composer.json)"
-RUN echo "Pja: $(cat /cre/tmp/yii/package.json)" 
-RUN echo "Pjr: $(cat ./package.json)"
+ echo "pck: $(ls -l /cre/php/packages)"
+ echo "pck2 $(cat /cre/php/packages/composer.json)"
+ echo "Current dir: $(pwd)" 
+ echo "Cja: $(cat /cre/tmp/yii/composer.json)" 
+ echo "Cjr: $(cat ./composer.json)"
+ echo "Pja: $(cat /cre/tmp/yii/package.json)" 
+ echo "Pjr: $(cat ./package.json)"
 
 
 composer install
