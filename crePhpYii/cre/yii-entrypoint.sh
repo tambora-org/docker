@@ -18,7 +18,7 @@ else
   composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 fi
 
- echo "pck: $(ls -l /cre/php/packages)"
+ echo "pck: $(ls -l /cre/php/packages/vendor)"
  echo "pck2 $(cat /cre/php/packages/composer.json)"
  echo "Current dir: $(pwd)" 
  echo "Cja: $(cat /cre/tmp/yii/composer.json)" 
