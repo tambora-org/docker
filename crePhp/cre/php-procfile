@@ -1,4 +1,5 @@
 init: /cre/gen-template.sh /cre/php-init.sh.tmpl /cre/php-init.sh
 smtp: /cre/gen-template.sh /cre/ssmtp.conf.sh.tmpl /cre/ssmtp.conf.sh
 update: watch -n 600007 /cre/php-weekly.sh
+cron: watch -n 1807 /cre/php-cron30.sh
 start: /cre/php-fpm.sh
