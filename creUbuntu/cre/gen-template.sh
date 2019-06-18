@@ -54,10 +54,11 @@ done &
 
 sleep 1
 echo "Now to copy file: $file_tmpl to ..."
-# Add code to add CurrentContainer in front of file.
+# Add code to add CurrentContainer and GlueContainer in front of file.
 { echo -n '{{ $CurrentContainer := where $ "Hostname" "';
   cat /etc/hostname | tr -d '\n';
   echo -n -e '" | first }} \n';
+  echo -n '{{ $GlueContainer := where $ "ID" .Docker.CurrentContainerID | first }} \n';
   cat $file_tmpl; } > /cre/$host_tmpl
 
 mv /cre/$host_tmpl /cre/glue/$host_tmpl 
