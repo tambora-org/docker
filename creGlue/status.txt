@@ -4,3 +4,13 @@ Still in prototype status
 Todo:
 =====
 
+docker-compose >= 3: 
+ Use 'real' secret concept?
+ volumes_from dropped -> share volume of glue/secret directory...; but advantage: socket then is unshared.
+
+
+
+
+                           
+
+

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 # Returns first line of secret file (used for passwords, etc)
 # (First parameter is path&file or file in /cre/secrets
 # (Second optional parameter is fallback value)
