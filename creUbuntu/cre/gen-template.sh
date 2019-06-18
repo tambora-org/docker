@@ -58,7 +58,7 @@ echo "Now to copy file: $file_tmpl to ..."
 { echo -n '{{ $CurrentContainer := where $ "Hostname" "';
   cat /etc/hostname | tr -d '\n';
   echo -n -e '" | first }} \n';
-  echo -n '{{ $GlueContainer := where $ "ID" .Docker.CurrentContainerID | first }} \n';
+  echo '{{ $GlueContainer := where $ "ID" .Docker.CurrentContainerID | first }}';
   cat $file_tmpl; } > /cre/$host_tmpl
 
 mv /cre/$host_tmpl /cre/glue/$host_tmpl 
