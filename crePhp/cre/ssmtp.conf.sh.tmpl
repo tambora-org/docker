@@ -10,11 +10,11 @@ domain2='localhost'
   domain2='{{$creDomain}}'
 {{ end }} 
 
-{{ $mailhubfile := or $CurrentContainer.Env.SECRET_MAIL_HUB 'no_secret_file_given.txt'}}
+{{ $mailhubfile := or $CurrentContainer.Env.SECRET_MAIL_HUB "no_secret_file_given.txt"}}
 mailhub=$(/cre/get-secret.sh {{ $mailhubfile }} "mail.$domain2")
-{{ $authuserfile := or $CurrentContainer.Env.SECRET_MAIL_USER 'no_secret_file_given.txt'}}
+{{ $authuserfile := or $CurrentContainer.Env.SECRET_MAIL_USER "no_secret_file_given.txt"}}
 authuser=$(/cre/get-secret.sh {{ $authuserfile }} '')
-{{ $authpassfile := or $CurrentContainer.Env.SECRET_MAIL_PWD 'no_secret_file_given.txt'}}
+{{ $authpassfile := or $CurrentContainer.Env.SECRET_MAIL_PWD "no_secret_file_given.txt"}}
 authpass=$(/cre/get-secret.sh {{ $authpassfile }} '')
 
 
