@@ -14,12 +14,13 @@ else
 fi
 
 if [ ! -f $secret_path_and_file ]; then
-    if [ -z "$2" ]
+    if [ -z "$2" ]; then
       echo "[FAIL]: Secret file $secret_path_and_file not found !"
       exit 1
     else
       echo "$2"
       exit 0
+    fi
 fi
 
 first_line="$(head -n 1 $secret_path_and_file)"
