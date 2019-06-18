@@ -1,6 +1,7 @@
 #!/bin/bash 
 
 # Current Container Name : {{ $CurrentContainer.Name }}
+# Glue Container Name : {{ $GlueContainer.Name }}
 
 domain2='localhost'
 {{ $domain := "localhost" }}
@@ -9,9 +10,13 @@ domain2='localhost'
   domain2='{{$creDomain}}'
 {{ end }} 
 
-{{ $mailhub := or $CurrentContainer.Env.MAIL_HUB "mail.$domain2"}}
-{{ $authuser := or $CurrentContainer.Env.MAIL_USER ""}}
-{{ $authpass := or $CurrentContainer.Env.MAIL_PWD ""}}
+{{ $mailhubfile := or $CurrentContainer.Env.SECRET_MAIL_HUB "no_secret_file_given.txt"}}
+mailhub=$(/cre/get-secret.sh {{ $mailhubfile }} "mail.$domain2")
+{{ $authuserfile := or $CurrentContainer.Env.SECRET_MAIL_USER "no_secret_file_given.txt"}}
+authuser=$(/cre/get-secret.sh {{ $authuserfile }} "")
+{{ $authpassfile := or $CurrentContainer.Env.SECRET_MAIL_PWD "no_secret_file_given.txt"}}
+authpass=$(/cre/get-secret.sh {{ $authpassfile }} "")
+
 
 #root=postmaster
 echo "FromLineOverride=YES" > /etc/ssmtp/ssmtp.conf;
@@ -21,11 +26,11 @@ echo "FromLineOverride=YES" > /etc/ssmtp/ssmtp.conf;
 ##echo "hostname=$domain2" >> /etc/ssmtp/ssmtp.conf
 
 ## Use external mailhub
-echo "mailhub={{ $mailhub }}" >> /etc/ssmtp/ssmtp.conf 
+echo "mailhub=$mailhub" >> /etc/ssmtp/ssmtp.conf 
 echo "hostname=$domain2" >> /etc/ssmtp/ssmtp.conf 
 {{ if (and (ne $authuser "") (ne $authpass "")) }}
- echo "AuthUser={{ $authuser }}" >> /etc/ssmtp/ssmtp.conf  
- echo "AuthPass={{ $authpass }}" >> /etc/ssmtp/ssmtp.conf 
+ echo "AuthUser=$authuser" >> /etc/ssmtp/ssmtp.conf  
+ echo "AuthPass=$authpass" >> /etc/ssmtp/ssmtp.conf 
  #AuthMethod=LOGIN
 {{ end }}
 echo "AuthMethod=cram-md5" >> /etc/ssmtp/ssmtp.conf
