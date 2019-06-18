@@ -10,37 +10,41 @@ domain2='localhost'
   domain2='{{$creDomain}}'
 {{ end }} 
 
-{{ $mailhubfile := or $CurrentContainer.Env.SECRET_MAIL_HUB "no_secret_file_given.txt"}}
+{{ $mailhubfile := or $CurrentContainer.Env.SECRET_MAIL_HUB 'no_secret_file_given.txt'}}
 mailhub=$(/cre/get-secret.sh {{ $mailhubfile }} "mail.$domain2")
-{{ $authuserfile := or $CurrentContainer.Env.SECRET_MAIL_USER "no_secret_file_given.txt"}}
-authuser=$(/cre/get-secret.sh {{ $authuserfile }} "")
-{{ $authpassfile := or $CurrentContainer.Env.SECRET_MAIL_PWD "no_secret_file_given.txt"}}
-authpass=$(/cre/get-secret.sh {{ $authpassfile }} "")
+{{ $authuserfile := or $CurrentContainer.Env.SECRET_MAIL_USER 'no_secret_file_given.txt'}}
+authuser=$(/cre/get-secret.sh {{ $authuserfile }} '')
+{{ $authpassfile := or $CurrentContainer.Env.SECRET_MAIL_PWD 'no_secret_file_given.txt'}}
+authpass=$(/cre/get-secret.sh {{ $authpassfile }} '')
 
 
 #root=postmaster
-echo "FromLineOverride=YES" > /etc/ssmtp/ssmtp.conf;
+echo 'FromLineOverride=YES' > /etc/ssmtp/ssmtp.conf;
 
 ##Bei creMail:
 ##echo "mailhub=mail.$domain2:587" >> /etc/ssmtp/ssmtp.conf
 ##echo "hostname=$domain2" >> /etc/ssmtp/ssmtp.conf
 
 ## Use external mailhub
-echo "mailhub=$mailhub" >> /etc/ssmtp/ssmtp.conf 
-echo "hostname=$domain2" >> /etc/ssmtp/ssmtp.conf 
+echo 'mailhub='$mailhub >> /etc/ssmtp/ssmtp.conf 
+echo 'hostname='$domain2 >> /etc/ssmtp/ssmtp.conf 
 {{ if (and (ne $authuserfile "") (ne $authpassfile "")) }}
 if [ ! -z $authuser ] && [ ! -z $authpass ]; then
- echo "AuthUser=$authuser" >> /etc/ssmtp/ssmtp.conf  
- echo "AuthPass=$authpass" >> /etc/ssmtp/ssmtp.conf 
+ echo 'AuthUser='$authuser >> /etc/ssmtp/ssmtp.conf  
+ echo 'AuthPass='$authpass >> /etc/ssmtp/ssmtp.conf 
  #AuthMethod=LOGIN
 fi
 {{ end }}
-echo "AuthMethod=cram-md5" >> /etc/ssmtp/ssmtp.conf
+echo 'AuthMethod=cram-md5' >> /etc/ssmtp/ssmtp.conf
 
-echo "UseTLS=YES" >> /etc/ssmtp/ssmtp.conf
-echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
-echo "rewriteDomain=$domain2" >> /etc/ssmtp/ssmtp.conf
+echo 'UseTLS=YES' >> /etc/ssmtp/ssmtp.conf
+echo 'UseSTARTTLS=YES' >> /etc/ssmtp/ssmtp.conf
+echo 'rewriteDomain='$domain2 >> /etc/ssmtp/ssmtp.conf
 
+#dont't let secrets show up in environment variables
+unset mailhub
+unset authuser
+unset authpass
 
 # https://blog.doenselmann.com/emails-automatisch-mit-ssmtp-versenden/
 # /etc/ssmtp/revaliases
