@@ -5,10 +5,10 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephpdev:2012.0
+FROM tamboraorg/crephpdev:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2011
 ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
@@ -45,6 +45,7 @@ RUN composer config repositories.npm '{"type": "composer", "url": "https://asset
 
 # npm
 RUN composer require --prefer-stable --update-with-all-dependencies "foxy/foxy"
+RUN composer global require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
 RUN composer global require --prefer-stable --update-with-all-dependencies "npm-asset/jquery"
 #RUN composer require --update-with-all-dependencies "npm-asset/jquery"
 RUN composer global require --prefer-stable --update-with-all-dependencies npm-asset/bootstrap
@@ -84,7 +85,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies true/punycod
 
 
 RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
- composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2 && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2@stable && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4 && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug:~2.1.0 && \ 
