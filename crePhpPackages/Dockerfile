@@ -85,7 +85,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies true/punycod
 
 
 RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
- composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2:~2.1.0 && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2:~2.0.0 && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4 && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug:~2.1.0 && \ 

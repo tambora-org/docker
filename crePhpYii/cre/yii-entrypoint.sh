@@ -3,6 +3,8 @@ set -e
 
 # /cre/php-entrypoint.sh # later maybe php-dev-entrypoint.sh
 
+composer global require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
+
 composer create-project --prefer-dist --no-install yiisoft/yii2-app-basic /cre/tmp/yii 
 echo "Yii2: project created"
 cd /cre/tmp/yii
