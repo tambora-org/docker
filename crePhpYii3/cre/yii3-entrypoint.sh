@@ -5,6 +5,8 @@ set -e
 
 # https://www.yiiframework.com/wiki/2547/draft-understanding-yii-3
 
+composer global require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
+
 composer create-project --prefer-dist --stability=dev --no-install yiisoft/yii-project-template /cre/tmp/yii
 #instead: git clone, composer config repositories path /cre/..., composer install
 
