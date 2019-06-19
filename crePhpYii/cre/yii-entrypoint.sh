@@ -25,6 +25,9 @@ fi
  echo "Cjr: $(cat ./composer.json)"
  echo "Pja: $(cat /cre/tmp/yii/package.json)" 
  echo "Pjr: $(cat ./package.json)"
+ echo "ht1: $(ls -l /cre/php/packages/vendor/ezyang)"
+ echo "ht2: $(ls -l /cre/php/packages/vendor/ezyang/htmlpurifier)"
+ echo "ht3 $(cat /cre/php/packages/vendor/ezyang/htmlpurifier/composer.json)"
 
 
 composer install
