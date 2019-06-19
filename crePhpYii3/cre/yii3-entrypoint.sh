@@ -32,6 +32,10 @@ composer require psr/http-factory-implementation
 composer require yiisoft/yii-web
 
 composer require yiisoft/yii-base-web
+
+echo "pck: $(ls -l /cre/php/packages/vendor)"
+echo "pck2 $(cat /cre/php/packages/composer.json)"
+
 composer install
 
 ##rsync -rl /cre/tmp/yii/ /cre/www/yii
