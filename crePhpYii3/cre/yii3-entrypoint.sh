@@ -29,6 +29,8 @@ composer require nyholm/psr7
 composer require psr/http-factory
 composer require psr/http-factory-implementation
 
+composer require yiisoft/yii-web
+
 composer require yiisoft/yii-base-web
 composer install
 
