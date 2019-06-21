@@ -99,14 +99,14 @@ RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
 
 RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
-RUN composer require --prefer-stable --update-with-all-dependencies ext-soap
+#RUN composer require --prefer-stable --update-with-all-dependencies ext-soap
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/dependency-injection
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/http-kernel
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/lock
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/yaml
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
-RUN composer require --prefer-stable --update-with-all-dependencies ext-uopz
+#RUN composer require --prefer-stable --update-with-all-dependencies ext-uopz
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker 
 RUN composer require --prefer-stable --update-with-all-dependencies aws/aws-sdk-php 
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/phpbuiltinserver 
