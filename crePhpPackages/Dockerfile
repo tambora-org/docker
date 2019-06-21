@@ -52,6 +52,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies npm-a
 #RUN composer require --update-with-all-dependencies npm-asset/bootstrap
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
+RUN composer require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
 RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/jquery"
 RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/yii2-pjax"
