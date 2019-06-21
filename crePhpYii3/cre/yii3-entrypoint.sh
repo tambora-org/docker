@@ -14,8 +14,16 @@ composer create-project --prefer-dist --stability=dev --no-install yiisoft/yii-p
 cd /cre/tmp/yii
 composer config minimum-stability dev
 composer config prefer-stable true
-composer config repositories.cre  '{"type:" "path", "url:" "/cre/php/packages"}' 
-composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
+
+if [ -d /cre/php/packages/vendor ]; then
+  echo "Yii3: Use local (cached) repository"
+  composer config repositories.cre  '{"type": "path", "url": "/cre/php/packages/vendor/*/*"}' 
+  composer config repo.packagist false 
+else
+  echo "Yii3: Use web repository"
+  composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
+fi
+
 composer require "foxy/foxy:^1.0.0"
 composer require php-extended/php-http-message-factory-psr17
 
