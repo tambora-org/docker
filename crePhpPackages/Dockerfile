@@ -52,6 +52,20 @@ RUN composer global require --prefer-stable --update-with-all-dependencies npm-a
 #RUN composer require --update-with-all-dependencies npm-asset/bootstrap
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/jquery"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/yii2-pjax"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/punycode"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/inputmask"
+RUN composer require --prefer-stable --update-with-all-dependencies "miclabs/deep-copy"
+RUN composer require --prefer-stable --update-with-all-dependencies "symfony/polyfill-intl-idn"
+RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-text-template
+RUN composer require --prefer-stable --update-with-all-dependencies ralouphie/getallheaders
+RUN composer require --prefer-stable --update-with-all-dependencies theseer/tokenizer
+RUN composer require --prefer-stable --update-with-all-dependencies phpdocumentor/type-resolver
+RUN composer require --prefer-stable --update-with-all-dependencies phar-io/version
+
+
 #RUN composer require letudiant/composer-shared-package-plugin
 
 
@@ -61,7 +75,7 @@ RUN composer global require --prefer-stable --update-with-all-dependencies npm-a
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier
+RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier:~4.1.0
 RUN composer require --prefer-stable --update-with-all-dependencies ext-intl
 ##RUN composer require --prefer-stable --update-with-all-dependencies vlucas/phpdotenv
 
@@ -73,23 +87,39 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-mes
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-handler
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-middleware
 
-RUN composer require --prefer-stable --update-with-all-dependencies codeception/base
-RUN composer require --prefer-stable --update-with-all-dependencies codeception/verify
-RUN composer require --prefer-stable --update-with-all-dependencies codeception/stub
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/base:~2.3.9
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/verify:~0.4.0
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/stub:~1.0.4
 RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/phpunit
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
 
 RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
+#RUN composer require --prefer-stable --update-with-all-dependencies ext-soap (*)
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/dependency-injection
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/http-kernel
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/lock
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
+#RUN composer require --prefer-stable --update-with-all-dependencies ext-uopz (*)
+RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker 
+RUN composer require --prefer-stable --update-with-all-dependencies aws/aws-sdk-php 
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/phpbuiltinserver 
+RUN composer require --prefer-stable --update-with-all-dependencies flow/jsonpath 
+RUN composer require --prefer-stable --update-with-all-dependencies phpseclib/phpseclib 
+RUN composer require --prefer-stable --update-with-all-dependencies league/factory-muffin 
+RUN composer require --prefer-stable --update-with-all-dependencies league/factory-muffin-faker 
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/phpunit-bridge
+RUN composer require --prefer-stable --update-with-all-dependencies stecman/symfony-console-completion 
 
 
 RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2 && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap4 && \
- composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug:~2.1.0 && \ 
- composer require --dev --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii && \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-debug:~2.1.5 && \ 
+ composer require --dev --prefer-stable --update-with-all-dependencies yiisoft/yii2-gii:~2.1.0 && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-app-basic && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer && \
@@ -153,7 +183,7 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
 ##RUN composer require --prefer-stable --update-with-all-dependencies psr/http-message-implementation
 
 ## real fails yii2 - not exist
-## RUN composer require --prefer-stable --update-with-all-dependencies codeception/specify
+RUN composer require --prefer-stable --update-with-all-dependencies codeception/specify:~0.4.6
 
 
 RUN composer install
