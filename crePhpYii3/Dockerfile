@@ -19,6 +19,11 @@ LABEL Name="Yii3 for CRE" \
       Build_=$CRE_VERSION 
 
 
+# Install rsync - move to ubuntu later
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install rsync \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t crePhpYii \t ${YII_VERSION}" >> /cre/versions.txt 
