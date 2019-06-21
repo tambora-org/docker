@@ -53,11 +53,6 @@ RUN composer global require --prefer-stable --update-with-all-dependencies npm-a
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
 RUN composer require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
-RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
-RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/jquery"
-RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/yii2-pjax"
-RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/punycode"
-RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/inputmask"
 RUN composer require --prefer-stable --update-with-all-dependencies "miclabs/deep-copy"
 RUN composer require --prefer-stable --update-with-all-dependencies "symfony/polyfill-intl-idn"
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-text-template
@@ -66,6 +61,12 @@ RUN composer require --prefer-stable --update-with-all-dependencies theseer/toke
 RUN composer require --prefer-stable --update-with-all-dependencies phpdocumentor/type-resolver
 RUN composer require --prefer-stable --update-with-all-dependencies phar-io/version
 
+# needs github credentials ?
+#RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/jquery"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/yii2-pjax"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/punycode"
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/inputmask"
 
 #RUN composer require letudiant/composer-shared-package-plugin
 
