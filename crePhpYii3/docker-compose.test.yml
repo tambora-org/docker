@@ -7,7 +7,7 @@ sut:
     - phppack
 
 phppack:
-  image: tamboraorg/crephppackages:2012
+  image: tamboraorg/crephppackages:2012.0
   container_name: phppack 
 
 
