@@ -45,14 +45,14 @@ RUN composer config repositories.npm '{"type": "composer", "url": "https://asset
 
 # npm
 RUN composer require --prefer-stable --update-with-all-dependencies "foxy/foxy"
-RUN composer global require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
+#RUN composer global require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
 RUN composer global require --prefer-stable --update-with-all-dependencies "npm-asset/jquery"
 #RUN composer require --update-with-all-dependencies "npm-asset/jquery"
 RUN composer global require --prefer-stable --update-with-all-dependencies npm-asset/bootstrap
 #RUN composer require --update-with-all-dependencies npm-asset/bootstrap
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 
-RUN composer require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
+#RUN composer require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
 RUN composer require --prefer-stable --update-with-all-dependencies "myclabs/deep-copy"
 RUN composer require --prefer-stable --update-with-all-dependencies "symfony/polyfill-intl-idn"
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-text-template
