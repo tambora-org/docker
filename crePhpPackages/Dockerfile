@@ -99,14 +99,14 @@ RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
 
 RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
-#RUN composer require --prefer-stable --update-with-all-dependencies ext-soap (*)
+RUN composer require --prefer-stable --update-with-all-dependencies ext-soap
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/dependency-injection
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/http-kernel
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/lock
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/yaml
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
-#RUN composer require --prefer-stable --update-with-all-dependencies ext-uopz (*)
+RUN composer require --prefer-stable --update-with-all-dependencies ext-uopz
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker 
 RUN composer require --prefer-stable --update-with-all-dependencies aws/aws-sdk-php 
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/phpbuiltinserver 
@@ -117,9 +117,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies league/facto
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/phpunit-bridge
 RUN composer require --prefer-stable --update-with-all-dependencies stecman/symfony-console-completion 
 
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-db
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-email
-RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-syslog
+
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-coding-standards
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-mysql
 RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-pgsql
@@ -145,6 +143,9 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/di && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/view && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/log && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-db && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-email && \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-syslog && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/cache && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/rbac && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/db && \
