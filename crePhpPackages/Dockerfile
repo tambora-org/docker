@@ -66,7 +66,6 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/log
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
 RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/jquery"
 RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/yii2-pjax"
-RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/punycode"
 RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/inputmask"
 
 #RUN composer require letudiant/composer-shared-package-plugin
@@ -98,7 +97,6 @@ RUN composer require --prefer-stable --update-with-all-dependencies phpunit/phpu
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
 
-RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
 #RUN composer require --prefer-stable --update-with-all-dependencies ext-soap
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/dependency-injection
@@ -199,6 +197,8 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
 ##RUN composer require --prefer-stable --update-with-all-dependencies psr/container-implementation
 ##RUN composer require --prefer-stable --update-with-all-dependencies psr/http-message-implementation
 
+RUN composer require --prefer-stable --update-with-all-dependencies true/punycode
+RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/punycode"
 ## real fails yii2 - not exist
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/specify:~0.4.6
 

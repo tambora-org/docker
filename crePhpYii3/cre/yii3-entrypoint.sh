@@ -7,6 +7,7 @@ set -e
 
 composer global require --prefer-stable --update-with-all-dependencies fxp/composer-asset-plugin
 
+rm -R -f /cre/tmp/yii
 composer create-project --prefer-dist --stability=dev --no-install yiisoft/yii-project-template /cre/tmp/yii
 #instead: git clone, composer config repositories path /cre/..., composer install
 
