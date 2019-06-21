@@ -60,6 +60,8 @@ RUN composer require --prefer-stable --update-with-all-dependencies ralouphie/ge
 RUN composer require --prefer-stable --update-with-all-dependencies theseer/tokenizer
 RUN composer require --prefer-stable --update-with-all-dependencies phpdocumentor/type-resolver
 RUN composer require --prefer-stable --update-with-all-dependencies phar-io/version
+RUN composer require --prefer-stable --update-with-all-dependencies psr/container
+RUN composer require --prefer-stable --update-with-all-dependencies psr/log
 
 # needs github credentials ?
 #RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset/bootstrap"
@@ -77,7 +79,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies "bower-asset
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
 
 
-RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier:~4.1.0
+RUN composer require --prefer-stable --update-with-all-dependencies ezyang/htmlpurifier
 RUN composer require --prefer-stable --update-with-all-dependencies ext-intl
 ##RUN composer require --prefer-stable --update-with-all-dependencies vlucas/phpdotenv
 
@@ -103,6 +105,7 @@ RUN composer require --prefer-stable --update-with-all-dependencies symfony/proc
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/dependency-injection
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/http-kernel
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/lock
+RUN composer require --prefer-stable --update-with-all-dependencies symfony/yaml
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/process
 #RUN composer require --prefer-stable --update-with-all-dependencies ext-uopz (*)
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker 
@@ -115,6 +118,15 @@ RUN composer require --prefer-stable --update-with-all-dependencies league/facto
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/phpunit-bridge
 RUN composer require --prefer-stable --update-with-all-dependencies stecman/symfony-console-completion 
 
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-db
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-email
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-syslog
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-coding-standards
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-mysql
+RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mutex-db-pgsql
+
+RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-psr7
+RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
 
 RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2 && \

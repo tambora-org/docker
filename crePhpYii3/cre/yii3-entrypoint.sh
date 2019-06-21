@@ -37,7 +37,7 @@ composer require yiisoft/mutex
 composer require yiisoft/active-record
 composer require nyholm/psr7
 composer require psr/http-factory
-composer require psr/http-factory-implementation
+#composer require psr/http-factory-implementation
 
 composer require yiisoft/yii-web
 
