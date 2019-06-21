@@ -59,7 +59,6 @@ RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-
 RUN composer require --prefer-stable --update-with-all-dependencies ralouphie/getallheaders
 RUN composer require --prefer-stable --update-with-all-dependencies theseer/tokenizer
 RUN composer require --prefer-stable --update-with-all-dependencies phpdocumentor/type-resolver
-RUN composer require --prefer-stable --update-with-all-dependencies phar-io/version
 RUN composer require --prefer-stable --update-with-all-dependencies psr/container
 RUN composer require --prefer-stable --update-with-all-dependencies psr/log
 
@@ -91,7 +90,6 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-mes
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-handler
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-middleware
 
-#RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/base:~2.3.9
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/verify:~0.4.0
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/stub:~1.0.4
@@ -128,6 +126,9 @@ RUN composer require --prefer-stable --update-with-all-dependencies yiisoft/mute
 
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-psr7
 RUN composer require --prefer-stable --update-with-all-dependencies php-extended/php-http-message-factory-psr17
+
+#RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
+#RUN composer require --prefer-stable --update-with-all-dependencies phar-io/version
 
 RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2 && \
