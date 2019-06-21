@@ -91,10 +91,11 @@ RUN composer require --prefer-stable --update-with-all-dependencies psr/http-mes
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-handler
 RUN composer require --prefer-stable --update-with-all-dependencies psr/http-server-middleware
 
+#RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/base:~2.3.9
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/verify:~0.4.0
 RUN composer require --prefer-stable --update-with-all-dependencies codeception/stub:~1.0.4
-RUN composer require --prefer-stable --update-with-all-dependencies behat/gherkin
+
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/phpunit
 RUN composer require --prefer-stable --update-with-all-dependencies phpunit/php-invoker
 RUN composer require --prefer-stable --update-with-all-dependencies symfony/browser-kit
