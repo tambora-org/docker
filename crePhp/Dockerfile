@@ -8,7 +8,7 @@
 FROM tamboraorg/creubuntu:2011.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
