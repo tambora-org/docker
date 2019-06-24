@@ -31,9 +31,8 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 #rm -Rf /cre/tmp/yii
-mkdir -p /cre/tmp/yii && 
-##RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
-RUN composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii
+RUN mkdir -p /cre/tmp/yii \
+ && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii
 # move to www in entry-point
 
 #config/web.php
