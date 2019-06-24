@@ -13,8 +13,8 @@ ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
-ENV PHP_VERSION 7.0    
-#ENV PHP_VERSION 7.2 
+#ENV PHP_VERSION 7.0    
+ENV PHP_VERSION 7.2 
 
 LABEL Name="PHP for CRE" \
       Year=$BUILD_YEAR \
@@ -39,7 +39,7 @@ RUN apt-get update \
     && apt-get -y --no-install-recommends install php$PHP_VERSION-cli php$PHP_VERSION-curl \
         php$PHP_VERSION-intl php$PHP_VERSION-bz2 php$PHP_VERSION-imap php$PHP_VERSION-gmp ffmpeg \
         php$PHP_VERSION-json php$PHP_VERSION-opcache php$PHP_VERSION-readline \ 
-        php$PHP_VERSION-xml php$PHP_VERSION-zip ssmtp libsodium-dev mailutils php$PHP_VERSION-mcrypt \
+        php$PHP_VERSION-xml php$PHP_VERSION-zip ssmtp libsodium-dev mailutils  \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* 
  
