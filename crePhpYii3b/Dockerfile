@@ -30,8 +30,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
-#rm -Rf /cre/tmp/yii
-RUN mkdir -p /cre/tmp/yii \
+RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
  && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii
 # move to www in entry-point
 
