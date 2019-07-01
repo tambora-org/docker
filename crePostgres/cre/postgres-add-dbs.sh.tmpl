@@ -107,6 +107,18 @@ done
 
 {{ end }} 
 ##end of all containers
+
+
+##Adapt all sequences to end of counter
+ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres --dbname="{{$postgresDb}}" \
+       -c "SELECT CONCAT(table_schema,'.',table_name) AS table_name, column_name AS column FROM information_schema.columns WHERE NOT pg_get_serial_sequence(CONCAT(table_schema,'.',table_name), column_name) IS NULL" \
+ | while read tablename columnname ; do
+    echo "Sequences: $tablename $columnname"
+    ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres --dbname="{{$postgresDb}}" \
+          -c "SELECT setval(pg_get_serial_sequence('$tablename', '$columnname'),coalesce(max($columnname),0) + 1, false) FROM $tablename"
+   done
+###
+
 {{ end }} 
 ##end of all databases
 

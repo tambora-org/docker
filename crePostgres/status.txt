@@ -12,22 +12,6 @@ Todo:
 
 
 
-
-SELECT pg_get_serial_sequence(CONCAT(table_schema,'.',table_name),column_name) AS sequence,
-       CONCAT(table_schema,'.',table_name) AS table,
-       column_name AS column
-  FROM information_schema.columns WHERE NOT
-pg_get_serial_sequence(CONCAT(table_schema,'.',table_name),
-column_name) IS NULL
-
-
-SELECT setval(pg_get_serial_sequence('grouping.project', 'id'),
-coalesce(max(id),0) + 1, false) FROM grouping.project;
-
-
-
-Adapt sequence counters after import DB
-
  
 
 
