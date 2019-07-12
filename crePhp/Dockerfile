@@ -39,7 +39,7 @@ RUN apt-get update \
     && apt-get -y --no-install-recommends install php$PHP_VERSION-cli php$PHP_VERSION-curl \
         php$PHP_VERSION-intl php$PHP_VERSION-bz2 php$PHP_VERSION-imap php$PHP_VERSION-gmp ffmpeg \
         php$PHP_VERSION-json php$PHP_VERSION-opcache php$PHP_VERSION-readline \ 
-        php$PHP_VERSION-xml php$PHP_VERSION-zip ssmtp libsodium-dev mailutils php$PHP_VERSION-mcrypt \
+        php$PHP_VERSION-xml php$PHP_VERSION-zip ssmtp libsodium-dev mailutils  \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* 
  
