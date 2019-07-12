@@ -31,8 +31,11 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
- && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii \
+ && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii 
+
+RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies jaeger/querylist
+
 # move to www in entry-point
 
 #config/web.php
