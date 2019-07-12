@@ -40,7 +40,7 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite \
- && composer require --prefer-stable --update-with-all-dependencies "foxy/foxy:^1.0.0"
+ && composer require --prefer-stable --update-with-all-dependencies "foxy/foxy:^1.0.0" \
  && composer require --prefer-stable --update-with-all-dependencies jaeger/querylist 
 
 # move to www in entry-point
