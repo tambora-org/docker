@@ -136,7 +136,8 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-queue && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-swiftmailer && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-bootstrap && \
- composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker \
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/yii2-faker && \
+ composer require --prefer-stable --update-with-all-dependencies jaeger/querylist:^3.2 \
 ; else echo "new php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/di && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/view && \ 
@@ -184,7 +185,8 @@ RUN if [ $(echo " $PHP_VERSION < 7.2" | bc) -eq 1 ] ; then echo "old php" && \
  composer require --prefer-stable --update-with-all-dependencies yiisoft/router && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute && \ 
  composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-project-template  && \ 
- composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper \ 
+ composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper && \
+ composer require --prefer-stable --update-with-all-dependencies jaeger/querylist \
 ; fi
 
 
