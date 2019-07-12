@@ -9,7 +9,7 @@ ENV POSTGIS_MAJOR 2.3
 #ENV POSTGIS_VERSION 2.3.2+dfsg-1~exp2.pgdg80+1
 #ENV POSTGIS_VERSION 2.3.2+dfsg-1~exp2.pgdg16.04+1
 #ENV POSTGIS_VERSION 2.5.1
-ENV POSTGIS_VERSION 2.3.2
+ENV POSTGIS_VERSION 2.3.2 
 
 USER root
 
@@ -19,8 +19,11 @@ RUN add-apt-repository ppa:ubuntugis/ppa
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
            postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR 
+#RUN apt-get install -y --no-install-recommends \
+#           postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR-scripts 
 RUN apt-get install -y --no-install-recommends \
-           postgresql-$POSTGRES_VERSION-postgis-$POSTGIS_MAJOR-scripts 
+           postgresql-$POSTGRES_VERSION-postgis-scripts 
+
 RUN apt-get install -y --no-install-recommends \
            postgis 
 RUN rm -rf /var/lib/apt/lists/*
