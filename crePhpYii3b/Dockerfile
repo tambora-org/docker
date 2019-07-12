@@ -32,9 +32,12 @@ COPY cre /cre
 
 RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
  && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii 
-
+ 
 RUN cd /cre/tmp/yii \
- && composer require --prefer-stable --update-with-all-dependencies jaeger/querylist
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite \
+ && composer require --prefer-stable --update-with-all-dependencies jaeger/querylist 
 
 # move to www in entry-point
 
