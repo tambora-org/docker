@@ -5,16 +5,16 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2011.0
+FROM tamboraorg/creubuntu:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
-ENV PHP_VERSION 7.0    
-#ENV PHP_VERSION 7.2 
+#ENV PHP_VERSION 7.0    
+ENV PHP_VERSION 7.2 
 
 LABEL Name="PHP for CRE" \
       Year=$BUILD_YEAR \
