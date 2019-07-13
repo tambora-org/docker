@@ -39,16 +39,20 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-rest \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-dataview \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap4 \
- && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-masked-input \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-captcha \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-http-client \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-auth-client \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-queue \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-debug \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-elasticsearch \
  && composer require --prefer-stable --update-with-all-dependencies "foxy/foxy:^1.0.0" \
  && composer require --prefer-stable --update-with-all-dependencies jaeger/querylist 
+
+
+## yiisoft/yii-masked-input
 
 # sync to www in entry-point
 
