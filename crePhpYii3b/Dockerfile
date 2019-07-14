@@ -57,7 +57,7 @@ RUN cd /cre/tmp/yii \
 
 #config/web.php
 
-RUN cd /cre/tmp/yii && composer dump-autoload
+RUN cd /cre/tmp/yii && composer install && composer dump-autoload
 
 ##VOLUME ["/cre/www/yii"]
 WORKDIR "/cre/www"
