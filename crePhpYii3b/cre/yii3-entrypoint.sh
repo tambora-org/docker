@@ -10,8 +10,8 @@ rsync -r /cre/tmp/yii/ /cre/www/yii
 # later use --exclude /dir1/ --exclude /dir2/
 ##rm -rf /cre/tmp/yii
 
-##chmod -R 774 /cre/www/yii/web/assets 
-##chown -R www-data:www-data /cre/www/yii/web/assets
+##chmod -R 774 /cre/www/yii/public/assets 
+##chown -R www-data:www-data /cre/www/yii/public/assets
 
 exec "$@"
 
