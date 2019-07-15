@@ -52,6 +52,20 @@ RUN cd /cre/tmp/yii \
 
 ## yiisoft/yii-queue
 ## yiisoft/yii-masked-input
+# onmotion/yii2-vuejs-assets
+
+RUN cd /cre/tmp/yii \
+# && composer require --prefer-stable --update-with-all-dependencies bower-asset/vue \
+# && composer require --prefer-stable --update-with-all-dependencies bower-asset/vuex \
+# && composer require --prefer-stable --update-with-all-dependencies bower-asset/vue-router \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-router \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-resource \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/axios \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-notification \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-js-modal 
+
+
 
 # sync to www in entry-point
 
