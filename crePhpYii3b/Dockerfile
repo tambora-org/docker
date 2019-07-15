@@ -55,6 +55,7 @@ RUN cd /cre/tmp/yii \
 # onmotion/yii2-vuejs-assets
 
 RUN cd /cre/tmp/yii \
+ && composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}'
 # && composer require --prefer-stable --update-with-all-dependencies bower-asset/vue \
 # && composer require --prefer-stable --update-with-all-dependencies bower-asset/vuex \
 # && composer require --prefer-stable --update-with-all-dependencies bower-asset/vue-router \
