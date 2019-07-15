@@ -29,7 +29,7 @@ echo 'FromLineOverride=YES' > /etc/ssmtp/ssmtp.conf;
 echo 'mailhub='$mailhub >> /etc/ssmtp/ssmtp.conf 
 echo 'hostname='$domain2 >> /etc/ssmtp/ssmtp.conf 
 {{ if (and (ne $authuserfile "") (ne $authpassfile "")) }}
-if [ ! -z $authuser ] && [ ! -z $authpass ]; then
+if [[ ! -z $authuser ] && [ ! -z $authpass ]]; then
  echo 'AuthUser='$authuser >> /etc/ssmtp/ssmtp.conf  
  echo 'AuthPass='$authpass >> /etc/ssmtp/ssmtp.conf 
  #AuthMethod=LOGIN
