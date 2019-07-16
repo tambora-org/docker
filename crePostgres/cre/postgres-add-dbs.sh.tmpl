@@ -67,10 +67,17 @@ fi
 echo "Superuser: $postgres_user"
 ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "ALTER USER \"$postgres_user\" WITH SUPERUSER"
 
-## if init dump file exists import data
-if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ]
-then
 
+
+initDb='false'
+if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ] ; then
+  initDb='true'
+fi
+if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump.zip ] ; then
+  initDb='true'
+fi
+## if init dump.zip file or dump file exists import data
+if [ "true" == "$initDb" ] ; then
    #check if database already exists?
    if [ "true" == "$dataBaseExists" ]; then
       echo "Backup existing database: {{ $postgresDb }}"
@@ -78,19 +85,24 @@ then
       then
         mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump.zip
       fi
-      ${POSTGRESQL_BIN}/pg_dump --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+      ${POSTGRESQL_BIN}/pg_dump -Fc --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
       echo "Drop existing database: {{ $postgresDb }}"
+      #restart to get rid of connections 
+      /etc/init.d/postgresql restart
       ${POSTGRESQL_BIN}/dropdb --username=postgres {{$postgresDb}}
       echo "(Re)creating database: {{ $postgresDb }}"
-      ## ${POSTGRESQL_BIN}/createdb --username=postgres {{$postgresDb}}
-      ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "CREATE DATABASE {{$postgresDb}}"
+      ${POSTGRESQL_BIN}/createdb --username=postgres {{$postgresDb}}
    fi
-
-   echo "Initialize datebase by file: {{ $postgresDb }}"
-   ##${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --single-transaction --username postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump 
-   ${POSTGRESQL_BIN}/psql --username=postgres --dbname={{ $postgresDb }} -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump
-   # gunzip -c /cre/postgres/{{ $postgresDb }}.init.sql.gz | ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username postgres  
-   mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump
+   #remove later the uncompressed variant
+   if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ] ; then
+     ${POSTGRESQL_BIN}/psql --username=postgres --dbname={{ $postgresDb }} -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump
+     mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump
+   fi
+   if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump.zip ] ; then
+     echo "Initialize datebase by compressed file: {{ $postgresDb }}"
+     ${POSTGRESQL_BIN}/pg_restore --username=postgres --dbname={{ $postgresDb }} /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump.zip
+     mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump.zip
+   fi 
 fi
 
 ## Install (or Upgrade) Postgis extensions

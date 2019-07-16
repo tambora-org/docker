@@ -22,22 +22,23 @@ touch /cre/database-busy.txt
 #check if database already exists?
 if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
  echo "Database exists: {{ $postgresDb }}"
- if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump ]
- then
-   mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump
- fi
  mkdir -p /cre/postgres/dumps/{{ $postgresDb }}
- pg_dump --no-privileges --no-owner -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump {{ $postgresDb }}
+
+# if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump ]
+# then
+#   mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump
+# fi
+# pg_dump --no-privileges --no-owner -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump {{ $postgresDb }}
+
  ## try compressed here:
  if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip ]
  then
    mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump.zip
  fi
- pg_dump --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+ pg_dump -Fc --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+ #to restore use: pg_restore --username=postgres --dbname={{ $postgresDb }} /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip 
  ## end compressed
-
  ## optionally copy dumpfile to other server (daily -> update)
-
  ## later add reading of database.update.dump (from other server) here 
 
 else
