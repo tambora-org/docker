@@ -48,7 +48,7 @@ RUN \
 RUN locale-gen en_US en_US.UTF-8 && \ 
     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
-RUN timedatectl set-timezone UTC
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creUbuntu \t $(cat /usr/lib/os-release | grep PRETTY | sed -e "s/^PRETTY_NAME=\"Ubuntu //" -e "s/\"$//")" >> /cre/versions.txt && \
