@@ -85,7 +85,9 @@ if [ "true" == "$initDb" ] ; then
       then
         mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump.zip
       fi
-      ${POSTGRESQL_BIN}/pg_dump -Fc --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+      echo "Dump database {{ $postgresDb }} ..."
+      ${POSTGRESQL_BIN}/pg_dump -Fc --no-privileges --no-owner -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+      echo "... finished."
       echo "Drop existing database: {{ $postgresDb }}"
       #restart to get rid of connections 
       /etc/init.d/postgresql restart
@@ -95,13 +97,16 @@ if [ "true" == "$initDb" ] ; then
    fi
    #remove later the uncompressed variant
    if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ] ; then
+     echo "Restore existing database by plain file: {{ $postgresDb }} ..."
      ${POSTGRESQL_BIN}/psql --username=postgres --dbname={{ $postgresDb }} -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump
      mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump
+     echo "... finished."
    fi
    if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump.zip ] ; then
-     echo "Initialize datebase by compressed file: {{ $postgresDb }}"
+     echo "Restore existing database by compressed file: {{ $postgresDb }} ..."
      ${POSTGRESQL_BIN}/pg_restore --username=postgres --dbname={{ $postgresDb }} /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump.zip
      mv /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.done.dump.zip
+     echo "... finished."
    fi 
 fi
 

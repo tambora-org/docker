@@ -35,7 +35,9 @@ if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$
  then
    mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump.zip
  fi
- pg_dump -Fc --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+ echo "Dump database {{ $postgresDb }} ..."
+ pg_dump -Fc --no-privileges --no-owner -U postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+ echo "... dump database {{ $postgresDb }} finished."
  #to restore use: pg_restore --username=postgres --dbname={{ $postgresDb }} /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip 
  ## end compressed
  ## optionally copy dumpfile to other server (daily -> update)
