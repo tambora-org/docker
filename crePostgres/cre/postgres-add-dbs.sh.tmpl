@@ -68,6 +68,22 @@ ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "ALTER USER \"$
 ## if init dump file exists import data
 if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump ]
 then
+
+   #check if database already exists?
+   if [ $(${POSTGRESQL_BIN}/psql -tAc "SELECT 1 FROM pg_database WHERE datname='{{$postgresDb}}'") ]; then
+      echo "Backup existing database: {{ $postgresDb }}"
+      if [ -e /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip ]
+      then
+        mv -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip /cre/postgres/dumps/{{ $postgresDb }}/database.backup.dump.zip
+      fi
+      ${POSTGRESQL_BIN}/pg_dump --no-privileges --no-owner -U postgres -c -f /cre/postgres/dumps/{{ $postgresDb }}/database.daily.dump.zip {{ $postgresDb }} 
+      echo "Drop existing database: {{ $postgresDb }}"
+      ${POSTGRESQL_BIN}/dropdb --username=postgres {{$postgresDb}}
+      echo "(Re)creating database: {{ $postgresDb }}"
+      ## ${POSTGRESQL_BIN}/createdb --username=postgres {{$postgresDb}}
+      ${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --username=postgres -c "CREATE DATABASE {{$postgresDb}}"
+   fi
+
    echo "Initialize datebase by file: {{ $postgresDb }}"
    ##${POSTGRESQL_BIN}/psql -v ON_ERROR_STOP=1 --single-transaction --username postgres -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump 
    ${POSTGRESQL_BIN}/psql --username=postgres --dbname={{ $postgresDb }} -f /cre/postgres/dumps/{{ $postgresDb }}/database.init.dump
