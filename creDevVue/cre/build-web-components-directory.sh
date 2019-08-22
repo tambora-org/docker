@@ -89,34 +89,6 @@ mkdir -p $dst_path/sync
 rm -rf $dst_path/sync/*
 mkdir -p $npm_path
 
-if [[ 0 -eq $vue_number ]]; then
-  cd /cre/node/js-components
-  ./install.sh
-  echo "Build js components in sub-directory: $subdir_path"
-  rm -rf /cre/node/js-components/dist/*
-  existingNpm $npm_path
-  addNpmSetings $subdir_path
-  npm build
-  cp -f /cre/node/js-components/dist/*.* $dst_path/sync/
-  cp -f -r /cre/node/js-components/* $npm_path
-else
-  cd /cre/node/cre-components
-  ./install.sh
-  echo "Build web components in sub-directory: $subdir_path"
-  rm -rf /cre/node/cre-components/dist/*
-  existingNpm $npm_path
-  addNpmSetings $subdir_path
-  addWCbuild $wc_name $crazy_kebab
-  npm build0
-  #now in build script
-  #vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
-  #sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
-  #sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
-  #rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
-  cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
-  cp -f -r /cre/node/cre-components/* $npm_path
-fi
-
 existingNpm () {
   npm_path=$1
 
@@ -154,8 +126,6 @@ addNpmSetings () {
   fi
 }
 
-
-
 addWCbuild () {
   wc_name=$1
   crazy_kebab=$2
@@ -167,6 +137,34 @@ addWCbuild () {
   npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
 
 }
+
+if [[ 0 -eq $vue_number ]]; then
+  cd /cre/node/js-components
+  ./install.sh
+  echo "Build js components in sub-directory: $subdir_path"
+  rm -rf /cre/node/js-components/dist/*
+  existingNpm $npm_path
+  addNpmSetings $subdir_path
+  npm build
+  cp -f /cre/node/js-components/dist/*.* $dst_path/sync/
+  cp -f -r /cre/node/js-components/* $npm_path
+else
+  cd /cre/node/cre-components
+  ./install.sh
+  echo "Build web components in sub-directory: $subdir_path"
+  rm -rf /cre/node/cre-components/dist/*
+  existingNpm $npm_path
+  addNpmSetings $subdir_path
+  addWCbuild $wc_name $crazy_kebab
+  npm build0
+  #now in build script
+  #vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
+  #sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
+  #sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
+  #rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
+  cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
+  cp -f -r /cre/node/cre-components/* $npm_path
+fi
 
 
 #remove touch file
