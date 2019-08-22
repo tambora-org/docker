@@ -40,7 +40,7 @@ RUN mkdir -p /cre/node/js-template && \
     cd /cre/node/js-template && \
     npm init -yes
 
-WORKDIR "/cre/node"
+WORKDIR "/cre/node/wc-template"
   
 RUN cd /cre/node/wc-template  && \ 
     npm install --save vue vuex axios vue-resource && \ 

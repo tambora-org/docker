@@ -90,15 +90,25 @@ rm -rf $dst_path/sync/*
 mkdir -p $npm_path
 
 existingNpm () {
-  npm_path=$1
+  npm_package=$1
+  npm_path=$2
 
- #if exists $npm_path/package.json
-  ## cp
-  ## npm version patch
- #else
-  ## v "${CRE_VERSION}.0"
- ## end if package.json exists
-  
+  curr_version=$(npm view $npm_package version)
+  echo "Current npm-version found: $curr_version" 
+  #if [ -f $npm_path/package.json ]; then
+  #  cp -f $npm_path/package.json ./    #REALLY?
+  #fi
+  #if curr_version
+  #   if curr_version > "${CRE_VERSION}.0"
+  #     npm config set allow-same-version true
+  #     npm version curr_version
+  #     npm version patch
+  #   else
+  #     v "${CRE_VERSION}.0"
+  #   fi
+  #else
+  #  v "${CRE_VERSION}.0"
+  #fi
   ## rm -rf $npm_path/*
 }
 
@@ -140,20 +150,20 @@ addWCbuild () {
 
 if [[ 0 -eq $vue_number ]]; then
   cd /cre/node/js-components
-  ./install.sh
   echo "Build js components in sub-directory: $subdir_path"
   rm -rf /cre/node/js-components/dist/*
-  existingNpm $npm_path
+  existingNpm "c4u-glue" $npm_path  ## Needs adaption: dir name or kebabed dir name
+  ./install.sh
   addNpmSetings $subdir_path
   npm build
   cp -f /cre/node/js-components/dist/*.* $dst_path/sync/
   cp -f -r /cre/node/js-components/* $npm_path
 else
   cd /cre/node/cre-components
-  ./install.sh
   echo "Build web components in sub-directory: $subdir_path"
   rm -rf /cre/node/cre-components/dist/*
-  existingNpm $npm_path
+  existingNpm $wc_name $npm_path
+  ./install.sh
   addNpmSetings $subdir_path
   addWCbuild $wc_name $crazy_kebab
   npm build0
