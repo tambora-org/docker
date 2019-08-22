@@ -24,10 +24,18 @@ fi
  
 root_path=$2
 #
+
 subdir_path=${wc_path#"$root_path"}
 dst_path="/cre/web-components/$subdir_path"
 npm_path="/cre/npm-components/$subdir_path"
 wc_name="wc-main"
+
+slash_number=$(echo "$subdir_path" | tr -cd '/' | wc -c)
+if [[ 1 -ne $slash_number ]]; then
+  echo "no first level sub-directory detected: $subdir_path"
+  exit 1
+fi
+
 if [[ ! -z "$subdir_path" ]]; then
   last_path=$(echo "$dst_path" | rev | cut -f 1 -d '/' | rev)
   wc_name=$(echo "wc-$last_path"  | tr '[:upper:]' '[:lower:]')
@@ -42,9 +50,14 @@ done
 # touch file
 touch /cre/web-components-build-busy.txt
 
-# clear directory first
-rm -rf /cre/node/cre-components/src/* 
-rm -rf /cre/node/js-components/src/* 
+# clear directory first, prepare additional installation file
+rm -rf /cre/node/cre-components/* 
+cp -rf /cre/node/wc-template/* /cre/node/cre-components
+touch /cre/node/cre-components/install.sh
+rm -rf /cre/node/js-components/*
+cp -rf /cre/node/js-template/* /cre/node/js-components
+touch /cre/node/js-components/install.sh 
+
 mkdir -p /cre/node/cre-components/src/components
 # then copy local files and those in subdirs (may add more types)
 find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path; do 
@@ -54,7 +67,9 @@ find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path
   #hook for installing more npm modules 
   ## may better copy/merge first... (current dir js vs wc)
   if [[ -e "$subdir_path/install.sh" ]]; then
-    $subdir_path/install.sh
+    ## $subdir_path/install.sh  ## install later
+    echo $subdir_path/install.sh >> /cre/node/cre-components/install.sh
+    echo $subdir_path/install.sh >> /cre/node/js-components/install.sh
     # npm-install-peers
   fi  
 done
@@ -71,41 +86,52 @@ crazy_camel="PleaseRemoveMeAsSoonAsPossible"
 crazy_minus=$(echo $crazy_camel | sed 's/\(.\)\([A-Z]\)/\1-\2/g')        
 crazy_kebab=$(echo $crazy_minus  | tr '[:upper:]' '[:lower:]')    
 mkdir -p $dst_path/sync
+rm -rf $dst_path/sync/*
+mkdir -p $npm_path
 
 if [[ 0 -eq $vue_number ]]; then
   cd /cre/node/js-components
+  ./install.sh
   echo "Build js components in sub-directory: $subdir_path"
   rm -rf /cre/node/js-components/dist/*
+  existingNpm $npm_path
+  addNpmSetings $subdir_path
   npm build
-  cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
+  cp -f /cre/node/js-components/dist/*.* $dst_path/sync/
+  cp -f -r /cre/node/js-components/* $npm_path
 else
   cd /cre/node/cre-components
+  ./install.sh
   echo "Build web components in sub-directory: $subdir_path"
   rm -rf /cre/node/cre-components/dist/*
-  vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
-  sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
-  sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
-  rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
+  existingNpm $npm_path
+  addNpmSetings $subdir_path
+  addWCbuild $wc_name $crazy_kebab
+  npm build0
+  #now in build script
+  #vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
+  #sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
+  #sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
+  #rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
   cp -f /cre/node/cre-components/dist/*.* $dst_path/sync/
+  cp -f -r /cre/node/cre-components/* $npm_path
 fi
 
-
-slash_number=$(echo "$subdir_path" | tr -cd '/' | wc -c)
-if [[ 1 -eq $slash_number ]]; then
-  echo "first level sub-directory detected: $subdir_path"
+existingNpm () {
+  npm_path=$1
 
  #if exists $npm_path/package.json
   ## cp
   ## npm version patch
  #else
   ## v "${CRE_VERSION}.0"
+ ## end if package.json exists
+  
+  ## rm -rf $npm_path/*
+}
 
-
-  npmAddScript -k build1 -v "vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'" -f
-  npmAddScript -k build2 -v "sed -i -e \"s/${crazy_kebab}-//g\" /cre/node/cre-components/dist/*.*" -f
-  npmAddScript -k build3 -v "sed -i -e \"s/${crazy_kebab}/${wc_name}/g\" /cre/node/cre-components/dist/*.*" -f
-  npmAddScript -k build4 -v "rename \"s/$crazy_kebab/$wc_name/\" /cre/node/cre-components/dist/*.*" -f
-  npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
+addNpmSetings () {
+  subdir_path=$1
 
   json -I -f package.json -e "this.name='${subdir_path:1}'"
   json -I -f package.json -e 'this.private=false'
@@ -126,40 +152,22 @@ if [[ 1 -eq $slash_number ]]; then
     json -I -f package.json -e 'this.keywords.push("webedu")'
     json -I -f package.json -e 'this.keywords.push("w4u")' 
   fi
- ## end if package.json exists
+}
 
 
-  mkdir -p $npm_path
-  rm -rf $npm_path/*
-  if [[ 0 -eq $vue_number ]]; then
-    cp -f -r /cre/node/js-components/* $npm_path
-  else
-    cp -f -r /cre/node/cre-components/* $npm_path
-  fi
-fi
 
-rm -rf /cre/node/cre-components/dist/*
-##vue-cli-service build --target wc-async --name $wc_name 'src/components/*.vue'
-vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
-sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
-sed -i -e "s/${crazy_kebab}/${wc_name}/g" /cre/node/cre-components/dist/*.*
-rename "s/$crazy_kebab/$wc_name/" /cre/node/cre-components/dist/*.*
-mkdir -p $dst_path/async
-cp -f /cre/node/cre-components/dist/*.* $dst_path/async/
+addWCbuild () {
+  wc_name=$1
+  crazy_kebab=$2
+  npmAddScript -k build1a -v "vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'" -f
+  npmAddScript -k build1 -v "vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'" -f
+  npmAddScript -k build2 -v "sed -i -e \"s/${crazy_kebab}-//g\" ./dist/*.*" -f
+  npmAddScript -k build3 -v "sed -i -e \"s/${crazy_kebab}/${wc_name}/g\" ./dist/*.*" -f
+  npmAddScript -k build4 -v "rename \"s/$crazy_kebab/$wc_name/\" ./dist/*.*" -f
+  npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
 
+}
 
-#build single files (in local dir only)
-rm -rf /cre/node/cre-components/src/* 
-mkdir -p /cre/node/cre-components/src/components
-# then copy files (may add more types)
-cp $wc_path/*.js  /cre/node/cre-components/src/components/
-cp $wc_path/*.vue /cre/node/cre-components/src/components/
-
-rm -rf /cre/node/cre-components/dist/*
-mkdir -p $dst_path/single/
-for filename in /cre/node/cre-components/src/components/*.vue; do
-  /cre/build-web-components-file.sh $filename $dst_path/single/
-done
 
 #remove touch file
 rm -f /cre/web-components-build-busy.txt

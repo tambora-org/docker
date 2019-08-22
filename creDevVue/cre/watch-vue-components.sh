@@ -11,12 +11,13 @@ if [ ! -d $root_path ]; then
   exit 1
 fi
 
-#Initially once do for all subdirectories
-find $root_path -maxdepth 5 -type d -print0 | while IFS= read -rd '' wc_path; do 
+#Initially once do for all first level subdirectories
+find $root_path -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -rd '' wc_path; do 
   /cre/build-web-components-directory.sh $wc_path $root_path
   sleep 0.0137
 done
-/cre/build-web-components-directory.sh $root_path $root_path
+## Don't do for top-level dir itself anymore 
+## /cre/build-web-components-directory.sh $root_path $root_path
 
 #Then watch changes
 while true; do

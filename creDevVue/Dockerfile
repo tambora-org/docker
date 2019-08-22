@@ -32,16 +32,17 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t  typescript \t $(tsc -v)" >> /cre/versions.txt 
 
 ## FROM entrypoint
-RUN mkdir -p /cre/node/cre-components && \
+RUN mkdir -p /cre/node/wc-template && \
     cd /cre/node && \
-    vue create -d -f cre-components
+    vue create -d -f wc-template
 
-RUN mkdir -p /cre/node/js-components && \
-    cd /cre/node/js-components && \
+RUN mkdir -p /cre/node/js-template && \
+    cd /cre/node/js-template && \
     npm init -yes
 
-WORKDIR "/cre/node/cre-components"  
-RUN cd /cre/node/cre-components  && \ 
+WORKDIR "/cre/node"
+  
+RUN cd /cre/node/wc-template  && \ 
     npm install --save vue vuex axios vue-resource && \ 
     npm install --save ucid  && \ 
     npm install --save-dev @vue/web-component-wrapper  && \ 
@@ -54,11 +55,7 @@ RUN npm install --save c4u-glue
 RUN npm-install-peers
 RUN v "${CRE_VERSION}.0"
 ##
-#WORKDIR "/cre/node/cre-components"
 
-## init once ?? -> done by vue create
-##vue-cli-service build  --report --target wc-async --name $crazy_kebab 'src/components/*.vue'
-## patch 
 RUN /cre/patch-vue-wc-wrapper.sh
 
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
