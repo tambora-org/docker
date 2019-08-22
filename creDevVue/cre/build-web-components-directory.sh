@@ -93,22 +93,19 @@ existingNpm () {
   npm_package=$1
   npm_path=$2
 
-  curr_version=$(npm view $npm_package version)
-  echo "Current npm-version found: $curr_version" 
   #if [ -f $npm_path/package.json ]; then
   #  cp -f $npm_path/package.json ./    #REALLY?
   #fi
-  #if curr_version
-  #   if curr_version > "${CRE_VERSION}.0"
-  #     npm config set allow-same-version true
-  #     npm version curr_version
-  #     npm version patch
-  #   else
-  #     v "${CRE_VERSION}.0"
-  #   fi
-  #else
-  #  v "${CRE_VERSION}.0"
-  #fi
+  curr_version=$(npm view $npm_package version 2>nul)
+  if [ $curr_version -ne ""]; then
+    echo "Current npm-version found: $curr_version" 
+    compare=$(dpkg --compare-versions $curr_version "gt" "${CRE_VERSION}.0")  
+    if [ $compare -eq "0"]; then
+       npm config set allow-same-version true
+       npm version curr_version
+       npm version patch
+     fi
+  fi
   ## rm -rf $npm_path/*
 }
 

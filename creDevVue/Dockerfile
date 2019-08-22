@@ -40,6 +40,10 @@ RUN mkdir -p /cre/node/js-template && \
     cd /cre/node/js-template && \
     npm init -yes
 
+## Add temporary build directories 
+RUN mkdir -p /cre/node/cre-components
+RUN mkdir -p /cre/node/js-components
+
 WORKDIR "/cre/node/wc-template"
   
 RUN cd /cre/node/wc-template  && \ 
