@@ -38,11 +38,13 @@ fi
 
 if [[ ! -z "$subdir_path" ]]; then
   last_path=$(echo "$dst_path" | rev | cut -f 1 -d '/' | rev)
-  count_minus=${#${last_path//[^-]}} ## component name should at least have one minus
-  if [ $count_minus > 0 ]; then
-     wc_name=$(echo "$last_path"  | tr '[:upper:]' '[:lower:]')
-  else
+  subst_minus=${last_path//[^-]}
+  count_minus=${#subst} 
+  ## component name should at least have one minus
+  if [[ 0 -eq $count_minus ]]; then
      wc_name=$(echo "wc-$last_path"  | tr '[:upper:]' '[:lower:]')
+  else
+     wc_name=$(echo "$last_path"  | tr '[:upper:]' '[:lower:]')
   fi
 fi
 
@@ -116,20 +118,25 @@ existingNpm () {
 }
 
 addNpmSetings () {
-  subdir_path=$1
+  wc_name=$1
+  subdir_path=$2
   if [[ -e ./README.md ]]; then
     descr=$(head -n 1 ./README.md)
     json -I -f package.json -e "this.description='$descr'"
   fi
   ## main file
   ## for wc use dist/wc-${subdir_path:1}.min.js  # or without wc....
-  js_files=$(ls -1 ./src/*.js)
-  js_number=$(ls -1 ./src/*.js | wc -l)
-  if [[ 1 -eq $js_number ]]; then
-    json -I -f package.json -e "this.main='./src/$js_files'"
-  else
-    if [[ -e ./src/index.js ]]; then  
-      json -I -f package.json -e "this.main='./src/index.js'"   
+  if [[ -e ./dist/$wc_name.min.js ]]; then
+     json -I -f package.json -e "this.main='./dist/$wc_name.min.js'"
+  else 
+    js_files=$(ls -1 ./src/*.js)
+    js_number=$(ls -1 ./src/*.js | wc -l)
+    if [[ 1 -eq $js_number ]]; then
+     json -I -f package.json -e "this.main='./src/$js_files'"
+    else
+      if [[ -e ./src/index.js ]]; then  
+        json -I -f package.json -e "this.main='./src/index.js'"   
+      fi
     fi
   fi
 
@@ -174,7 +181,7 @@ if [[ 0 -eq $vue_number ]]; then
   rm -rf /cre/node/js-components/dist/*
   existingNpm $wc_name $npm_path  ## Needs adaption: dir name or kebabed dir name
   ./install.sh && rm ./install.sh
-  addNpmSetings $subdir_path
+  addNpmSetings $wc_name $subdir_path
   npm install
   cp -f /cre/node/js-components/src/*.* $dst_path/sync/
   cp -f -r /cre/node/js-components/* $npm_path
@@ -184,7 +191,7 @@ else
   rm -rf /cre/node/cre-components/dist/*
   existingNpm $wc_name $npm_path
   ./install.sh && rm ./install.sh
-  addNpmSetings $subdir_path
+  addNpmSetings $wc_name $subdir_path
   addWCbuild $wc_name $crazy_kebab
   npm run build0
   #now in build script
