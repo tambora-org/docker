@@ -152,7 +152,7 @@ if [[ 0 -eq $vue_number ]]; then
   existingNpm "c4u-glue" $npm_path  ## Needs adaption: dir name or kebabed dir name
   ./install.sh
   addNpmSetings $subdir_path
-  npm build
+  npm install
   cp -f /cre/node/js-components/dist/*.* $dst_path/sync/
   cp -f -r /cre/node/js-components/* $npm_path
 else
@@ -163,7 +163,7 @@ else
   ./install.sh
   addNpmSetings $subdir_path
   addWCbuild $wc_name $crazy_kebab
-  npm build0
+  npm run build0
   #now in build script
   #vue-cli-service build  --report --target wc --name $crazy_kebab 'src/components/*.vue'
   #sed -i -e "s/${crazy_kebab}-//g" /cre/node/cre-components/dist/*.*
