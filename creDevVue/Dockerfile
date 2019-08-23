@@ -35,10 +35,14 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 RUN mkdir -p /cre/node/wc-template && \
     cd /cre/node && \
     vue create -d -f wc-template
+RUN echo "echo 'Install further node components for wc build'" >> /cre/node/wc-template/install.sh && \
+    chmod 775 /cre/node/wc-template/install.sh
 
 RUN mkdir -p /cre/node/js-template/src && \
     cd /cre/node/js-template && \
     npm init -yes
+RUN echo "echo 'Install further node components for js build'" >> /cre/node/js-template/install.sh && \
+    chmod 775 /cre/node/js-template/install.sh
 
 ## Add temporary build directories 
 RUN mkdir -p /cre/node/cre-components

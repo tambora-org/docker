@@ -53,10 +53,12 @@ touch /cre/web-components-build-busy.txt
 # clear directory first, prepare additional installation file
 rm -rf /cre/node/cre-components/* 
 cp -rf /cre/node/wc-template/* /cre/node/cre-components
-touch /cre/node/cre-components/install.sh
+#touch /cre/node/cre-components/install.sh
+#chmod 775 /cre/node/cre-components/install.sh
 rm -rf /cre/node/js-components/*
 cp -rf /cre/node/js-template/* /cre/node/js-components
-touch /cre/node/js-components/install.sh 
+#touch /cre/node/js-components/install.sh 
+#chmod 775 /cre/node/js-components/install.sh
 
 rm -rf /cre/node/cre-components/src/components/*
 # then copy local files and those in subdirs (may add more types)
@@ -94,19 +96,19 @@ existingNpm () {
   npm_path=$2
 
   #if [ -f $npm_path/package.json ]; then
-  #  cp -f $npm_path/package.json ./    #REALLY?
+  #  cp -f $npm_path/package.json ./    #REALLY??
   #fi
   curr_version=$(npm view $npm_package version 2>/dev/null)
   if [ "$curr_version" != "" ]; then
     echo "Current npm-version found: $curr_version" 
     compare=$(dpkg --compare-versions $curr_version "gt" "${CRE_VERSION}.0")  
-    if [ $compare -eq "0" ]; then
+    if [ "$compare" == "0" ]; then
        npm config set allow-same-version true
        npm version curr_version
        npm version patch
      fi
   fi
-  ## rm -rf $npm_path/*
+  rm -rf $npm_path/*
 }
 
 addNpmSetings () {
@@ -141,7 +143,7 @@ addWCbuild () {
   npmAddScript -k build2 -v "sed -i -e \"s/${crazy_kebab}-//g\" ./dist/*.*" -f
   npmAddScript -k build3 -v "sed -i -e \"s/${crazy_kebab}/${wc_name}/g\" ./dist/*.*" -f
   npmAddScript -k build4 -v "rename \"s/$crazy_kebab/$wc_name/\" ./dist/*.*" -f
-  npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
+  npmAddScript -k build0 -v "npm run build1 && npm run build2 && npm run build3 && npm run build4" -f
 
 }
 
@@ -152,7 +154,7 @@ if [[ 0 -eq $vue_number ]]; then
   echo "Build js components in sub-directory: $subdir_path"
   rm -rf /cre/node/js-components/dist/*
   existingNpm "c4u-glue" $npm_path  ## Needs adaption: dir name or kebabed dir name
-  ./install.sh
+  ./install.sh && rm ./install.sh
   addNpmSetings $subdir_path
   npm install
   cp -f /cre/node/js-components/dist/*.* $dst_path/sync/
@@ -162,7 +164,7 @@ else
   echo "Build web components in sub-directory: $subdir_path"
   rm -rf /cre/node/cre-components/dist/*
   existingNpm $wc_name $npm_path
-  ./install.sh
+  ./install.sh && rm ./install.sh
   addNpmSetings $subdir_path
   addWCbuild $wc_name $crazy_kebab
   npm run build0
