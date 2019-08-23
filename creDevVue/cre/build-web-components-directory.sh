@@ -38,7 +38,12 @@ fi
 
 if [[ ! -z "$subdir_path" ]]; then
   last_path=$(echo "$dst_path" | rev | cut -f 1 -d '/' | rev)
-  wc_name=$(echo "wc-$last_path"  | tr '[:upper:]' '[:lower:]')
+  count_minus=${#${last_path//[^-]}} ## component name should at least have one minus
+  if [ $count_minus > 0 ]; then
+     wc_name=$(echo "$last_path"  | tr '[:upper:]' '[:lower:]')
+  else
+     wc_name=$(echo "wc-$last_path"  | tr '[:upper:]' '[:lower:]')
+  fi
 fi
 
 # wait till untouched
@@ -53,19 +58,18 @@ touch /cre/web-components-build-busy.txt
 # clear directory first, prepare additional installation file
 rm -rf /cre/node/cre-components/* 
 cp -rf /cre/node/wc-template/* /cre/node/cre-components
-#touch /cre/node/cre-components/install.sh
-#chmod 775 /cre/node/cre-components/install.sh
 rm -rf /cre/node/js-components/*
 cp -rf /cre/node/js-template/* /cre/node/js-components
-#touch /cre/node/js-components/install.sh 
-#chmod 775 /cre/node/js-components/install.sh
 
 rm -rf /cre/node/cre-components/src/components/*
 # then copy local files and those in subdirs (may add more types)
 find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path; do 
   cp $subdir_path/*.js  /cre/node/cre-components/src/components/  2>/dev/null
-  cp $subdir_path/*.vue /cre/node/cre-components/src/components/  2>/dev/null
   cp $subdir_path/*.js  /cre/node/js-components/src/              2>/dev/null
+  cp $subdir_path/*.vue /cre/node/cre-components/src/components/  2>/dev/null
+  cp $subdir_path/README.md  /cre/node/cre-components/README.md    2>/dev/null
+  cp $subdir_path/README.md  /cre/node/js-components/README.md    2>/dev/null
+
   #hook for installing more npm modules 
   ## may better copy/merge first... (current dir js vs wc)
   if [[ -e "$subdir_path/install.sh" ]]; then
@@ -113,6 +117,21 @@ existingNpm () {
 
 addNpmSetings () {
   subdir_path=$1
+  if [[ -e ./README.md ]]; then
+    descr=$(head -n 1 ./README.md)
+    json -I -f package.json -e "this.description='$descr'"
+  fi
+  ## main file
+  ## for wc use dist/wc-${subdir_path:1}.min.js  # or without wc....
+  js_files=$(ls -1 ./src/*.js)
+  js_number=$(ls -1 ./src/*.js | wc -l)
+  if [[ 1 -eq $js_number ]]; then
+    json -I -f package.json -e "this.main='./src/$js_files'"
+  else
+    if [[ -e ./src/index.js ]]; then  
+      json -I -f package.json -e "this.main='./src/index.js'"   
+    fi
+  fi
 
   json -I -f package.json -e "this.name='${subdir_path:1}'"
   json -I -f package.json -e 'this.private=false'
@@ -153,11 +172,11 @@ if [[ 0 -eq $vue_number ]]; then
   cd /cre/node/js-components
   echo "Build js components in sub-directory: $subdir_path"
   rm -rf /cre/node/js-components/dist/*
-  existingNpm "c4u-glue" $npm_path  ## Needs adaption: dir name or kebabed dir name
+  existingNpm $wc_name $npm_path  ## Needs adaption: dir name or kebabed dir name
   ./install.sh && rm ./install.sh
   addNpmSetings $subdir_path
   npm install
-  cp -f /cre/node/js-components/dist/*.* $dst_path/sync/
+  cp -f /cre/node/js-components/src/*.* $dst_path/sync/
   cp -f -r /cre/node/js-components/* $npm_path
 else
   cd /cre/node/cre-components
