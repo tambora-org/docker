@@ -58,12 +58,12 @@ rm -rf /cre/node/js-components/*
 cp -rf /cre/node/js-template/* /cre/node/js-components
 touch /cre/node/js-components/install.sh 
 
-mkdir -p /cre/node/cre-components/src/components
+rm -rf /cre/node/cre-components/src/components/*
 # then copy local files and those in subdirs (may add more types)
 find $wc_path -maxdepth 999 -type d -print0 | while IFS= read -rd '' subdir_path; do 
-  cp $subdir_path/*.js  /cre/node/cre-components/src/components/
-  cp $subdir_path/*.vue /cre/node/cre-components/src/components/
-  cp $subdir_path/*.js  /cre/node/js-components/src/
+  cp $subdir_path/*.js  /cre/node/cre-components/src/components/  2>/dev/null
+  cp $subdir_path/*.vue /cre/node/cre-components/src/components/  2>/dev/null
+  cp $subdir_path/*.js  /cre/node/js-components/src/              2>/dev/null
   #hook for installing more npm modules 
   ## may better copy/merge first... (current dir js vs wc)
   if [[ -e "$subdir_path/install.sh" ]]; then
@@ -96,11 +96,11 @@ existingNpm () {
   #if [ -f $npm_path/package.json ]; then
   #  cp -f $npm_path/package.json ./    #REALLY?
   #fi
-  curr_version=$(npm view $npm_package version 2>nul)
-  if [ $curr_version -ne ""]; then
+  curr_version=$(npm view $npm_package version 2>/dev/null)
+  if [ "$curr_version" != "" ]; then
     echo "Current npm-version found: $curr_version" 
     compare=$(dpkg --compare-versions $curr_version "gt" "${CRE_VERSION}.0")  
-    if [ $compare -eq "0"]; then
+    if [ $compare -eq "0" ]; then
        npm config set allow-same-version true
        npm version curr_version
        npm version patch
@@ -144,6 +144,8 @@ addWCbuild () {
   npmAddScript -k build0 -v "build1 && build2 && build3 && build4" -f
 
 }
+
+echo "Build something in sub-directory: $subdir_path, #vue: $vue_number, wc: $wc_name"
 
 if [[ 0 -eq $vue_number ]]; then
   cd /cre/node/js-components

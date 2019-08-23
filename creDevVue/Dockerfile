@@ -36,7 +36,7 @@ RUN mkdir -p /cre/node/wc-template && \
     cd /cre/node && \
     vue create -d -f wc-template
 
-RUN mkdir -p /cre/node/js-template && \
+RUN mkdir -p /cre/node/js-template/src && \
     cd /cre/node/js-template && \
     npm init -yes
 
