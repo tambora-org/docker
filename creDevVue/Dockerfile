@@ -62,7 +62,7 @@ RUN cd /cre/node/wc-template  && \
 RUN npm install --save es6-promise   # vuex
 RUN npm install --save core-js@2 # needs version 2 for now (instead of 3)
 #RUN npm install --save babel-polyfill
-RUN npm install --save c4u-glue
+RUN npm install --save c4u-glue w4u-io
 RUN npm-install-peers
 RUN v "${CRE_VERSION}.0"
 ##

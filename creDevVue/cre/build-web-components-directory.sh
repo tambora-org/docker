@@ -132,7 +132,7 @@ addNpmSetings () {
     js_files=$(ls -1 ./src/*.js)
     js_number=$(ls -1 ./src/*.js | wc -l)
     if [[ 1 -eq $js_number ]]; then
-     json -I -f package.json -e "this.main='./src/$js_files'"
+     json -I -f package.json -e "this.main='$js_files'"
     else
       if [[ -e ./src/index.js ]]; then  
         json -I -f package.json -e "this.main='./src/index.js'"   
