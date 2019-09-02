@@ -58,17 +58,6 @@ done
 touch /cre/web-components-build-busy.txt
 
 # clear directory first, prepare additional installation file
-# not sure if . works for rm as well....
-
-#rm -rf /cre/node/cre-components/.* 
-#rm -rf /cre/node/cre-components/* 
-#cp -rf /cre/node/wc-template/. /cre/node/cre-components
-#cp -rf /cre/node/wc-template/* /cre/node/cre-components
-#rm -rf /cre/node/js-components/.*
-#rm -rf /cre/node/cre-components/* 
-#cp -rf /cre/node/js-template/. /cre/node/js-components
-#cp -rf /cre/node/js-template/* /cre/node/js-components
-
 rm -rf /cre/node/cre-components
 cp -rf /cre/node/wc-template /cre/node/cre-components
 rm -rf /cre/node/js-components

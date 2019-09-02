@@ -26,35 +26,21 @@ fi
 
 sleep 120
 
-echo "$(ls -l /cre/web-components/single)"
+echo "$(ls -l /cre/web-components/)"
 
-if [ ! -f /cre/web-components/single/my-custom-element.min.js ]; then
-    echo "[FAIL]: File /cre/web-components/single/my-custom-element.min.js not found!"
-    #exit 1
-fi
-
-if [ ! -f /cre/web-components/single/my-custom-element.js ]; then
-    echo "[FAIL]: File /cre/web-components/single/my-custom-element.js not found!"
-    #exit 1
-fi
-
-if [ ! -f /cre/web-components/single/my-custom-element.min.js.map ]; then
-    echo "[FAIL]: File /cre/web-components/single/my-custom-element.min.js.map not found!"
-    #exit 1
-fi
-
-if [ ! -f /cre/web-components/single/my-custom-element.js.map ]; then
-    echo "[FAIL]: File /cre/web-components/single/my-custom-element.js.map not found!"
-    #exit 1
-fi
-
-echo "$(ls -l /cre/web-components/sync)"
-echo "$(ls -l /cre/web-components/async)"
-
-echo "$(ls -l /cre/web-components)"
-echo "$(ls -l /cre/web-components/sub-components/single)"
 echo "$(ls -l /cre/web-components/sub-components/sync)"
-echo "$(ls -l /cre/web-components/sub-components/async)"
+
+if [ ! -f /cre/web-components/sub-components/sync/sub-components.min.js ]; then
+    echo "[FAIL]: File /cre/web-components/sub-components/sync/sub-components.min.js not found!"
+    #exit 1
+fi
+
+if [ ! -f /cre/web-components/sub-components/sync/sub-components.js ]; then
+    echo "[FAIL]: File /cre/web-components/sub-components/sync/sub-components.js not found!"
+    #exit 1
+fi
+
+echo "$(ls -l /cre/web-components/js-components/sync)"
 
 echo "[SUCCESS]"
 exit 0

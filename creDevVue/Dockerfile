@@ -67,10 +67,6 @@ RUN npm-install-peers
 RUN v "${CRE_VERSION}.0"
 ##
 
-
-## check if patch is needed
-#RUN /cre/patch-vue-wc-wrapper.sh
-
 ENTRYPOINT ["/cre/vue-entrypoint.sh"]
 
 # Open up fcgi port 
