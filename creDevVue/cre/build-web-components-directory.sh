@@ -39,7 +39,7 @@ fi
 if [[ ! -z "$subdir_path" ]]; then
   last_path=$(echo "$dst_path" | rev | cut -f 1 -d '/' | rev)
   subst_minus=${last_path//[^-]}
-  count_minus=${#subst} 
+  count_minus=${#subst_minus} 
   ## component name should at least have one minus
   if [[ 0 -eq $count_minus ]]; then
      wc_name=$(echo "wc-$last_path"  | tr '[:upper:]' '[:lower:]')
@@ -59,9 +59,11 @@ touch /cre/web-components-build-busy.txt
 
 # clear directory first, prepare additional installation file
 # not sure if . works for rm as well....
-rm -rf /cre/node/cre-components/. 
+rm -rf /cre/node/cre-components/.* 
+rm -rf /cre/node/cre-components/* 
 cp -rf /cre/node/wc-template/. /cre/node/cre-components
-rm -rf /cre/node/js-components/.
+rm -rf /cre/node/js-components/.*
+rm -rf /cre/node/cre-components/* 
 cp -rf /cre/node/js-template/. /cre/node/js-components
 
 rm -rf /cre/node/cre-components/src/components/*
