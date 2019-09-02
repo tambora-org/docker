@@ -32,15 +32,19 @@ echo "$(ls -l /cre/web-components/sub-components/sync)"
 
 if [ ! -f /cre/web-components/sub-components/sync/sub-components.min.js ]; then
     echo "[FAIL]: File /cre/web-components/sub-components/sync/sub-components.min.js not found!"
-    #exit 1
+    exit 1
 fi
 
 if [ ! -f /cre/web-components/sub-components/sync/sub-components.js ]; then
     echo "[FAIL]: File /cre/web-components/sub-components/sync/sub-components.js not found!"
-    #exit 1
+    exit 1
 fi
 
-echo "$(ls -l /cre/web-components/js-components/sync)"
+echo "$(ls -l /cre/web-components/js-component/sync)"
+
+echo "$(ls -l /cre/npm-components/)"
+echo "$(ls -l /cre/npm-components/sub-components)"
+echo "$(ls -l /cre/npm-components/js-component)"
 
 echo "[SUCCESS]"
 exit 0
