@@ -35,10 +35,9 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 RUN mkdir -p /cre/node/wc-template && \
     cd /cre/node && \
     vue create -d -f wc-template
-RUN echo "#!/usr/bin/env bash'" >> /cre/node/wc-template/install.sh && \
-    echo "echo 'Install further node components for wc build'" > /cre/node/wc-template/install.sh && \
-    chmod 775 /cre/node/wc-template/install.sh
+RUN cp /cre/node/vue-common/install.sh /cre/node/wc-template/
 RUN cp /cre/node/vue-common/.eslintrc.js /cre/node/wc-template/
+RUN cp /cre/node/vue-common/vue.config.js /cre/node/wc-template/
 
 RUN mkdir -p /cre/node/js-template/src && \
     cd /cre/node/js-template && \
