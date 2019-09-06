@@ -58,8 +58,8 @@ fi
 
 echo "$(ls -l /cre/npm-components/js-component)"
 
-if [ ! -f /cre/npm-components/js-components/package.json ]; then
-    echo "[FAIL]: File /cre/npm-components/js-components/package.json not found!"
+if [ ! -f /cre/npm-components/js-component/package.json ]; then
+    echo "[FAIL]: File /cre/npm-components/js-component/package.json not found!"
     exit 1
 fi
 
