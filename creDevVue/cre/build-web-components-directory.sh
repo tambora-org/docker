@@ -129,14 +129,17 @@ addNpmSetings () {
   ## for wc use dist/wc-${subdir_path:1}.min.js  # or without wc....
   if [[ -e ./dist/$wc_name.min.js ]]; then
      json -I -f package.json -e "this.main='./dist/$wc_name.min.js'"
+     json -I -f package.json -e "this.unpkg='./dist/$wc_name.min.js'"
   else 
     js_files=$(ls -1 ./src/*.js)
     js_number=$(ls -1 ./src/*.js | wc -l)
     if [[ 1 -eq $js_number ]]; then
      json -I -f package.json -e "this.main='$js_files'"
+     json -I -f package.json -e "this.unpkg='$js_files'"
     else
       if [[ -e ./src/index.js ]]; then  
-        json -I -f package.json -e "this.main='./src/index.js'"   
+        json -I -f package.json -e "this.main='./src/index.js'"  
+        json -I -f package.json -e "this.unpkg='./src/index.js'"   
       fi
     fi
   fi
