@@ -149,7 +149,7 @@ addNpmSetings () {
   # if env git-url set
   json -I -f package.json -e "this.repository={}"
   json -I -f package.json -e 'this.repository.type="git"'
-  json -I -f package.json -e "this.repository.url='git=https://github.com/webedu/npm.git'"
+  json -I -f package.json -e "this.repository.url='https://github.com/webedu/npm.git'"
   #add keywords
   json -I -f package.json -e 'this.keywords=[]'
   json -I -f package.json -e 'this.keywords.push("web-components")'
