@@ -1,0 +1,10 @@
+Still in prototype status
+
+
+Todo:
+=====
+
+
+https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles/dockerfiles
+https://www.tensorflow.org/install/lang_c
+https://www.tensorflow.org/install
