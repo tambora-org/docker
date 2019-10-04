@@ -50,7 +50,7 @@ if [ ! -f /cre/npm-components/sub-components/package.json ]; then
     exit 1
 fi
 
-scName = "$(grep name /cre/npm-components/sub-components/package.json | grep sub-components)
+scName = "$(grep name /cre/npm-components/sub-components/package.json | grep sub-components)"
 if [ ! $scName eq '  "name": "sub-components",'  ]; then
     echo "[FAIL]: sub-components not found in package.json!"
     exit 0
@@ -58,8 +58,8 @@ fi
 
 echo "$(ls -l /cre/npm-components/js-component)"
 
-if [ ! -f /cre/npm-components/js-components/package.json ]; then
-    echo "[FAIL]: File /cre/npm-components/js-components/package.json not found!"
+if [ ! -f /cre/npm-components/js-component/package.json ]; then
+    echo "[FAIL]: File /cre/npm-components/js-component/package.json not found!"
     exit 1
 fi
 
