@@ -29,8 +29,8 @@ LABEL Name="Tensorflow for CRE" \
 
 WORKDIR /cre/
 
-RUN pip install --upgrade pip
-RUN pip install tensorflow
+RUN pip3 install --upgrade pip
+RUN pip3 install tensorflow
 
 RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
 
