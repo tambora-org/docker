@@ -4,14 +4,14 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crepython:2010.0
+FROM tamboraorg/crepython:2012.0
 
 #https://www.tensorflow.org/install/lang_c
 #https://www.tensorflow.org/install 
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 # version: yyyy.n for stable versions / 0.yyyy for development
@@ -32,10 +32,10 @@ WORKDIR /cre/
 RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow
 
-RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
+RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz > /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
 
-RUN tar -C /usr/local -xzf libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
-#RUN ldconfig
+RUN tar -C /usr/local -xzf cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
+RUN ldconfig
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt 
