@@ -19,7 +19,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crepython:2010.0
+FROM tamboraorg/cretensorflow:2012.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
