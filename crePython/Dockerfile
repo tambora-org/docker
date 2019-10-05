@@ -47,7 +47,7 @@ RUN apt-get -y --no-install-recommends install r-cran-pheatmap r-cran-plotly r-c
 RUN apt-get -y --no-install-recommends install r-cran-rcpp r-cran-rcurl r-cran-rjson r-cran-rmpi
 RUN apt-get -y --no-install-recommends install r-cran-rpostgresql r-cran-rsqlite r-cran-rstudioapi r-cran-scatterplot3d 
 RUN apt-get -y --no-install-recommends install r-cran-sp  r-cran-spatial  r-cran-tibble
-RUN apt-get -y --no-install-recommends install r-cran-tidyr r-cran-tidyverse r-cran-tinytex r-cran-tm r-cran-tufte r-cran-utf8 r-cran-uuid r-cran-v8
+RUN apt-get -y --no-install-recommends install r-cran-tidyr r-cran-tm r-cran-utf8 r-cran-uuid r-cran-v8
 RUN apt-get -y --no-install-recommends install r-cran-vcd r-cran-vcdextra r-cran-vioplot r-cran-waveslim r-cran-wavethresh r-cran-webshot r-cran-webutils
 RUN apt-get -y --no-install-recommends install r-cran-wikidatar r-cran-wordcloud r-cran-xml r-cran-xml2 r-cran-xtable r-cran-xts 
 
@@ -56,6 +56,7 @@ RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs r-cra
 # not (yet?) available
 ## r-cran-circlize r-cran-clisymbols r-cran-commonmark r-cran-ggsci r-cran-ggthemes r-cran-jpeg r-cran-pdftools r-cran-remotes r-cran-rgdal
 ## r-cran-rmarkdown r-cran-rstantools r-cran-reticulate r-cran-spacetime r-cran-spatialreg r-cran-svglite r-cran-threejs
+## r-cran-tidyverse r-cran-tinytex r-cran-tufte
 # install Latex
 RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html python3-latexcodec 
  
