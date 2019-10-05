@@ -37,7 +37,7 @@ RUN pip3 install --upgrade pip setuptools wheel
 # install R
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=r-cran-c&searchon=names
 RUN apt-get -y --no-install-recommends install r-base r-recommended 
-RUN apt-get -y --no-install-recommends install r-cran-adegraphics r-cran-amore r-cran-animation r-cran-circlize  r-cran-cli r-cran-clisymbols 
+RUN apt-get -y --no-install-recommends install r-cran-adegraphics r-cran-amore r-cran-animation r-cran-cli  
 RUN apt-get -y --no-install-recommends install r-cran-colorspace r-cran-commonmark r-cran-data.table r-cran-date r-cran-devtools r-cran-foreach 
 RUN apt-get -y --no-install-recommends install r-cran-formatr r-cran-formula r-cran-ggplot2 r-cran-ggsci r-cran-ggthemes r-cran-gmaps r-cran-gnm 
 RUN apt-get -y --no-install-recommends install r-cran-gsl r-cran-highr r-cran-iterators r-cran-its r-cran-jpeg r-cran-jsonlite r-cran-labeling
@@ -52,6 +52,8 @@ RUN apt-get -y --no-install-recommends install r-cran-vcd r-cran-vcdextra r-cran
 RUN apt-get -y --no-install-recommends install r-cran-wikidatar r-cran-wordcloud r-cran-xml r-cran-xml2 r-cran-xtable r-cran-xts 
 
 RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs r-cran-shinycssloaders r-cran-shinydashboard r-cran-shinyjs r-cran-shinythemes
+
+## r-cran-circlize r-cran-clisymbols
 
 # install Latex
 RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html python3-latexcodec 
