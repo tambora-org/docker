@@ -16,7 +16,7 @@ ARG BUILD_MONTH=0
 ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 #ENV LANG en_US.UTF-8
-ENV NPM_VERSION 6
+ENV NPM_VERSION 10
 ENV PYTHON_VERSION 999999 
 
 LABEL Name="Python for CRE" \
@@ -28,8 +28,8 @@ LABEL Name="Python for CRE" \
 
 # npm >= 6 needed
 #RUN apt-get update && apt-get -y --no-install-recommends install npm nodejs-legacy && apt-get clean 
-#RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \  
-RUN apt-get install -y --no-install-recommends nodejs 
+RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \  
+    apt-get install -y --no-install-recommends nodejs 
 
 # install Python
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip python3-plotly && apt-get clean 
