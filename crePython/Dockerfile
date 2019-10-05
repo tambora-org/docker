@@ -40,7 +40,7 @@ RUN apt-get -y --no-install-recommends install r-base r-recommended
 RUN apt-get -y --no-install-recommends install r-cran-adegraphics r-cran-amore r-cran-animation r-cran-cli  
 RUN apt-get -y --no-install-recommends install r-cran-colorspace r-cran-data.table r-cran-date r-cran-devtools r-cran-foreach 
 RUN apt-get -y --no-install-recommends install r-cran-formatr r-cran-formula r-cran-ggplot2 r-cran-gmaps r-cran-gnm 
-RUN apt-get -y --no-install-recommends install r-cran-gsl r-cran-highr r-cran-iterators r-cran-its r-cran-jpeg r-cran-jsonlite r-cran-labeling
+RUN apt-get -y --no-install-recommends install r-cran-gsl r-cran-highr r-cran-iterators r-cran-its r-cran-jsonlite r-cran-labeling
 RUN apt-get -y --no-install-recommends install r-cran-knitr r-cran-lambda.r r-cran-mapdata r-cran-mapproj r-cran-maps r-cran-maptools r-cran-markdown 
 RUN apt-get -y --no-install-recommends install r-cran-mcmc r-cran-mcmcpack r-cran-mfilter r-cran-ncdf4 r-cran-nlp r-cran-openssl r-cran-pdftools
 RUN apt-get -y --no-install-recommends install r-cran-pheatmap r-cran-plotly r-cran-png r-cran-prettyunits r-cran-raster r-cran-rcolorbrewer 
@@ -54,7 +54,7 @@ RUN apt-get -y --no-install-recommends install r-cran-wikidatar r-cran-wordcloud
 RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs r-cran-shinycssloaders r-cran-shinydashboard r-cran-shinyjs r-cran-shinythemes
 
 # not (yet?) available
-## r-cran-circlize r-cran-clisymbols r-cran-commonmark r-cran-ggsci r-cran-ggthemes
+## r-cran-circlize r-cran-clisymbols r-cran-commonmark r-cran-ggsci r-cran-ggthemes r-cran-jpeg
 
 # install Latex
 RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html python3-latexcodec 
