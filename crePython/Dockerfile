@@ -32,6 +32,8 @@ RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - &&
 
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip python3-plotly && apt-get clean 
 
+RUN python -m pip install --upgrade pip setuptools wheel
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t crePYTHON \t $PYTHON_VERSION" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t Python3 \t $(python3 --version)" >> /cre/versions.txt && \  
