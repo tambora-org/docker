@@ -4,7 +4,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2012.0
+FROM tamboraorg/creubuntu:2012.0   //use crenode:2012 later...
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
@@ -27,8 +27,8 @@ LABEL Name="Python for CRE" \
 
 # npm >= 6 needed
 #RUN apt-get update && apt-get -y --no-install-recommends install npm nodejs-legacy && apt-get clean 
-RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \
-   apt-get install -y --no-install-recommends nodejs 
+#RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \  
+RUN apt-get install -y --no-install-recommends nodejs 
 
 # install Python
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip python3-plotly && apt-get clean 
@@ -58,6 +58,7 @@ RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs  r-cr
 ## r-cran-rmarkdown r-cran-rstantools r-cran-reticulate r-cran-spacetime r-cran-spatialreg r-cran-svglite r-cran-threejs
 ## r-cran-tidyverse r-cran-tinytex r-cran-tufte r-cran-waveslim r-cran-wavethresh r-cran-webshot r-cran-webutils 
 ## r-cran-shinycssloaders r-cran-shinythemes
+
 # install Latex
 RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html python3-latexcodec 
  
