@@ -4,7 +4,8 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2012.0   //use crenode:2012 later...
+FROM tamboraorg/creubuntu:2012.0   
+##use crenode:2012 later...
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
