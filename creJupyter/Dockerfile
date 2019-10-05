@@ -8,6 +8,7 @@
 # https://github.com/fredokun/cl-jupyter/blob/master/about-cl-jupyter.ipynb
 #
 # https://irkernel.github.io/
+# https://github.com/quantopian/pgcontents  ##postgres
 #
 # https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html
 # https://nbconvert.readthedocs.io/en/latest/install.html#installing-nbconvert
