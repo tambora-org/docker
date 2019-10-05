@@ -32,9 +32,8 @@ WORKDIR /cre/
 RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow
 
-RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz > /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
-
-RUN tar -C /usr/local -xzf cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
+RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz > /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz && \
+    tar -C /usr/local -xzf cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
 RUN ldconfig
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
