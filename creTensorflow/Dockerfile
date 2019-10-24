@@ -1,7 +1,7 @@
 # Tensorflow Dockerfile 
 #
 # https://github.com/tamboraorg/docker/cretensorflow
-#
+# 
 
 # Pull base image.
 FROM tamboraorg/crepython:2012.0
