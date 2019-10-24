@@ -46,12 +46,11 @@ RUN apt-get update \
 # removed php$PHP_VERSION-mcrypt 
 # https://lukasmestan.com/install-mcrypt-extension-in-php7-2/
 #
-RUN apt-get -y install gcc make autoconf libc-dev pkg-config
-RUN apt-get -y install php-dev libmcrypt-dev php-pear
+#RUN apt-get -y install autoconf pkg-config php-pear
+RUN apt-get -y install php$PHP_VERSION-dev libmcrypt-dev 
 RUN pecl channel-update pecl.php.net
 RUN pecl install mcrypt-1.0.1
-#
-# Add to php.ini as well....
+# Added to php.ini as well....
 
 #CMD ["php", "-a"]
 
