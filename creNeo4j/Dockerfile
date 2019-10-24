@@ -1,10 +1,12 @@
-FROM tamboraorg/crejava:2010.0
+FROM tamboraorg/crejava:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
-
-#FROM openjdk:8-jre-alpine
 
 # https://github.com/docker-library/docs/tree/master/neo4j
 # https://github.com/neo4j/docker-neo4j-publish/blob/master/3.3.3/enterprise/Dockerfile
+# https://gridscale.io/community/tutorials/neo4j-unter-ubuntu-16-04-installieren-und-einrichten/
+
+ARG BUILD_YEAR=2012
+ARG BUILD_MONTH=0
 
 RUN apt-get update && \
     apt-get install -y bash 

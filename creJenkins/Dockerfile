@@ -5,16 +5,14 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crejava:2010.0
+FROM tamboraorg/crejava:2012.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 # version: yyyy.n for stable versions / 0.yyyy for development
-#ENV CRE_VERSION 0.2010 
-ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 ENV JENKINS_VERSION 0
 
