@@ -2,8 +2,8 @@
 Contains dockerfiles for all kind of containers
 
 ## Container
-Current (still in development) version is 2011.0 based on Ubuntu 16.04
-`<version> := 2011.0`
+Current (still in development) version is 2012.0 based on Ubuntu 18.04
+`<version> := 2012.0`
 
 ### creGlue
 Used to communicate information across containers. Especially to compose files using container information via docker-gen.
