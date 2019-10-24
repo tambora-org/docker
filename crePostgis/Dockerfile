@@ -1,7 +1,6 @@
 # Adapted from mdillon/postgis:9.5
 # and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
-#FROM postgres:9.5
-FROM tamboraorg/crepostgres:2011.0
+FROM tamboraorg/crepostgres:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 #ENV POSTGIS_MAJOR 2.5
