@@ -16,19 +16,19 @@ ARG BUILD_MONTH=0
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV PATH=$PATH:/usr/share/elasticsearch/bin
+ENV ELASTIC_VERSION 7
 
+#RUN echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+#RUN apt-get update && sudo apt-get install elasticsearch
 
-RUN echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-RUN apt-get update && sudo apt-get install elasticsearch
-
-# RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
-#    echo 'deb http://packages.elasticsearch.org/elasticsearch/2.x/debian stable main' \
-#      | tee /etc/apt/sources.list.d/elasticsearch.list && \
-#    apt-get update && \
-#    apt-get install --no-install-recommends -y elasticsearch && \
-#    /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head && \
-#    apt-get clean && \
-#    rm -rf /var/lib/apt/lists/*
+RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
+   echo 'deb http://packages.elasticsearch.org/elasticsearch/7.x/debian stable main' \
+     | tee /etc/apt/sources.list.d/elasticsearch.list && \
+   apt-get update && \
+   apt-get install --no-install-recommends -y elasticsearch && \
+   /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head && \
+   apt-get clean && \
+   rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/share/elasticsearch
 
