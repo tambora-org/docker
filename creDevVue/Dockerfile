@@ -1,8 +1,8 @@
 # Adapted from 
-FROM tamboraorg/crenode:2011.0
+FROM tamboraorg/crenode:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 ENV DEBIAN_FRONTEND noninteractive
