@@ -40,9 +40,9 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y apt-transport-https build-essential g++ inotify-tools locales software-properties-common expect && \
+  apt-get install -y apt-transport-https build-essential g++ inotify-tools locales libc-dev make software-properties-common expect && \
   apt-get install -y bc byobu curl git htop libzip4 zlib1g logrotate man pwgen sudo rsync unzip vim wget && \
-  apt-get install -y libssh2-1 openssl openssh-server openssh-client && \
+  apt-get install -y libssh2-1 openssl openssh-server openssh-client ufw && \
   rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US en_US.UTF-8 && \ 
