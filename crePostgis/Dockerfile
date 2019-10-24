@@ -3,6 +3,9 @@
 FROM tamboraorg/crepostgres:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
+ARG BUILD_YEAR=2012
+ARG BUILD_MONTH=0
+
 #ENV POSTGIS_MAJOR 2.5
 #ENV POSTGIS_MAJOR 2.3
 ENV POSTGIS_MAJOR 2.4

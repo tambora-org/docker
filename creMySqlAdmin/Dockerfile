@@ -1,6 +1,9 @@
 # Adapted from https://github.com/phpmyadmin/docker
-FROM tamboraorg/cremysql:2010.0
+FROM tamboraorg/cremysql:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
+
+ARG BUILD_YEAR=2012
+ARG BUILD_MONTH=0
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
