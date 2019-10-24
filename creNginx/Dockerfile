@@ -31,7 +31,8 @@ RUN \
   sed -i 's/worker_processes  1/worker_processes  auto/' /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx
 
-RUN ufw app list && ufw allow 'Nginx Full' && ufw status
+# https://blog.marvin-menzerath.de/artikel/docker-ufw-iptables-ports-nicht-automatisch-oeffnen/
+# RUN ufw app list && ufw allow 'Nginx Full' && ufw status
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creNginx \t $(/usr/sbin/nginx -v 2>&1 | sed -e "s/^nginx version: nginx\///" )" >> /cre/versions.txt 
