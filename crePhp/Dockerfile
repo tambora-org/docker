@@ -40,6 +40,7 @@ RUN apt-get update \
         php$PHP_VERSION-intl php$PHP_VERSION-bz2 php$PHP_VERSION-imap php$PHP_VERSION-gmp ffmpeg \
         php$PHP_VERSION-json php$PHP_VERSION-opcache php$PHP_VERSION-readline \ 
         php$PHP_VERSION-xml php$PHP_VERSION-zip ssmtp libsodium-dev mailutils \
+        php-dev libmcrypt-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* 
  
@@ -47,7 +48,7 @@ RUN apt-get update \
 # https://lukasmestan.com/install-mcrypt-extension-in-php7-2/
 #
 #RUN apt-get -y install autoconf pkg-config php-pear
-RUN apt-get -y install php-dev libmcrypt-dev 
+#RUN apt-get -y install php-dev libmcrypt-dev 
 RUN pecl channel-update pecl.php.net
 RUN pecl install mcrypt-1.0.1
 # Added to php.ini as well....
