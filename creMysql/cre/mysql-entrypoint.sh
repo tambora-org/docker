@@ -20,7 +20,8 @@ fi
 # check if succeessfull
 mysql -h 127.0.0.1 -P 3306 --user=root --password=$MYSQL_ROOT_PWD -e "SELECT NOW();"
 
-killall mysqld
+#killall mysqld
+service mysql stop
 sleep 5
 echo "Setting end,have fun."
 
