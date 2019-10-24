@@ -5,9 +5,8 @@ MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV INITRD No
-#ENV LANG en_US.UTF-8
+#ENV DEBIAN_FRONTEND noninteractive
+#ENV INITRD No
 ENV VUE_VERSION 2.6.8
 
 LABEL Name="Vue Dev for CRE" \
@@ -18,6 +17,9 @@ LABEL Name="Vue Dev for CRE" \
       Build_=$CRE_VERSION 
 
 COPY cre /cre
+
+#move to ubuntu if working
+RUN apt-get update && apt-get install util-linux && apt-get clean  
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
 
