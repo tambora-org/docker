@@ -4,8 +4,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2012.0   
-##use crenode:2012 later...
+FROM tamboraorg/crenode:2012.0   
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
@@ -27,9 +26,8 @@ LABEL Name="Python for CRE" \
       Build_=$CRE_VERSION 
 
 # npm >= 6 needed
-#RUN apt-get update && apt-get -y --no-install-recommends install npm nodejs-legacy && apt-get clean 
-RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \  
-    apt-get install -y --no-install-recommends nodejs 
+#RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \  
+#    apt-get install -y --no-install-recommends nodejs 
 
 # install Python
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip python3-plotly && apt-get clean 
