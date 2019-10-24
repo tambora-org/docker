@@ -1,8 +1,8 @@
 # Adapted from https://github.com/Leafney/ubuntu-mysql
-FROM tamboraorg/creubuntu:2011.0
+FROM tamboraorg/creubuntu:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -17,15 +17,13 @@ LABEL Name="MySql for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$CRE_VERSION 
 
-#RUN echo "deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
-
 RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 
 ##VOLUME /var/lib/mysql
 
 RUN apt-get update && \
-	apt-get -y install mysql-server-$MYSQL_VERSION && \
+	apt-get -y install mysql-server && \
 	mkdir -p /var/lib/mysql && \
 	mkdir -p /var/run/mysqld && \
 	mkdir -p /var/log/mysql && \

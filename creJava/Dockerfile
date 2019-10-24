@@ -5,19 +5,21 @@
 #
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2010.0
+FROM tamboraorg/creubuntu:2012.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
+ARG BUILD_YEAR=2012
+ARG BUILD_MONTH=0
+
 # version: yyyy.n for stable versions / 0.yyyy for development
-ENV CRE_VERSION 0.2010 
 ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 #ENV LANG en_US.UTF-8
-ENV JAVA_VERSION 8 
+ENV JAVA_VERSION 10 
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y openjdk-$JAVA_VERSION-jre-headless && \
+    apt-get install --no-install-recommends -y default-jre && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
