@@ -16,7 +16,7 @@ ARG BUILD_MONTH=0
 ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 #ENV LANG en_US.UTF-8
-ENV JAVA_VERSION 10 
+ENV JAVA_VERSION 11 
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y default-jre && \
