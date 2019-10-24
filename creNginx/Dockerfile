@@ -2,7 +2,7 @@
 # Nginx Dockerfile
 #
 # https://github.com/tamboraorg/docker/crenginx
-#
+# 
 
 # Pull base image.
 FROM tamboraorg/creubuntu:2012.0
