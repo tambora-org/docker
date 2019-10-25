@@ -19,13 +19,20 @@ ARG BUILD_MONTH=0
 ENV PATH=$PATH:/usr/share/elasticsearch/bin
 ENV ELASTIC_VERSION 7.4.1
 
-RUN echo "deb https://artifacts.elastic.co/packages/$ELASTIC_VERSION/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-RUN apt-get update && sudo apt-get install elasticsearch && apt-get clean
+#RUN echo "deb https://artifacts.elastic.co/packages/$ELASTIC_VERSION/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+#RUN apt-get update && sudo apt-get install elasticsearch && apt-get clean
 
+
+RUN wget "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$ELASTIC_VERSION-amd64.deb" && \
+    wget "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$ELASTIC_VERSION-amd64.deb.sha512" && \
+    shasum -a 512 -c elasticsearch-7.4.1-amd64.deb.sha512 && \
+    dpkg -i elasticsearch-$ELASTIC_VERSION-amd64.deb
 
 #https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.4.1-amd64.deb
 #https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.4.1-amd64.deb.sha512
 #https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.4.1-amd64.deb.asc
+
+#https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-7.4.1-amd64.deb
 
 #RUN wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
 #   echo 'deb http://packages.elasticsearch.org/elasticsearch/7.x/debian stable main' \
