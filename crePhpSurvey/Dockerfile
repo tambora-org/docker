@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV SURVEY_VERSION 3.19.3
-ENV LS_DOWNLOAD '2690:limesurvey3193+191023'
-ENV LS_SHA256 c3933d3fe823676dea98699dd0f169c03599dd0ed1f8d769e963e0092aa4092b
+ENV LS_DOWNLOAD '2689:limesurvey3193+191023'
+ENV LS_SHA256 70072ca521afcb27ea6f23a20ac16c6b12ebdf6898ff9054d5d55393cd189ac8
 
 #https://github.com/LimeSurvey/LimeSurvey/archive/master.zip
 # https://www.limesurvey.org/stable-release?download=2513:limesurvey3155+181115targz
