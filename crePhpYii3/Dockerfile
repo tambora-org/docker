@@ -1,9 +1,9 @@
 # Adapted from 
-FROM tamboraorg/crephpdev:2012.0 
+FROM tamboraorg/crephpdev:2012.0
 #FROM tamboraorg/crephppackages:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2011
+ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -30,6 +30,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
+#rm -Rf /cre/tmp/yii
 # mkdir -p /cre/tmp/yii && 
 ##RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /cre/tmp/yii 
 # move to www in entry-point
