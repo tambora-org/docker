@@ -5,14 +5,15 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crephp:2010.0 
+FROM tamboraorg/crephp:2012.0 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 
-ENV NEXTCLOUD_VERSION 9.0.58
+#ENV NEXTCLOUD_VERSION 9.0.58
+ENV NEXTCLOUD_VERSION 16.0.5
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creNextcloud \t $NEXTCLOUD_VERSION " >> /cre/versions.txt
