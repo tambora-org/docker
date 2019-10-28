@@ -13,6 +13,7 @@ ARG BUILD_MONTH=0
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
+ENV NODE_VERSION 11.15.3
 
 LABEL Name="Php Dev for CRE" \
       Year=$BUILD_YEAR \
@@ -22,7 +23,7 @@ LABEL Name="Php Dev for CRE" \
       Build_=$CRE_VERSION 
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
     apt-get install -y nodejs 
 
 # Install selected debug extensions and other stuff
@@ -35,9 +36,6 @@ RUN apt-get update \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
-
-#RUN composer global require "foxy/foxy:^1.0.0"
-#RUN composer global install
 
 COPY cre /cre
 
