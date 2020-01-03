@@ -1,5 +1,5 @@
 # Adapted from https://github.com/phpmyadmin/docker
-FROM tamboraorg/crephp:2010.0
+FROM tamboraorg/crephp:2012.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV DEBIAN_FRONTEND noninteractive

@@ -19,7 +19,7 @@ LABEL Name="Vue Dev for CRE" \
 COPY cre /cre
 
 #move to ubuntu if working
-RUN apt-get update && apt-get install util-linux && apt-get clean  
+RUN apt-get update && apt-get install util-linux rename && apt-get clean  
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
 
