@@ -1,5 +1,5 @@
 # Adapted from 
-FROM tamboraorg/crenode:2012.0
+FROM tamboraorg/crenode:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2012
