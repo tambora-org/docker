@@ -5,7 +5,7 @@
 # (adapted from https://github.com/dockerfile/ubuntu )
 
 # Pull base image.
-FROM ubuntu:18.04
+FROM ubuntu:18.04 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2012
