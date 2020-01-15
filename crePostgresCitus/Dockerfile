@@ -1,13 +1,13 @@
 # Adapted from https://github.com/partlab/docker/blob/master/ubuntu-postgresql/Dockerfile
 # and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
-FROM tamboraorg/crepostgres:2012.0
+FROM tamboraorg/crepostgres:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV INITRD No
+#ENV DEBIAN_FRONTEND noninteractive
+#ENV INITRD No
 ENV CITUS_VERSION 6.0
 
 LABEL Name="Postgres Citus for CRE" \

@@ -1,5 +1,5 @@
 # See https://vue-native.io/getting-started.html 
-FROM tamboraorg/credevvue:2012.0
+FROM tamboraorg/credevvue:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2012

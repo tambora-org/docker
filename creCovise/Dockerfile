@@ -3,7 +3,7 @@
 # https://github.com/hlrs-vis/covise
 
 # Pull base image.
-FROM tamboraorg/crepython:2012.0
+FROM tamboraorg/crepython:0.2020
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 

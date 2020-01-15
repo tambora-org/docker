@@ -1,10 +1,10 @@
 # Tensorflow Dockerfile 
 #
 # https://github.com/tamboraorg/docker/cretensorflow
-# 
+#
 
 # Pull base image.
-FROM tamboraorg/crepython:2012.0
+FROM tamboraorg/crepython:0.2020
 
 #https://www.tensorflow.org/install/lang_c
 #https://www.tensorflow.org/install 
@@ -15,8 +15,8 @@ ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
 # version: yyyy.n for stable versions / 0.yyyy for development
-ENV DEBIAN_FRONTEND noninteractive 
-ENV INITRD No
+#ENV DEBIAN_FRONTEND noninteractive 
+#ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV TENSORFLOW_VERSION 2 
 

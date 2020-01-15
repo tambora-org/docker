@@ -1,5 +1,5 @@
 # Adapted from https://github.com/phpmyadmin/docker
-FROM tamboraorg/cremysql:2012.0
+FROM tamboraorg/cremysql:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2012

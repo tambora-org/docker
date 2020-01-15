@@ -1,4 +1,10 @@
-FROM tamboraorg/crejava:2012.0
+#
+# Neo4J Dockerfile
+#
+# https://github.com/tamboraorg/docker/creNeo4j
+#
+
+FROM tamboraorg/crejava:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 # https://github.com/docker-library/docs/tree/master/neo4j

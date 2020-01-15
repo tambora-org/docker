@@ -6,7 +6,7 @@
 # https://www.elastic.co/guide/en/elasticsearch/reference/7.4/deb.html#deb-repo
 # https://www.elastic.co/downloads/elasticsearch
 # 
-FROM tamboraorg/crejava:2012.0
+FROM tamboraorg/crejava:0.2020
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 

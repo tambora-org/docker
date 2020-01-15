@@ -5,7 +5,7 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crejava:2012.0 
+FROM tamboraorg/crejava:0.2020 
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 

@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephpdev:2012.0 
+FROM tamboraorg/crephpdev:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ARG BUILD_YEAR=2012
