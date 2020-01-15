@@ -24,6 +24,7 @@ ENV LC_ALL en_US.UTF-8
 ENV TZ=UTC
 ENV TERM xterm
 ENV DEBIAN_FRONTEND noninteractive
+ENV INITRD No
 
 LABEL Name="Ubuntu for CRE" \
       Year=$BUILD_YEAR \

@@ -1,12 +1,12 @@
 # Adapted from 
-FROM tamboraorg/creubuntu:2012.0
+FROM tamboraorg/creubuntu:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2012
 ARG BUILD_MONTH=0
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV INITRD No
+#ENV DEBIAN_FRONTEND noninteractive
+#ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV NODE_VERSION 11.15.3
 

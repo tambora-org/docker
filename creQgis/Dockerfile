@@ -1,6 +1,6 @@
 # Adapted from https://github.com/qgis/QGIS-Web-Client
 # and https://github.com/opengisch/QGIS-Web-Client
-FROM tamboraorg/creubuntu:2012.0
+FROM tamboraorg/creubuntu:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ARG BUILD_YEAR=2012

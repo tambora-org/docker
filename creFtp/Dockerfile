@@ -7,7 +7,7 @@
 # https://askubuntu.com/questions/575523/how-to-setup-virtual-users-for-vsftpd-with-access-to-a-specific-sub-directory
 
 # Pull base image.
-FROM tamboraorg/creubuntu:2012.0
+FROM tamboraorg/creubuntu:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
 ENV FTP_VERSION 9999.9999 
