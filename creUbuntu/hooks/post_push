@@ -3,5 +3,9 @@
 #https://docs.docker.com/docker-hub/builds/advanced/
 
 year=`date -u +%Y`
-docker tag $IMAGE_NAME $DOCKER_REPO:0.$year
-docker push $DOCKER_REPO:0.$year
+tag=$DOCKER_REPO:$DOCKER_TAG
+if [ "latest" == "$DOCKER_TAG" ] ; then
+  tag=$DOCKER_REPO:0.$year
+fi
+docker tag $IMAGE_NAME $tag
+docker push $tag
