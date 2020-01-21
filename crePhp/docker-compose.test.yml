@@ -1,8 +1,0 @@
-sut:
-  build: .
-  command: /cre/tests/php-test.sh
-  volumes:
-    - ./tests:/cre/tests
-  
-
-

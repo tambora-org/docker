@@ -1,6 +1,0 @@
-sut:
-  build: .
-  command: /cre/tests/ubuntu-test.sh
-  volumes:
-    - ./tests:/cre/tests
-

@@ -1,7 +1,0 @@
-sut:
-  build: .
-  command: /cre/tests/postgres-test.sh
-  volumes:
-    - ./tests:/cre/tests
-
-

@@ -1,6 +1,0 @@
-sut:
-  build: .
-  command: /cre/glue-test.sh
-  volumes:
-     - /var/run/docker.sock:/tmp/docker.sock:ro
-

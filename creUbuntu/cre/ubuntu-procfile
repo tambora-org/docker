@@ -1,2 +1,0 @@
-update: watch -n 600007 /cre/ubuntu-weekly.sh
-start: bash

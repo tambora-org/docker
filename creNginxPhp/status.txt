@@ -1,8 +1,0 @@
-Still in prototype status
-
-Todo:
-=====
-* Daily "dump" for sqlite
-* "Init" db
-(Both should be simple copies)
-* Multiple (i.e.) Postgres-DB in same yii/php-Programm (db1,db2) (use split of docker-gen)
