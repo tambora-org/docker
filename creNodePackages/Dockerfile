@@ -19,7 +19,8 @@ LABEL Name="Node Pakages for CRE" \
 
 
 RUN npm install -g jquery
-RUN npm install -g vue
+RUN npm install -g vue vuex axios 
+RUN npm install -g primevue primeicons
 RUN npm install -g leaflet
 RUN npm install -g ol
 RUN npm install -g d3
