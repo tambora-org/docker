@@ -4,3 +4,9 @@ Still in prototype status
 Todo:
 =====
 
+https://github.com/EnterpriseDB/mongo_fdw
+https://wiki.postgresql.org/wiki/Foreign_data_wrappers#File_Wrappers
+https://multicorn.readthedocs.io/en/latest/foreign-data-wrappers/fsfdw.html
+
+
+
