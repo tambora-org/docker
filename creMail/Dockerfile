@@ -4,22 +4,24 @@
 # https://github.com/tamboraorg/docker/cremail
 
 # Pull base image.
-FROM tamboraorg/creubuntu:0.2020
+FROM tamboraorg/creubuntu:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV MAIL_VERSION 0.0    
 
 LABEL Name="Mail for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$MAIL_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 RUN apt-get update; \
     DEBIAN_FRONTEND=noninteractive apt-get install -y postfix mailutils ; \

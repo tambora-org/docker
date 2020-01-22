@@ -5,23 +5,25 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crejava:0.2020 
+FROM tamboraorg/crejava:latest
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV INITRD No
 ENV JENKINS_VERSION 0
 
 LABEL Name="Jenkins for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$JENKINS_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key add - && \
     echo deb https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list

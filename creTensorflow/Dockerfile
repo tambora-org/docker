@@ -4,15 +4,16 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crepython:0.2020
+FROM tamboraorg/crepython:latest
 
 #https://www.tensorflow.org/install/lang_c
 #https://www.tensorflow.org/install 
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 #ENV DEBIAN_FRONTEND noninteractive 
@@ -21,11 +22,12 @@ ARG BUILD_MONTH=0
 ENV TENSORFLOW_VERSION 2 
 
 LABEL Name="Tensorflow for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$TENSORFLOW_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 WORKDIR /cre/
 

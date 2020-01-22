@@ -1,9 +1,10 @@
 # Adapted from https://github.com/Leafney/ubuntu-mysql
-FROM tamboraorg/creubuntu:0.2020
+FROM tamboraorg/creubuntu:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
@@ -11,11 +12,12 @@ ENV INITRD No
 ENV MYSQL_VERSION 5.7
 
 LABEL Name="MySql for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$MYSQL_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections

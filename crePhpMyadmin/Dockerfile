@@ -1,11 +1,23 @@
 # Adapted from https://github.com/phpmyadmin/docker
-FROM tamboraorg/crephp:0.2020
+FROM tamboraorg/crephp:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
+
+ARG BUILD_YEAR=2018
+ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV MYADMIN_VERSION 999.999
+
+LABEL Name="MyAdmin for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$MYADMIN_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 RUN echo "phpmyadmin phpmyadmin/mysql/admin-pass password secret" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/setup-password password secret" | debconf-set-selections

@@ -5,8 +5,12 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crephp:0.2020 
+FROM tamboraorg/crephp:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
+
+ARG BUILD_YEAR=2018
+ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
@@ -14,6 +18,14 @@ ENV INITRD No
 
 #ENV NEXTCLOUD_VERSION 9.0.58
 ENV NEXTCLOUD_VERSION 16.0.5
+
+LABEL Name="Nextcloud for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$NEXTCLOUD_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creNextcloud \t $NEXTCLOUD_VERSION " >> /cre/versions.txt

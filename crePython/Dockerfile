@@ -4,12 +4,13 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crenode:0.2020
+FROM tamboraorg/crenode:latest
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 #ENV DEBIAN_FRONTEND noninteractive 
@@ -19,11 +20,12 @@ ENV NPM_VERSION 10
 ENV PYTHON_VERSION 999999 
 
 LABEL Name="Python for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$PYTHON_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 # npm >= 6 needed
 #RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \  

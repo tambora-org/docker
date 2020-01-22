@@ -1,6 +1,10 @@
 # Adapted from https://github.com/phpmyadmin/docker
-FROM tamboraorg/crephp:0.2020
+FROM tamboraorg/crephp:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
+
+ARG BUILD_YEAR=2018
+ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
@@ -8,6 +12,14 @@ ENV INITRD No
 ENV SURVEY_VERSION 3.19.3
 ENV LS_DOWNLOAD '2689:limesurvey3193+191023'
 ENV LS_SHA256 70072ca521afcb27ea6f23a20ac16c6b12ebdf6898ff9054d5d55393cd189ac8
+
+LABEL Name="Survey for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$SURVEY_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 #https://github.com/LimeSurvey/LimeSurvey/archive/master.zip
 # https://www.limesurvey.org/stable-release?download=2513:limesurvey3155+181115targz

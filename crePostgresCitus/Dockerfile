@@ -1,21 +1,23 @@
 # Adapted from https://github.com/partlab/docker/blob/master/ubuntu-postgresql/Dockerfile
 # and https://github.com/docker-library/postgres/blob/master/9.5/docker-entrypoint.sh
-FROM tamboraorg/crepostgres:0.2020
+FROM tamboraorg/crepostgres:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 #ENV DEBIAN_FRONTEND noninteractive
 #ENV INITRD No
 ENV CITUS_VERSION 6.0
 
 LABEL Name="Postgres Citus for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$CITUS_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
 #    echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' \

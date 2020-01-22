@@ -1,19 +1,31 @@
 #
-# Nginx Dockerfile
+# Ftp Dockerfile
 #
-# https://github.com/tamboraorg/docker/crenginx
+# https://github.com/tamboraorg/docker/creftp
 # https://github.com/emilybache/vsftpd-server/blob/master/Dockerfile
 # https://help.ubuntu.com/community/vsftpd
 # https://askubuntu.com/questions/575523/how-to-setup-virtual-users-for-vsftpd-with-access-to-a-specific-sub-directory
 
 # Pull base image.
-FROM tamboraorg/creubuntu:0.2020
+FROM tamboraorg/creubuntu:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
+
+ARG BUILD_YEAR=2018
+ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV FTP_VERSION 9999.9999 
 
 #ENV FTP_USER ftpuser
 #ENV FTP_PASSWORD changeme
+
+LABEL Name="Ftp for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$FTP_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 RUN apt-get update && \
     apt-get install -y vsftpd apache2-utils libpam-pwdfile && \

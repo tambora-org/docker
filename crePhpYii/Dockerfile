@@ -1,10 +1,11 @@
 # Adapted from 
-FROM tamboraorg/crephpdev:0.2020
-#FROM tamboraorg/crephppackages:0.2020
+FROM tamboraorg/crephpdev:latest
+#FROM tamboraorg/crephppackages:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
@@ -12,11 +13,12 @@ ENV INITRD No
 ENV YII_VERSION 3.15.5
 
 LABEL Name="Yii2 for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$YII_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t crePhpYii \t ${YII_VERSION}" >> /cre/versions.txt 

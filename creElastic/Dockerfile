@@ -6,18 +6,27 @@
 # https://www.elastic.co/guide/en/elasticsearch/reference/7.4/deb.html#deb-repo
 # https://www.elastic.co/downloads/elasticsearch
 # 
-FROM tamboraorg/crejava:0.2020
+FROM tamboraorg/crejava:latest
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 #ENV DEBIAN_FRONTEND noninteractive
 #ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV PATH=$PATH:/usr/share/elasticsearch/bin
 ENV ELASTIC_VERSION 7.4.1
+
+LABEL Name="Elastic for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$ELASTIC_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 #RUN echo "deb https://artifacts.elastic.co/packages/$ELASTIC_VERSION/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 #RUN apt-get update && sudo apt-get install elasticsearch && apt-get clean

@@ -5,21 +5,23 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crephpdev:0.2020
+FROM tamboraorg/crephpdev:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 
 LABEL Name="Php Packages for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$PHP_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 #move to ununtu base later
 RUN apt-get update \

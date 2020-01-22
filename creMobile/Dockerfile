@@ -1,9 +1,10 @@
 # See https://vue-native.io/getting-started.html 
-FROM tamboraorg/credevvue:0.2020
+FROM tamboraorg/credevvue:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
@@ -11,11 +12,12 @@ ENV INITRD No
 ENV MOBILE_VERSION 0.0
 
 LABEL Name="Mobile App for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$MOBILE_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 # https://medium.com/@aguidrevitch/when-installation-of-global-package-using-npm-inside-docker-fails-b551b5dda389
 # Dockerfile sometimes run npm as nobody.

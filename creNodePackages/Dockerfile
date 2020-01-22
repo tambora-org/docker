@@ -1,9 +1,10 @@
 # Adapted from 
-FROM tamboraorg/crenode:0.2020
+FROM tamboraorg/crenode:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
@@ -11,11 +12,12 @@ ENV INITRD No
 ENV NODE_PACKAGE_VERSION 2012.0 
 
 LABEL Name="Node Pakages for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$NODE_PACKAGE_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 
 RUN npm install -g jquery

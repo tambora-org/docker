@@ -1,20 +1,22 @@
 # Adapted from 
-FROM tamboraorg/crenode:0.2016
+FROM tamboraorg/crenode:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2016
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 #ENV DEBIAN_FRONTEND noninteractive
 #ENV INITRD No
 ENV VUE_VERSION 2.6.8
 
 LABEL Name="Vue Dev for CRE" \
+      CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
       Version=$VUE_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
-      Build_=$CRE_VERSION 
+      Build_=$BUILD_TAG 
 
 COPY cre /cre
 

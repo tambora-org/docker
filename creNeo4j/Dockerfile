@@ -4,15 +4,16 @@
 # https://github.com/tamboraorg/docker/creNeo4j
 #
 
-FROM tamboraorg/crejava:0.2020
+FROM tamboraorg/crejava:latest
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 # https://github.com/docker-library/docs/tree/master/neo4j
 # https://github.com/neo4j/docker-neo4j-publish/blob/master/3.3.3/enterprise/Dockerfile
 # https://gridscale.io/community/tutorials/neo4j-unter-ubuntu-16-04-installieren-und-einrichten/
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 RUN apt-get update && \
     apt-get install -y bash 
@@ -21,6 +22,16 @@ ENV NEO4J_SHA256=6901832c63bb3d9af150a1c3da3a88a4d15ad4b4a130611df138648d4c25f1a
     NEO4J_TARBALL=neo4j-enterprise-3.3.3-unix.tar.gz \
     NEO4J_EDITION=enterprise
 ARG NEO4J_URI=http://dist.neo4j.org/neo4j-enterprise-3.3.3-unix.tar.gz
+
+ENV NEO4J_VERSION 999.999
+
+LABEL Name="Neo4J for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$NEO4J_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 COPY ./local-package/* /tmp/
 

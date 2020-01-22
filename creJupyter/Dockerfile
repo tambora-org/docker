@@ -19,18 +19,27 @@
 #
 
 # Pull base image.
-FROM tamboraorg/cretensorflow:0.2020
+FROM tamboraorg/cretensorflow:latest
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2012
+ARG BUILD_YEAR=2018
 ARG BUILD_MONTH=0
+ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 #ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV JUPYTER_VERSION 999999 
+
+LABEL Name="Jupyter for CRE" \
+      CRE=$CRE_VERSION \ 
+      Year=$BUILD_YEAR \
+      Month=$BUILD_MONTH \
+      Version=$JUPYTER_VERSION \
+      OS="Ubuntu:$UBUNTU_VERSION" \
+      Build_=$BUILD_TAG 
 
 # Install Jupyter Notebook first
 RUN pip3 install --upgrade pip
