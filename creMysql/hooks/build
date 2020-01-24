@@ -2,6 +2,10 @@
 
 #https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1
 
+tag=$DOCKER_REPO:$DOCKER_TAG
+if [ "latest" == "$DOCKER_TAG" ] ; then
+  tag=$DOCKER_REPO:$LATEST_TAG
+fi
 # $IMAGE_NAME var is injected into the build so the tag is correct. 
-docker build --build-arg BUILD_YEAR=`date -u +%Y` --build-arg BUILD_MONTH=`date -u +%m` -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+docker build --build-arg BUILD_YEAR=`date -u +%Y` --build-arg BUILD_MONTH=`date -u +%m` --build-arg BUILD_TAG=$tag -f $DOCKERFILE_PATH -t $IMAGE_NAME .
 
