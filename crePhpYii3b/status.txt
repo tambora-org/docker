@@ -6,4 +6,4 @@ https://github.com/machour/yii3-kitchen-sink
 
 Todo:
 =====
-needs php >=7.1
+needs php >=7.4  // switch to 0.2020 when available
