@@ -66,10 +66,10 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-resource \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/axios \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-notification \
- && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-js-modal 
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-js-modal \
 
-## && composer require --prefer-stable --update-with-all-dependencies npm-asset/primevue \
-## && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons 
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/primevue \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons 
 
 # may add: jquery, leaflet, ol, d3
 
