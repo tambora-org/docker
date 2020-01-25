@@ -26,7 +26,8 @@ else
 fi
 
 composer require "foxy/foxy:^1.0.0"
-composer require php-extended/php-http-message-factory-psr17
+#composer require php-extended/php-http-message-factory-psr17
+#composer require php-extended/php-http-message-psr7
 
 composer require yiisoft/log
 composer require yiisoft/cache
