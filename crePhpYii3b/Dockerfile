@@ -68,8 +68,8 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons npm-asset/jquery \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons npm-asset/leaflet\ 
- && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons npm-asset/ol \
- && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons npm-asset/d3 
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons npm-asset/ol 
+## && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons npm-asset/d3 
 
 #npm-asset/vuex
 #npm-asset/vuex-persistedstate
