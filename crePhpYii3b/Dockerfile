@@ -65,14 +65,14 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-notification \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-js-modal \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/primevue \
- && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons 
-
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex 
+## && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex-persistedstate
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/jquery \
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/leaflet \ 
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/ol \
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/d3 \
-## && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex \
-## && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex-persistedstate
+
 
 # sync to www in entry-point
 
