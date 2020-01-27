@@ -61,16 +61,17 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-router \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-resource \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex-persistedstate \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/axios \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-notification \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-js-modal \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/primevue \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons \
- && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex \
- && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex-persistedstate
+
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/jquery \
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/leaflet \ 
-## && composer require --prefer-stable --update-with-all-dependencies npm-asset/ol \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/ol 
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/d3 \
 
 
