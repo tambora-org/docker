@@ -1,0 +1,3 @@
+mysql: /cre/run.sh
+dbs: /cre/gen-template.sh /cre/mysql-add-dbs.sh.tmpl /cre/mysql-add-dbs.sh
+weekly: watch -n 600007 /cre/mysql-weekly.sh
