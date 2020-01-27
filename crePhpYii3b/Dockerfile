@@ -71,9 +71,8 @@ RUN cd /cre/tmp/yii \
 
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/jquery \
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/leaflet \ 
- && composer require --prefer-stable --update-with-all-dependencies npm-asset/ol 
-## && composer require --prefer-stable --update-with-all-dependencies npm-asset/d3 \
-
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/d3 
+## && composer require --prefer-stable --update-with-all-dependencies npm-asset/ol 
 
 # sync to www in entry-point
 
