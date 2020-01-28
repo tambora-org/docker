@@ -32,12 +32,12 @@ echo "$(ls -l /cre/web-components/sub-components/sync)"
 
 if [ ! -f /cre/web-components/sub-components/sync/sub-components.min.js ]; then
     echo "[FAIL]: File /cre/web-components/sub-components/sync/sub-components.min.js not found!"
-    exit 0
+    exit 1
 fi
 
 if [ ! -f /cre/web-components/sub-components/sync/sub-components.js ]; then
     echo "[FAIL]: File /cre/web-components/sub-components/sync/sub-components.js not found!"
-    exit 0
+    exit 1
 fi
 
 echo "$(ls -l /cre/web-components/js-component/sync)"
@@ -47,13 +47,7 @@ echo "$(ls -l /cre/npm-components/sub-components)"
 
 if [ ! -f /cre/npm-components/sub-components/package.json ]; then
     echo "[FAIL]: File /cre/npm-components/sub-components/package.json not found!"
-    exit 0
-fi
-
-scName = "$(grep name /cre/npm-components/sub-components/package.json | grep sub-components)"
-if [ ! $scName eq '  "name": "sub-components",'  ]; then
-    echo "[FAIL]: sub-components not found in package.json!"
-    exit 0
+    exit 1
 fi
 
 echo "$(ls -l /cre/npm-components/js-component)"
@@ -63,6 +57,11 @@ if [ ! -f /cre/npm-components/js-component/package.json ]; then
     exit 0
 fi
 
+scName="$(grep name /cre/npm-components/sub-components/package.json | grep sub-components)"
+if [ ! $scName eq '  "name": "sub-components",'  ]; then
+    echo "[FAIL]: sub-components not found in package.json!"
+    exit 0
+fi
 
 echo "[SUCCESS]"
 exit 0

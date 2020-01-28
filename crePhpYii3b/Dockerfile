@@ -70,7 +70,7 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/leaflet \ 
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/jquery 
-
+## vue2-leaflet
 
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/ol 
 ## && composer require --prefer-stable --update-with-all-dependencies npm-asset/d3 
