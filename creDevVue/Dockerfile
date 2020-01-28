@@ -22,12 +22,12 @@ COPY cre /cre
 
 ##VOLUME ["/cre/vue-components" "/cre/web-components"]
 
-RUN npm install -g typescript ajv webpack precss && \
+RUN npm install -g typescript ajv webpack && \
     npm install -g vue-template-compiler @vue/cli @vue/cli-service && \    
     npm install -g --save-dev @vue/cli-plugin-babel @vue/cli-plugin-eslint
 #RUN npm install --save-dev @babel/preset-env ## compatibility / useBuiltIns 
 
-#vue-cli-plugin-postcss-precss
+# precss vue-cli-plugin-postcss-precss
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \
     echo "$(date +'%F %R') \t creVue \t ${VUE_VERSION}" >> /cre/versions.txt  && \
