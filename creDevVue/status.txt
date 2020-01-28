@@ -1,5 +1,9 @@
 Still in prototype status
 
+https://www.npmjs.com/package/vue-cli-plugin-i18n
+https://www.npmjs.com/package/vue-cli-plugin-postcss-precss
+
+
 
 Todo:
 =====

@@ -9,6 +9,8 @@ https://docs.expo.io/versions/latest/introduction/installation/
 https://docs.expo.io/versions/latest/workflow/configuration/
 https://www.nativescript.org/vue
 
+https://www.npmjs.com/package/vue-cli-plugin-vuetify
+
 Todo:
 =====
 
