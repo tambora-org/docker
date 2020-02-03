@@ -3,7 +3,9 @@ Still in prototype status
 https://www.npmjs.com/package/vue-cli-plugin-i18n
 https://www.npmjs.com/package/vue-cli-plugin-postcss-precss
 
+https://cli.vuejs.org/guide/build-targets.html#web-component
 
+https://vueschool.io/articles/vuejs-tutorials/async-vuejs-components/
 
 Todo:
 =====
