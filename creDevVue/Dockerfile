@@ -64,7 +64,8 @@ RUN cd /cre/node/wc-template  && \
     npm install --save @babel/runtime   
 RUN npm install --save es6-promise   # vuex
 RUN npm install --save precss
-RUN npm install --save core-js@2 # needs version 2 for now (instead of 3)
+#RUN npm install --save core-js@2 # needs version 2 for now (instead of 3)
+RUN npm install --save core-js
 #RUN npm install --save babel-polyfill
 RUN npm install --save primevue primeicons
 RUN npm install --save c4u-glue w4u-io

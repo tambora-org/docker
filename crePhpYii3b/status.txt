@@ -4,6 +4,9 @@ yii3 is in alpha state
 https://www.yiiframework.com/wiki/2547/draft-understanding-yii-3
 https://github.com/machour/yii3-kitchen-sink
 
+https://github.com/yiisoft/yii-project-template
+https://github.com/yiisoft/docs/tree/master/guide/en
+
 Todo:
 =====
 needs php >=7.4  // switch to 0.2020 when available
