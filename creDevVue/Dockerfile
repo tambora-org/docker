@@ -68,7 +68,7 @@ RUN npm install --save precss
 RUN npm install --save core-js
 #RUN npm install --save babel-polyfill
 RUN npm install --save primevue primeicons
-RUN npm install --save c4u-glue w4u-io
+RUN npm install --save c4u-css c4u-glue w4u-io 
 RUN npm-install-peers
 RUN v "${CRE_VERSION}.0"
 ##
