@@ -25,6 +25,8 @@ fi
 
 sleep 2
 
+ls -l /cre/tmp/yii
+
 #Do some fancy tests....?
 
 echo "[SUCCESS]"
