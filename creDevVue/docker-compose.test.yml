@@ -1,7 +1,0 @@
-sut:
-  build: .
-  command: /cre/tests/dev-vue-test.sh
-  volumes:
-    - ./tests:/cre/tests
-
-
