@@ -30,7 +30,7 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
     apt-get install -y nodejs 
 
 # Install rust
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
 
 # Install rust wasm-pack
 RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
