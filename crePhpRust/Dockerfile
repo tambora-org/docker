@@ -38,8 +38,11 @@ RUN /bin/bash -c "source ~/.cargo/env && curl https://rustwasm.github.io/wasm-pa
 # or
 ##RUN npm install -g wasm-pack
 
-RUN git clone https://github.com/ruffle-rs/ruffle.git && ls -l ~ && ls -l ~/ruffle
-RUN ls -l ~/ruffle
+#RUN git clone https://github.com/ruffle-rs/ruffle.git && ls -l ~ && ls -l ~/ruffle
+RUN git clone https://github.com/ruffle-rs/ruffle.git ~/ruffle && ls -l ~/ruffle
+
+
+#RUN ls -l ~/ruffle
 RUN /bin/bash -c "source ~/.cargo/env && cd ~/ruffle/web/selfhosted &&  npm install && npm run build"
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
