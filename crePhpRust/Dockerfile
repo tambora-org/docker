@@ -38,11 +38,13 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 ##RUN snap install rustup --edge --classic
 
-RUN /bin/bash -c "source ~/.cargo/env" && rustc --version
+RUN ls -l /root/.cargo/bin
+#RUN /bin/bash -c "source ~/.cargo/env" && rustc --version
+RUN /root/.cargo/bin/rustc --version
 
 # Install rust wasm-pack
 #RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-RUN /bin/bash -c "source ~/.cargo/env" && \
+RUN /bin/bash -c "source /root/.cargo/env" && \
     curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 # or
 RUN npm install -g wasm-pack
@@ -51,7 +53,7 @@ RUN git clone https://github.com/ruffle-rs/ruffle.git
 RUN cd web/selfhosted &&  npm install && npm run build
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t creRust \t $(rustc --version)" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t creRust \t $(/root/.cargo/bin/rustc --version)" >> /cre/versions.txt 
 
 COPY cre /cre
 
