@@ -15,7 +15,7 @@ ARG BUILD_TAG=latest
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV NODE_VERSION 11.15.3
-ENV RUST_VERSION 99.99
+ENV RUST_VERSION 1.41.0
 
 LABEL Name="Php Rust for CRE" \
       CRE=$CRE_VERSION \ 
@@ -30,30 +30,19 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
     apt-get install -y nodejs 
 
 # Install rust
-##RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="~/.cargo/bin:${PATH}"
-#RUN $HOME/.cargo/env
-#RUN . $HOME/.cargo/env
-
-##RUN snap install rustup --edge --classic
-
-RUN ls -l $HOME/.cargo/bin
-RUN ls -l ~/.cargo/bin
-RUN $HOME/.cargo/bin/rustc --version
-RUN /bin/bash -c "source ~/.cargo/env && rustc --version"
 
 # Install rust wasm-pack
-#RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 RUN /bin/bash -c "source ~/.cargo/env && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh"
 # or
 ##RUN npm install -g wasm-pack
 
 RUN git clone https://github.com/ruffle-rs/ruffle.git
-RUN /bin/bash -c "source ~/.cargo/env && cd web/selfhosted &&  npm install && npm run build"
+RUN /bin/bash -c "source ~/.cargo/env && cd ~/ruffle/web/selfhosted &&  npm install && npm run build"
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t creRust \t $(/root/.cargo/bin/rustc --version)" >> /cre/versions.txt 
+    echo "$(date +'%F %R') \t creRust \t $(~/.cargo/bin/rustc --version)" >> /cre/versions.txt 
 
 COPY cre /cre
 
