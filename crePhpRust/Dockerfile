@@ -47,10 +47,10 @@ RUN /bin/bash -c "source ~/.cargo/env && rustc --version"
 #RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 RUN /bin/bash -c "source ~/.cargo/env && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh"
 # or
-RUN npm install -g wasm-pack
+##RUN npm install -g wasm-pack
 
 RUN git clone https://github.com/ruffle-rs/ruffle.git
-RUN cd web/selfhosted &&  npm install && npm run build
+RUN /bin/bash -c "source ~/.cargo/env && cd web/selfhosted &&  npm install && npm run build"
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creRust \t $(/root/.cargo/bin/rustc --version)" >> /cre/versions.txt 
