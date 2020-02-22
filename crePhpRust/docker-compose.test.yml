@@ -1,0 +1,6 @@
+sut:
+  image: ${IMAGE_NAME}
+  command: /cre/tests/php-rust-test.sh
+  volumes:
+    - ./tests:/cre/tests
+

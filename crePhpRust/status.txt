@@ -1,0 +1,8 @@
+Still in prototype status
+
+
+Todo:
+=====
+
+0.2020 -> php 2020, when 7.4 arrives
+
