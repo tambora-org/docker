@@ -33,6 +33,9 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
 ##RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
+RUN $HOME/.cargo/env
+
+RUN rustc --version
 
 # Install rust wasm-pack
 RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
