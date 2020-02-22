@@ -1,7 +1,7 @@
 #
 # Php Dockerfile
 #
-# https://github.com/tamboraorg/docker/crephpdev
+# https://github.com/tamboraorg/docker/crephpdevrust
 #
 
 # Pull base image.rust
@@ -15,12 +15,13 @@ ARG BUILD_TAG=latest
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 ENV TERM=linux
 ENV NODE_VERSION 11.15.3
+ENV RUST_VERSION 99.99
 
 LABEL Name="Php Rust for CRE" \
       CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
       Month=$BUILD_MONTH \
-      Version=$PHP_VERSION \
+      Version=$RUST_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
@@ -29,12 +30,18 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
     apt-get install -y nodejs 
 
 # Install rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install rust wasm-pack
-curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 # or
-npm install -g wasm-pack
+RUN npm install -g wasm-pack
+
+RUN git clone https://github.com/ruffle-rs/ruffle.git
+RUN cd web/selfhosted &&  npm install && npm run build
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t creRust \t $(rustc --version)" >> /cre/versions.txt 
 
 COPY cre /cre
 
