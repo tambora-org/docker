@@ -39,13 +39,12 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 ##RUN snap install rustup --edge --classic
 
 RUN ls -l /root/.cargo/bin
-#RUN /bin/bash -c "source ~/.cargo/env" && rustc --version
 RUN /root/.cargo/bin/rustc --version
+RUN /bin/bash -c "source ~/.cargo/env && rustc --version"
 
 # Install rust wasm-pack
 #RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-RUN /bin/bash -c "source /root/.cargo/env" && \
-    curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+RUN /bin/bash -c "source /root/.cargo/env && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh"
 # or
 RUN npm install -g wasm-pack
 
