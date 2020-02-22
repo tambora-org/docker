@@ -34,14 +34,16 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 #RUN $HOME/.cargo/env
-RUN . $HOME/.cargo/env
+#RUN . $HOME/.cargo/env
 
 ##RUN snap install rustup --edge --classic
 
-RUN rustc --version
+RUN /bin/bash -c "source ~/.cargo/env" && rustc --version
 
 # Install rust wasm-pack
-RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+#RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+RUN /bin/bash -c "source ~/.cargo/env" && \
+    curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 # or
 RUN npm install -g wasm-pack
 
