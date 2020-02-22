@@ -34,7 +34,7 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 #RUN $HOME/.cargo/env
-RUN source $HOME/.cargo/env
+RUN . $HOME/.cargo/env
 
 ##RUN snap install rustup --edge --classic
 
