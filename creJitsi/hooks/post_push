@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#https://docs.docker.com/docker-hub/builds/advanced/
+
+if [ "latest" == "$DOCKER_TAG" ] ; then
+  tag=$DOCKER_REPO:$LATEST_TAG
+  docker tag $IMAGE_NAME $tag
+  docker push $tag
+fi

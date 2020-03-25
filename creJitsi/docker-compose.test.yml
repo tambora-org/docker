@@ -1,0 +1,7 @@
+sut:
+  image: ${IMAGE_NAME}
+  command: /cre/tests/jitsi-test.sh
+  volumes:
+    - ./tests:/cre/tests
+
+
