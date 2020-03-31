@@ -1,5 +1,5 @@
 # Adapted from 
-FROM tamboraorg/crephpdev:0.2019
+FROM tamboraorg/crephpdev:0.2020
 #FROM tamboraorg/crephppackages:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
