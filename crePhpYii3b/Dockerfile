@@ -36,6 +36,7 @@ RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
  && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii 
  
 RUN cd /cre/tmp/yii \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/di \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-web \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-rest \
