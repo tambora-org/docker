@@ -32,6 +32,19 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 COPY cre /cre
 
+## yii-demo
+# Install yii-demo
+#RUN rm -Rf /cre/tmp/yii-demo1 && mkdir -p /cre/tmp/yii-demo1 \
+#   wget https://github.com/yiisoft/yii-demo/archive/master.zip -O /cre/tmp/yii-demo1.zip && \
+#   unzip /cre/tmp/yii-demo1.zip -d /cre/tmp/yii-demo1 && \
+#   cd /cre/tmp/yii-demo1
+
+RUN cd /cre/tmp
+RUN git clone https://github.com/yiisoft/yii-demo.git --recursive
+RUN cd /cre/tmp/yii-demo
+
+
+## template
 RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
  && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii 
  
