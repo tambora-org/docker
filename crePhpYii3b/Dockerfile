@@ -53,6 +53,43 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies "foxy/foxy:^1.0.0" \
  && composer require --prefer-stable --update-with-all-dependencies jaeger/querylist 
 
+RUN cd /cre/tmp/yii \
+ && composer require --prefer-stable --update-with-all-dependencies cebe/markdown \
+ && composer require --prefer-stable --update-with-all-dependencies cycle/proxy-factory \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/composer-config-plugin \
+ && composer require --prefer-stable --update-with-all-dependencies nyholm/psr7 \
+ && composer require --prefer-stable --update-with-all-dependencies psr/log \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/access \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/aliases \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/arrays \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/assets \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/auth \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/cache \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/data \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/di \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/event-dispatcher \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/factory \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/html \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/injector \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/log \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/log-target-file \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/mailer \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/mailer-swiftmailer \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/router \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/router-fastroute \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/security \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/strings \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/view \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/widget \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap4 \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-cycle \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-web \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-debug \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/serializer 
+
+
 ## yiisoft/yii-queue
 ## yiisoft/yii-masked-input
 # onmotion/yii2-vuejs-assets
