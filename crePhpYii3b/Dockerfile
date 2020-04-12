@@ -39,6 +39,7 @@ COPY cre /cre
 #   unzip /cre/tmp/yii-demo1.zip -d /cre/tmp/yii-demo1 && \
 #   cd /cre/tmp/yii-demo1
 
+RUN mkdir -p /cre/tmp 
 RUN cd /cre/tmp
 RUN git clone https://github.com/yiisoft/yii-demo.git --recursive
 RUN cd /cre/tmp/yii-demo
