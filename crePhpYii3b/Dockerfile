@@ -47,7 +47,7 @@ RUN cd /cre/tmp/yii-demo \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-elasticsearch 
 
-RUN cd /cre/tmp/yii \
+RUN cd /cre/tmp/yii-demo \
  && composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}' \
  && composer require --prefer-stable --update-with-all-dependencies "foxy/foxy:^1.0.0" \
  && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue \
