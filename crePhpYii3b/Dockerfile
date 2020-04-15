@@ -40,9 +40,29 @@ COPY cre /cre
 #   cd /cre/tmp/yii-demo1
 
 RUN mkdir -p /cre/tmp && cd /cre/tmp \
- && git clone https://github.com/yiisoft/yii-demo.git --recursive \
- && cd /cre/tmp/yii-demo \
+ && git clone https://github.com/yiisoft/yii-demo.git --recursive
+RUN cd /cre/tmp/yii-demo \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-elasticsearch \
 
+RUN cd /cre/tmp/yii \
+ && composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}' \
+ && composer require --prefer-stable --update-with-all-dependencies "foxy/foxy:^1.0.0" \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-router \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-resource \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vuex-persistedstate \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/axios \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-notification \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/vue-js-modal \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/primevue \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/primeicons \
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/leaflet \ 
+ && composer require --prefer-stable --update-with-all-dependencies npm-asset/jquery 
+##xstate xstate-vue
 
 ## template
 RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
