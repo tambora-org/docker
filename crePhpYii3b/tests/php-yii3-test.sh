@@ -25,7 +25,7 @@ fi
 
 sleep 2
 
-ls -l /cre/tmp/yii
+ls -l /cre/tmp/yii-demo
 
 #Do some fancy tests....?
 
