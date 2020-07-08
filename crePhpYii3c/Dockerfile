@@ -33,8 +33,12 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 ## template
+# RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
+#  && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii 
+
+
 RUN rm -Rf /cre/tmp/yii && mkdir -p /cre/tmp/yii \
- && composer create-project --prefer-dist --stability=dev yiisoft/yii-project-template /cre/tmp/yii 
+ && composer create-project --prefer-dist --stability=dev yiisoft/app /cre/tmp/yii
  
 RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/di \
@@ -83,7 +87,8 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/var-dumper \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/view \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/widget \
- && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap4 \
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap5 \
+ && composer require --prefer-stable --update-with-all-dependencies yii-db-migration
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-cycle \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-web \
