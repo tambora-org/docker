@@ -88,7 +88,7 @@ RUN cd /cre/tmp/yii \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/view \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/widget \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-bootstrap5 \
- && composer require --prefer-stable --update-with-all-dependencies yii-db-migration
+ && composer require --prefer-stable --update-with-all-dependencies yii-db-migration \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-console \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-cycle \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-web \
