@@ -1,4 +1,3 @@
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 {{ $CurrentNetwork := index $CurrentContainer.Networks 0 }}
 {{ $CurrentIP := $CurrentNetwork.IP }}
 
