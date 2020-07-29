@@ -41,8 +41,6 @@ LABEL Name="Jupyter for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
-RUN python3 -m pip install wheel
-
 # Install Jupyter Notebook first
 RUN pip3 install --upgrade pip
 RUN pip3 install jupyter
