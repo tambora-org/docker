@@ -39,7 +39,8 @@ RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-c
 RUN ldconfig
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt 
+   echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt 
 
 #COPY cre /cre
 

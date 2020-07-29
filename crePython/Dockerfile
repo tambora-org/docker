@@ -17,7 +17,7 @@ ARG BUILD_TAG=latest
 #ENV INITRD No
 #ENV LANG en_US.UTF-8
 ENV NPM_VERSION 10
-ENV PYTHON_VERSION 999999 
+ENV PYTHON_VERSION 3.6 
 
 LABEL Name="Python for CRE" \
       CRE=$CRE_VERSION \ 
@@ -69,10 +69,10 @@ RUN apt-get -y --no-install-recommends install clisp
  
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t crePYTHON \t $PYTHON_VERSION" >> /cre/versions.txt && \
-   echo "$(date +'%F %R') \t Python3 \t $(python3 --version)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t $(latex --version | grep Debian)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t crePython \t $PYTHON_VERSION" >> /cre/versions.txt && \
+   echo "$(date +'%F %R') \t  Python3 \t $(python3 --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
 
 #COPY cre /cre
