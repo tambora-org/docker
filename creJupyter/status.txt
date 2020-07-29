@@ -3,12 +3,18 @@ Still in prototype status
 
 Todo:
 =====
+
+timing:  config & start -> sleep, or sh
+notebook,jupyterlab : http://127.0.0.1:45327/user/admin/
+
 https://hub.docker.com/r/jupyterhub/jupyterhub/dockerfile
 https://jupyterhub.readthedocs.io/en/stable/reference/config-proxy.html
 https://medium.com/@nedjalkov.ivan.j/jupyter-lab-behind-a-nginx-reverse-proxy-the-docker-way-8f8d825a2336
 https://hands-on.cloud/how-to-setup-jupyter-behind-nginx-proxy/
 https://opendreamkit.org/2018/10/17/jupyterhub-docker/
 https://medium.com/@mangecoeur/install-jupyterhub-and-jupyterlab-the-hard-way-14d6c134226a
+https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html
+https://www.novixys.com/blog/use-docker-deploy-jupyter-nginx/
 
 websocket
 
