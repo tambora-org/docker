@@ -41,6 +41,8 @@ LABEL Name="Jupyter for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
+RUN python3 -m pip install wheel
+
 # Install Jupyter Notebook first
 RUN pip3 install --upgrade pip
 RUN pip3 install jupyter
@@ -50,6 +52,10 @@ RUN python3 -m pip install jupyterhub
 RUN npm install -g configurable-http-proxy
 RUN python3 -m pip install notebook  # needed if running the notebook servers locally
 #RUN jupyter labextension install @jupyterlab/hub-extension  # try jupyterlab
+
+
+RUN python3 -m pip install jupyterlab
+RUN python3 -m pip install ipywidgets
 
 # check??
 #jupyterhub -h
