@@ -84,9 +84,13 @@ RUN mkdir /cre/cl && \
    python3 ./install-cl-jupyter.py
     
 
-
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt 
+   echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt  && \
+   echo "$(date +'%F %R') \t  jupyterhub \t $(jupyterhub --version 2>&1)" >> /cre/versions.txt  && \
+   echo "$(date +'%F %R') \t  jupyterlab \t $(jupyter lab --version 2>&1)" >> /cre/versions.txt  && \
+   echo "$(date +'%F %R') \t  jupyter \t $(jupyter --version | grep core 2>&1)" >> /cre/versions.txt  && \
+   echo "$(date +'%F %R') \t  notebook \t $(jupyter notebook --version 2>&1)" >> /cre/versions.txt 
+
 
 COPY cre /cre
 WORKDIR /cre/
