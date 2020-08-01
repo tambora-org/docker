@@ -55,6 +55,11 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 RUN python3 -m pip install jupyterlab
 RUN python3 -m pip install ipywidgets
 
+RUN apt-get -y --no-install-recommends install ijulia
+RUN apt-get -y --no-install-recommends install irkernel
+RUN apt-get -y --no-install-recommends install ijavascript
+
+
 # check??
 #jupyterhub -h
 #configurable-http-proxy -h
@@ -82,7 +87,6 @@ RUN mkdir /cre/cl && \
    unzip /cre/cl-jupyter.zip -d /cre/cl && \
    cd /cre/cl/cl-jupyter-master && \
    python3 ./install-cl-jupyter.py
-    
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt  && \
@@ -93,9 +97,15 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 
 COPY cre /cre
+
+# Define mountable directories.
+VOLUME ["/cre/jupyter"]
+
 WORKDIR /cre/
 
-EXPOSE 8000
+
+
+# EXPOSE 8000
 
 ENTRYPOINT ["/cre/jupyter-entrypoint.sh"]
 CMD ["shoreman", "/cre/jupyter-procfile"]

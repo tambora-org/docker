@@ -1,6 +1,12 @@
 Still in prototype status
 
 
+
+sudo docker exec crejupyter netstat -lep
+
+http://172.18.0.5:8000
+
+
 Todo:
 =====
 
@@ -15,6 +21,12 @@ https://opendreamkit.org/2018/10/17/jupyterhub-docker/
 https://medium.com/@mangecoeur/install-jupyterhub-and-jupyterlab-the-hard-way-14d6c134226a
 https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html
 https://www.novixys.com/blog/use-docker-deploy-jupyter-nginx/
+https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html
+https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html#jupyterhub
+https://github.com/jupyterhub/dockerspawner/issues/308
+https://jupyterhub.readthedocs.io/en/stable/getting-started/networking-basics.html
+https://zonca.dev/2017/10/scalable-jupyterhub-docker-swarm-mode.html
+
 
 websocket
 
