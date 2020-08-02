@@ -74,7 +74,7 @@ RUN dpkg -i roswell.deb
 
 
 ## Julia: >=20.04
-RUN apt-get install julia   # -> versions
+RUN apt-get -y --no-install-recommends install julia 
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
