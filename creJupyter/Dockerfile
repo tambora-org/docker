@@ -58,10 +58,7 @@ RUN python3 -m pip install ipywidgets
 #RUN python3 -m pip install ijulia
 #RUN python3 -m pip install ijavascript
 
-#R kernel
-#RUN python3 -m pip installl irkernel
-#RUN apt-get -y --no-install-recommends install libzmq3-dev
-RUN Rscript /cre/rkernel-install.r
+
 
 
 # check??
@@ -103,6 +100,12 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 
 COPY cre /cre
+
+#R kernel
+#RUN python3 -m pip installl irkernel
+#RUN apt-get -y --no-install-recommends install libzmq3-dev
+RUN Rscript /cre/rkernel-install.r
+
 
 # Define mountable directories.
 VOLUME ["/cre/jupyter"]
