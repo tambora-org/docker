@@ -69,7 +69,7 @@ RUN apt-get -y --no-install-recommends install sbcl
 RUN apt-get -y --no-install-recommends install jq 
 
 # roswell ## move to python later
-RUN curl -sOL `curl -s https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("deb$")) | .browser_download_url'`
+RUN curl --output roswell.deb -sL `curl -s https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("deb$")) | .browser_download_url'`
 RUN dpkg -i roswell.deb
 
 
