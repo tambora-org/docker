@@ -98,7 +98,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 #R kernel
-RUN Rscript /cre/kernel-r-install.r
+## RUN Rscript /cre/kernel-r-install.r    # jupyter-client ?
 #Julia kernel
 RUN julia /cre/kernel-julia-install.jl
 
