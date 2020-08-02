@@ -4,11 +4,11 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crenode:latest
+FROM tamboraorg/crenode:0.2020
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2018
+ARG BUILD_YEAR=2020
 ARG BUILD_MONTH=0
 ARG BUILD_TAG=latest
 
@@ -73,12 +73,16 @@ RUN curl --output roswell.deb -sL `curl -s https://api.github.com/repos/roswell/
 RUN dpkg -i roswell.deb
 
 
+## Julia: >=20.04
+RUN apt-get install julia   # -> versions
+
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t crePython \t $PYTHON_VERSION" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  Python3 \t $(python3 --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  julia \t $(julia --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 #COPY cre /cre
