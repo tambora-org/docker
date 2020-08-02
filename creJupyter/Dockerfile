@@ -55,9 +55,9 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 RUN python3 -m pip install jupyterlab
 RUN python3 -m pip install ipywidgets
 
-RUN python3 -m pip install ijulia
-RUN python3 -m pip installl irkernel
-RUN python3 -m pip install ijavascript
+#RUN python3 -m pip install ijulia
+#RUN python3 -m pip installl irkernel
+#RUN python3 -m pip install ijavascript
 
 
 # check??
