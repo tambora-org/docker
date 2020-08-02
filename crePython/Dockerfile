@@ -27,10 +27,6 @@ LABEL Name="Python for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
-# npm >= 6 needed
-#RUN curl -sL https://deb.nodesource.com/setup_$NPM_VERSION.x | sudo -E bash - && \  
-#    apt-get install -y --no-install-recommends nodejs 
-
 # install Python
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip python3-plotly && apt-get clean 
 RUN pip3 install --upgrade pip setuptools wheel
@@ -66,14 +62,15 @@ RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2htm
 # install cLisp ;-)
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=lisp&searchon=names
 RUN apt-get -y --no-install-recommends install clisp
- 
+#sbcl
+RUN apt-get -y --no-install-recommends install sbcl
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t crePython \t $PYTHON_VERSION" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  Python3 \t $(python3 --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  npm \t $(npm --version)" >> /cre/versions.txt 
+   echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 #COPY cre /cre
 WORKDIR /cre/
