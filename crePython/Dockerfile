@@ -65,6 +65,15 @@ RUN apt-get -y --no-install-recommends install clisp
 #sbcl
 RUN apt-get -y --no-install-recommends install sbcl
 
+# move to ubuntu later
+RUN apt-get install jq 
+
+# roswell ## move to python later
+RUN curl -sOL `curl -s https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("deb$")) | .browser_download_url'`
+RUN dpkg -i roswell.deb
+
+
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t crePython \t $PYTHON_VERSION" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  Python3 \t $(python3 --version)" >> /cre/versions.txt && \ 
