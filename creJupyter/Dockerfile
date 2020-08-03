@@ -84,7 +84,10 @@ RUN sbcl --non-interactive --load /cre/quicklisp.lisp
 # curl -O https://beta.quicklisp.org/quicklisp.lisp.asc
 # gpg --verify quicklisp.lisp.asc quicklisp.lisp
 
-RUN ros install common-lisp-jupyter
+
+
+# The command '/bin/sh -c ros install common-lisp-jupyter' returned a non-zero code: 1
+#RUN ros install common-lisp-jupyter
 
 RUN mkdir /cre/cl && \ 
    wget https://github.com/fredokun/cl-jupyter/archive/master.zip -O /cre/cl-jupyter.zip && \
