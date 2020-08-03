@@ -31,6 +31,8 @@ LABEL Name="Python for CRE" \
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip python3-plotly && apt-get clean 
 RUN pip3 install --upgrade pip setuptools wheel
 
+RUN pip3 install matplotlib
+
 # install R
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=r-cran-c&searchon=names
 RUN apt-get -y --no-install-recommends install r-base r-recommended 
@@ -82,6 +84,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t  Python3 \t $(python3 --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(ros --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  julia \t $(julia --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
