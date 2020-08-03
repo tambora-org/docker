@@ -59,6 +59,8 @@ RUN python3 -m pip install jupyterlab
 RUN python3 -m pip install ipywidgets
 
 RUN pip3 install jupyter-tensorboard
+RUN jupyter labextension install jupyterlab_tensorboard
+RUN jupyter labextension install jupyterlab-cpustatus
 
 # check??
 #jupyterhub -h
@@ -101,7 +103,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 #R kernel
-RUN Rscript /cre/kernel-r-install.r    # jupyter-client ?
+RUN Rscript /cre/kernel-r-install.r    
 #Julia kernel
 RUN julia /cre/kernel-julia-install.jl
 
