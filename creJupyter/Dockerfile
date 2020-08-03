@@ -60,7 +60,7 @@ RUN python3 -m pip install ipywidgets
 
 RUN pip3 install jupyter-tensorboard
 RUN jupyter labextension install jupyterlab_tensorboard
-RUN jupyter labextension install jupyterlab-cpustatus
+#RUN jupyter labextension install jupyterlab-cpustatus #version problem
 
 # check??
 #jupyterhub -h
