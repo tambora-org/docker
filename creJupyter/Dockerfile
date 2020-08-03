@@ -41,6 +41,9 @@ LABEL Name="Jupyter for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
+RUN apt-get -y --no-install-recommends install jupyter-client
+RUN apt-get -y --no-install-recommends install python3-jupyter-client
+
 # Install Jupyter Notebook first
 RUN pip3 install --upgrade pip
 RUN pip3 install jupyter
@@ -98,7 +101,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 #R kernel
-## RUN Rscript /cre/kernel-r-install.r    # jupyter-client ?
+RUN Rscript /cre/kernel-r-install.r    # jupyter-client ?
 #Julia kernel
 RUN julia /cre/kernel-julia-install.jl
 
