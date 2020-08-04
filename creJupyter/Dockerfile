@@ -54,12 +54,13 @@ RUN npm install -g configurable-http-proxy
 RUN python3 -m pip install notebook  # needed if running the notebook servers locally
 #RUN jupyter labextension install @jupyterlab/hub-extension  # try jupyterlab
 
-
+RUN jupyter tensorboard enable
 RUN python3 -m pip install jupyterlab
 RUN python3 -m pip install ipywidgets
 
 RUN pip3 install jupyter-tensorboard
 RUN jupyter labextension install jupyterlab_tensorboard
+
 #RUN jupyter labextension install jupyterlab-cpustatus #version problem
 
 # check??
