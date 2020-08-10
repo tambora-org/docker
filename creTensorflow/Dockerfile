@@ -43,7 +43,7 @@ RUN ldconfig
 ## Install AutoML sklearn
 RUN apt-get install -y swig  # move to ubuntu
 
-RUN apt-get install gcc python3-dev
+RUN apt-get install -y gcc python3-dev
 RUN pip3 install psutil
 
 RUN curl https://raw.githubusercontent.com/automl/auto-sklearn/master/requirements.txt | xargs -n 1 -L 1 pip3 install
