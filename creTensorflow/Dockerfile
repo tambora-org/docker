@@ -39,6 +39,12 @@ RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-c
     tar -C /usr/local -xzf /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
 RUN ldconfig
 
+
+## Install AutoML sklearn
+RUN apt-get install swig  # move to ubuntu
+RUN curl https://raw.githubusercontent.com/automl/auto-sklearn/master/requirements.txt | xargs -n 1 -L 1 pip3 install
+RUN pip install auto-sklearn
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt 
