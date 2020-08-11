@@ -28,8 +28,9 @@ LABEL Name="Python for CRE" \
       Build_=$BUILD_TAG 
 
 # install Python
-RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-setuptools python3-pip python3-plotly && apt-get clean 
-RUN pip3 install --upgrade pip setuptools wheel
+RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-dev python3-setuptools python3-pip python3-plotly && apt-get clean 
+RUN pip3 install --upgrade pip 
+RUN pip3 install setuptools wheel psutil
 
 RUN pip3 install matplotlib
 
@@ -85,7 +86,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(ros --version)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  julia \t $(julia --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(julia --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 #COPY cre /cre
