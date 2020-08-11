@@ -4,6 +4,8 @@ Still in prototype status
 Todo:
 =====
 
+https://blog.tensorflow.org/2020/08/train-your-tensorflow-model-on-google.html?linkId=95907203
+
 
 https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles/dockerfiles
 https://www.tensorflow.org/install/lang_c
