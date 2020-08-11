@@ -41,16 +41,51 @@ RUN ldconfig
 
 
 ## Install AutoML sklearn
-#RUN apt-get install -y swig  # move to ubuntu
-#RUN apt-get install -y gcc python3-dev
-#RUN pip3 install psutil
-
+#
+## Requirements
+#pytest>=4.6
+#Cython
+#numpy>=1.9.0
+#scipy>=0.14.1
+#scikit-learn>=0.22.0,<0.23
+#lockfile
+#joblib
+#pyyaml
+#liac-arff
+#pandas<1.0
+#ConfigSpace>=0.4.0,<0.5
+#pynisher>=0.4.2
+#pyrfr>=0.7,<0.9
+#smac>=0.12
+#
+#DONE#setuptools
+#DONE#psutil
+#
 RUN curl https://raw.githubusercontent.com/automl/auto-sklearn/master/requirements.txt | xargs -n 1 -L 1 pip3 install
-RUN pip install auto-sklearn
+RUN pip3 install auto-sklearn
+
+## Install AutoML PyTorch
+## Requirements
+#netifaces
+#pandas
+#statsmodels
+#imblearn
+#hpbandster
+#fasteners
+#torch
+#torchvision
+#tensorboard_logger
+#openml
+#lightgbm
+#catboost
+##
+
+RUN curl https://raw.githubusercontent.com/automl/Auto-PyTorch/master/requirements.txt | xargs -n 1 -L 1 pip3 install
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt 
+   echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(python -c 'import sklearn; sklearn.show_versions()')" >> /cre/versions.txt
 
 #COPY cre /cre
 
