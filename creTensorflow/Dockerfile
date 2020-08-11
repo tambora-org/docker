@@ -84,10 +84,7 @@ RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  numpy \t $(python3 -c 'import numpy; print(numpy.__version__)')" >> /cre/versions.txt && \
-   echo "$(date +'%F %R') \t  scipy \t $(python3 -c 'import scipy; print(scipy.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  torch \t $(python3 -c 'import torch; print(torch.__version__)')" >> /cre/versions.txt && \
-   echo "$(date +'%F %R') \t  pandas \t $(python3 -c 'import pandas; print(pandas.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(python3 -c 'import sklearn; sklearn.show_versions()')" >> /cre/versions.txt
 
