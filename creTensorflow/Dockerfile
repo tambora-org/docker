@@ -32,8 +32,8 @@ LABEL Name="Tensorflow for CRE" \
 WORKDIR /cre/
 
 RUN pip3 install --upgrade pip
-RUN pip3 install tensorflow
-RUN pip3 install tensorboard
+RUN pip3 install tensorflow 
+RUN pip3 install tensorboard tensorboard_logger
 
 RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz > /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz && \
     tar -C /usr/local -xzf /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
@@ -44,22 +44,22 @@ RUN ldconfig
 #
 ## Requirements
 #pytest>=4.6
-#Cython
-#numpy>=1.9.0
-#scipy>=0.14.1
+#*#Cython
 #scikit-learn>=0.22.0,<0.23
 #lockfile
 #joblib
 #pyyaml
 #liac-arff
-#pandas<1.0
-#ConfigSpace>=0.4.0,<0.5
+#*#ConfigSpace>=0.4.0,<0.5
 #pynisher>=0.4.2
 #pyrfr>=0.7,<0.9
 #smac>=0.12
 #
 #DONE#setuptools
 #DONE#psutil
+#DONE#numpy>=1.9.0
+#DONE#scipy>=0.14.1
+#DONE#pandas<1.0
 #
 RUN curl https://raw.githubusercontent.com/automl/auto-sklearn/master/requirements.txt | xargs -n 1 -L 1 pip3 install
 RUN pip3 install auto-sklearn
@@ -67,7 +67,6 @@ RUN pip3 install auto-sklearn
 ## Install AutoML PyTorch
 ## Requirements
 #netifaces
-#pandas
 #statsmodels
 #imblearn
 #hpbandster
@@ -81,11 +80,19 @@ RUN pip3 install auto-sklearn
 ##
 
 RUN curl https://raw.githubusercontent.com/automl/Auto-PyTorch/master/requirements.txt | xargs -n 1 -L 1 pip3 install
+RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch.git && cd Auto-PyTorch && python3 setup.py install && cd /cre 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  numpy \t $(python3 -c 'import numpy; print(numpy.__version__)')" >> /cre/versions.txt && \
+   echo "$(date +'%F %R') \t  scipy \t $(python3 -c 'import scipy; print(scipy.__version__)')" >> /cre/versions.txt && \
+   echo "$(date +'%F %R') \t  torch \t $(python3 -c 'import torch; print(torch.__version__)')" >> /cre/versions.txt && \
+   echo "$(date +'%F %R') \t  panda \t $(python3 -c 'import panda; print(panda.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  $(python -c 'import sklearn; sklearn.show_versions()')" >> /cre/versions.txt
+   echo "$(date +'%F %R') \t  $(python3 -c 'import sklearn; sklearn.show_versions()')" >> /cre/versions.txt
+
+
+
 
 #COPY cre /cre
 
