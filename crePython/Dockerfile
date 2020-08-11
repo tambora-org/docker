@@ -31,8 +31,7 @@ LABEL Name="Python for CRE" \
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-dev python3-setuptools python3-pip python3-plotly && apt-get clean 
 RUN pip3 install --upgrade pip 
 RUN pip3 install setuptools wheel psutil
-
-RUN pip3 install matplotlib
+RUN pip3 install numpy scipy pandas matplotlib
 
 # install R
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=r-cran-c&searchon=names
