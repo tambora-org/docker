@@ -82,6 +82,12 @@ RUN pip3 install auto-sklearn
 RUN curl https://raw.githubusercontent.com/automl/Auto-PyTorch/master/requirements.txt | xargs -n 1 -L 1 pip3 install
 RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch.git && cd Auto-PyTorch && python3 setup.py install && cd /cre 
 
+# Add stanza 
+# https://stanfordnlp.github.io/stanza/
+# https://github.com/stanfordnlp/stanza
+RUN pip3 install stanza
+
+
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  torch \t $(python3 -c 'import torch; print(torch.__version__)')" >> /cre/versions.txt && \
