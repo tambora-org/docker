@@ -1,0 +1,6 @@
+sut:
+  build: .
+  command: /cre/tests/jupyter-test.sh
+  volumes:
+    - ./tests:/cre/tests
+

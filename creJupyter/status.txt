@@ -1,5 +1,12 @@
 Still in prototype status
 
+https://github.com/lspvic/jupyter_tensorboard
+https://github.com/ml-tooling/ml-workspace
+
+extensions:  leaflet, cpu, ...
+
+http://beakerx.com/
+
 
 
 sudo docker exec crejupyter netstat -lep
