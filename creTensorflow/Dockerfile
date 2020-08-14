@@ -64,6 +64,11 @@ RUN ldconfig
 RUN curl https://raw.githubusercontent.com/automl/auto-sklearn/master/requirements.txt | xargs -n 1 -L 1 pip3 install
 RUN pip3 install auto-sklearn
 
+## Install torch
+RUN pip3 install torch torchvision
+# https://github.com/PyTorchLightning/pytorch-lightning
+RUN pip3 install pytorch-lightning
+
 ## Install AutoML PyTorch
 ## Requirements
 #netifaces
@@ -92,7 +97,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  torch \t $(python3 -c 'import torch; print(torch.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  $(python3 -c 'import sklearn; print(sklearn.__version__)')" >> /cre/versions.txt
+   echo "$(date +'%F %R') \t  sklearn \t $(python3 -c 'import sklearn; print(sklearn.__version__)')" >> /cre/versions.txt
 
 
 
