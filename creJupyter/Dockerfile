@@ -62,6 +62,10 @@ RUN pip3 install jupyter-tensorboard
 RUN jupyter labextension install jupyterlab_tensorboard
 RUN jupyter tensorboard enable
 
+# https://jupyterbook.org/intro.html
+# https://jupyterbook.org/start/overview.html
+RUN pip3 install -U jupyter-book
+
 #RUN jupyter labextension install jupyterlab-cpustatus #version problem
 
 # check??
