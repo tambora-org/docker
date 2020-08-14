@@ -87,7 +87,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t   pandas \t $(python3 -c 'import pandas; print(pandas.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  $(ros --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(ros --version 2>&1)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(julia --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 

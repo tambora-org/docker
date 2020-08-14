@@ -92,7 +92,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  torch \t $(python3 -c 'import torch; print(torch.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(pip3 list | grep 'tensorflow ')" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  $(python3 -c 'import sklearn; sklearn.show_versions()')" >> /cre/versions.txt
+   echo "$(date +'%F %R') \t  $(python3 -c 'import sklearn; print(sklearn.__version__)')" >> /cre/versions.txt
 
 
 
