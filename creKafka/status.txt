@@ -1,0 +1,13 @@
+Still in prototype status
+
+
+Todo:
+=====
+Version_String
+http://www-us.apache.org/dist/kafka/2.4.0/kafka_2.13-2.4.0.tgz
+
+https://tecadmin.net/install-apache-kafka-ubuntu/
+Services
+
+
+
