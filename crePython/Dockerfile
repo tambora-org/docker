@@ -32,6 +32,9 @@ RUN apt-get update && apt-get -y --no-install-recommends install python3 python3
 RUN pip3 install --upgrade pip 
 RUN pip3 install setuptools wheel psutil
 RUN pip3 install numpy scipy pandas matplotlib
+# OpenCV
+RUN apt-get -y --no-install-recommends  install python3-opencv
+
 
 # install R
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=r-cran-c&searchon=names
@@ -49,14 +52,22 @@ RUN apt-get -y --no-install-recommends install r-cran-sp  r-cran-spatial  r-cran
 RUN apt-get -y --no-install-recommends install r-cran-tidyr r-cran-tm r-cran-utf8 r-cran-uuid r-cran-v8
 RUN apt-get -y --no-install-recommends install r-cran-vcd r-cran-vcdextra r-cran-vioplot 
 RUN apt-get -y --no-install-recommends install r-cran-wikidatar r-cran-wordcloud r-cran-xml r-cran-xml2 r-cran-xtable r-cran-xts 
-
 RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs  r-cran-shinydashboard r-cran-shinyjs 
 
-# not (yet?) available
+## not (yet?) available , 20.04 only ?
+
+## https://www.rplumber.io/
+## https://www.r-bloggers.com/how-to-create-an-api-for-your-r-code/
+RUN apt-get -y --no-install-recommends install r-cran-plumber
+
 ## r-cran-circlize r-cran-clisymbols r-cran-commonmark r-cran-ggsci r-cran-ggthemes r-cran-jpeg r-cran-pdftools r-cran-remotes r-cran-rgdal
 ## r-cran-rmarkdown r-cran-rstantools r-cran-reticulate r-cran-spacetime r-cran-spatialreg r-cran-svglite r-cran-threejs
-## r-cran-tidyverse r-cran-tinytex r-cran-tufte r-cran-waveslim r-cran-wavethresh r-cran-webshot r-cran-webutils 
+## r-cran-tidyverse r-cran-tidygraph r-cran-tidyselect r-cran-tinytex r-cran-tufte r-cran-waveslim r-cran-wavethresh r-cran-webshot r-cran-webutils 
 ## r-cran-shinycssloaders r-cran-shinythemes
+## r-cran-mlr r-cran-mlmetrics r-cran-mlbench
+
+## rdwd (https://cran.r-project.org/web/packages/rdwd/index.html)
+## install.packages("climate")  ; climate ; (https://cran.r-project.org/web/packages/climate/index.html)
 
 # install Latex
 RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html python3-latexcodec 
@@ -85,6 +96,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t   numpy \t $(python3 -c 'import numpy; print(numpy.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t   scipy \t $(python3 -c 'import scipy; print(scipy.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t   pandas \t $(python3 -c 'import pandas; print(pandas.__version__)')" >> /cre/versions.txt && \
+   echo "$(date +'%F %R') \t   openCV \t $(python3 -c 'import cv2; print(cv2.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(ros --version 2>&1)" >> /cre/versions.txt && \ 
