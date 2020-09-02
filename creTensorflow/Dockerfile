@@ -92,6 +92,11 @@ RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch
 # https://github.com/stanfordnlp/stanza
 RUN pip3 install stanza
 
+#https://caffe.berkeleyvision.org/install_apt.html
+#https://caffe.berkeleyvision.org/
+RUN apt-get -y --no-install-recommends install caffe-cpu
+#RUN apt-get -y --no-install-recommends install caffe-cuda
+
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
