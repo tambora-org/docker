@@ -101,11 +101,14 @@ RUN mkdir /cre/cl && \
    wget https://github.com/fredokun/cl-jupyter/archive/master.zip -O /cre/cl-jupyter.zip && \
    unzip /cre/cl-jupyter.zip -d /cre/cl 
 
+
+RUN python3 -m pip install ipython
 ## Bug:
 # RUN cd /cre/cl/cl-jupyter-master && \
 #   python3 ./install-cl-jupyter.py
 
 ## [91mError: Ipython executable not found
+# https://stackoverflow.com/questions/34441943/ipython-installed-but-not-found
  
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt  && \
