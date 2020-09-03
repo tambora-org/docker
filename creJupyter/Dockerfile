@@ -68,6 +68,8 @@ RUN pip3 install -U jupyter-book
 
 #RUN jupyter labextension install jupyterlab-cpustatus #version problem
 
+#https://github.com/connorferster/handcalcs
+
 # check??
 #jupyterhub -h
 #configurable-http-proxy -h
@@ -97,10 +99,10 @@ RUN sbcl --non-interactive --load /cre/quicklisp.lisp
 
 RUN mkdir /cre/cl && \ 
    wget https://github.com/fredokun/cl-jupyter/archive/master.zip -O /cre/cl-jupyter.zip && \
-   unzip /cre/cl-jupyter.zip -d /cre/cl && \
-   cd /cre/cl/cl-jupyter-master && \
+   unzip /cre/cl-jupyter.zip -d /cre/cl 
+RUN cd /cre/cl/cl-jupyter-master && \
    python3 ./install-cl-jupyter.py
-
+ 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creJupyter \t $JUPYTER_VERSION" >> /cre/versions.txt  && \
    echo "$(date +'%F %R') \t  jupyterhub \t $(jupyterhub --version 2>&1)" >> /cre/versions.txt  && \
