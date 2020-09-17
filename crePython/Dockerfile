@@ -32,9 +32,9 @@ RUN apt-get update && apt-get -y --no-install-recommends install python3 python3
 RUN pip3 install --upgrade pip 
 RUN pip3 install setuptools wheel psutil
 RUN pip3 install numpy scipy pandas matplotlib
+
 # OpenCV
 RUN apt-get -y --no-install-recommends  install python3-opencv
-
 
 # install R
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=r-cran-c&searchon=names
@@ -108,4 +108,4 @@ WORKDIR /cre/
 
 #EXPOSE 8000
 
-CMD ["sleep 1000000"]
+CMD "sleep 1000000"
