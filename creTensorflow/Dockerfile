@@ -116,4 +116,4 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 
 #EXPOSE 8000
 
-CMD "sleep 1000000"
+CMD "/bin/sleep 1000000"
