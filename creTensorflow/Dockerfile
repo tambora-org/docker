@@ -19,7 +19,7 @@ ARG BUILD_TAG=latest
 #ENV DEBIAN_FRONTEND noninteractive 
 #ENV INITRD No
 #ENV LANG en_US.UTF-8
-ENV TENSORFLOW_VERSION 2 
+ENV TENSORFLOW_VERSION 1.14.0 
 
 LABEL Name="Tensorflow for CRE" \
       CRE=$CRE_VERSION \ 
@@ -35,8 +35,13 @@ RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow 
 RUN pip3 install tensorboard tensorboard_logger
 
-RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz > /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz && \
-    tar -C /usr/local -xzf /cre/libtensorflow-cpu-linux-x86_64-1.14.0.tar.gz
+
+# https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.3.0.tar.gz
+# https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-linux-x86_64-2.3.0.tar.gz
+
+RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-$TENSORFLOW_VERSION.tar.gz > /cre/libtensorflow-linux-x86_64.tar.gz && \
+    tar -C /usr/local -xzf /cre/libtensorflow-linux-x86_64.tar.gz && \
+    rm -f /cre/libtensorflow-linux-x86_64.tar.gz
 RUN ldconfig
 
 
