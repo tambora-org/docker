@@ -5,4 +5,10 @@ Todo:
 =====
 
 
+https://www.baeldung.com/dockerizing-spring-boot-application
+http://zetcode.com/springboot/docker/
+https://stackabuse.com/dockerizing-a-spring-boot-application/
+
+https://spring.io/guides/gs/spring-boot-docker/
+https://spring.io/guides/topicals/spring-boot-docker
 
