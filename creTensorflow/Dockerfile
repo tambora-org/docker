@@ -107,6 +107,8 @@ RUN pip3 install stanza
 RUN apt-get -y --no-install-recommends install caffe-cpu
 #RUN apt-get -y --no-install-recommends install caffe-cuda
 
+# https://ui.neptune.ai
+RUN pip3 install neptune-client
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t creTensorflow \t $TENSORFLOW_VERSION" >> /cre/versions.txt && \ 
