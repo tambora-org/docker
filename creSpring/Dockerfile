@@ -25,8 +25,9 @@ LABEL Name="Spring for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
-#https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-18-04/
-RUN sudo apt install --no-install-recommends -y maven
+# https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-18-04/
+RUN apt update -y && apt install -y maven
+
 
 #https://spring.io/guides
 
