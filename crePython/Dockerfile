@@ -32,6 +32,7 @@ LABEL Name="Python for CRE" \
 # install GPU driver
 # https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04
 RUN add-apt-repository ppa:graphics-drivers/ppa
+RUN apt-get  -y --no-install-recommends install ubuntu-drivers-common
 RUN ubuntu-drivers devices
 #RUN ubuntu-drivers autoinstall
 RUN apt-get  -y --no-install-recommends install nvidia-driver-$NVIDIA_VERSION
