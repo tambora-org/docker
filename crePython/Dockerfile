@@ -18,6 +18,8 @@ ARG BUILD_TAG=latest
 #ENV LANG en_US.UTF-8
 ENV NPM_VERSION 10
 ENV PYTHON_VERSION 3.6 
+ENV PROCESSOR_MODE CPU   # 'GPU' or 'CPU'
+ENV NVIDIA_VERSION 450
 
 LABEL Name="Python for CRE" \
       CRE=$CRE_VERSION \ 
@@ -26,6 +28,14 @@ LABEL Name="Python for CRE" \
       Version=$PYTHON_VERSION \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
+
+# install GPU driver
+# https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04
+RUN add-apt-repository ppa:graphics-drivers/ppa
+RUN ubuntu-drivers devices
+#RUN ubuntu-drivers autoinstall
+RUN apt-get  -y --no-install-recommends install nvidia-driver-$NVIDIA_VERSION
+#RUN apt-get -y --no-install-recommends install nvidia-$NVIDIA_VERSION
 
 # install Python
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-dev python3-setuptools python3-pip python3-plotly && apt-get clean 
