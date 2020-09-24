@@ -4,3 +4,9 @@ Still in prototype status
 Todo:
 =====
 
+https://realpython.com/flask-connexion-rest-api/
+https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
+
+
+
+

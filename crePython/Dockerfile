@@ -32,6 +32,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install python3 python3
 RUN pip3 install --upgrade pip 
 RUN pip3 install setuptools wheel psutil
 RUN pip3 install numpy scipy pandas matplotlib
+RUN pip3 install Flask connexion
 
 # OpenCV
 RUN apt-get -y --no-install-recommends  install python3-opencv
@@ -81,7 +82,7 @@ RUN apt-get -y --no-install-recommends install sbcl
 # move to ubuntu later
 RUN apt-get -y --no-install-recommends install jq 
 
-# roswell ## move to python later
+# roswell ## lisp https://github.com/roswell/roswell
 RUN curl --output roswell.deb -sL `curl -s https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("deb$")) | .browser_download_url'`
 RUN dpkg -i roswell.deb
 
