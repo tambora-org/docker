@@ -31,6 +31,9 @@ RUN apt update -y && apt install -y maven
 
 #https://spring.io/guides
 
+# unpack maven zip into folder /cre/code
+# ./mvnw spring-boot:run
+
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  jdk \t $(javac -version)" >> /cre/versions.txt && \
@@ -43,9 +46,16 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 WORKDIR /cre/
 
-#EXPOSE 8080 50000
+RUN unzip /cre/demo_maven.zip -d /cre/spring
+RUN cp /cre/DemoApplication.java /cre/spring/demo/src/main/java/com/example/demo/DemoApplication.java
+
+WORKDIR /cre/spring/demo
+
+EXPOSE 8080 
 
 # ENTRY-POINT /cre/start-kafka.sh
 # CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
 
-CMD ["/usr/bin/java", "-version"]
+CMD ["./mvnw", "spring-boot:run"]
+
+ 
