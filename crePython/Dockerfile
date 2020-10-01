@@ -120,4 +120,4 @@ WORKDIR /cre/
 
 #EXPOSE 8000
 
-CMD "sleep 1000000"
+CMD ["/usr/bin/sleep", "1000000"]

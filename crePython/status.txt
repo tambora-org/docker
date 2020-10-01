@@ -4,8 +4,21 @@ Still in prototype status
 Todo:
 =====
 
+<<<<<<< Updated upstream
 https://realpython.com/flask-connexion-rest-api/
 https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
+=======
+
+https://wiki.ubuntuusers.de/tesseract-ocr/
+https://www.howtoforge.com/tutorial/tesseract-ocr-installation-and-usage-on-ubuntu-16-04/
+https://github.com/tesseract-ocr/tesseract/wiki
+https://tesseract-ocr.github.io/tessdoc/AddOns.html#tesseract-wrappers
+https://github.com/sirfz/tesserocr
+https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc
+
+https://realpython.com/setting-up-a-simple-ocr-server/
+https://github.com/tleyden/open-ocr  (rabbitMQ)
+>>>>>>> Stashed changes
 
 
 

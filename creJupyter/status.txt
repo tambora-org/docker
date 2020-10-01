@@ -50,5 +50,5 @@ https://opendreamkit.org/2018/10/17/jupyterhub-docker/
 https://readthedocs.org/projects/jupyterhub/downloads/pdf/0.9.0/
 
 
-
+https://github.com/jupytercalpoly/jupyterlab-interactive-dashboard-editor
 

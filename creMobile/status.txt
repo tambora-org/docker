@@ -7,6 +7,7 @@ https://github.com/GeekyAnts/KitchenSink-Vue-Native
 https://facebook.github.io/react-native/docs/getting-started.html
 https://docs.expo.io/versions/latest/introduction/installation/
 https://docs.expo.io/versions/latest/workflow/configuration/
+https://docs.expo.io/versions/v37.0.0/sdk/sensors/
 https://www.nativescript.org/vue
 
 https://www.npmjs.com/package/vue-cli-plugin-vuetify

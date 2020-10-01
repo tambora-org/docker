@@ -12,3 +12,8 @@ https://stackabuse.com/dockerizing-a-spring-boot-application/
 https://spring.io/guides/gs/spring-boot-docker/
 https://spring.io/guides/topicals/spring-boot-docker
 
+
+
+https://stackoverflow.com/questions/53938943/spring-boot-2-1-1-use-postgres-config-with-jpa
+https://www.baeldung.com/spring-boot-failed-to-configure-data-source
+

@@ -4,3 +4,7 @@ Still in prototype status
 Todo:
 =====
 
+https://github.com/elastic/elasticsearch-php
+ vs
+https://github.com/yiisoft/db-elasticsearch
+
