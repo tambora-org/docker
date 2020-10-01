@@ -46,10 +46,12 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 WORKDIR /cre/
 
-RUN unzip /cre/demo_maven.zip -d /cre/spring
-RUN cp /cre/DemoApplication.java /cre/spring/demo/src/main/java/com/example/demo/DemoApplication.java
+#later move to entry-point - only init if not yet done.
+#RUN unzip /cre/maven-spring-boot.zip -d /cre/spring
+RUN cp -R /cre/maven-spring-boot /cre/spring/app
+RUN cp /cre/DemoApplication.java /cre/spring/app/src/main/java/com/example/demo/DemoApplication.java
 
-WORKDIR /cre/spring/demo
+WORKDIR /cre/spring/app
 
 EXPOSE 8080 
 
