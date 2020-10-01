@@ -31,15 +31,9 @@ RUN apt update -y && apt install -y maven
 
 #https://spring.io/guides
 
-# unpack maven zip into folder /cre/code
-# ./mvnw spring-boot:run
-
-
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t  jdk \t $(javac -version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t maven \t $(mvn -version)" >> /cre/versions.txt 
-
-
 
 #ENV JENKINS_HOME /var/jenkins
 
@@ -57,9 +51,7 @@ WORKDIR /cre/spring/app
 
 EXPOSE 8080 
 
-# ENTRY-POINT /cre/start-kafka.sh
-# CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
-
-CMD ["./mvnw", "spring-boot:run"]
+# ENTRY-POINT /cre/start-spring.sh 
+CMD ["/cre/spring/app/mvnw", "spring-boot:run"] 
 
  
