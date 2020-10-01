@@ -48,8 +48,9 @@ WORKDIR /cre/
 
 #later move to entry-point - only init if not yet done.
 #RUN unzip /cre/maven-spring-boot.zip -d /cre/spring
+#RUN mv /cre/spring/app/src/main/java/com/example /cre/spring/app/src/main/java/com/cre
 RUN cp -R /cre/maven-spring-boot /cre/spring/app
-RUN cp /cre/DemoApplication.java /cre/spring/app/src/main/java/com/example/demo/DemoApplication.java
+RUN cp /cre/DemoApplication.java /cre/spring/app/src/main/java/com/cre/demo/DemoApplication.java
 
 WORKDIR /cre/spring/app
 
