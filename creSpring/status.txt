@@ -17,3 +17,12 @@ https://spring.io/guides/topicals/spring-boot-docker
 https://stackoverflow.com/questions/53938943/spring-boot-2-1-1-use-postgres-config-with-jpa
 https://www.baeldung.com/spring-boot-failed-to-configure-data-source
 
+
+https://www.baeldung.com/intro-to-project-lombok
+https://springframework.guru/spring-boot-with-lombok-part-1/
+
+https://www.baeldung.com/liquibase-refactor-schema-of-java-app
+https://www.baeldung.com/liquibase-rollback
+https://auth0.com/blog/integrating-spring-data-jpa-postgresql-liquibase/
+
+https://www.baeldung.com/rest-with-spring-series
