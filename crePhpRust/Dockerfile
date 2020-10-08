@@ -43,7 +43,7 @@ RUN git clone https://github.com/ruffle-rs/ruffle.git ~/ruffle && ls -l ~/ruffle
 
 
 #RUN ls -l ~/ruffle
-RUN /bin/bash -c "source ~/.cargo/env && cd ~/ruffle/web/selfhosted &&  npm install && npm run build"
+RUN /bin/bash -c "source ~/.cargo/env && cd ~/ruffle/web &&  npm run bootstrap && npm run build"
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
     echo "$(date +'%F %R') \t creRust \t $(~/.cargo/bin/rustc --version)" >> /cre/versions.txt 
