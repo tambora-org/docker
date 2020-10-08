@@ -44,7 +44,8 @@ WORKDIR /cre/
 #RUN unzip /cre/maven-spring-boot.zip -d /cre/spring
 #RUN mv /cre/spring/app/src/main/java/com/example /cre/spring/app/src/main/java/com/cre
 RUN mkdir -p /cre/spring
-RUN cp -R /cre/maven-spring-boot /cre/spring/app
+#RUN cp -R /cre/maven-spring-boot /cre/spring/app
+RUN mv /cre/maven-spring-boot /cre/spring/app
 RUN cp /cre/DemoApplication.java /cre/spring/app/src/main/java/com/cre/demo/DemoApplication.java
 
 WORKDIR /cre/spring/app
