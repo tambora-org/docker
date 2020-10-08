@@ -1,2 +1,2 @@
 props: /cre/gen-template.sh /cre/application.properties.tmpl /cre/application.properties.sh
-spring: /cre/spring/app/mvnw spring-boot:run 
+spring: /cre/spring-run.sh
