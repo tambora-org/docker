@@ -1,0 +1,49 @@
+# https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/common-application-properties.html
+
+debug=true 
+# switch off cache during development
+spring.thymeleaf.cache=false
+
+#spring.mail.host
+
+# DB
+# spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+# spring.jpa.hibernate.ddl-auto=none
+# spring.jpa.hibernate.show-sql=true
+
+# add postgres data
+{{ if $CurrentContainer.Env.POSTGRES_DB }}
+ {{ range $pgsqlServerPWD, $containers := groupByMulti $ "Env.POSTGRES_ROOT_PWD" "," }}
+  {{ range $index, $container := $containers }}
+   {{ $pgSqlPort := or $container.Env.MYSQL_PORT "5432" }}
+    $port = '{{ $pgSqlPort }}';
+   {{ range $containerNetwork := $container.Networks }}
+    $host = '{{ $containerNetwork.IP }}';
+# $dbName = '{{ $CurrentContainer.Env.POSTGRES_DB }}';  //todo: handle multiple comma seperated
+    {{ range $dbNameS := split $CurrentContainer.Env.POSTGRES_DB "," }} 
+spring.datasource.url=jdbc:postgresql://{{ $containerNetwork.IP }}:{{ $pgSqlPort }}/{{ $dbNameS }}
+#      $dbName = '{{ $dbNameS }}';
+      {{ if $CurrentContainer.Env.POSTGRES_USER }}
+#      $user = '{{ $CurrentContainer.Env.POSTGRES_USER }}';
+      {{ else }}
+#      $user = substr('U:'.md5($dbName),0,24); 
+      {{ end }}
+      {{ if $CurrentContainer.Env.POSTGRES_PWD }}
+#      $password = '{{ $CurrentContainer.Env.POSTGRES_PWD }}';
+      {{ else }}
+#      $password = substr('PWD:'.md5($user.":".'{{ sha1 $pgsqlServerPWD }}'),0,32); 
+      {{ end }}
+
+spring.datasource.username=postgres
+spring.datasource.password=admin
+
+    {{ end }}
+   {{ end }}
+  {{ end }} 
+ {{ end }} 
+{{ end }}
+
+# spring.datasource.initialization-mode=always
+# spring.datasource.initialize=true
+# spring.datasource.schema=classpath:/schema.sql
+# spring.datasource.continue-on-error=true

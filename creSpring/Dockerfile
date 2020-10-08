@@ -51,7 +51,8 @@ WORKDIR /cre/spring/app
 
 EXPOSE 8080 
 
-# ENTRY-POINT /cre/start-spring.sh 
-CMD ["/cre/spring/app/mvnw", "spring-boot:run"] 
+# Define default command.
+ENTRYPOINT ["/cre/spring-entrypoint.sh"]
+CMD ["shoreman", "/cre/spring-procfile"]
 
  
