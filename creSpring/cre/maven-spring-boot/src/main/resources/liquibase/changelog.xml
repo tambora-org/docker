@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="https://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="https://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <includeAll path="com/cre/liquibase" filter="sql"/>
+                   xsi:schemaLocation="https://www.liquibase.org/xml/ns/dbchangelog
+                                       https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <includeAll path="src/main/resources/liquibase" filter="sql"/>
+    <!--includeAll path="src/main/resources/liquibase" filter="sql" relativeToChangelogFile="true"/-->
 </databaseChangeLog>
 
 <!-- https://www.liquibase.org/blog/liquibase-without-changelogs -->

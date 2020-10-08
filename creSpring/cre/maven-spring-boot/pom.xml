@@ -79,6 +79,7 @@
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
+                        <!--  4.1  -->
 		</dependency>
 
 		<dependency>

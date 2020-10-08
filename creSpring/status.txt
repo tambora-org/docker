@@ -30,3 +30,8 @@ https://www.baeldung.com/rest-with-spring-series
 
 https://www.liquibase.org/blog/liquibase-without-changelogs
 
+---
+
+user & password -> tmpl
+liquibase settings
+
