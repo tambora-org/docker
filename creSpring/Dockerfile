@@ -32,7 +32,6 @@ RUN apt update -y && apt install -y maven
 #https://spring.io/guides
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
-    echo "$(date +'%F %R') \t  jdk \t $(javac -version)" >> /cre/versions.txt && \
     echo "$(date +'%F %R') \t maven \t $(mvn -version)" >> /cre/versions.txt 
 
 #ENV JENKINS_HOME /var/jenkins
@@ -45,8 +44,11 @@ WORKDIR /cre/
 #RUN mv /cre/spring/app/src/main/java/com/example /cre/spring/app/src/main/java/com/cre
 RUN mkdir -p /cre/spring
 #RUN cp -R /cre/maven-spring-boot /cre/spring/app
-RUN mv /cre/maven-spring-boot /cre/spring/app
-RUN cp /cre/DemoApplication.java /cre/spring/app/src/main/java/com/cre/demo/DemoApplication.java
+##RUN mv /cre/maven-spring-boot /cre/spring/app
+##RUN cp /cre/DemoApplication.java /cre/spring/app/src/main/java/com/cre/demo/DemoApplication.java
+COPY cre/maven-spring-boot /cre/spring/app
+COPY cre/DemoApplication.java /cre/spring/app/src/main/java/com/cre/demo/DemoApplication.java
+
 
 WORKDIR /cre/spring/app
 
