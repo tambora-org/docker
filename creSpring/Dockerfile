@@ -49,8 +49,10 @@ RUN mkdir -p /cre/spring
 
 #COPY cre/maven-spring-boot /cre/spring/app
 #COPY cre/DemoApplication.java /cre/spring/app/src/main/java/com/cre/demo/DemoApplication.java
+#RUN cd /cre/maven-spring-boot &&  mvn -N io.takari:maven:wrapper 
 RUN cd /cre/maven-spring-boot && ./mvnw clean install
-#  mvn -N io.takari:maven:wrapper 
+
+#  mvn install -DskipTests
 
 
 WORKDIR /cre/spring/app
