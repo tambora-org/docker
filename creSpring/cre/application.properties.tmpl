@@ -11,14 +11,18 @@ spring.thymeleaf.cache=false
 # spring.jpa.hibernate.ddl-auto=none
 # spring.jpa.hibernate.show-sql=true
 
+#Liquibase 
+spring.liquibase.change-log=classpath:liquibase/changelog.xml
+spring.liquibase.enabled=true
+
 # add postgres data
 {{ if $CurrentContainer.Env.POSTGRES_DB }}
  {{ range $pgsqlServerPWD, $containers := groupByMulti $ "Env.POSTGRES_ROOT_PWD" "," }}
   {{ range $index, $container := $containers }}
    {{ $pgSqlPort := or $container.Env.MYSQL_PORT "5432" }}
-    $port = '{{ $pgSqlPort }}';
+#    $port = '{{ $pgSqlPort }}';
    {{ range $containerNetwork := $container.Networks }}
-    $host = '{{ $containerNetwork.IP }}';
+#    $host = '{{ $containerNetwork.IP }}';
 # $dbName = '{{ $CurrentContainer.Env.POSTGRES_DB }}';  //todo: handle multiple comma seperated
     {{ range $dbNameS := split $CurrentContainer.Env.POSTGRES_DB "," }} 
 spring.datasource.url=jdbc:postgresql://{{ $containerNetwork.IP }}:{{ $pgSqlPort }}/{{ $dbNameS }}

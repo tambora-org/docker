@@ -26,3 +26,7 @@ https://www.baeldung.com/liquibase-rollback
 https://auth0.com/blog/integrating-spring-data-jpa-postgresql-liquibase/
 
 https://www.baeldung.com/rest-with-spring-series
+
+
+https://www.liquibase.org/blog/liquibase-without-changelogs
+
