@@ -82,11 +82,11 @@
 			<artifactId>liquibase-core</artifactId>
                         <!--  3.8.9  -->
 		</dependency>
-                <dependency>
+                <!--dependency>
                         <groupId>org.liquigraph</groupId>
                         <artifactId>liquigraph-spring-boot-starter</artifactId>
                         <version>4.0.2</version>
-                </dependency>
+                </dependency-->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>

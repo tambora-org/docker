@@ -14,6 +14,8 @@ spring.thymeleaf.cache=false
 #Liquibase 
 spring.liquibase.change-log=classpath:/liquibase/changelog.xml
 spring.liquibase.enabled=true
+liquibase.change-log=classpath:/liquibase/changelog.xml
+liquibase.enabled=true
 
 # add postgres data
 {{ if $CurrentContainer.Env.POSTGRES_DB }}
