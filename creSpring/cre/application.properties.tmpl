@@ -12,8 +12,11 @@ spring.thymeleaf.cache=false
 # spring.jpa.hibernate.show-sql=true
 
 #Liquibase 
+# https://reflectoring.io/database-migration-spring-boot-liquibase/
 spring.liquibase.change-log=classpath:db/changelog/changelog.xml
 spring.liquibase.enabled=true
+#spring.liquibase.defaultSchema=mmm
+#spring.liquibase.liquibaseSchema=mmm
 liquibase.change-log=classpath:db/changelog/changelog.xml
 liquibase.enabled=true
 #spring.jpa.hibernate.liquibase.change-log=classpath:db/changelog/changelog.xml
