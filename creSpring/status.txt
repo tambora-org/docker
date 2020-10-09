@@ -34,4 +34,7 @@ https://www.liquibase.org/blog/liquibase-without-changelogs
 
 user & password -> tmpl
 liquibase settings
+https://github.com/liquibase/liquigraph/issues/79
+
+versions?
 

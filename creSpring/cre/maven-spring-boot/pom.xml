@@ -84,7 +84,7 @@
                 <dependency>
                         <groupId>org.liquigraph</groupId>
                         <artifactId>liquigraph-spring-boot-starter</artifactId>
-                        <!--version>3.0.2-SNAPSHOT</version-->
+                        <version>4.0.2</version>
                 </dependency>
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
