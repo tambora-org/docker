@@ -2,7 +2,7 @@
 <databaseChangeLog xmlns="https://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="https://www.liquibase.org/xml/ns/dbchangelog
-                                       https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+                                       https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <includeAll path="src/main/resources/liquibase" filter="sql"/>
     <!--includeAll path="src/main/resources/liquibase" filter="sql" relativeToChangelogFile="true"/-->
 </databaseChangeLog>
