@@ -1,6 +1,9 @@
 Still in prototype status
 
 
+
+https://start.spring.io/
+
 Todo:
 =====
 
@@ -35,6 +38,7 @@ https://www.liquibase.org/blog/liquibase-without-changelogs
 user & password -> tmpl
 liquibase settings
 https://github.com/liquibase/liquigraph/issues/79
+https://pragtics.de/datenbankversionierung-in-spring-boot-mit-liquibase/
 
 versions?
 

@@ -12,10 +12,11 @@ spring.thymeleaf.cache=false
 # spring.jpa.hibernate.show-sql=true
 
 #Liquibase 
-spring.liquibase.change-log=classpath:/liquibase/changelog.xml
+spring.liquibase.change-log=classpath:db/changelog/changelog.xml
 spring.liquibase.enabled=true
-liquibase.change-log=classpath:/liquibase/changelog.xml
+liquibase.change-log=classpath:db/changelog/changelog.xml
 liquibase.enabled=true
+#spring.jpa.hibernate.liquibase.change-log=classpath:db/changelog/changelog.xml
 
 # add postgres data
 {{ if $CurrentContainer.Env.POSTGRES_DB }}
