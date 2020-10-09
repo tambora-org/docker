@@ -7,7 +7,10 @@ spring.thymeleaf.cache=false
 #spring.mail.host
 
 # DB
-# spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL9Dialect
+
 # spring.jpa.hibernate.ddl-auto=none
 # spring.jpa.hibernate.show-sql=true
 

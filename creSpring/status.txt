@@ -26,7 +26,7 @@ https://springframework.guru/spring-boot-with-lombok-part-1/
 
 https://www.baeldung.com/liquibase-refactor-schema-of-java-app
 https://www.baeldung.com/liquibase-rollback
-https://auth0.com/blog/integrating-spring-data-jpa-postgresql-liquibase/
+https://auth0.com/blog/integrating-spring-data-jpa-postgresql-liquibase/ **
 
 https://www.baeldung.com/rest-with-spring-series
 
@@ -40,5 +40,8 @@ liquibase settings
 https://github.com/liquibase/liquigraph/issues/79
 https://pragtics.de/datenbankversionierung-in-spring-boot-mit-liquibase/
 
-versions?
+explizit versions?
+
+https://gist.github.com/alexpchin/102854243cd066f8b88e
+https://www.digitalocean.com/community/tutorials/how-to-push-an-existing-project-to-github
 
