@@ -9,6 +9,8 @@ create table test1 (
     name varchar(255)  
 );  
 /* each rollback line must be prefixed with --rollback, splitting is possible
+   https://stackoverflow.com/questions/47316948/liquibase-multi-line-sql-rollback-using-rollbacksplitstatements-and-rollbacken  
+*/
 --rollback drop table test1; 
 
 --changeset nvoxland:2 
