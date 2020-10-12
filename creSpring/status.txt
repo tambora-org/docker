@@ -35,7 +35,8 @@ https://www.liquibase.org/blog/liquibase-without-changelogs
 
 ---
 
-user & password -> tmpl
+sleep 15 -> better way to wait for db?
+
 liquibase settings
 https://github.com/liquibase/liquigraph/issues/79
 https://pragtics.de/datenbankversionierung-in-spring-boot-mit-liquibase/

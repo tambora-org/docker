@@ -37,20 +37,20 @@ liquibase.enabled=true
 spring.datasource.url=jdbc:postgresql://{{ $containerNetwork.IP }}:{{ $pgSqlPort }}/{{ $dbNameS }}
 #      $dbName = '{{ $dbNameS }}';
       {{ if $CurrentContainer.Env.POSTGRES_USER }}
-#      $user = '{{ $CurrentContainer.Env.POSTGRES_USER }}';
+       {{ $dbUser := $dbNameS }}
 spring.datasource.username={{ $CurrentContainer.Env.POSTGRES_USER }}
       {{ else }}
-#      $user = substr('U:'.md5($dbName),0,24); 
+       {{ $dbUser := (slice (printf "U:.%s" (sha1 $dbNameS)) 0 24) }}
+spring.datasource.username={{ $dbUser }}
       {{ end }}
       {{ if $CurrentContainer.Env.POSTGRES_PWD }}
-#      $password = '{{ $CurrentContainer.Env.POSTGRES_PWD }}';
 spring.datasource.password={{ $CurrentContainer.Env.POSTGRES_PWD }}
       {{ else }}
-#      $password = substr('PWD:'.md5($user.":".'{{ sha1 $pgsqlServerPWD }}'),0,32); 
+#      not sure if $dbUser still alive here... - if not second if User is needed
+       {{ $dbPassword = (printf "%s:%s" $dbUser (sha1 $pgsqlServerPWD)) }}
+       {{ $dbPassword := (slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32) }}
+spring.datasource.password={{ $dbPassword }}
       {{ end }}
-
-
-
 
     {{ end }}
    {{ end }}
