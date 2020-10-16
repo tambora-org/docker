@@ -21,5 +21,10 @@ https://github.com/tleyden/open-ocr  (rabbitMQ)
 >>>>>>> Stashed changes
 
 
+R server
+https://rstudio.com/products/rstudio/download-server/debian-ubuntu/
+https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started
+https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart
+
 
 

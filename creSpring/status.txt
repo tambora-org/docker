@@ -46,3 +46,9 @@ explizit versions?
 https://gist.github.com/alexpchin/102854243cd066f8b88e
 https://www.digitalocean.com/community/tutorials/how-to-push-an-existing-project-to-github
 
+# CSS & JS compress
+https://github.com/dtrunk90/thymeleaf-jawr-extension
+
+
+
+

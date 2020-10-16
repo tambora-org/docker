@@ -37,3 +37,7 @@ expo publish
 https://www.thepolyglotdeveloper.com/2018/07/releasing-android-application-built-nativescript-vuejs/
 
 
+
+https://www.heise.de/news/Mobile-Entwicklung-Ionic-Framework-integriert-Vue-4930489.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag
+https://ionicframework.com/blog/announcing-ionic-vue/
+
