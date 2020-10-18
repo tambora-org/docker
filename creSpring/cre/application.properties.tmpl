@@ -1,64 +1,12 @@
 # https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/common-application-properties.html
+# https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#mail-properties
+
+#https://stackoverflow.com/questions/33263316/spring-boot-application-properties-extends-another-property-file
+spring.profiles=pgs,mail
 
 debug=true 
 # switch off cache during development
 spring.thymeleaf.cache=false
 
-#spring.mail.host
 
-# DB
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL9Dialect
 
-# spring.jpa.hibernate.ddl-auto=none
-# spring.jpa.hibernate.show-sql=true
-
-#Liquibase 
-# https://reflectoring.io/database-migration-spring-boot-liquibase/
-spring.liquibase.change-log=classpath:db/changelog/changelog.xml
-spring.liquibase.enabled=true
-#spring.liquibase.defaultSchema=mmm
-#spring.liquibase.liquibaseSchema=mmm
-liquibase.change-log=classpath:db/changelog/changelog.xml
-liquibase.enabled=true
-#spring.jpa.hibernate.liquibase.change-log=classpath:db/changelog/changelog.xml
-
-# add postgres data
-{{ if $CurrentContainer.Env.POSTGRES_DB }}
- {{ range $pgsqlServerPWD, $containers := groupByMulti $ "Env.POSTGRES_ROOT_PWD" "," }}
-  {{ range $index, $container := $containers }}
-   {{ $pgSqlPort := or $container.Env.MYSQL_PORT "5432" }}
-#    $port = '{{ $pgSqlPort }}';
-   {{ range $containerNetwork := $container.Networks }}
-#    $host = '{{ $containerNetwork.IP }}';
-# $dbName = '{{ $CurrentContainer.Env.POSTGRES_DB }}';  //todo: handle multiple comma seperated
-    {{ range $dbNameS := split $CurrentContainer.Env.POSTGRES_DB "," }} 
-spring.datasource.url=jdbc:postgresql://{{ $containerNetwork.IP }}:{{ $pgSqlPort }}/{{ $dbNameS }}
-#      $dbName = '{{ $dbNameS }}';
-      {{ if $CurrentContainer.Env.POSTGRES_USER }}
-       {{ $dbUser := $dbNameS }}
-spring.datasource.username={{ $CurrentContainer.Env.POSTGRES_USER }}
-      {{ else }}
-       {{ $dbUser := (slice (printf "U:.%s" (sha1 $dbNameS)) 0 24) }}
-spring.datasource.username={{ $dbUser }}
-      {{ end }}
-      {{ if $CurrentContainer.Env.POSTGRES_PWD }}
-spring.datasource.password={{ $CurrentContainer.Env.POSTGRES_PWD }}
-      {{ else }}
-#      not sure if $dbUser still alive here... - if not second if User is needed
-       {{ $dbPassword = (printf "%s:%s" $dbUser (sha1 $pgsqlServerPWD)) }}
-       {{ $dbPassword := (slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32) }}
-spring.datasource.password={{ $dbPassword }}
-      {{ end }}
-
-    {{ end }}
-   {{ end }}
-  {{ end }} 
- {{ end }} 
-{{ end }}
-
-# spring.datasource.initialization-mode=always
-# spring.datasource.initialize=true
-# spring.datasource.schema=classpath:/schema.sql
-# spring.datasource.continue-on-error=true

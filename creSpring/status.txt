@@ -49,6 +49,7 @@ https://www.digitalocean.com/community/tutorials/how-to-push-an-existing-project
 # CSS & JS compress
 https://github.com/dtrunk90/thymeleaf-jawr-extension
 
+https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#mail-properties
 
 
 
