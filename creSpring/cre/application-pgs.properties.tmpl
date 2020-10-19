@@ -35,7 +35,7 @@ spring.datasource.url=jdbc:postgresql://{{ $containerNetwork.IP }}:{{ $pgSqlPort
        {{ $dbUser := $dbNameS }}
 spring.datasource.username={{ $CurrentContainer.Env.POSTGRES_USER }}
       {{ else }}
-       {{ $dbUser := (slice (printf "U:.%s" (sha1 $dbNameS)) 0 24) }}
+       {{ $dbUser := slice (printf "U:.%s" (sha1 $dbNameS)) 0 24 }}
 spring.datasource.username={{ $dbUser }}
       {{ end }}
       {{ if $CurrentContainer.Env.POSTGRES_PWD }}
@@ -43,7 +43,7 @@ spring.datasource.password={{ $CurrentContainer.Env.POSTGRES_PWD }}
       {{ else }}
 #      not sure if $dbUser still alive here... - if not second if User is needed
        {{ $dbPassword := (printf "%s:%s" $dbUser (sha1 $pgsqlServerPWD)) }}
-       {{ $dbPassword := (slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32) }}
+       {{ $dbPassword := slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32 }}
 spring.datasource.password={{ $dbPassword }}
       {{ end }}
 
