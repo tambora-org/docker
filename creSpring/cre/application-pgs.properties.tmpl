@@ -32,7 +32,6 @@ liquibase.enabled=true
 spring.datasource.url=jdbc:postgresql://{{ $containerNetwork.IP }}:{{ $pgSqlPort }}/{{ $dbNameS }}
 #      $dbName = '{{ $dbNameS }}';
       {{ if $CurrentContainer.Env.POSTGRES_USER }}
-       {{ $dbUser := $dbNameS }}
 spring.datasource.username={{ $CurrentContainer.Env.POSTGRES_USER }}
       {{ else }}
        {{ $dbUser := (printf "U:.%s" (sha1 $dbNameS)) }}
@@ -43,7 +42,7 @@ spring.datasource.username={{ $dbUser }}
 spring.datasource.password={{ $CurrentContainer.Env.POSTGRES_PWD }}
       {{ else }}
         {{ if $CurrentContainer.Env.POSTGRES_USER }}
-         {{ $dbUser := $dbNameS }}
+         {{ $dbUser := $CurrentContainer.Env.POSTGRES_USER }}
          {{ $dbPassword := (printf "%s:%s" $dbUser (sha1 $pgsqlServerPWD)) }}
          {{ $dbPassword := (printf "PWD:.%s" (sha1 dbPassword)) }}
 #           $dbPassword := slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32  # slice not working
