@@ -42,11 +42,21 @@ spring.datasource.username={{ $dbUser }}
       {{ if $CurrentContainer.Env.POSTGRES_PWD }}
 spring.datasource.password={{ $CurrentContainer.Env.POSTGRES_PWD }}
       {{ else }}
-#      not sure if $dbUser still alive here... - if not second if User is needed
-       {{ $dbPassword := (printf "%s:%s" $dbUser (sha1 $pgsqlServerPWD)) }}
-       {{ $dbPassword := (printf "PWD:.%s" (sha1 dbPassword)) }}
-#         $dbPassword := slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32  # slice not working
+        {{ if $CurrentContainer.Env.POSTGRES_USER }}
+         {{ $dbUser := $dbNameS }}
+         {{ $dbPassword := (printf "%s:%s" $dbUser (sha1 $pgsqlServerPWD)) }}
+         {{ $dbPassword := (printf "PWD:.%s" (sha1 dbPassword)) }}
+#           $dbPassword := slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32  # slice not working
 spring.datasource.password={{ $dbPassword }}
+        {{ else }}
+         {{ $dbUser := (printf "U:.%s" (sha1 $dbNameS)) }}
+#           $dbUser := slice (printf "U:.%s" (sha1 $dbNameS)) 0 24  # slice not working - fnc not defined
+         {{ $dbPassword := (printf "%s:%s" $dbUser (sha1 $pgsqlServerPWD)) }}
+         {{ $dbPassword := (printf "PWD:.%s" (sha1 dbPassword)) }}
+#           $dbPassword := slice (printf "PWD:.%s" (sha1 dbPassword)) 0 32  # slice not working
+spring.datasource.password={{ $dbPassword }}
+        {{ end }}
+
       {{ end }}
 
     {{ end }}
