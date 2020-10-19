@@ -1,0 +1,36 @@
+#!/bin/bash 
+
+# Current Container Name : {{ $CurrentContainer.Name }}
+# Glue Container Name : {{ $GlueContainer.Name }}
+
+domain2='localhost'
+{{ $domain := "localhost" }}
+{{ range $creDomain, $containers := groupByMulti $ "Env.CRE_DOMAIN" "," }}
+  {{ $domain := $creDomain }}
+  domain2='{{$creDomain}}'
+{{ end }} 
+
+{{ $mailhubfile := or $CurrentContainer.Env.SECRET_MAIL_HUB "no_secret_file_given.txt"}}
+mailhub=$(/cre/get-secret.sh {{ $mailhubfile }} "mail.$domain2")
+{{ $authuserfile := or $CurrentContainer.Env.SECRET_MAIL_USER "no_secret_file_given.txt"}}
+authuser=$(/cre/get-secret.sh {{ $authuserfile }} '')
+{{ $authpassfile := or $CurrentContainer.Env.SECRET_MAIL_PWD "no_secret_file_given.txt"}}
+authpass=$(/cre/get-secret.sh {{ $authpassfile }} '')
+
+
+echo '# Mail-Properties' > /cre/spring/app/src/main/resources/application-mail.properties;
+echo 'spring.mail.host='$mailhub > /cre/spring/app/src/main/resources/application-mail.properties;
+echo 'spring.mail.username='$authuser > /cre/spring/app/src/main/resources/application-mail.properties;
+echo 'spring.mail.password='$authpass > /cre/spring/app/src/main/resources/application-mail.properties;
+echo 'spring.mail.port=587' > /cre/spring/app/src/main/resources/application-mail.properties;
+echo 'spring.mail.protocol=smtp' > /cre/spring/app/src/main/resources/application-mail.properties;
+echo '#spring.mail.properties.mail.smtp.starttls.enable = true' > /cre/spring/app/src/main/resources/application-mail.properties;
+echo '' > /cre/spring/app/src/main/resources/application-mail.properties;
+
+#dont't let secrets show up in environment variables
+unset mailhub
+unset authuser
+unset authpass
+
+
+

@@ -50,6 +50,10 @@ https://www.digitalocean.com/community/tutorials/how-to-push-an-existing-project
 https://github.com/dtrunk90/thymeleaf-jawr-extension
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#mail-properties
+https://www.thymeleaf.org/doc/articles/springmail.html
+https://livebook.manning.com/book/spring-integration-in-action/chapter-10/
+https://medium.com/@dmarko484/spring-boot-listening-for-incoming-emails-in-our-applications-aeec2b4b7876
+
 
 
 
