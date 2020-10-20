@@ -18,14 +18,16 @@ authuser=$(/cre/get-secret.sh {{ $authuserfile }} '')
 authpass=$(/cre/get-secret.sh {{ $authpassfile }} '')
 
 
-echo '# Mail-Properties' > /cre/spring/app/src/main/resources/application-mail.properties;
-echo 'spring.mail.host='$mailhub > /cre/spring/app/src/main/resources/application-mail.properties;
-echo 'spring.mail.username='$authuser > /cre/spring/app/src/main/resources/application-mail.properties;
-echo 'spring.mail.password='$authpass > /cre/spring/app/src/main/resources/application-mail.properties;
-echo 'spring.mail.port=587' > /cre/spring/app/src/main/resources/application-mail.properties;
-echo 'spring.mail.protocol=smtp' > /cre/spring/app/src/main/resources/application-mail.properties;
-echo '#spring.mail.properties.mail.smtp.starttls.enable = true' > /cre/spring/app/src/main/resources/application-mail.properties;
-echo '' > /cre/spring/app/src/main/resources/application-mail.properties;
+echo '# Mail-Properties' > /cre/spring/app/src/main/resources/application-mail.yml;
+echo 'spring:'$mailhub > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '  mail:'$mailhub > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '    host: '$mailhub > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '    username: '$authuser > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '    password: '$authpass > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '    port: 587' > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '    protocol: smtp' > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '#   properties.mail.smtp.starttls.enable: true' > /cre/spring/app/src/main/resources/application-mail.yml;
+echo '' > /cre/spring/app/src/main/resources/application-mail.yml;
 
 #dont't let secrets show up in environment variables
 unset mailhub

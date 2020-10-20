@@ -1,0 +1,10 @@
+# https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/common-application-properties.html
+
+debug: true 
+
+# switch off cache during development
+spring:
+  thymeleaf:
+    cache: false
+
+
