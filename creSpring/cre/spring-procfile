@@ -1,5 +1,5 @@
-pgs: /cre/gen-template.sh /cre/application-pgs.properties.tmpl /cre/application.properties.sh
-mail: /cre/gen-template.sh /cre/application-mail.properties.sh.tmpl /cre/application-mail.properties.sh
-props: /cre/gen-template.sh /cre/application.properties.tmpl /cre/application.properties.sh
+pgs: /cre/gen-template.sh /cre/application-pgs.yml.tmpl /cre/application.yml.sh
+mail: /cre/gen-template.sh /cre/application-mail.yml.sh.tmpl /cre/application-mail.yml.sh
+props: /cre/gen-template.sh /cre/application.yml.tmpl /cre/application.yml.sh
 
 spring: /cre/spring-run.sh
