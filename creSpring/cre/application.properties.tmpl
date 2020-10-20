@@ -2,7 +2,9 @@
 # https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#mail-properties
 
 #https://stackoverflow.com/questions/33263316/spring-boot-application-properties-extends-another-property-file
-spring.profiles=pgs,mail
+#spring.profiles=pgs,mail
+spring.profiles.active=pgs,mail
+spring.profiles.include=pgs,mail
 
 debug=true 
 # switch off cache during development
