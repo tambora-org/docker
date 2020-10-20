@@ -57,6 +57,20 @@ https://medium.com/@dmarko484/spring-boot-listening-for-incoming-emails-in-our-a
 # customize
 adapt pom.xml & application.yml to be customized for components (mail, user, postgres, messaging, ...)
 
+type |  components
+user |  security, mail, groups, oauth...
+api  |
+web  |  thymeleaf, vue
++dev
+
+     |  postgres
+     |  mail
+     |  mongo,coach,..
+     |  elasticsearch
+     |  liquibase
+     |  kafka, rabbitMQ
+   
+
 
 
 
