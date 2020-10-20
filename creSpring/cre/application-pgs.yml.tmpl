@@ -1,8 +1,24 @@
 # https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/common-application-properties.html
 # https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#data-properties
 
-# DB jpa
+#Liquibase 
+# https://reflectoring.io/database-migration-spring-boot-liquibase/
+
+liquibase:
+  change-log: classpath:db/changelog/changelog.xml
+  enabled: true
+
 spring:
+  liquibase:
+    change-log: classpath:db/changelog/changelog.xml
+    enabled: true
+#   defaultSchema=mmm
+#   liquibaseSchema=mmm
+
+
+
+# DB jpa
+#spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties:
@@ -14,21 +30,10 @@ spring:
 #     liquibase:
 #       change-log: classpath:db/changelog/changelog.xml
 
-#Liquibase 
-# https://reflectoring.io/database-migration-spring-boot-liquibase/
-spring:
-  liquibase:
-    change-log: classpath:db/changelog/changelog.xml
-    enabled: true
-#   defaultSchema=mmm
-#   liquibaseSchema=mmm
 
-liquibase:
-  change-log: classpath:db/changelog/changelog.xml
-  enabled: true
 
 # add postgres data
-spring:
+#spring:
   datasource:
     driver-class-name: org.postgresql.Driver
 {{ if $CurrentContainer.Env.POSTGRES_DB }}
