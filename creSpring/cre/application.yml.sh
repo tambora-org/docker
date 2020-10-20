@@ -20,5 +20,11 @@ then
    cp -f /cre/application.yml /cre/spring/app/src/main/resources/application.yml
 fi
 
+if [ /cre/pom.xml -nt /cre/spring/app/pom.xml ]
+then
+   echo "Now copy latest pom.xml to /cre/spring/app"
+   cp -f /cre/pom.xml /cre/spring/app/pom.xml
+fi
+
 
 
