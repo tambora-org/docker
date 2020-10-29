@@ -1,0 +1,10 @@
+https://github.com/docker-library/rabbitmq
+
+https://medium.com/@marcosstefani/rabbitmq-with-spring-boot-d05197fce05e
+
+https://www.javainuse.com/spring/spring-boot-rabbitmq-hello-world
+
+https://dzone.com/articles/rabbitmq-in-microservices
+
+https://spring.io/guides/gs/messaging-rabbitmq/
+
