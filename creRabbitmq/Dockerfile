@@ -41,7 +41,7 @@ RUN wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo ap
 # echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 
 # --- Ubuntu 18.04 ---
-echo "deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-22.x" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-22.x" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 
 
 RUN apt update  -y  && apt install  -y rabbitmq-server
