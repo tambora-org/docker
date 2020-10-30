@@ -36,6 +36,8 @@ RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc |
 RUN echo "deb https://packages.erlang-solutions.com/ubuntu bionic contrib" | tee /etc/apt/sources.list.d/erlang.list
 
 RUN apt update -y  && apt install -y erlang
+# Security packages
+RUN apt install -y erlang-asn1 erlang-crypto erlang-public-key erlang-ssl 
 
  
 
