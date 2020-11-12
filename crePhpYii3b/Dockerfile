@@ -45,8 +45,10 @@ RUN cd /cre/tmp/yii-demo \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-db-migration \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql \
- && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite \
- && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-elasticsearch 
+ && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-sqlite  
+
+## yiisoft/db-elasticsearch 1.0.x-dev requires yiisoft/strings ^3.0@dev -> no matching package found.
+##   composer require --prefer-stable --update-with-all-dependencies yiisoft/db-elasticsearch
 
 RUN cd /cre/tmp/yii-demo \
  && composer config repositories.npm '{"type": "composer", "url": "https://asset-packagist.org"}' \
