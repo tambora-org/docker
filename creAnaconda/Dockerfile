@@ -40,11 +40,12 @@ RUN wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh -O 
     bash /cre/anaconda.sh -b
 
 
+## /cre/anaconda3/bin/conda
 
 #
 RUN mkdir /cre/anaconda && \
-    conda create -n eda python=3.6 && \
-    conda activate eda && \
+    /cre/anaconda3/bin/conda create -n eda python=3.6 && \
+    /cre/anaconda3/bin/conda activate eda && \
     pip3 install --upgrade pip && \
     pip3 install -r /cre/requirements.txt
 
