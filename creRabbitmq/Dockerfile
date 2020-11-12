@@ -57,8 +57,10 @@ COPY cre /cre
 WORKDIR /cre/
 
 EXPOSE 15672
+#EXPOSE 4369 5671 5672 15691 15692 25672
 
 # ENTRY-POINT /cre/start-rabbitmq.sh
 # CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
 
 #CMD ["ls", "-l"]
+CMD ["rabbitmq-server"]
