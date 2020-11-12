@@ -35,18 +35,29 @@ LABEL Name="Anaconda for CRE" \
 ## ENV SHELL ?
 ## bash OR sh
  
-RUN wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh -O /cre/anaconda.sh && \
-    chmod +x /cre/anaconda.sh && \
-    bash /cre/anaconda.sh -b
-RUN /cre/anaconda3/bin/conda init bash
-RUN /cre/anaconda3/bin/conda update -n base -c defaults conda
+#RUN wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh -O /cre/anaconda.sh && \
+#    chmod +x /cre/anaconda.sh && \
+#    bash /cre/anaconda.sh -b
+#RUN /cre/anaconda3/bin/conda init bash
+#RUN /cre/anaconda3/bin/conda update -n base -c defaults conda
+
+
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh -O ~/anaconda.sh && \
+    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
+    rm ~/anaconda.sh && \
+    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc && \
+    /opt/conda/bin/conda clean -afy
+
+
 
 ## /cre/anaconda3/bin/conda
 
 #
 RUN mkdir /cre/anaconda && \
-    /cre/anaconda3/bin/conda create -n eda python=3.6 && \
-    /cre/anaconda3/bin/conda activate eda && \
+    /opt/conda/bin/conda create -n eda python=3.6 && \
+    /opt/conda/bin/conda activate eda && \
     pip3 install --upgrade pip && \
     pip3 install -r /cre/requirements.txt
 
