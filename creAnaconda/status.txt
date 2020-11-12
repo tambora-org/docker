@@ -1,0 +1,56 @@
+Still in prototype status
+
+
+Todo:
+=====
+
+
+
+
+
+
+# Installation
+
+## Steps to install Anaconda on Windows:
+
+- Visit Anaconda.com/downloads
+- Select Windows
+- Download the .exe installer
+- Open and run the .exe installer (check ADD anaconda to system PATH environment variable during installation)
+- Open the Anaconda Prompt and run some Python code
+
+## Steps to install Anaconda on Linux:
+- Visit Anaconda.com/downloads
+- Select Linux
+- Download the .sh installer
+- Open terminal and run the following commands
+
+	chmod +x <sh file name>
+	bash <sh file name>
+
+## Steps to create a conda environment and run jupyter notebook:
+- Open Anaconda Prompt
+- Create conda environment named 'eda'
+
+        conda create -n eda python=3.6
+
+- Activate this environment:
+
+        conda activate eda
+
+- On Anaconda prompt, navigate to EDA code folder and install all the dependencies:
+
+        pip install -r requirement.txt
+
+- After all the requirements are installed, run the jupyter notebook using the following command:
+
+        jupyter notebook
+        
+- To deactivate this environment:
+
+       conda deactivate 
+
+- To remove this environment:
+       
+       conda remove -n eda --all
+
