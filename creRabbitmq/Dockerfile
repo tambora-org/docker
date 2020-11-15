@@ -48,13 +48,18 @@ RUN rabbitmq-plugins enable rabbitmq_management
 RUN rabbitmq-plugins list
 ## RUN rabbitmq-plugins directories -s
 
-#ENV RABBITMQ_PLUGINS_DIR /usr/lib/rabbitmq/plugins
+RUN ls -l /usr/lib/rabbitmq/plugins
+
+ENV RABBITMQ_PLUGINS_DIR /usr/lib/rabbitmq/plugins
 #ENV RABBITMQ_PLUGINS_DIR /usr/lib/rabbitmq/lib/rabbitmq_server-version/plugins
-ENV RABBITMQ_PLUGINS_DIR $RABBITMQ_HOME/plugins
+#ENV RABBITMQ_PLUGINS_DIR $RABBITMQ_HOME/plugins
 # PLUGINS_DIR
 
 # delay plugin     (3.8.9 -> 20.04?)
 # https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.9/rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez
+# https://bintray.com/rabbitmq/community-plugins/download_file?file_path=rabbitmq_delayed_message_exchange-0.0.1.ez
+# https://dl.bintray.com/rabbitmq/community-plugins/3.6.x/rabbitmq_delayed_message_exchange/rabbitmq_delayed_message_exchange-20171215-3.6.x.zip  -> ez
+
 RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.9/rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez -O ${RABBITMQ_PLUGINS_DIR}/rabbitmq_delayed_message_exchange-${RABBITMQ_VERSION}.ez
 RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
