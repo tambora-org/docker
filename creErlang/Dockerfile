@@ -5,7 +5,7 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/creubuntu:2018.0
+FROM tamboraorg/creubuntu:0.2020
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
@@ -30,10 +30,10 @@ LABEL Name="Erlang for CRE" \
 RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | apt-key add -
 
 #20
-# RUN echo "deb https://packages.erlang-solutions.com/ubuntu focal contrib" | tee /etc/apt/sources.list.d/erlang.list
+RUN echo "deb https://packages.erlang-solutions.com/ubuntu focal contrib" | tee /etc/apt/sources.list.d/erlang.list
 
 #18
-RUN echo "deb https://packages.erlang-solutions.com/ubuntu bionic contrib" | tee /etc/apt/sources.list.d/erlang.list
+# RUN echo "deb https://packages.erlang-solutions.com/ubuntu bionic contrib" | tee /etc/apt/sources.list.d/erlang.list
 
 RUN apt update -y  && apt install -y erlang
 # Security packages
