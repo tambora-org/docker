@@ -46,7 +46,7 @@ RUN apt update  -y  && apt install  -y rabbitmq-server
 RUN rabbitmq-plugins enable rabbitmq_management
 
 # delay plugin
-RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v${RABBITMQ_VERSION}/rabbitmq_delayed_message_exchange-{RABBITMQ_VERSION}.ez  -O ${RABBITMQ_PLUGINS_DIR}/rabbitmq_delayed_message_exchange-{RABBITMQ_VERSION}.ez
+RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v${RABBITMQ_VERSION}/rabbitmq_delayed_message_exchange-${RABBITMQ_VERSION}.ez  -O ${RABBITMQ_PLUGINS_DIR}/rabbitmq_delayed_message_exchange-${RABBITMQ_VERSION}.ez
 RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 
