@@ -8,3 +8,12 @@ https://dzone.com/articles/rabbitmq-in-microservices
 
 https://spring.io/guides/gs/messaging-rabbitmq/
 
+
+
+delay:
+ https://medium.com/swlh/delay-schedule-messages-in-rabbitmq-208b594cdc00
+ https://www.rabbitmq.com/blog/2015/04/16/scheduling-messages-with-rabbitmq/
+ https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
+ https://docs.spring.io/spring-amqp/reference/html/
+ https://docs.spring.io/spring-amqp/reference/html/#delayed-message-exchange
+
