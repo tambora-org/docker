@@ -15,7 +15,8 @@ ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV INITRD No
-ENV RABBITMQ_VERSION 3.8.0
+ENV RABBITMQ_VERSION 3.8.0   # 3.6.0
+
 
 LABEL Name="RabbitMQ for CRE" \
       CRE=$CRE_VERSION \ 
@@ -52,8 +53,9 @@ RUN rabbitmq-plugins list
 ENV RABBITMQ_PLUGINS_DIR $RABBITMQ_HOME/plugins
 # PLUGINS_DIR
 
-# delay plugin
-RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v${RABBITMQ_VERSION}/rabbitmq_delayed_message_exchange-${RABBITMQ_VERSION}.ez  -O ${RABBITMQ_PLUGINS_DIR}/rabbitmq_delayed_message_exchange-${RABBITMQ_VERSION}.ez
+# delay plugin     (3.8.9 -> 20.04?)
+# https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.9/rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez
+RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v${RABBITMQ_VERSION}/rabbitmq_delayed_message_exchange-${RABBITMQ_VERSION}-0199d11c.ez  -O ${RABBITMQ_PLUGINS_DIR}/rabbitmq_delayed_message_exchange-${RABBITMQ_VERSION}.ez
 RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 COPY cre /cre

@@ -20,6 +20,8 @@ delay:
 
 
 
+https://www.rabbitmq.com/plugins.html
+
 https://www.rabbitmq.com/community-plugins.html
  https://github.com/rabbitmq/rabbitmq-rtopic-exchange
  https://github.com/gotthardp/rabbitmq-email
