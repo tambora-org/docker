@@ -8,6 +8,7 @@ https://dzone.com/articles/rabbitmq-in-microservices
 
 https://spring.io/guides/gs/messaging-rabbitmq/
 
+https://www.rabbitmq.com/priority.html
 
 
 delay:
@@ -16,4 +17,11 @@ delay:
  https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
  https://docs.spring.io/spring-amqp/reference/html/
  https://docs.spring.io/spring-amqp/reference/html/#delayed-message-exchange
+
+
+
+https://www.rabbitmq.com/community-plugins.html
+ https://github.com/rabbitmq/rabbitmq-rtopic-exchange
+ https://github.com/gotthardp/rabbitmq-email
+
 
