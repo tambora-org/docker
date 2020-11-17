@@ -9,6 +9,7 @@ https://dzone.com/articles/rabbitmq-in-microservices
 https://spring.io/guides/gs/messaging-rabbitmq/
 
 https://www.rabbitmq.com/priority.html
+https://www.rabbitmq.com/cli.html
 
 
 delay:
