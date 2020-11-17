@@ -42,12 +42,13 @@ RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" |
 # RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-22.x" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 
 
-RUN apt update  -y  && apt install  -y rabbitmq-server
+
 
 
 COPY cre /cre
 WORKDIR /cre/
 ENV RABBITMQ_PLUGINS_DIR /cre/plugins
+RUN apt update  -y  && apt install  -y rabbitmq-server
 
 RUN rabbitmq-plugins enable rabbitmq_management
 
