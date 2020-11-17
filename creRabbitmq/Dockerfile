@@ -63,12 +63,15 @@ RUN which rabbitmq-plugins
 #RUN ls -l /usr
 #RUN ls -l /usr/local
 #RUN ls -l /usr/lib
-RUN ls -l /usr/lib/rabbitmq
+#RUN ls -l /usr/lib/rabbitmq
+RUN ls -l /usr/lib/rabbitmq/autocomplete
+RUN ls -l /usr/lib/rabbitmq/bin
+RUN ls -l /usr/lib/rabbitmq/lib
 #RUN ls -l /var
 #RUN ls -l /var/local  #empty
 #RUN ls -l /var/lib
 #RUN ls -l /var/lib/rabbitmq
-RUN ls -l /var/lib/rabbitmq/mnesia
+#RUN ls -l /var/lib/rabbitmq/mnesia #empty
 
 # node needs to run...
 #RUN rabbitmq-diagnostics environment
