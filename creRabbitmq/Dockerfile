@@ -62,10 +62,13 @@ RUN which rabbitmq-plugins
 RUN ls -l /
 RUN ls -l /usr
 RUN ls -l /usr/local
+RUN ls -l /usr/lib
 RUN ls -l /var
 RUN ls -l /var/local
+RUN ls -l /var/lib
+RUN ls -l /var/lib/rabbitmq
 
-RUN rabbitmq-diagnostics environment
+#RUN rabbitmq-diagnostics environment
 RUN rabbitmq-diagnostics erlang_version
 
 COPY cre /cre
