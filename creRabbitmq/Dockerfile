@@ -43,11 +43,9 @@ RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" |
 
 
 
+RUN ls -l /usr/lib/rabbitmq/lib
 
 
-COPY cre /cre
-WORKDIR /cre/
-ENV RABBITMQ_PLUGINS_DIR /cre/plugins
 RUN apt update  -y  && apt install  -y rabbitmq-server
 
 RUN rabbitmq-plugins enable rabbitmq_management
@@ -56,7 +54,9 @@ RUN rabbitmq-plugins list
 ## RUN rabbitmq-plugins directories -s
 
 
-
+COPY cre /cre
+WORKDIR /cre/
+ENV RABBITMQ_PLUGINS_DIR /cre/plugins
 
 #ENV RABBITMQ_PLUGINS_DIR /usr/lib/rabbitmq/lib/rabbitmq_server-version/plugins
 #ENV RABBITMQ_PLUGINS_DIR $RABBITMQ_HOME/plugins
@@ -70,7 +70,8 @@ RUN rabbitmq-plugins list
 
 ## RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.9/rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez -O /cre/plugins/rabbitmq_delayed_message_exchange.ez
 ## RUN cp /cre/plugins/v3.6/rabbitmq_delayed_message_exchange.ez /cre/plugins/rabbitmq_delayed_message_exchange.ez
-RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+
+#RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 
 EXPOSE 15672
