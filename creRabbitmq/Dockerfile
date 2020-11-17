@@ -68,8 +68,9 @@ RUN ls -l /var/local
 RUN ls -l /var/lib
 RUN ls -l /var/lib/rabbitmq
 
+# node needs to run...
 #RUN rabbitmq-diagnostics environment
-RUN rabbitmq-diagnostics erlang_version
+#RUN rabbitmq-diagnostics erlang_version
 
 COPY cre /cre
 WORKDIR /cre/
