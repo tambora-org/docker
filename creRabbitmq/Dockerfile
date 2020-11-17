@@ -43,7 +43,7 @@ RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" |
 
 
 
-RUN ls -l /usr/lib/rabbitmq/lib
+##RUN ls -l /usr/lib/rabbitmq/lib
 
 
 RUN apt update  -y  && apt install  -y rabbitmq-server
