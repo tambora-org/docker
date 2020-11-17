@@ -64,9 +64,10 @@ RUN which rabbitmq-plugins
 #RUN ls -l /usr/local
 #RUN ls -l /usr/lib
 #RUN ls -l /usr/lib/rabbitmq
-RUN ls -l /usr/lib/rabbitmq/autocomplete
-RUN ls -l /usr/lib/rabbitmq/bin
-RUN ls -l /usr/lib/rabbitmq/lib
+#RUN ls -l /usr/lib/rabbitmq/autocomplete
+#RUN ls -l /usr/lib/rabbitmq/bin
+#RUN ls -l /usr/lib/rabbitmq/lib
+RUN ls -l /usr/lib/rabbitmq/lib/rabbitmq_server-3.8.2
 #RUN ls -l /var
 #RUN ls -l /var/local  #empty
 #RUN ls -l /var/lib
