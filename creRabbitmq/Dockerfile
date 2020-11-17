@@ -58,11 +58,15 @@ RUN rabbitmq-diagnostics status --help
 RUN which rabbitmq-plugins
 #RUN rabbitmqctl environment
 
+
 RUN ls -l /
 RUN ls -l /usr
+RUN ls -l /usr/local
 RUN ls -l /var
+RUN ls -l /var/local
 
-
+RUN rabbitmq-diagnostics environment
+RUN rabbitmq-diagnostics erlang_version
 
 COPY cre /cre
 WORKDIR /cre/
