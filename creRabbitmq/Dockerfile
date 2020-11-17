@@ -43,7 +43,7 @@ RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" |
 
 
 RUN apt update  -y  && apt install  -y rabbitmq-server
-RUN rabbitmq-plugins enable rabbitmq_management
+#RUN rabbitmq-plugins enable rabbitmq_management
 
 RUN rabbitmq-plugins list
 ## RUN rabbitmq-plugins directories -s
