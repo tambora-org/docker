@@ -56,7 +56,7 @@ RUN rabbitmq-diagnostics help
 RUN rabbitmq-diagnostics status --help
 #rabbitmqctl add_user "a-user" "a-pa$$w0rd"
 RUN which rabbitmq-plugins
-RUN rabbitmqctl environment
+#RUN rabbitmqctl environment
 
 RUN ls -l /
 RUN ls -l /usr
