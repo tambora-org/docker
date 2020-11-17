@@ -43,7 +43,10 @@ RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" |
 
 
 RUN apt update  -y  && apt install  -y rabbitmq-server
-#RUN rabbitmq-plugins enable rabbitmq_management
+
+ENV RABBITMQ_PLUGINS_DIR /cre/plugins
+
+RUN rabbitmq-plugins enable rabbitmq_management
 
 RUN rabbitmq-plugins list
 ## RUN rabbitmq-plugins directories -s
@@ -51,7 +54,7 @@ RUN rabbitmq-plugins list
 COPY cre /cre
 WORKDIR /cre/
 
-ENV RABBITMQ_PLUGINS_DIR /cre/plugins
+
 #ENV RABBITMQ_PLUGINS_DIR /usr/lib/rabbitmq/lib/rabbitmq_server-version/plugins
 #ENV RABBITMQ_PLUGINS_DIR $RABBITMQ_HOME/plugins
 # PLUGINS_DIR
