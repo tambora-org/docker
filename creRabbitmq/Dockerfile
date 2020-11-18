@@ -72,7 +72,8 @@ ENV RABBITMQ_PLUGINS_DIR /cre/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.
 
 ## RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.9/rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez -O /cre/plugins/rabbitmq_delayed_message_exchange.ez
 
-RUN cp /cre/plugins/v3.8/rabbitmq_delayed_message_exchange-3.8.0.ez /cre/plugins/rabbitmq_delayed_message_exchange.ez 
+RUN wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez -O /cre/plugins/rabbitmq_delayed_message_exchange.ez
+# RUN cp /cre/plugins/v3.8/rabbitmq_delayed_message_exchange-3.8.0.ez /cre/plugins/rabbitmq_delayed_message_exchange.ez 
 RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 EXPOSE 15672
