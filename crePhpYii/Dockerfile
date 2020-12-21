@@ -1,9 +1,9 @@
 # Adapted from 
 FROM tamboraorg/crephpdev:latest
-#FROM tamboraorg/crephppackages:latest
+#FROM tamboraorg/crephppackages:0.2020
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
-ARG BUILD_YEAR=2018
+ARG BUILD_YEAR=2020
 ARG BUILD_MONTH=0
 ARG BUILD_TAG=latest
 
