@@ -1,0 +1,30 @@
+https://github.com/docker-library/rabbitmq
+
+https://medium.com/@marcosstefani/rabbitmq-with-spring-boot-d05197fce05e
+
+https://www.javainuse.com/spring/spring-boot-rabbitmq-hello-world
+
+https://dzone.com/articles/rabbitmq-in-microservices
+
+https://spring.io/guides/gs/messaging-rabbitmq/
+
+https://www.rabbitmq.com/priority.html
+https://www.rabbitmq.com/cli.html
+
+
+delay:
+ https://medium.com/swlh/delay-schedule-messages-in-rabbitmq-208b594cdc00
+ https://www.rabbitmq.com/blog/2015/04/16/scheduling-messages-with-rabbitmq/
+ https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
+ https://docs.spring.io/spring-amqp/reference/html/
+ https://docs.spring.io/spring-amqp/reference/html/#delayed-message-exchange
+
+
+
+https://www.rabbitmq.com/plugins.html
+
+https://www.rabbitmq.com/community-plugins.html
+ https://github.com/rabbitmq/rabbitmq-rtopic-exchange
+ https://github.com/gotthardp/rabbitmq-email
+
+

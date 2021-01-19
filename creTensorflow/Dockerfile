@@ -95,12 +95,20 @@ RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch
 
 # AutoKeras
 # https://machinelearningmastery.com/autokeras-for-classification-and-regression/
-RUN pip3 install autokeras
+RUN pip3 install keras autokeras
 
 # Add stanza 
 # https://stanfordnlp.github.io/stanza/
 # https://github.com/stanfordnlp/stanza
 RUN pip3 install stanza
+
+# Add Image AI
+# https://github.com/OlafenwaMoses/ImageAI
+RUN pip3 install imageai
+
+# Add TorchFusion
+# https://github.com/johnolafenwa/TorchFusion
+RUN pip3 install torchfusion 
 
 #https://caffe.berkeleyvision.org/install_apt.html
 #https://caffe.berkeleyvision.org/
