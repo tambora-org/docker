@@ -41,7 +41,7 @@ RUN apt-get  -y --no-install-recommends install nvidia-driver-$NVIDIA_VERSION
 # install Python
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-dev python3-setuptools python3-pip python3-plotly && apt-get clean 
 RUN pip3 install --upgrade pip 
-RUN pip3 install setuptools wheel psutil
+RUN pip3 install setuptools wheel psutil arrow
 RUN pip3 install numpy scipy pandas matplotlib
 RUN pip3 install Flask connexion
 
@@ -116,7 +116,8 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 #COPY cre /cre
-WORKDIR /cre/
+#WORKDIR /cre/code   ##  ??
+WORKDIR /cre
 
 #EXPOSE 8000
 
