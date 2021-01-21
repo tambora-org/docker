@@ -48,6 +48,7 @@ RUN pip3 install Flask connexion
 
 # OpenCV
 RUN apt-get -y --no-install-recommends  install python3-opencv
+RUN pip3 install opencv-python
 
 # install R
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=r-cran-c&searchon=names
