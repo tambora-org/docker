@@ -42,6 +42,7 @@ COPY cre /cre
 RUN mkdir -p /cre/tmp && cd /cre/tmp \
  && git clone https://github.com/yiisoft/yii-demo.git --recursive
 RUN cd /cre/tmp/yii-demo \
+ && composer update --lock \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/yii-db-migration \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-mysql \
  && composer require --prefer-stable --update-with-all-dependencies yiisoft/db-pgsql \
