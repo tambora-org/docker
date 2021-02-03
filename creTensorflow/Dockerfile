@@ -97,6 +97,22 @@ RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch
 # https://machinelearningmastery.com/autokeras-for-classification-and-regression/
 RUN pip3 install keras autokeras
 
+# spaCy
+# https://spacy.io
+# https://github.com/explosion/spaCy
+# https://spacy.io/universe/project/sense2vec
+# https://github.com/explosion/sense2vec
+RUN pip3 install spacy
+RUN pip3 install sense2vec
+RUN python3 -m spacy download en_core_web_sm
+RUN python3 -m spacy download de_core_news_sm
+RUN python3 -m spacy download xx_ent_wiki_sm
+#python3 -m spacy download el_core_news_sm   greek
+#python3 -m spacy download zh_core_web_sm    chinese
+
+#python3 -m spacy download en_core_web_trf  #accurate
+#python3 -m spacy download de_dep_news_trf  #accurate
+
 # Add stanza 
 # https://stanfordnlp.github.io/stanza/
 # https://github.com/stanfordnlp/stanza
@@ -104,6 +120,7 @@ RUN pip3 install stanza
 
 # Add Image AI
 # https://github.com/OlafenwaMoses/ImageAI
+# https://towardsdatascience.com/how-to-create-a-simple-object-detection-system-with-python-and-imageai-ee1bcaf6b111
 RUN pip3 install imageai
 
 # Add TorchFusion
