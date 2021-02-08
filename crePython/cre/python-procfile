@@ -1,0 +1,2 @@
+require: /cre/python-requirements.sh
+python: /cre/python-run.sh

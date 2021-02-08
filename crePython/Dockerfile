@@ -118,9 +118,10 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 #COPY cre /cre
-#WORKDIR /cre/code   ##  ??
-WORKDIR /cre
+WORKDIR /cre/code   ##  ??
+#WORKDIR /cre
 
 #EXPOSE 8000
 
-CMD ["/usr/bin/sleep", "1000000"]
+ENTRYPOINT ["/cre/python-entrypoint.sh"]
+CMD ["shoreman", "/cre/python-procfile"]
