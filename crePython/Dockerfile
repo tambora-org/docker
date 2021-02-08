@@ -96,6 +96,7 @@ RUN apt-get -y --no-install-recommends install sbcl
 RUN apt-get -y --no-install-recommends install jq 
 
 # roswell ## lisp https://github.com/roswell/roswell
+RUN apt-get -y --no-install-recommends install libcurl3
 RUN curl --output roswell.deb -sL `curl -s https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("deb$")) | .browser_download_url'`
 RUN dpkg -i roswell.deb
 
