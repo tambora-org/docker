@@ -119,7 +119,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(julia --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
-#COPY cre /cre
+COPY cre /cre
 WORKDIR /cre/code   ##  ??
 #WORKDIR /cre
 
