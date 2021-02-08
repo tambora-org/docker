@@ -1,0 +1,6 @@
+pgs: /cre/gen-template.sh /cre/application-pgs.yml.tmpl /cre/application.setup.sh
+mail: /cre/gen-template.sh /cre/application-mail.yml.sh.tmpl /cre/application-mail.yml.sh
+props: /cre/gen-template.sh /cre/application.yml.tmpl /cre/application.setup.sh
+pom: /cre/gen-template.sh /cre/pom.xml.tmpl /cre/application.setup.sh
+
+spring: /cre/spring-run.sh

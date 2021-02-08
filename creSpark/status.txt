@@ -1,0 +1,7 @@
+Still in prototype status
+
+
+
+https://www.heise.de/developer/artikel/Spark-versus-Flink-Rumble-in-the-Big-Data-Jungle-3264705.html
+
+kafka, flink, rabbitmq, hadoop, spark, ...

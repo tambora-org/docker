@@ -1,0 +1,15 @@
+Hadoop
+
+
+OCR:
+https://transkribus.eu/wikiDe/index.php/Hauptseite
+https://readcoop.eu/transkribus/   (java &  "apt install libwebkitgtk-1.0-0")
+
+https://www.uni-wuerzburg.de/zpd/ocr4all
+
+https://de.wikipedia.org/wiki/Tesseract_(Software)  
+
+https://de.wikipedia.org/wiki/OCRopus
+http://www.gnu.org/software/ocrad/manual/ocrad_manual.html
+
+ 
