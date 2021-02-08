@@ -12,4 +12,12 @@ https://de.wikipedia.org/wiki/Tesseract_(Software)
 https://de.wikipedia.org/wiki/OCRopus
 http://www.gnu.org/software/ocrad/manual/ocrad_manual.html
 
+
+
+
+Iceberg?
+https://thenewstack.io/apache-iceberg-a-different-table-design-for-big-data/
+
+
+
  

@@ -96,10 +96,10 @@ RUN apt-get -y --no-install-recommends install sbcl
 RUN apt-get -y --no-install-recommends install jq 
 
 # roswell ## lisp https://github.com/roswell/roswell
-#RUN apt-get -y --no-install-recommends install libcurl3
-RUN apt-get -y --no-install-recommends install libcurl4
-RUN curl --output roswell.deb -sL `curl -s https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("deb$")) | .browser_download_url'`
-RUN dpkg -i roswell.deb
+##RUN apt-get -y --no-install-recommends install libcurl3
+#RUN apt-get -y --no-install-recommends install libcurl4
+#RUN curl --output roswell.deb -sL `curl -s https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("deb$")) | .browser_download_url'`
+#RUN dpkg -i roswell.deb
 
 
 ## Julia: >=20.04
@@ -115,7 +115,7 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t   openCV \t $(python3 -c 'import cv2; print(cv2.__version__)')" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(R --version | grep 'R version')" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  $(ros --version 2>&1)" >> /cre/versions.txt && \ 
+#   echo "$(date +'%F %R') \t  $(ros --version 2>&1)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(julia --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 

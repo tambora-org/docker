@@ -5,3 +5,11 @@ Still in prototype status
 https://www.heise.de/developer/artikel/Spark-versus-Flink-Rumble-in-the-Big-Data-Jungle-3264705.html
 
 kafka, flink, rabbitmq, hadoop, spark, ...
+
+https://www.baeldung.com/spark-mlib-machine-learning
+
+https://towardsdatascience.com/deploying-keras-deep-learning-models-with-java-62d80464f34a
+
+https://towardsdatascience.com/how-to-train-your-neural-networks-in-parallel-with-keras-and-apache-spark-ea8a3f48cae6
+
+https://towardsdatascience.com/deep-learning-with-apache-spark-part-1-6d397c16abd
