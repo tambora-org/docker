@@ -69,6 +69,19 @@ web  |  thymeleaf, vue
      |  elasticsearch
      |  liquibase
      |  kafka, rabbitMQ
+
+
+email:
+ https://sandstorm.de/de/blog/post/emails-abfragen-per-imap-in-java.html
+ https://sandstorm.de/de/blog/post/emails-abfragen-per-imap-in-java.html
+ https://docs.spring.io/spring-integration/docs/current/reference/html/mail.html
+ https://stackoverflow.com/questions/42297006/how-to-create-imap-receiver-adapter-dynamically-using-spring-boot
+ https://stackoverflow.com/questions/30569984/accessing-emails-from-gmail-using-imap-in-spring-boot
+ https://josdem.io/techtalk/java/mailbox_reader_imap/
+ https://stackoverflow.com/questions/59712461/asynchronous-mail-receiving-with-spring-boot-and-spring-integration
+ https://github.com/emgenio/email-poller
+ https://www.rabbitmq.com/resources/google-tech-talk-final/google.html
+
    
 
 
