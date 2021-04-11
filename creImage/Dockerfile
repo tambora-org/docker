@@ -39,6 +39,7 @@ RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2htm
 
 # install image magick
 # https://imagemagick.org/script/magick.php
+# https://wiki.ubuntuusers.de/ImageMagick/
 RUN apt-get -y --no-install-recommends install imagemagick
 
 
@@ -60,7 +61,7 @@ RUN apt-get -y --no-install-recommends install libvips-dev
 RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t creImage \t $XXX_VERSION" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t  $(tesseract --version | grep tesseract)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t  Image Magick \t $(magick  -version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  Image Magick \t $(convert -version | grep Version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 
