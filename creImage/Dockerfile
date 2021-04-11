@@ -25,10 +25,10 @@ LABEL Name="Images for CRE" \
 # install tesseract
 RUN  apt-get update && \
   apt-get -y upgrade && \
-  apt-get -y --no-install-recommends install tesseract-ocr  && \
-  apt-get -y --no-install-recommends install tesseract-ocr-eng  && \
-  apt-get -y --no-install-recommends install tesseract-ocr-deu tesseract-ocr-deu-frak
-#apt-get install tesseract-ocr-all
+  apt-get -y --no-install-recommends install tesseract-ocr tesseract-ocr-all
+#  apt-get -y --no-install-recommends install tesseract-ocr-all  && \
+#  apt-get -y --no-install-recommends install tesseract-ocr-deu tesseract-ocr-deu-frak
+#apt-get install tesseract-ocr-eng
 
 # install Latex
 RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html 
