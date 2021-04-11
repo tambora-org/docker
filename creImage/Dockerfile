@@ -23,6 +23,7 @@ LABEL Name="Images for CRE" \
 # uses jq & amqp-tools
 
 # install tesseract
+# https://github.com/tesseract-ocr/tessdoc
 RUN  apt-get update && \
   apt-get -y upgrade && \
   apt-get -y --no-install-recommends install tesseract-ocr tesseract-ocr-all
@@ -37,6 +38,7 @@ RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2htm
 # opencv?
 
 # install image magick
+# https://imagemagick.org/script/magick.php
 RUN apt-get -y --no-install-recommends install imagemagick
 
 
@@ -54,6 +56,12 @@ RUN apt-get -y --no-install-recommends install libvips-dev
 #tesseract --list-langs
 #tesseract-ocr tesseract-ocr-deu tesseract-ocr-deu-frak
 
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \
+   echo "$(date +'%F %R') \t creImage \t $XXX_VERSION" >> /cre/versions.txt && \
+   echo "$(date +'%F %R') \t  $(tesseract --version | grep tesseract)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  Image Magick \t $(magick  -version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 
 COPY cre /cre
