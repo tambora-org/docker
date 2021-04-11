@@ -20,10 +20,13 @@ https://stackabuse.com/tesseract-simple-java-optical-character-recognition/
 
 https://github.com/tesseract-ocr/tesseract
 https://github.com/fatihyildizli/springboot-tesseract-ocr
+https://wiki.ubuntuusers.de/tesseract-ocr/
 
 https://www.javacodegeeks.com/2020/08/ocr-in-java-with-tess4j.html
 
 http://libvips.blogspot.com/2013/03/making-deepzoom-zoomify-and-google-maps.html
 https://libvips.github.io/libvips/API/current/Making-image-pyramids.md.html
 https://libvips.github.io/libvips/API/current/using-cli.html
+
+http://fz.ub.uni-freiburg.de/show/pics/18ff/1863/06/frz.1863-06-03.02.jpg
 

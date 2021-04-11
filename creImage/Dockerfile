@@ -23,7 +23,9 @@ LABEL Name="Images for CRE" \
 # uses jq & amqp-tools
 
 # install tesseract
-RUN apt-get -y --no-install-recommends install tesseract-ocr 
+RUN  apt-get update && \
+  apt-get -y upgrade && \
+  apt-get -y --no-install-recommends install tesseract-ocr 
 RUN apt-get -y --no-install-recommends install tesseract-ocr-eng
 RUN apt-get -y --no-install-recommends install tesseract-ocr-deu tesseract-ocr-deu-frak
 
