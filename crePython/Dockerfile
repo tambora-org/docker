@@ -93,7 +93,7 @@ RUN apt-get -y --no-install-recommends install clisp
 RUN apt-get -y --no-install-recommends install sbcl
 
 # move to ubuntu later
-RUN apt-get -y --no-install-recommends install jq 
+#RUN apt-get -y --no-install-recommends install jq 
 
 # roswell ## lisp https://github.com/roswell/roswell
 ##RUN apt-get -y --no-install-recommends install libcurl3

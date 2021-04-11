@@ -1,0 +1,29 @@
+Still in prototype status
+
+
+Todo:
+=====
+
+# https://wiki.ubuntuusers.de/jq/
+# https://wlanboy.com/tutorial/rabbitmq-bash/
+
+https://github.com/easytopic-project/node-ocr-server
+https://www.rabbitmq.com/devtools.html
+https://www.systutorials.com/docs/linux/man/1-amqp-consume/
+https://stackoverflow.com/questions/57491859/send-images-with-their-names-in-one-message-rabbitmq-python-3-x
+
+https://guides.gdpicture.com/content/Appending%20additional%20OCR%20language%20dictionaries.html
+
+https://www.baeldung.com/java-ocr-tesseract
+https://medium.com/gft-engineering/creating-an-ocr-microservice-using-tesseract-pdfbox-and-docker-155beb7f2623
+https://stackabuse.com/tesseract-simple-java-optical-character-recognition/
+
+https://github.com/tesseract-ocr/tesseract
+https://github.com/fatihyildizli/springboot-tesseract-ocr
+
+https://www.javacodegeeks.com/2020/08/ocr-in-java-with-tess4j.html
+
+http://libvips.blogspot.com/2013/03/making-deepzoom-zoomify-and-google-maps.html
+https://libvips.github.io/libvips/API/current/Making-image-pyramids.md.html
+https://libvips.github.io/libvips/API/current/using-cli.html
+
