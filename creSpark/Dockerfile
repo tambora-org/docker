@@ -27,6 +27,9 @@ LABEL Name="Spark for CRE" \
 
 # https://computingforgeeks.com/how-to-install-apache-spark-on-ubuntu-debian/
 
+# https://archive.apache.org/dist/spark/spark-3.0.0/
+# https://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop2.7.tgz
+
 curl -O https://www.apache.org/dyn/closer.lua/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
 
 

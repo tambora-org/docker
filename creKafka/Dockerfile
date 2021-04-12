@@ -25,12 +25,13 @@ LABEL Name="Kafka for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
-#http://www-us.apache.org/dist/kafka/2.4.0/kafka_2.13-2.4.0.tgz
-#https://downloads.apache.org/kafka/2.7.0/kafka_2.12-2.7.0.tgz
+#https://archive.apache.org/dist/kafka/2.4.0/kafka_2.12-2.4.0.tgz
+#https://archive.apache.org/dist/kafka/2.7.0/kafka_2.12-2.7.0.tgz
+
 
 # https://tecadmin.net/install-apache-kafka-ubuntu/
 ## https://kafka.apache.org/downloads
-RUN wget https://downloads.apache.org/kafka/2.7.0/kafka_2.12-2.7.0.tgz && \
+RUN wget https://archive.apache.org/dist/kafka/2.7.0/kafka_2.12-2.7.0.tgz && \
      tar xzf kafka_2.12-2.7.0.tgz && \
      mv kafka_2.12-2.7.0.tgz /usr/local/kafka
 
