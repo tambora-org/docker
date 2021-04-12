@@ -15,7 +15,7 @@ ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV INITRD No
-ENV KAFKA_VERSION 2.4.0
+ENV KAFKA_VERSION 2.7.0
 
 LABEL Name="Kafka for CRE" \
       CRE=$CRE_VERSION \ 
@@ -25,11 +25,14 @@ LABEL Name="Kafka for CRE" \
       OS="Ubuntu:$UBUNTU_VERSION" \
       Build_=$BUILD_TAG 
 
+#http://www-us.apache.org/dist/kafka/2.4.0/kafka_2.13-2.4.0.tgz
+#https://downloads.apache.org/kafka/2.7.0/kafka_2.12-2.7.0.tgz
+
 # https://tecadmin.net/install-apache-kafka-ubuntu/
 ## https://kafka.apache.org/downloads
-RUN wget http://www-us.apache.org/dist/kafka/2.4.0/kafka_2.13-2.4.0.tgz && \
-     tar xzf kafka_2.13-2.4.0.tgz && \
-     mv kafka_2.13-2.4.0 /usr/local/kafka
+RUN wget https://downloads.apache.org/kafka/2.7.0/kafka_2.12-2.7.0.tgz && \
+     tar xzf kafka_2.12-2.7.0.tgz && \
+     mv kafka_2.12-2.7.0.tgz /usr/local/kafka
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
