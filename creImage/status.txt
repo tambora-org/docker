@@ -35,3 +35,18 @@ http://fz.ub.uni-freiburg.de/show/pics/18ff/1863/06/frz.1863-06-03.02.jpg
 
 https://stackoverflow.com/questions/44101759/imagemagick-insert-an-image-at-a-specific-position-size-into-a-larger-image
 
+
+//compress pdf
+https://opensource.com/article/20/8/reduce-pdf
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
+-dNOPAUSE -dBATCH -dColorImageResolution=150 \
+-sOutputFile=output.pdf someBigFile.pdf
+
+#split pdf single pages
+https://stackoverflow.com/questions/10228592/splitting-a-pdf-with-ghostscript
+
+#convert pdf to image
+https://stackoverflow.com/questions/653380/converting-a-pdf-to-png
+
+
