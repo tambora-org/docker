@@ -11,6 +11,10 @@ https://spring.io/guides/gs/messaging-rabbitmq/
 https://www.rabbitmq.com/priority.html
 https://www.rabbitmq.com/cli.html
 
+https://www.rabbitmq.com/management-cli.html
+
+https://www.rabbitmq.com/queues.html
+
 
 delay:
  https://medium.com/swlh/delay-schedule-messages-in-rabbitmq-208b594cdc00
