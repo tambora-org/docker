@@ -79,8 +79,6 @@ RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 EXPOSE 15672
 #EXPOSE 4369 5671 5672 15691 15692 25672
 
-# ENTRY-POINT /cre/start-rabbitmq.sh
-# CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war"]
+ENTRYPOINT ["/cre/rabbitmq-entrypoint.sh"]
 
-#CMD ["ls", "-l"]
-CMD ["rabbitmq-server"]
+CMD ["shoreman", "/cre/rabbitmq-procfile"]

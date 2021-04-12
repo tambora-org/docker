@@ -33,3 +33,5 @@ https://libvips.github.io/libvips/API/current/using-cli.html
 
 http://fz.ub.uni-freiburg.de/show/pics/18ff/1863/06/frz.1863-06-03.02.jpg
 
+https://stackoverflow.com/questions/44101759/imagemagick-insert-an-image-at-a-specific-position-size-into-a-larger-image
+
