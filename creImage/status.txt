@@ -4,6 +4,8 @@ Still in prototype status
 Todo:
 =====
 
+* OCR: Add Language Package during entrypoint initialization, instead of all. -> compare existing list...
+
 # https://wiki.ubuntuusers.de/jq/
 # https://wlanboy.com/tutorial/rabbitmq-bash/
 

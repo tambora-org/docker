@@ -18,6 +18,8 @@ http://www.gnu.org/software/ocrad/manual/ocrad_manual.html
 Iceberg?
 https://thenewstack.io/apache-iceberg-a-different-table-design-for-big-data/
 
+(Pinecone?  https://www.pinecone.io/)
+
 
 
  

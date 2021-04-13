@@ -32,3 +32,9 @@ https://www.rabbitmq.com/community-plugins.html
  https://github.com/gotthardp/rabbitmq-email
 
 
+Queue,Exchange
+https://www.rabbitmq.com/tutorials/tutorial-three-python.html
+https://www.rabbitmq.com/tutorials/tutorial-four-python.html
+https://www.cloudamqp.com/blog/part4-rabbitmq-for-beginners-exchanges-routing-keys-bindings.html
+https://www.rabbitmq.com/dlx.html
+
