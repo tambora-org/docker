@@ -39,6 +39,8 @@ RUN apt update -y  && apt install -y erlang
 # Security packages
 RUN apt install -y erlang-asn1 erlang-crypto erlang-public-key erlang-ssl 
 
+## https://www.rabbitmq.com/install-debian.html#apt
+
  
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
