@@ -8,6 +8,7 @@ Todo:
 
 # https://wiki.ubuntuusers.de/jq/
 # https://wlanboy.com/tutorial/rabbitmq-bash/
+# Use munchausen mechanism to add exchange,binding,queue,action
 
 https://github.com/easytopic-project/node-ocr-server
 https://www.rabbitmq.com/devtools.html
