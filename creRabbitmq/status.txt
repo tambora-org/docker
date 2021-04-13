@@ -15,6 +15,10 @@ https://www.rabbitmq.com/management-cli.html
 
 https://www.rabbitmq.com/queues.html
 
+https://dzone.com/articles/rabbitmq-consumer-retry-mechanism?edition=648392&utm_medium=email&utm_source=dzone&utm_content=RabbitMQ%20tutorial&utm_campaign=
+Dead-Letter
+
+https://www.rabbitmq.com/web-mqtt.html
 
 delay:
  https://medium.com/swlh/delay-schedule-messages-in-rabbitmq-208b594cdc00
