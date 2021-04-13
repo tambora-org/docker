@@ -1,2 +1,3 @@
 start: rabbitmq-server 
+swamp: /cre/rabbitmq-initialize.sh
 user: /cre/gen-template.sh /cre/rabbitmq-add-user.sh.tmpl /cre/rabbitmq-add-user.sh

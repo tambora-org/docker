@@ -10,7 +10,6 @@ rabbitmqctl set_permissions admin ".*" ".*" ".*"
 # rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 rabbitmqctl set_user_tags admin administrator
 rabbitmqctl set_user_tags admin management
-rabbitmqctl delete_user guest
 
 ## for all queues
 {{ range $rabbitQueue, $containers := groupByMulti $ "Env.RABBITMQ_QUEUE" "," }}
@@ -47,3 +46,6 @@ rabbitmqctl set_permissions "$rabbit_user" ".*" ".*" ".*"
 
 {{ end }}
 ## end of all queues
+
+#rabbitmqctl delete_user guest
+
