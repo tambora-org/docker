@@ -7,4 +7,10 @@ Todo:
 https://github.com/elastic/elasticsearch-php
  vs
 https://github.com/yiisoft/db-elasticsearch
+ vs
+https://opensearch.org/
+https://github.com/opensearch-project/OpenSearch
+https://github.com/opensearch-project/OpenSearch-Dashboards
+
+
 
