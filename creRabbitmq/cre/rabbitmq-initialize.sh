@@ -3,10 +3,10 @@
 rabbitmqctl await_startup
 
 #munchausen-swamp
-rabbitmqadmin declare exchange name=swamp type=direct
-rabbitmqadmin declare queue name=munchausen durable=false
-rabbitmqadmin declare binding source=swamp destination=munchausen routing_key=munchausen 
+rabbitmqadmin declare exchange name="cre.swamp" type=direct
+rabbitmqadmin declare queue name="cre.munchausen" durable=false
+rabbitmqadmin declare binding source="cre.swamp" destination="cre.munchausen" routing_key="cre.horse" 
 ## [destination_type=... arguments=...]
 
-amqp-consume -q "munchausen" -e "swamp" --vhost "/" -r "munchausen" -d ./show-message.sh
+amqp-consume -q "cre.swamp" -e "cre.munchausen" --vhost "/" -r "cre.horse" -d ./show-message.sh
 
