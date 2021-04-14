@@ -10,6 +10,14 @@ Todo:
 # https://wlanboy.com/tutorial/rabbitmq-bash/
 # Use munchausen mechanism to add exchange,binding,queue,action
 
+https://linux.die.net/man/1/amqp-consume
+https://linux.die.net/man/1/amqp-publish
+https://linux.die.net/man/1/amqp-get
+https://linux.die.net/man/1/amqp-declare-queue
+https://linux.die.net/man/1/amqp-delete-queue
+
+
+
 https://github.com/easytopic-project/node-ocr-server
 https://www.rabbitmq.com/devtools.html
 https://www.systutorials.com/docs/linux/man/1-amqp-consume/
