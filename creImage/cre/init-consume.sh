@@ -1,4 +1,6 @@
 #!/bin/bash
+# Current Container Name : {{ $CurrentContainer.Name }}
+
 
 #https://wlanboy.com/tutorial/rabbitmq-bash/
 
