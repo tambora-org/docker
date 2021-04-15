@@ -9,7 +9,7 @@ ARG BUILD_TAG=latest
 
 #ENV DEBIAN_FRONTEND noninteractive
 #ENV INITRD No
-ENV CITUS_VERSION 6.0
+ENV CITUS_VERSION 10.0
 
 LABEL Name="Postgres Citus for CRE" \
       CRE=$CRE_VERSION \ 
@@ -27,7 +27,7 @@ USER root
 
 RUN curl https://install.citusdata.com/community/deb.sh | bash
 RUN apt update
-RUN apt-get -y install postgresql-${POSTGRES_VERSION}-citus
+RUN apt-get -y install postgresql-${POSTGRES_VERSION}-citus-${CITUS_VERSION}
 RUN pg_conftool ${POSTGRES_VERSION} main set shared_preload_libraries citus
 
 
