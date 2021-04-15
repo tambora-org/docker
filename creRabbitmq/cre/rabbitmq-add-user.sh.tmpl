@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#wait for rabbitmq - simple sleep for now.
-sleep 3;
+#wait for rabbitmq
+rabbitmqctl await_startup
+sleep 1
 
 #add admin first
 {{ $rootPassword := or $CurrentContainer.Env.RABBITMQ_ROOT_PWD "_secret_" }}
