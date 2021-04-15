@@ -1,6 +1,10 @@
 #!/bin/bash
  
+echo "initialize rabbitmq server"
+
 rabbitmqctl await_startup
+
+echo "rabbitmq server running"
 
 #munchausen-swamp
 rabbitmqadmin declare exchange name="cre.swamp" type=direct
