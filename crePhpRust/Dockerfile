@@ -5,7 +5,7 @@
 #
 
 # Pull base image.rust
-FROM tamboraorg/crephp:latest
+FROM tamboraorg/crephp:2020.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 ARG BUILD_YEAR=2018
