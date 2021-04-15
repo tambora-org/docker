@@ -23,7 +23,7 @@ rabbitmqctl set_user_tags admin management
 
 
 ## user: RABBITMQ_USER, RABBITMQ_PWD ?
-{{ if $container.Env.POSTGRES_USER }}
+{{ if $container.Env.RABBITMQ_USER }}
 ## RABBITMQ_USER : {{ $container.Env.RABBITMQ_USER }}
 rabbit_user="{{ $container.Env.RABBITMQ_USER }}"
 {{ else }}
