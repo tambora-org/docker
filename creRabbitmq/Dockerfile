@@ -78,7 +78,7 @@ RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 RUN rabbitmq-plugins enable rabbitmq_mqtt
 RUN rabbitmq-plugins enable rabbitmq_web_mqtt
 
-EXPOSE 15672 15675
+EXPOSE 15672 15675 5672
 #EXPOSE 4369 5671 5672 15691 15692 25672
 
 ENTRYPOINT ["/cre/rabbitmq-entrypoint.sh"]
