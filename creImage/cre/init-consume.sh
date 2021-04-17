@@ -14,6 +14,6 @@ amqp-publish --url=amqp://admin:secret@172.18.0.4:5672 -e "cre.swamp" -r "cre.ho
 
 sleep 1
 
-amqp-consume --server=172.18.0.4 --port=5672 --username="testuser" --password="secret" -e "cre.default" -q "cre.image.show"  --vhost "/" -r "cre.image.demo" -d ./show-message.sh
+amqp-consume --url=amqp://admin:secret@172.18.0.4:5672 -e "cre.default" -q "cre.image.show" -r "cre.image.demo" -d /cre/show-message.sh
 
 
