@@ -1,5 +1,5 @@
 #
-# Images RabbitMQ Dockerfile
+# Images Dockerfile
 #
 
 FROM tamboraorg/creubuntu:2020.0
@@ -69,6 +69,5 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 #WORKDIR /cre/
 
-#USER elasticsearch
-
-#VOLUME ["/usr/share/elasticsearch"]
+ENTRYPOINT ["/cre/image-entrypoint.sh"]
+CMD ["shoreman", "/cre/image-procfile"]

@@ -1,0 +1,4 @@
+swamp: /cre/gen-template.sh /cre/create-queue.sh.tmpl 
+consume: /cre/gen-template.sh /cre/consume-queue.sh.tmpl 
+update: watch -n 600007 /cre/ubuntu-weekly.sh
+start: bash
