@@ -20,7 +20,7 @@ if [ -z "$binding" ]
 then
   binding=$queue
 fi
-																																																																																																		initQueue='{"exchange":"$exchange", "binding":"$binding", "queue":"$queue"}'
+																																																																																																		initQueue='{"exchange":"'$exchange'", "binding":"'$binding'", "queue":"'$queue'"}'
 
 rabbitmqHost=''
 {{ if $CurrentContainer.Env.RABBITMQ_QUEUE }}
