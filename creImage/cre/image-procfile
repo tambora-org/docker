@@ -2,7 +2,7 @@ swamp: /cre/gen-template.sh /cre/create-queue.sh.tmpl
 consume: /cre/gen-template.sh /cre/consume-queue.sh.tmpl 
 publish: /cre/gen-template.sh /cre/publish-queue.sh.tmpl 
 languages: /cre/gen-template.sh /cre/tesseract.sh.tmpl /cre/tesseract.sh
-watch: /cre/init-consume.sh
+watch: sleep 5 && /cre/init-consume.sh
 trigger: watch -n 120 /cre/do-publish.sh
 update: watch -n 600007 /cre/ubuntu-weekly.sh
 start: bash

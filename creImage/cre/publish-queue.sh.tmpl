@@ -5,7 +5,7 @@ exchange='cre.default'
 binding='cre.{{ $CurrentContainer.Name }}'
 message=''
 
-while getopts e:b:s: flag
+while getopts e:b:m: flag
 do
     case "${flag}" in
         e) exchange=${OPTARG};;
