@@ -6,13 +6,13 @@ binding=''
 queue='cre.{{ $CurrentContainer.Name }}'
 script=/cre/show-message.sh
 
-while getopts e:b:q:d: flag
+while getopts e:b:q:s: flag
 do
     case "${flag}" in
         e) exchange=${OPTARG};;
         b) binding=${OPTARG};;
         q) queue=${OPTARG};;
-        d) script=${OPTARG};;
+        s) script=${OPTARG};;
     esac
 done	
 
@@ -22,7 +22,7 @@ then
 fi
 																																																																																																		initQueue='{"exchange":"'$exchange'", "binding":"'$binding'", "queue":"'$queue'"}'
 
-rabbitmqHost=''
+rabbitmq_host=''
 {{ if $CurrentContainer.Env.RABBITMQ_QUEUE }}
  {{ range $rabbitmqServerPWD, $containers := groupByMulti $ "Env.RABBITMQ_ROOT_PWD" "," }}
   {{ range $index, $container := $containers }}

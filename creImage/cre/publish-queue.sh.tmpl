@@ -2,24 +2,19 @@
 # Current Container Name : {{ $CurrentContainer.Name }}
 
 exchange='cre.default'
-binding=''
-queue='cre.{{ $CurrentContainer.Name }}'
+binding='cre.{{ $CurrentContainer.Name }}'
+message=''
 
-while getopts e:b:q: flag
+while getopts e:b:s: flag
 do
     case "${flag}" in
         e) exchange=${OPTARG};;
         b) binding=${OPTARG};;
-        q) queue=${OPTARG};;
+        m) message=${OPTARG};;
     esac
 done	
 
-if [ -z "$binding" ]
-then
-  binding=$queue
-fi
-																																																																																																		initQueue='{"exchange":"'$exchange'", "binding":"'$binding'", "queue":"'$queue'"}'
-
+																																																																																																	
 rabbitmq_host=''
 {{ if $CurrentContainer.Env.RABBITMQ_QUEUE }}
  {{ range $rabbitmqServerPWD, $containers := groupByMulti $ "Env.RABBITMQ_ROOT_PWD" "," }}
@@ -51,7 +46,11 @@ rabbitmq_host=''
  {{ end }} 
 {{ end }}
 
-amqp-publish --url=amqp://$rabbit_user:$rabbit_pwd@$rabbitmq_host:$rabbitmq_port -e "cre.swamp" -r "cre.horse" -b "$initQueue"
+#amqp-publish --url=amqp://$rabbit_user:$rabbit_pwd@$rabbitmq_host:$rabbitmq_port -e "cre.swamp" -r "cre.horse" -b "$initQueue"
 #sleep 1
+#amqp-consume --url=amqp://$rabbit_user:$rabbit_pwd@$rabbitmq_host:$rabbitmq_port -e "$exchange" -q "$queue" -r "$binding" -d $script
+
+amqp-publish --url=amqp://$rabbit_user:$rabbit_pwd@$rabbitmq_host:$rabbitmq_port -e "$exchange" -r "$binding" -b "$message"
+
 
 

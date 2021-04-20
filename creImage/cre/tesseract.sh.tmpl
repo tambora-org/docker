@@ -1,0 +1,16 @@
+#!/bin/bash
+# Current Container Name : {{ $CurrentContainer.Name }}
+
+apt-get update && \
+apt-get -y upgrade && \
+{{ range $tessLang := split $CurrentContainer.Env.TESSERACT_LANGUAGES "," }} 
+ apt-get -y --no-install-recommends install tesseract-ocr-{{ $tessLang }}  && \
+{{ end }}
+sleep 1
+
+#apt-get autoremove
+#apt-get clean
+
+tesseract --list-langs
+
+
