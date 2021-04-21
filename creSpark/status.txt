@@ -13,3 +13,5 @@ https://towardsdatascience.com/deploying-keras-deep-learning-models-with-java-62
 https://towardsdatascience.com/how-to-train-your-neural-networks-in-parallel-with-keras-and-apache-spark-ea8a3f48cae6
 
 https://towardsdatascience.com/deep-learning-with-apache-spark-part-1-6d397c16abd
+
+https://dzone.com/articles/the-magic-of-apache-spark-in-java-1?edition=671392

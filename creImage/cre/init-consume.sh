@@ -1,6 +1,8 @@
 #!/bin/bash
 #https://wlanboy.com/tutorial/rabbitmq-bash/
 
+#somehow check remote status?
+sleep 10
 sleep 5
 /cre/mq/create-queue.sh -e "cre.default" -q "cre.image.show" -b "cre.image.demo"
 
