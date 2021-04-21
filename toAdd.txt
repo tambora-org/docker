@@ -23,5 +23,13 @@ https://www.opensemanticsearch.org/
 (Pinecone?  https://www.pinecone.io/)
 
 
+Mobile App
+creIonic vs creNative (was/is creMobile)
+
+
+Move Erlang and RabbitMQ to creDocker 
+
+
+
 
  
