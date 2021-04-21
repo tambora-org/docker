@@ -31,8 +31,9 @@ RUN  apt-get update && \
 #  apt-get -y --no-install-recommends install tesseract-ocr-deu tesseract-ocr-deu-frak
 #apt-get install tesseract-ocr-all
 
+## Move latex to different image
 # install Latex
-RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html 
+# RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html 
 # python3-latexcodec 
  
 # opencv?
@@ -62,8 +63,8 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t creImage \t $XXX_VERSION" >> /cre/versions.txt && \
    echo "$(date +'%F %R') \t \t $(tesseract --version | grep tesseract)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t \t $(convert -version | grep Version)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t \t $(vips -version)" >> /cre/versions.txt && \ 
-   echo "$(date +'%F %R') \t \t $(latex --version | grep Debian)" >> /cre/versions.txt 
+   echo "$(date +'%F %R') \t \t $(vips -version)" >> /cre/versions.txt 
+##   echo "$(date +'%F %R') \t \t $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 
 COPY cre /cre
