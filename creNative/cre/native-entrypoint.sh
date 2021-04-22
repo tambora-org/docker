@@ -26,7 +26,7 @@ cd /cre/dev/cre-app
 npm install @capacitor/cli @capacitor/core
 
 echo 'before'
-npx cap init creApp 314159
+npx cap init "creApp" "com.example.creapp"
 #npx cap init creApp 000000 --web-dir=build
 echo 'after'
 
