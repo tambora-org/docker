@@ -29,6 +29,8 @@ echo 'before'
 npx cap init "creApp" "com.example.creapp"
 #npx cap init creApp 000000 --web-dir=build
 echo 'after'
+mkdir /cre/dev/cre-app/www
+cp /cre/index.html /cre/dev/cre-app/www/index.html 
 
 npx cap add ios
 npx cap add android
