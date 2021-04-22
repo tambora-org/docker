@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/expect -f 
 
 lassign $argv appDir appName
 
