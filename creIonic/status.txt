@@ -1,0 +1,46 @@
+Still in prototype status
+
+
+https://vue-native.io/
+https://vue-native.io/getting-started.html
+https://github.com/GeekyAnts/KitchenSink-Vue-Native
+https://facebook.github.io/react-native/docs/getting-started.html
+https://docs.expo.io/versions/latest/introduction/installation/
+https://docs.expo.io/versions/latest/workflow/configuration/
+https://docs.expo.io/versions/v37.0.0/sdk/sensors/
+https://www.nativescript.org/vue
+
+https://www.npmjs.com/package/vue-cli-plugin-vuetify
+
+Todo:
+=====
+
+https://vue-native.io/docs/installation.html
+
+https://frageit.de/questions/49125697/host-expo-app-on-external-network
+export EXPO_MANIFEST_PROXY_URL="https://your-public-url-for-xdl.example.com"
+export EXPO_PACKAGER_PROXY_URL="https://your-public-url-for-metro.example.com"
+
+npm run android -> emulator...
+https://linoxide.com/ubuntu-how-to/install-android-sdk-manager-linux-ubuntu-16-04/
+
+"internal" publishing 
+https://docs.expo.io/versions/v32.0.0/workflow/publishing/
+expo publish
+[12:40:45] Publishing to channel 'default'...
+[12:40:45] An Expo user account is required to proceed.
+[12:40:45] Not logged in. Use `expo login -u username -p password` to log in.
+
+
+"official" publishing
+
+https://www.thepolyglotdeveloper.com/2018/07/releasing-android-application-built-nativescript-vuejs/
+
+
+
+https://www.heise.de/news/Mobile-Entwicklung-Ionic-Framework-integriert-Vue-4930489.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag
+https://ionicframework.com/blog/announcing-ionic-vue/
+
+https://github.com/ionic-team/capacitor
+https://ionicframework.com/blog/announcing-ionic-vue/
+

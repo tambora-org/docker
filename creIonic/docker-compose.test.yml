@@ -1,0 +1,7 @@
+sut:
+  build: .
+  command: /cre/tests/mobile-test.sh
+  volumes:
+    - ./tests:/cre/tests
+
+

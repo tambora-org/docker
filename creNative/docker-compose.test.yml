@@ -1,0 +1,7 @@
+sut:
+  build: .
+  command: /cre/tests/native-test.sh
+  volumes:
+    - ./tests:/cre/tests
+
+
