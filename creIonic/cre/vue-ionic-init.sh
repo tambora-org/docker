@@ -3,7 +3,8 @@
 lassign $argv appDir appName
 
 #git clone https://github.com/KMicha/cre-test.git $appDir
-ionic start $appDir tabs
+##ionic start $appDir tabs
+/cre/node/.npm-global/bin/ionic start $appDir tabs
 cd cre-test && npm install 
 
 ## && ionic serve
