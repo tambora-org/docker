@@ -25,8 +25,10 @@ cd /cre/dev/cre-app
 #https://capacitorjs.com/
 npm install @capacitor/cli @capacitor/core
 
-npx cap init
+echo 'before'
+npx cap init --help
 #npx cap init creApp 000000 --web-dir=build
+echo 'after'
 
 npx cap add ios
 npx cap add android
