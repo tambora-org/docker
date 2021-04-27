@@ -1,5 +1,7 @@
 Still in prototype status
 
+https://forums.expo.io/t/sdk-33-error-unable-to-resolve-module-node-modules-expo-appentry/24470/5
+
 
 https://vue-native.io/
 https://vue-native.io/getting-started.html
