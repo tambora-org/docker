@@ -26,8 +26,9 @@ ENV PATH=$PATH:/cre/node/.npm-global/bin
 RUN mkdir -p /cre/node/.npm-global
 RUN npm -g config set user root 
 
-#RUN npm install -g @ionic/cli cordova-res
-RUN npm install -g ionic 
+RUN npm install -g @ionic/cli 
+RUN npm install -g cordova-res
+#RUN npm install -g ionic 
 RUN npm install -g @ionic/vue 
 RUN npm install -g @ionic/vue-router
 
