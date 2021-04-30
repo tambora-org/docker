@@ -8,6 +8,12 @@ then
    cp -f /cre/application-pgs.yml /cre/spring/app/src/main/resources/application-pgs.yml
 fi
 
+if [ /cre/application-rabbitmq.yml -nt /cre/spring/app/src/main/resources/application-rabbitmq.yml ]
+then
+   echo "Now copy latest application-rabbitmq.yml to /cre/spring/app/src/main/resources"
+   cp -f /cre/application-rabbitmq.yml /cre/spring/app/src/main/resources/application-rabbitmq.yml
+fi
+
 #if [ /cre/application-mail.yml -nt /cre/spring/app/src/main/resources/application-mail.yml ]
 #then
 #   echo "Now copy latest application-mail.yml to /cre/spring/app/src/main/resources"
