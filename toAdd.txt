@@ -26,6 +26,14 @@ https://www.opensemanticsearch.org/
 Mobile App
 creIonic vs creNative (was/is creMobile)
 
+BOINC-Server
+BOINC-Client
+ https://github.com/marius311/boinc-server-docker/tree/master/images/makeproject
+ https://docs.wxwidgets.org/2.6/wx_wxhtml.html
+ http://htmlcxx.sourceforge.net/
+
+
+
 
 Move Erlang and RabbitMQ to creDocker 
 

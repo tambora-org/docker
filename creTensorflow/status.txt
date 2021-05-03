@@ -4,6 +4,15 @@ Still in prototype status
 Todo:
 =====
 
+Transformers:
+https://pypi.org/project/transformers/
+pip install transformers
+https://huggingface.co/transformers/installation.html
+
+
+
+
+
 https://blog.tensorflow.org/2020/08/train-your-tensorflow-model-on-google.html?linkId=95907203
 
 
