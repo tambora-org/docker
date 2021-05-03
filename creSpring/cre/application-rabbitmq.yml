@@ -1,0 +1,9 @@
+# RabbitMQ Properties
+
+spring:
+  rabbitmq:
+    host: 
+    port: 5672
+    username:
+    password:
+ 

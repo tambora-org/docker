@@ -1,0 +1,24 @@
+# https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/common-application-properties.html
+# https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#common-application-properties-integration
+# SPRING im Einsatz: Page 207 ff
+
+# Current Container Name : {{ $CurrentContainer.Name }}
+
+spring:
+  rabbitmq:
+    username: {{ $CurrentContainer.Env.RABBITMQ_USER }}
+    password: {{ $CurrentContainer.Env.RABBITMQ_PWD }}
+{{ if $CurrentContainer.Env.RABBITMQ_QUEUE }}
+ {{ range $rabbitmqServerPWD, $containers := groupByMulti $ "Env.RABBITMQ_ROOT_PWD" "," }}
+  {{ range $index, $container := $containers }}
+   {{ $rootPassword := or $container.Env.RABBITMQ_ROOT_PWD "_secret_" }}
+   {{ $rabbitmqPort := or $container.Env.RABBITMQ_PORT "5672" }}
+    host: {{ $containerNetwork.IP }}
+    port: {{ $rabbitmqPort }}
+  {{ end }} 
+ {{ end }} 
+{{ end }}
+
+
+
+

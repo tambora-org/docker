@@ -7,6 +7,10 @@ https://start.spring.io/
 Todo:
 =====
 
+https://reflectoring.io/reusable-vue-components-in-thymeleaf/
+https://dev.to/brunodrugowick/spring-boot-vue-js-axios-and-thymeleaf-with-bootstrap-in-4-commits-2b0l
+
+
 
 https://www.baeldung.com/dockerizing-spring-boot-application
 http://zetcode.com/springboot/docker/
@@ -20,7 +24,7 @@ https://spring.io/guides/topicals/spring-boot-docker
 https://stackoverflow.com/questions/53938943/spring-boot-2-1-1-use-postgres-config-with-jpa
 https://www.baeldung.com/spring-boot-failed-to-configure-data-source
 
-
+#getter,setter
 https://www.baeldung.com/intro-to-project-lombok
 https://springframework.guru/spring-boot-with-lombok-part-1/
 
