@@ -9,6 +9,12 @@ https://realpython.com/flask-connexion-rest-api/
 https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
 =======
 
+https://datascience-enthusiast.com/R/pandas_datatable.html
+https://www.kaggle.com/sudalairajkumar/getting-started-with-python-datatable
+https://towardsdatascience.com/an-overview-of-pythons-datatable-package-5d3a97394ee9
+https://datatable.readthedocs.io/en/latest/
+
+
 https://wiki.ubuntuusers.de/tesseract-ocr/
 https://www.howtoforge.com/tutorial/tesseract-ocr-installation-and-usage-on-ubuntu-16-04/
 https://github.com/tesseract-ocr/tesseract/wiki

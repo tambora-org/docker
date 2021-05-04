@@ -8,12 +8,19 @@ Transformers:
 https://pypi.org/project/transformers/
 pip install transformers
 https://huggingface.co/transformers/installation.html
+https://www.kdnuggets.com/2021/02/hugging-face-transformer-basics.html
+https://towardsdatascience.com/electra-is-bert-supercharged-b450246c4edb
+https://huggingface.co/transformers/model_doc/electra.html
+https://huggingface.co/blog/long-range-transformers
+
 
 
 
 
 
 https://blog.tensorflow.org/2020/08/train-your-tensorflow-model-on-google.html?linkId=95907203
+
+https://towardsdatascience.com/creating-editing-and-merging-onnx-pipelines-897e55e98bb0
 
 
 https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles/dockerfiles
