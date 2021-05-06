@@ -38,4 +38,16 @@ Install python modules by file
  * https://stackoverflow.com/questions/46419607/how-to-automatically-install-required-packages-from-a-python-script-as-necessary/46419642
  * https://github.com/bndr/pipreqs
 
+DONE:
+=====
+https://www.scipy.org/
+https://patsy.readthedocs.io/en/latest/overview.html#
+https://www.statsmodels.org
+https://www.statsmodels.org/stable/glm.html
+http://www.science.smith.edu/~jcrouser/SDS293/labs/lab4-py.html
+
+
+
+
+
 

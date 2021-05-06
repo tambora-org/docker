@@ -42,7 +42,7 @@ RUN apt-get  -y --no-install-recommends install nvidia-driver-$NVIDIA_VERSION
 RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-dev python3-setuptools python3-pip python3-plotly && apt-get clean 
 RUN pip3 install --upgrade pip 
 RUN pip3 install setuptools wheel psutil pipreqs arrow
-RUN pip3 install numpy scipy pandas 
+RUN pip3 install numpy scipy pandas patsy statsmodels
 RUN pip3 install matplotlib seaborn
 RUN pip3 install Flask connexion
 
