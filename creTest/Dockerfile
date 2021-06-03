@@ -6,11 +6,13 @@ RUN mkdir -p /app && touch /app/versions.txt && \
     echo "$(date +'%F %R') \t creTest \t " >> /app/versions.txt
 
 RUN add-apt-repository ppa:certbot/certbot; apt-get update; apt-get install -y openssl python3-certbot-nginx
-RUN wget https://dl.eff.org/certbot-auto && \
-    mv certbot-auto /usr/local/bin/ && \
-    chmod 755 /usr/local/bin/certbot-auto
+
+#RUN wget https://dl.eff.org/certbot && \
+#    mv certbot /usr/local/bin/ && \
+#    chmod 755 /usr/local/bin/certbot
+
 # RUN /usr/local/bin/certbot-auto --noninteractive --install-only   
-RUN /usr/local/bin/certbot-auto --noninteractive --version  
+RUN /usr/local/bin/certbot --noninteractive --version  
 
 RUN echo "$(date +'%F %R') \t  $(openssl version)" >> /app/versions.txt
 RUN echo "$(date +'%F %R') \t  $(/usr/local/bin/certbot-auto --version 2>&1)" >> /app/versions.txt
