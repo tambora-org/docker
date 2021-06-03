@@ -5,7 +5,7 @@ FROM tamboraorg/crenginx
 RUN mkdir -p /app && touch /app/versions.txt && \
     echo "$(date +'%F %R') \t creTest \t " >> /app/versions.txt
 
-RUN add-apt-repository ppa:certbot/certbot; apt-get update; apt-get install -y openssl python-certbot-nginx
+RUN add-apt-repository ppa:certbot/certbot; apt-get update; apt-get install -y openssl python3-certbot-nginx
 RUN wget https://dl.eff.org/certbot-auto && \
     mv certbot-auto /usr/local/bin/ && \
     chmod 755 /usr/local/bin/certbot-auto

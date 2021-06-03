@@ -26,8 +26,13 @@ LABEL Name="Php Rust for CRE" \
       Build_=$BUILD_TAG 
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
-    apt-get install -y nodejs 
+# RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
+#     apt-get install -y nodejs 
+
+# Install nodejs
+RUN \
+  apt-get update && \
+  apt-get install -y nodejs npm  ## npm not included in nodejs
 
 # Install rust
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y

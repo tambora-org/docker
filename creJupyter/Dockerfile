@@ -59,7 +59,11 @@ RUN python3 -m pip install jupyterlab
 RUN python3 -m pip install ipywidgets
 
 RUN pip3 install jupyter-tensorboard
-RUN jupyter labextension install jupyterlab_tensorboard
+
+#NOT YET SUPPORTED (06/2021)
+#RUN jupyter labextension install jupyterlab_tensorboard
+
+
 # https://github.com/QuantStack/jupyterlab-drawio/
 RUN jupyter labextension install jupyterlab-drawio
 RUN jupyter tensorboard enable

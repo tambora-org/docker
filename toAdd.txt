@@ -38,6 +38,8 @@ BOINC-Client
 Move Erlang and RabbitMQ to creDocker 
 
 
+https://www.heise.de/amp/news/Open-Source-Alibaba-veroeffentlicht-Cloud-Datenbank-PolarDB-6059948.html
+PolarDB -> PostgreSQL
 
 
  
