@@ -23,6 +23,8 @@ https://www.informatik-aktuell.de/entwicklung/methoden/einfuehrung-in-spark-ein-
 
 http://spark.apache.org/docs/latest/spark-standalone.html
 
+https://github.com/dfdx/Spark.jl
+
 https://github.com/Stratio/spark-rabbitmq/issues/20
 https://github.com/Stratio/spark-rabbitmq
 
@@ -35,6 +37,21 @@ https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html
 https://3rdman.de/2019/08/spark-to-postgresql-real-time-data-processing-pipeline-part-5/
 
 https://mmuratarat.github.io/2020-06-18/pyspark-postgresql-locally
+
+https://spark-packages.org/package/harsha2010/magellan
+https://github.com/deeplearning4j/dl4j-spark-ml
+https://github.com/yahoo/CaffeOnSpark
+
+https://github.com/JohnSnowLabs/spark-nlp
+ https://github.com/JohnSnowLabs/spark-nlp#google-colab-notebook
+ https://nlp.johnsnowlabs.com/demo
+
+
+
+https://github.com/epahomov/docker-spark
+
+
+
 
 
 
