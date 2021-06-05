@@ -15,3 +15,26 @@ https://towardsdatascience.com/how-to-train-your-neural-networks-in-parallel-wit
 https://towardsdatascience.com/deep-learning-with-apache-spark-part-1-6d397c16abd
 
 https://dzone.com/articles/the-magic-of-apache-spark-in-java-1?edition=671392
+
+
+https://m.heise.de/developer/artikel/Machine-Learning-mit-Apache-Spark-2-3657735.html?seite=all
+
+https://www.informatik-aktuell.de/entwicklung/methoden/einfuehrung-in-spark-ein-text-mining-projekt.html
+
+http://spark.apache.org/docs/latest/spark-standalone.html
+
+https://github.com/Stratio/spark-rabbitmq/issues/20
+https://github.com/Stratio/spark-rabbitmq
+
+https://radanalytics.io/examples/amqpstreaming
+
+https://severalnines.com/database-blog/big-data-postgresql-and-apache-spark
+
+https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html
+
+https://3rdman.de/2019/08/spark-to-postgresql-real-time-data-processing-pipeline-part-5/
+
+https://mmuratarat.github.io/2020-06-18/pyspark-postgresql-locally
+
+
+
