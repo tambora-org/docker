@@ -60,7 +60,7 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 
 RUN python3 -m pip install jupyterlab
 RUN python3 -m pip install ipywidgets
-RUN python3 -m pip install pyspark
+RUN python3 -m pip install pyspark  #may move....
 
 RUN pip3 install jupyter-tensorboard
 

@@ -61,6 +61,8 @@ EXPOSE ${spark_master_web_ui} ${SPARK_MASTER_PORT} ${spark_worker_web_ui}
 
 # -- Runtime
 
+COPY cre /cre
+
 WORKDIR ${SPARK_HOME}
 #WORKDIR /cre/spring/app
 

@@ -45,6 +45,7 @@ RUN pip3 install setuptools wheel psutil pipreqs arrow
 RUN pip3 install numpy scipy pandas patsy statsmodels datatable
 RUN pip3 install matplotlib seaborn
 RUN pip3 install Flask connexion
+RUN pip3 install pycurl  #recommended by jupyterlab
 
 # OpenCV
 RUN apt-get -y --no-install-recommends  install python3-opencv

@@ -44,11 +44,28 @@ https://github.com/yahoo/CaffeOnSpark
 
 https://github.com/JohnSnowLabs/spark-nlp
  https://github.com/JohnSnowLabs/spark-nlp#google-colab-notebook
- https://nlp.johnsnowlabs.com/demo
+ https://nlp.johnsnowlabs.com/demo (!)
+ https://en.wikipedia.org/wiki/Spark_NLP
+ https://towardsdatascience.com/introduction-to-spark-nlp-foundations-and-basic-components-part-i-c83b7629ed59
 
 
 https://github.com/epahomov/docker-spark
 https://www.kdnuggets.com/2020/07/apache-spark-cluster-docker.html
+
+
+https://towardsdatascience.com/deep-learning-with-apache-spark-part-1-6d397c16abd
+https://towardsdatascience.com/deep-learning-with-apache-spark-part-2-2a2938a36d35
+http://maxpumperla.com/elephas/  (Keras!! - Python..?)
+ https://towardsdatascience.com/deploying-keras-deep-learning-models-with-java-62d80464f34a  
+ https://github.com/cerndb/dist-keras
+ https://deeplearning4j.org/
+https://towardsdatascience.com/deep-learning-with-spark-in-deep-java-library-in-10-minutes-923a73704094
+https://databricks.com/de/session_eu19/deep-learning-with-dl4j-on-apache-spark-yeah-its-cool-but-are-you-doing-it-the-right-way
+
+
+
+
+
 
 
 

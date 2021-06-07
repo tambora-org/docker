@@ -20,6 +20,7 @@ Todo:
 timing:  config & start -> sleep, or sh
 notebook,jupyterlab : http://127.0.0.1:45327/user/admin/
 
+https://jupyterhub.readthedocs.io/en/stable/getting-started/authenticators-users-basics.html
 
 ValueError: The extension "jupyterlab_tensorboard" does not yet support the current version of JupyterLab.
 
