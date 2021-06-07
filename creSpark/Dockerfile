@@ -42,17 +42,17 @@ RUN apt-get update -y && \
     rm spark.tgz
 
 ENV SPARK_HOME /usr/bin/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
-ENV SPARK_MASTER_HOST spark-master
+ENV SPARK_MASTER_HOST cresparkmaster
 ENV SPARK_MASTER_PORT 7077
 ENV PYSPARK_PYTHON python3
 
 
 ARG spark_master_web_ui=8080
 
-EXPOSE ${spark_master_web_ui} ${SPARK_MASTER_PORT}
+EXPOSE ${spark_master_web_ui} ${SPARK_MASTER_PORT} ${spark_worker_web_ui}
 
 #MASTER:
-CMD bin/spark-class org.apache.spark.deploy.master.Master >> logs/spark-master.out
+#CMD bin/spark-class org.apache.spark.deploy.master.Master >> logs/spark-master.out
 
 #WORKER:
 #ARG spark_worker_web_ui=8081
@@ -69,7 +69,7 @@ WORKDIR ${SPARK_HOME}
 #EXPOSE 7077 
 
 # Define default command.
-# ENTRYPOINT ["/cre/spark-entrypoint.sh"]
-# CMD ["shoreman", "/cre/spark-procfile"]
+ENTRYPOINT ["/cre/spark-entrypoint.sh"]
+CMD ["shoreman", "/cre/spark-procfile"]
 
  

@@ -1,6 +1,3 @@
-pgs: /cre/gen-template.sh /cre/application-pgs.yml.tmpl /cre/application.setup.sh
-mail: /cre/gen-template.sh /cre/application-mail.yml.sh.tmpl /cre/application-mail.yml.sh
-props: /cre/gen-template.sh /cre/application.yml.tmpl /cre/application.setup.sh
-pom: /cre/gen-template.sh /cre/pom.xml.tmpl /cre/application.setup.sh
+master: /cre/gen-template.sh /cre/run-master.sh.tmpl /cre/run-master.sh
+worker: /cre/gen-template.sh /cre/run-worker.sh.tmpl /cre/run-worker.sh
 
-spring: /cre/spring-run.sh
