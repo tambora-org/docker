@@ -28,6 +28,9 @@ https://guides.gdpicture.com/content/Appending%20additional%20OCR%20language%20d
 https://www.baeldung.com/java-ocr-tesseract
 https://medium.com/gft-engineering/creating-an-ocr-microservice-using-tesseract-pdfbox-and-docker-155beb7f2623
 https://stackabuse.com/tesseract-simple-java-optical-character-recognition/
+https://realpython.com/setting-up-a-simple-ocr-server/
+https://github.com/tleyden/open-ocr  (rabbitMQ)
+
 
 https://wiki.ubuntuusers.de/ImageMagick/
 

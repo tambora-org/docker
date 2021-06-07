@@ -86,6 +86,12 @@ email:
  https://github.com/emgenio/email-poller
  https://www.rabbitmq.com/resources/google-tech-talk-final/google.html
 
+
+init spring app only if not yet done.... - then only handle setting files (gitignore in subdir is possible)
+
+
+
+
    
 
 

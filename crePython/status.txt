@@ -4,16 +4,15 @@ Still in prototype status
 Todo:
 =====
 
-<<<<<<< Updated upstream
+
 https://realpython.com/flask-connexion-rest-api/
 https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba
-=======
+
 
 https://datascience-enthusiast.com/R/pandas_datatable.html
 https://www.kaggle.com/sudalairajkumar/getting-started-with-python-datatable
 https://towardsdatascience.com/an-overview-of-pythons-datatable-package-5d3a97394ee9
 https://datatable.readthedocs.io/en/latest/
-
 
 https://wiki.ubuntuusers.de/tesseract-ocr/
 https://www.howtoforge.com/tutorial/tesseract-ocr-installation-and-usage-on-ubuntu-16-04/
@@ -24,7 +23,16 @@ https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc
 
 https://realpython.com/setting-up-a-simple-ocr-server/
 https://github.com/tleyden/open-ocr  (rabbitMQ)
->>>>>>> Stashed changes
+
+ https://www.scipy.org/
+ https://patsy.readthedocs.io/en/latest/overview.html#
+ https://www.statsmodels.org
+ https://www.statsmodels.org/stable/glm.html
+ http://www.science.smith.edu/~jcrouser/SDS293/labs/lab4-py.html
+
+ https://opensource.com/article/20/4/plot-data-python
+
+
 
 
 R server
