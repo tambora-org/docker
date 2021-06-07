@@ -1,5 +1,12 @@
 #!/bin/sh 
 
-echo "Deploy Spark Master"
+# Current Container Name : {{ $CurrentContainer.Name }}
+# Glue Container Name : {{ $GlueContainer.Name }}
 
+{{ if $CurrentContainer.Env.SPARK_MASTER }}
+echo "No Spark Master"
+sleep 9999999
+{{ else }}
+echo "Deploy Spark Master"
 bin/spark-class org.apache.spark.deploy.master.Master >> logs/spark-master.out
+{{ end }}

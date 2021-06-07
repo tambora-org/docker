@@ -1,5 +1,5 @@
 #!/bin/sh 
 
-echo "Deploy Spark Master"
+echo "Spark Master Missing"
 
-bin/spark-class org.apache.spark.deploy.master.Master >> logs/spark-master.out
+sleep 1

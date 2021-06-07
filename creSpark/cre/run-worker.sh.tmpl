@@ -1,5 +1,13 @@
 #!/bin/sh 
 
-echo "Deploy Spark Worker"
+# Current Container Name : {{ $CurrentContainer.Name }}
+# Glue Container Name : {{ $GlueContainer.Name }}
 
+{{ if $CurrentContainer.Env.SPARK_MASTER }}
+sleep 2
+echo "Deploy Spark Worker"
 bin/spark-class org.apache.spark.deploy.worker.Worker spark://${SPARK_MASTER_HOST}:${SPARK_MASTER_PORT} >> logs/spark-worker.out
+{{ else }}
+echo "No Spark Worker"
+sleep 9999999
+{{ end }}
