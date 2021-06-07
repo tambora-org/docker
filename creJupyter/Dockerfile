@@ -13,6 +13,8 @@
 # https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html
 # https://nbconvert.readthedocs.io/en/latest/install.html#installing-nbconvert
 
+# https://www.kdnuggets.com/2020/07/apache-spark-cluster-docker.html
+
 # Jupyter Hub Dockerfile 
 #
 # https://github.com/tamboraorg/docker/crepython
@@ -31,7 +33,8 @@ ARG BUILD_TAG=latest
 #ENV DEBIAN_FRONTEND noninteractive 
 ENV INITRD No
 #ENV LANG en_US.UTF-8
-ENV JUPYTER_VERSION 999999 
+ENV JUPYTER_VERSION 2.1.5 
+ENV SPARK_VERSION 3.0.0
 
 LABEL Name="Jupyter for CRE" \
       CRE=$CRE_VERSION \ 
@@ -57,6 +60,7 @@ RUN python3 -m pip install notebook  # needed if running the notebook servers lo
 
 RUN python3 -m pip install jupyterlab
 RUN python3 -m pip install ipywidgets
+RUN python3 -m pip install pyspark
 
 RUN pip3 install jupyter-tensorboard
 
