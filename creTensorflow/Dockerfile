@@ -129,6 +129,7 @@ RUN pip3 install torchfusion
 
 #https://caffe.berkeleyvision.org/install_apt.html
 #https://caffe.berkeleyvision.org/
+RUN apt-get install -y python3-pil
 RUN apt-get -y --no-install-recommends install caffe-cpu
 #RUN apt-get -y --no-install-recommends install caffe-cuda
 
