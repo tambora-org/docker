@@ -64,7 +64,10 @@ https://databricks.com/de/session_eu19/deep-learning-with-dl4j-on-apache-spark-y
 
 
 
-
+http://spark.apache.org/docs/latest/spark-standalone.html#cluster-launch-scripts
+https://oneoffcoder.com/2019/10/16/hadoop-spark-python-docker-container/
+https://towardsdatascience.com/spark-and-docker-your-spark-development-cycle-just-got-10x-faster-f41ed50c67fd
+https://github.com/big-data-europe/docker-spark
 
 
 
