@@ -47,6 +47,8 @@ https://github.com/JohnSnowLabs/spark-nlp
  https://nlp.johnsnowlabs.com/demo (!)
  https://en.wikipedia.org/wiki/Spark_NLP
  https://towardsdatascience.com/introduction-to-spark-nlp-foundations-and-basic-components-part-i-c83b7629ed59
+https://medium.com/parito-labs-blog/get-started-with-machine-learning-in-java-using-spark-nlp-9eb8ef2ea2ce
+https://www.kdnuggets.com/2019/06/spark-nlp-getting-started-with-worlds-most-widely-used-nlp-library-enterprise.html
 
 
 https://github.com/epahomov/docker-spark
@@ -54,20 +56,34 @@ https://www.kdnuggets.com/2020/07/apache-spark-cluster-docker.html
 
 
 https://towardsdatascience.com/deep-learning-with-apache-spark-part-1-6d397c16abd
+ https://www.kdnuggets.com/2018/04/deep-learning-apache-spark-part-1.html
 https://towardsdatascience.com/deep-learning-with-apache-spark-part-2-2a2938a36d35
+ 
 http://maxpumperla.com/elephas/  (Keras!! - Python..?)
  https://towardsdatascience.com/deploying-keras-deep-learning-models-with-java-62d80464f34a  
  https://github.com/cerndb/dist-keras
  https://deeplearning4j.org/
+ https://deeplearning4j.konduit.ai/distributed-deep-learning/howto
+https://azure.microsoft.com/de-de/blog/use-bigdl-on-hdinsight-spark-for-distributed-deep-learning/
+https://www.baeldung.com/spark-mlib-machine-learning
+
+
 https://towardsdatascience.com/deep-learning-with-spark-in-deep-java-library-in-10-minutes-923a73704094
-https://databricks.com/de/session_eu19/deep-learning-with-dl4j-on-apache-spark-yeah-its-cool-but-are-you-doing-it-the-right-way
+https://databricks.com/de/session_eu19/deep-learning-with-dl4j-on-apache-spark-yeah-its-cool-but-are-you-doing-it-the-right-way (!)
+
+https://severalnines.com/database-blog/big-data-postgresql-and-apache-spark
 
 
+(https://www.howtoforge.com/tutorial/high-availability-storage-with-glusterfs-on-ubuntu-1804/)
+hbase
 
 http://spark.apache.org/docs/latest/spark-standalone.html#cluster-launch-scripts
 https://oneoffcoder.com/2019/10/16/hadoop-spark-python-docker-container/
 https://towardsdatascience.com/spark-and-docker-your-spark-development-cycle-just-got-10x-faster-f41ed50c67fd
 https://github.com/big-data-europe/docker-spark
+
+
+
 
 
 

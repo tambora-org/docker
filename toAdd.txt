@@ -42,4 +42,13 @@ https://www.heise.de/amp/news/Open-Source-Alibaba-veroeffentlicht-Cloud-Datenban
 PolarDB -> PostgreSQL
 
 
+
+DFS
+ Lustre
+ GlusterFS
+ BeeGFS
+ Coda
+ Ceph
+
+
  
