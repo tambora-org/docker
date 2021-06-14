@@ -33,6 +33,8 @@ RUN cd /cre/postgresql-src && ./configure && make
 # Set environment variables.
 ENV HOME /cre/postgresql-src
 
+COPY cre /cre
+
 # Define working directory.
 WORKDIR /cre/postgresql-src
 
