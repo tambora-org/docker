@@ -18,7 +18,7 @@ ENV POSTGRES_VERSION 12.2
 WORKDIR /cre/
 
 RUN apt-get update -y && \
-    apt-get install build-essential libreadline-dev zlib1g-dev flex bison libxml2-dev libxslt-dev libssl-dev libxml2-utils xsltproc
+    apt-get install -y -q --no-install-recommends build-essential libreadline-dev zlib1g-dev flex bison libxml2-dev libxslt-dev libssl-dev libxml2-utils xsltproc
 
 
 #https://ftp.postgresql.org/pub/source/v12.2/postgresql-12.2.tar.gz
