@@ -24,7 +24,7 @@ RUN apt-get update -y && \
 #https://ftp.postgresql.org/pub/source/v12.2/postgresql-12.2.tar.gz
 
 RUN curl https://ftp.postgresql.org/pub/source/v12.2/postgresql-12.2.tar.gz > /cre/postgresql.tar.gz && \
-    tar -C /usr/local -xzf /cre/postgresql.tar.gz && \
+    tar -C /cre -xzf /cre/postgresql.tar.gz && \
     rm -f /cre/postgresql.tar.gz && \
     mv /cre/postgresql-12.2 /cre/postgresql-src
 
