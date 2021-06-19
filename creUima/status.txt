@@ -1,4 +1,6 @@
 https://uima.apache.org/
+https://uima.apache.org/d/uimaj-current/tutorials_and_users_guides.html#ugr.tug.aae
+
 
 https://uima.apache.org/doc-uima-annotator.html
 https://cwiki.apache.org/confluence/display/UIMA/Powered+by+Apache+UIMA
@@ -6,10 +8,13 @@ https://opennlp.apache.org/
 https://github.com/apache/opennlp
 https://opennlp.apache.org/docs/1.9.3/manual/opennlp.html#org.apche.opennlp.uima
 
+https://javalibs.com/artifact/org.apache.uima/uimafit-spring
+https://uima.apache.org/uimafit.html
 
 
 https://lehre.idh.uni-koeln.de/lehrveranstaltungen/wisem20/pu-machine-learning-mit-java-weka-und-uima/
 https://github.com/sharamigo/ML_java_weka
+https://de.slideshare.net/inovex/textanalyse-mit-uima-und-hadoop
 
 
 https://en.m.wikipedia.org/wiki/General_Architecture_for_Text_Engineering
@@ -41,9 +46,10 @@ https://github.com/texttechnologylab/UIMADatabaseInterface
 
 https://github.com/textmining-haw/TextMining
 https://github.com/HeidelTime/heideltime
+https://stackoverflow.com/questions/59618312/heideltime-how-to-package-heideltime-correctly-within-a-jar
 
 
-
+https://mvnrepository.com/artifact/org.apache.uima/DictionaryAnnotator/2.3.1
 
 
 

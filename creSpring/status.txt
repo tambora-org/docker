@@ -89,6 +89,10 @@ email:
 
 init spring app only if not yet done.... - then only handle setting files (gitignore in subdir is possible)
 
+mail:
+ https://en.wikipedia.org/wiki/Apache_James
+ https://james.apache.org
+
 
 
 
