@@ -73,6 +73,7 @@ web  |  thymeleaf, vue
      |  elasticsearch
      |  liquibase
      |  kafka, rabbitMQ
+     |  spark, opennlp, dl4j, uima, 
 
 
 email:
@@ -94,10 +95,10 @@ mail:
  https://james.apache.org
 
 
-
-
-   
-
+https://docs.spring.io/spring-hadoop/docs/current/reference/html/springandhadoop-spark.html
+https://github.com/chen0040/spring-boot-spark-integration-demo
+https://www.baeldung.com/spring-cloud-data-flow-spark
+https://github.com/Zhuinden/spring-spark-example
 
 
 

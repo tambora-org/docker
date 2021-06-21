@@ -28,6 +28,7 @@ https://github.com/apache/tika
 
 https://uima.apache.org/external-resources.html#ClearTK
 https://github.com/ClearTK/cleartk
+https://cleartk.github.io/cleartk/
 
 
 https://databricks.com/de/session/leveraging-uima-in-spark
@@ -50,7 +51,7 @@ https://stackoverflow.com/questions/59618312/heideltime-how-to-package-heideltim
 
 
 https://mvnrepository.com/artifact/org.apache.uima/DictionaryAnnotator/2.3.1
-
+https://github.com/EDS-APHP/UimaOnSpark
 
 
 

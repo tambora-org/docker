@@ -83,11 +83,21 @@ https://towardsdatascience.com/spark-and-docker-your-spark-development-cycle-jus
 https://github.com/big-data-europe/docker-spark
 
 
+https://dzone.com/articles/using-apache-spark-and-spring-batch-for-processing
+https://databricks.com/de/session/leveraging-uima-in-spark
+https://databricks.com/session_na20/advanced-natural-language-processing-with-apache-spark-nlp
+https://www.kdnuggets.com/2019/06/spark-nlp-getting-started-with-worlds-most-widely-used-nlp-library-enterprise.html
+https://databricks.com/session_na20/building-a-pipeline-for-state-of-the-art-natural-language-processing-using-hugging-face-tools
+https://www.slideshare.net/SparkSummit/dictionary-based-annotation-at-scale-with-spark-by-sujit-pal
 
+https://docs.spring.io/spring-hadoop/docs/current/reference/html/springandhadoop-spark.html
+https://github.com/chen0040/spring-boot-spark-integration-demo
+https://www.baeldung.com/spring-cloud-data-flow-spark
+https://github.com/Zhuinden/spring-spark-example
+https://github.com/EDS-APHP/UimaOnSpark
 
-
-
-
+https://clubhouse.io/developer-how-to/how-to-set-up-a-hadoop-cluster-in-docker/
+https://github.com/big-data-europe/docker-hadoop
 
 
 
