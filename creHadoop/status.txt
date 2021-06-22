@@ -1,0 +1,8 @@
+https://clubhouse.io/developer-how-to/how-to-set-up-a-hadoop-cluster-in-docker/
+https://github.com/big-data-europe/docker-hadoop
+
+https://www.digitalocean.com/community/tutorials/how-to-set-filesystem-quotas-on-ubuntu-18-04
+
+
+
+(https://www.digitalocean.com/community/tutorials/how-to-create-a-redundant-storage-pool-using-glusterfs-on-ubuntu-20-04-de)
