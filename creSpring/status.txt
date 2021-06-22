@@ -105,3 +105,5 @@ https://stackoverflow.com/questions/11215621/how-to-effectively-use-scala-in-a-s
 https://francoisbotha.io/2018/05/16/integrating-scala-into-a-spring-boot-project/
 https://jaxenter.de/dossier-scala-java-47497
 
+https://medium.com/parito-labs-blog/get-started-with-machine-learning-in-java-using-spark-nlp-9eb8ef2ea2ce
+
