@@ -101,6 +101,7 @@ https://www.baeldung.com/spring-cloud-data-flow-spark
 https://github.com/Zhuinden/spring-spark-example
 
 
-
-
+https://stackoverflow.com/questions/11215621/how-to-effectively-use-scala-in-a-spring-mvc-project
+https://francoisbotha.io/2018/05/16/integrating-scala-into-a-spring-boot-project/
+https://jaxenter.de/dossier-scala-java-47497
 

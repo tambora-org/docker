@@ -46,6 +46,7 @@ ENV SPARK_MASTER_HOST cresparkmaster
 ENV SPARK_MASTER_PORT 7077
 ENV PYSPARK_PYTHON python3
 
+ENV CRE_WORKSPACE /cre/workspace
 
 ARG spark_master_web_ui=8080
 
@@ -66,7 +67,7 @@ COPY cre /cre
 WORKDIR ${SPARK_HOME}
 #WORKDIR /cre/spring/app
 
-
+VOLUME ${CRE_WORKSPACE}
 
 #EXPOSE 7077 
 

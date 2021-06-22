@@ -36,6 +36,8 @@ ENV INITRD No
 ENV JUPYTER_VERSION 2.1.5 
 ENV SPARK_VERSION 3.0.0
 
+ENV CRE_WORKSPACE /cre/workspace
+
 LABEL Name="Jupyter for CRE" \
       CRE=$CRE_VERSION \ 
       Year=$BUILD_YEAR \
@@ -138,7 +140,8 @@ RUN Rscript /cre/kernel-r-install.r
 RUN julia /cre/kernel-julia-install.jl
 
 # Define mountable directories.
-VOLUME ["/cre/jupyter"]
+#VOLUME ["/cre/jupyter"]
+VOLUME ${CRE_WORKSPACE}
 
 WORKDIR /cre/
 

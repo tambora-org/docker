@@ -9,7 +9,7 @@ if ( id ${JUPYTER_ADMIN} ); then
 else
   echo "Creating user ${JUPYTER_ADMIN}"
   ENC_PASS=$(perl -e 'print crypt($ARGV[0], "password")' ${JUPYTER_PASSWORD})
-  useradd -d /cre/jupyter/${JUPYTER_ADMIN} -m -p ${ENC_PASS} -s /bin/sh ${JUPYTER_ADMIN}
+  useradd -d /cre/workspace/jupyter/${JUPYTER_ADMIN} -m -p ${ENC_PASS} -s /bin/sh ${JUPYTER_ADMIN}
 fi
 
 exec "$@"
