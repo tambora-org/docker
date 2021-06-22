@@ -36,6 +36,8 @@ RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow 
 RUN pip3 install tensorboard tensorboard_logger
 
+##pip install spark-nlp==3.1.0 pyspark==3.1.1
+pip install spark-nlp pyspark
 
 # https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.3.0.tar.gz
 # https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-linux-x86_64-2.3.0.tar.gz
