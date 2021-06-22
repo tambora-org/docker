@@ -13,11 +13,7 @@ ARG BUILD_MONTH=0
 ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
-#ENV DEBIAN_FRONTEND noninteractive 
-#ENV INITRD No
-#ENV LANG en_US.UTF-8
-ENV NPM_VERSION 10
-ENV PYTHON_VERSION 3.6 
+
 ENV PROCESSOR_MODE CPU   # 'GPU' or 'CPU'
 ENV NVIDIA_VERSION 450
 
@@ -39,8 +35,9 @@ RUN apt-get  -y --no-install-recommends install nvidia-driver-$NVIDIA_VERSION
 #RUN apt-get -y --no-install-recommends install nvidia-$NVIDIA_VERSION
 
 # install Python
-RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-dev python3-setuptools python3-pip python3-plotly && apt-get clean 
-RUN pip3 install --upgrade pip 
+RUN apt-get update && apt-get -y --no-install-recommends install python3-dev python3-plotly && apt-get clean 
+##RUN apt-get update && apt-get -y --no-install-recommends install python3 python3-dev python3-setuptools python3-pip python3-plotly && apt-get clean 
+##RUN pip3 install --upgrade pip 
 RUN pip3 install setuptools wheel psutil pipreqs arrow
 RUN pip3 install numpy scipy pandas patsy statsmodels datatable
 RUN pip3 install matplotlib seaborn

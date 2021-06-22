@@ -4,7 +4,7 @@
 # https://github.com/tamboraorg/docker/creNeo4j
 #
 
-FROM tamboraorg/crejava:latest
+FROM tamboraorg/creubuntu:2020.0
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
 # https://github.com/docker-library/docs/tree/master/neo4j

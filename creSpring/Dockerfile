@@ -5,11 +5,11 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crejava:latest
+FROM tamboraorg/creubuntu:2020.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
-ARG BUILD_YEAR=2018
+ARG BUILD_YEAR=2020
 ARG BUILD_MONTH=0
 ARG BUILD_TAG=latest
 

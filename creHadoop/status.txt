@@ -5,4 +5,3 @@ https://www.digitalocean.com/community/tutorials/how-to-set-filesystem-quotas-on
 
 
 
-(https://www.digitalocean.com/community/tutorials/how-to-create-a-redundant-storage-pool-using-glusterfs-on-ubuntu-20-04-de)

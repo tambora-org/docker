@@ -5,7 +5,7 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/crejava:latest
+FROM tamboraorg/creubuntu:2020.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 

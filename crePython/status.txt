@@ -45,6 +45,8 @@ Install python modules by file
  * pip install -r requirements.txt
  * https://stackoverflow.com/questions/46419607/how-to-automatically-install-required-packages-from-a-python-script-as-necessary/46419642
  * https://github.com/bndr/pipreqs
+ * pip freeze > requirements.txt
+ * pip list
 
 DONE:
 =====
