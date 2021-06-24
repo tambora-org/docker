@@ -15,7 +15,7 @@ ARG BUILD_TAG=latest
 
 # version: yyyy.n for stable versions / 0.yyyy for development
 ENV INITRD No
-ENV RABBITMQ_VERSION 3.8.2   # 3.6.0
+ENV RABBITMQ_VERSION 3.8.17   # 3.6.0
 
  
 LABEL Name="RabbitMQ for CRE" \
@@ -71,7 +71,9 @@ RUN apt update  -y  && apt install  -y rabbitmq-server \
 
 COPY cre /cre
 WORKDIR /cre/
-ENV RABBITMQ_PLUGINS_DIR /cre/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.2/plugins
+# ENV RABBITMQ_HOME /usr/lib/rabbitmq/lib/rabbitmq_server-3.8.2/
+ENV RABBITMQ_PLUGINS_DIR /cre/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.17/plugins
+# :/usr/lib/rabbitmq/plugins:$RABBITMQ_HOME/plugins
 
 # delay plugin     (3.8.9 -> 20.04?)
 # https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.8.9/rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez
