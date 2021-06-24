@@ -31,16 +31,27 @@ LABEL Name="RabbitMQ for CRE" \
 # https://computingforgeeks.com/how-to-install-latest-rabbitmq-server-on-ubuntu-linux/
 # https://www.rabbitmq.com/install-debian.html#apt
 
-#--- Ubuntu 20.04 ---
+#--- Ubuntu 20.04 OLD ---
+## RUN apt install apt-transport-https -y \
+##  && wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add - 
+## RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+
+#--- Ubuntu 20.04 NEW ---
+RUN apt-key adv --keyserver "hkps://keys.openpgp.org" --recv-keys "0x0A9AF2115F4687BD29803A206B73A36E6026DFCA"
+RUN apt-key adv --keyserver "keyserver.ubuntu.com" --recv-keys "F77F1EDA57EBB1CC"
+RUN curl -1sLf 'https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey' | sudo apt-key add -
 RUN apt install apt-transport-https -y \
- && wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add - 
-RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang-22.x" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+RUN echo "deb http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+RUN echo "deb https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+
 
 # --- Ubuntu 18.04 ---
+# RUN apt-key adv --keyserver "hkps://keys.openpgp.org" --recv-keys "0x0A9AF2115F4687BD29803A206B73A36E6026DFCA"
+# RUN apt-key adv --keyserver "keyserver.ubuntu.com" --recv-keys "F77F1EDA57EBB1CC"
+# RUN curl -1sLf 'https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey' | sudo apt-key add -
 # RUN apt install apt-transport-https -y \
-#  && wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | sudo apt-key add - \
-#  && wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
-# RUN echo "deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-22.x" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+# RUN echo "deb http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu bionic main" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+# RUN echo "deb https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ bionic main" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 
 RUN apt update  -y  && apt install  -y rabbitmq-server \
  && rabbitmq-plugins enable rabbitmq_management

@@ -39,6 +39,10 @@ RUN apt update -y  && apt install -y erlang
 # Security packages
 RUN apt install -y erlang-asn1 erlang-crypto erlang-public-key erlang-ssl 
 
+#NOt needed yet...
+## erlang-eldap erlang-ftp erlang-inets erlang-mnesia erlang-os-mon erlang-parsetools 
+## erlang-runtime-tools erlang-snmp erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
+
 ## https://www.rabbitmq.com/install-debian.html#apt
 
  
