@@ -101,11 +101,17 @@ RUN apt-get -y --no-install-recommends install sbcl
 
 
 ## Julia: >=20.04
-RUN apt-get -y --no-install-recommends install julia 
+##         RUN apt-get -y --no-install-recommends install julia 
 #Pkg.add("Spark.jl")
 #https://stackoverflow.com/questions/51272077/install-julia-packages-via-command-line/51273146
 ##RUN julia -e 'using Pkg; Pkg.add("Spark.jl")'    ##ERROR
+## Pkg.add(“IJulia”)
 
+RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.0-linux-x86_64.tar.gz  && \
+    tar -xvzf julia-1.6.0-linux-x86_64.tar.gz  && \
+    cp -r julia-1.6.0 /opt/  && \
+    ln -s /opt/julia-1.6.0/bin/julia /usr/local/bin/julia  && \
+    rm julia-1.6.0-linux-x86_64.tar.gz
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t crePython \t $PYTHON_VERSION" >> /cre/versions.txt && \
