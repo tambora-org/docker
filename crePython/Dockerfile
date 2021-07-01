@@ -4,7 +4,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/crenode:2020.0
+FROM tamboraorg/crenode:2018.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
