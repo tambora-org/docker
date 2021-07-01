@@ -104,7 +104,7 @@ RUN apt-get -y --no-install-recommends install sbcl
 RUN apt-get -y --no-install-recommends install julia 
 #Pkg.add("Spark.jl")
 #https://stackoverflow.com/questions/51272077/install-julia-packages-via-command-line/51273146
-RUN julia -e 'using Pkg; Pkg.add("Spark.jl")'
+##RUN julia -e 'using Pkg; Pkg.add("Spark.jl")'    ##ERROR
 
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
