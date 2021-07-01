@@ -1,3 +1,8 @@
+Try to use standard-packages? 
+https://packages.ubuntu.com/search?suite=focal&searchon=names&keywords=rabbitmq 
+https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez
+
+
 https://github.com/docker-library/rabbitmq
 
 https://medium.com/@marcosstefani/rabbitmq-with-spring-boot-d05197fce05e

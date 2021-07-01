@@ -32,7 +32,9 @@ https://github.com/tleyden/open-ocr  (rabbitMQ)
 
  https://opensource.com/article/20/4/plot-data-python
 
-
+Julia:
+https://github.com/dfdx/Spark.jl
+https://juliacomputing.com/blog/2020/06/julia-spark/
 
 
 R server

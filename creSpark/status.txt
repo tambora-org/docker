@@ -122,5 +122,16 @@ https://towardsdatascience.com/introduction-to-spark-nlp-foundations-and-basic-c
 
 https://medium.com/parito-labs-blog/get-started-with-machine-learning-in-java-using-spark-nlp-9eb8ef2ea2ce
 
+Julia:
+https://github.com/dfdx/Spark.jl
+https://juliacomputing.com/blog/2020/06/julia-spark/
+
+SparkNlp
+https://towardsdatascience.com/running-spark-nlp-in-docker-container-for-named-entity-recognition-and-other-nlp-features-8acdb662da5b
+https://nlp.johnsnowlabs.com/docs/en/install
+https://morioh.com/p/49d876460bc4
+https://www.dagshub.com/MiguelPeralvo/spark-nlp-workshop
+https://github.com/JohnSnowLabs/spark-nlp/discussions/1714
+
 
 
