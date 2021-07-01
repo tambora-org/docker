@@ -66,11 +66,11 @@ RUN apt-get -y --no-install-recommends install r-cran-vcd r-cran-vcdextra r-cran
 RUN apt-get -y --no-install-recommends install r-cran-wikidatar r-cran-wordcloud r-cran-xml r-cran-xml2 r-cran-xtable r-cran-xts 
 RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs  r-cran-shinydashboard r-cran-shinyjs 
 
-## not (yet?) available , 20.04 only ?
+## not (yet?) available , 20.04 only 
 
 ## https://www.rplumber.io/
 ## https://www.r-bloggers.com/how-to-create-an-api-for-your-r-code/
-RUN apt-get -y --no-install-recommends install r-cran-plumber
+#RUN apt-get -y --no-install-recommends install r-cran-plumber
 
 ## r-cran-circlize r-cran-clisymbols r-cran-commonmark r-cran-ggsci r-cran-ggthemes r-cran-jpeg r-cran-pdftools r-cran-remotes r-cran-rgdal
 ## r-cran-rmarkdown r-cran-rstantools r-cran-reticulate r-cran-spacetime r-cran-spatialreg r-cran-svglite r-cran-threejs

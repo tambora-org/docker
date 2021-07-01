@@ -50,6 +50,11 @@ DFS
  Coda
  Ceph
 
+https://opensource.com/business/15/7/running-ceph-inside-docker
+https://thenewstack.io/tutorial-create-a-docker-swarm-with-persistent-storage-using-glusterfs/
+https://hub.docker.com/p/trajano/glusterfs-volume-plugin
+
+
 
 https://opennlp.apache.org/
 https://de.m.wikipedia.org/wiki/UIMA
