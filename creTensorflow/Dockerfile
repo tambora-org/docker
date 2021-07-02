@@ -93,8 +93,9 @@ RUN pip3 install pytorch-lightning
 #catboost
 ##
 
-RUN curl https://raw.githubusercontent.com/automl/Auto-PyTorch/master/requirements.txt | xargs -n 1 -L 1 pip3 install
-RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch.git && cd Auto-PyTorch && python3 setup.py install && cd /cre 
+## Auto PyTOrch runs in 20.04 only...
+# RUN curl https://raw.githubusercontent.com/automl/Auto-PyTorch/master/requirements.txt | xargs -n 1 -L 1 pip3 install
+# RUN mkdir -p /cre && cd /cre && git clone https://github.com/automl/Auto-PyTorch.git && cd Auto-PyTorch && python3 setup.py install && cd /cre 
 
 # AutoKeras
 # https://machinelearningmastery.com/autokeras-for-classification-and-regression/
