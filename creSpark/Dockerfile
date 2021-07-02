@@ -5,7 +5,7 @@
 #
 
 # Pull base image. 
-FROM tamboraorg/creubuntu:2020.0
+FROM tamboraorg/creubuntu:2018.0
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de> 
 
@@ -45,6 +45,11 @@ ENV SPARK_HOME /usr/bin/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
 ENV SPARK_MASTER_HOST cresparkmaster
 ENV SPARK_MASTER_PORT 7077
 ENV PYSPARK_PYTHON python3
+
+#needed?
+#RUN pip3 install spark-nlp==3.1.1 pyspark==3.1.1
+#RUN pip3 install spark-nlp pyspark 
+#RUN pip3 install scikit-spark scikit-learn
 
 ENV CRE_WORKSPACE /cre/workspace
 
