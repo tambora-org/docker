@@ -38,7 +38,8 @@ RUN pip3 install tensorboard tensorboard_logger
 
 RUN pip3 install spark-nlp==3.1.1 pyspark==3.1.1
 #RUN pip3 install spark-nlp pyspark 
-RUN pip3 install scikit-spark scikit-learn
+RUN pip3 install scikit-spark scikit-learn==0.22.0
+#RUN apt-get install python3-sklearn python3-sklearn-lib
 
 # https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.3.0.tar.gz
 # https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-linux-x86_64-2.3.0.tar.gz
