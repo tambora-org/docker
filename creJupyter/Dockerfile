@@ -135,7 +135,9 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
 COPY cre /cre
 
 #R kernel
-RUN Rscript /cre/kernel-r-install.r    
+## works only for 20.04
+#RUN Rscript /cre/kernel-r-install.r  
+  
 #Julia kernel
 RUN julia /cre/kernel-julia-install.jl
 
