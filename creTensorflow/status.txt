@@ -31,7 +31,7 @@ https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfile
 https://www.tensorflow.org/install/lang_c
 https://www.tensorflow.org/install
 
-
+https://spark.apache.org/docs/3.1.1/api/python/getting_started/install.html
 
 https://prodi.gy ??
 

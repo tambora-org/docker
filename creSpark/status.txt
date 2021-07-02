@@ -134,4 +134,10 @@ https://www.dagshub.com/MiguelPeralvo/spark-nlp-workshop
 https://github.com/JohnSnowLabs/spark-nlp/discussions/1714
 
 
+https://spark.apache.org/docs/3.1.1/api/python/user_guide/arrow_pandas.html#ensure-pyarrow-installed
+pip install pyspark[sql]
+
+http://spark.apache.org/docs/latest/submitting-applications.html#master-urls
+http://spark.apache.org/docs/latest/spark-standalone.html
+http://spark.apache.org/docs/latest/configuration.html#environment-variables
 

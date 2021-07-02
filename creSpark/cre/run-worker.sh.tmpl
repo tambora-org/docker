@@ -7,6 +7,9 @@
 sleep 2
 echo "Deploy Spark Worker"
 bin/spark-class org.apache.spark.deploy.worker.Worker spark://${SPARK_MASTER_HOST}:${SPARK_MASTER_PORT} >> logs/spark-worker.out
+
+#sudo docker exec cresparkmaster cat /usr/bin/spark-3.0.0-bin-hadoop2.7/sbin/start-slave.sh
+
 {{ else }}
 echo "No Spark Worker"
 sleep 9999999

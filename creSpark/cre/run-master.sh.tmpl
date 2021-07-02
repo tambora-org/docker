@@ -9,4 +9,7 @@ sleep 9999999
 {{ else }}
 echo "Deploy Spark Master"
 bin/spark-class org.apache.spark.deploy.master.Master >> logs/spark-master.out
+
+#sudo docker exec cresparkmaster cat /usr/bin/spark-3.0.0-bin-hadoop2.7/sbin/start-master.sh
+
 {{ end }}
