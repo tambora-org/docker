@@ -87,6 +87,7 @@ RUN pip3 install -U jupyter-book
 #configurable-http-proxy -h
 
 #Install Lisp: sbcl
+#https://github.com/yitzchak/common-lisp-jupyter
 RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.tar.bz2 -O /cre/sbcl.tar.bz2 && \
     mkdir /cre/sbcl && \
     tar -jxvf /cre/sbcl.tar.bz2 --strip-components=1 -C /cre/sbcl/ && \
@@ -104,6 +105,7 @@ RUN sbcl --non-interactive --load /cre/quicklisp.lisp
 # curl -O https://beta.quicklisp.org/quicklisp.lisp.asc
 # gpg --verify quicklisp.lisp.asc quicklisp.lisp
 
+#https://github.com/shwina/ielisp
 
 
 # The command '/bin/sh -c ros install common-lisp-jupyter' returned a non-zero code: 1
@@ -139,7 +141,18 @@ COPY cre /cre
 #RUN Rscript /cre/kernel-r-install.r  
   
 #Julia kernel
+#https://github.com/JuliaLang/IJulia.jl
 RUN julia /cre/kernel-julia-install.jl
+
+#Java
+#https://github.com/SpencerPark/IJava
+
+#Scala?
+#https://github.com/mattpap/IScala
+
+#erlang
+#https://github.com/robbielynch/ierlang
+
 
 # Define mountable directories.
 #VOLUME ["/cre/jupyter"]
