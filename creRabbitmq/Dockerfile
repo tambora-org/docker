@@ -56,7 +56,7 @@ RUN echo "deb https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal mai
 #list available packages
 RUN apt list -a rabbitmq-server
 
-RUN apt update  -y  && apt install -y rabbitmq-server=3.8.17.\* \
+RUN apt update  -y  && apt install -y rabbitmq-server=3.8.\* \
  && rabbitmq-plugins enable rabbitmq_management
 
 # works
@@ -75,7 +75,7 @@ RUN apt update  -y  && apt install -y rabbitmq-server=3.8.17.\* \
 COPY cre /cre
 WORKDIR /cre/
 # ENV RABBITMQ_HOME /usr/lib/rabbitmq/lib/rabbitmq_server-3.8.2/
-ENV RABBITMQ_PLUGINS_DIR /cre/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.17/plugins
+ENV RABBITMQ_PLUGINS_DIR /cre/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.19/plugins
 # :/usr/lib/rabbitmq/plugins:$RABBITMQ_HOME/plugins
 
 # delay plugin     (3.8.9 -> 20.04?)
