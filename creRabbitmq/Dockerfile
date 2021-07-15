@@ -53,7 +53,10 @@ RUN echo "deb https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal mai
 # RUN echo "deb http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu bionic main" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 # RUN echo "deb https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ bionic main" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 
-RUN apt update  -y  && apt install  -y rabbitmq-server \
+#list available packages
+RUN apt list -a rabbitmq-server
+
+RUN apt update  -y  && apt install -y rabbitmq-server=3.8.17.\* \
  && rabbitmq-plugins enable rabbitmq_management
 
 # works
