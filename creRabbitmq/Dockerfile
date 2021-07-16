@@ -72,8 +72,11 @@ RUN apt update  -y  && apt install -y rabbitmq-server=3.8.\* \
 # RUN rabbitmq-diagnostics environment
 # RUN rabbitmq-diagnostics erlang_version
 
-ENV RABBITMQ_VERSION2 $(rabbitmqctl version/abbit/)
-RUN echo "$RABBITMQ_VERSION2"
+#ENV RABBITMQ_VERSION2 $(rabbitmqctl version/abbit/)
+#RUN echo "$RABBITMQ_VERSION2"
+
+RUN RABBITMQ_VERSION2=`$(rabbitmqctl version/abbit/)` && \
+    echo $RABBITMQ_VERSION2
 
 COPY cre /cre
 WORKDIR /cre/
