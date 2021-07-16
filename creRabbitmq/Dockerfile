@@ -75,11 +75,11 @@ RUN apt update  -y  && apt install -y rabbitmq-server=3.8.\* \
 #ENV RABBITMQ_VERSION2 $(rabbitmqctl version/abbit/)
 #RUN echo "$RABBITMQ_VERSION2"
 
-RUN RABBITMQ_VERSION2=`$(rabbitmqctl version/abbit/)` && \
+RUN RABBITMQ_VERSION2=$(rabbitmqctl version | sed -e 's|abbit||')` && \
     echo $RABBITMQ_VERSION2
 
 COPY cre /cre
-WORKDIR /cre/
+WORKDIR /cre/ 
 # ENV RABBITMQ_HOME /usr/lib/rabbitmq/lib/rabbitmq_server-3.8.2/
 ENV RABBITMQ_PLUGINS_DIR /cre/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.19/plugins
 # :/usr/lib/rabbitmq/plugins:$RABBITMQ_HOME/plugins
