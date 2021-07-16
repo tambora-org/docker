@@ -72,6 +72,9 @@ RUN apt update  -y  && apt install -y rabbitmq-server=3.8.\* \
 # RUN rabbitmq-diagnostics environment
 # RUN rabbitmq-diagnostics erlang_version
 
+ENV RABBITMQ_VERSION2 $(rabbitmqctl version/abbit/)
+RUN echo "$RABBITMQ_VERSION2"
+
 COPY cre /cre
 WORKDIR /cre/
 # ENV RABBITMQ_HOME /usr/lib/rabbitmq/lib/rabbitmq_server-3.8.2/
@@ -94,6 +97,10 @@ RUN rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 # https://www.rabbitmq.com/web-mqtt.html  ##port:15675
 RUN rabbitmq-plugins enable rabbitmq_mqtt
 RUN rabbitmq-plugins enable rabbitmq_web_mqtt
+
+
+RUN mkdir -p /cre && touch /cre/versions.txt && \ 
+    echo "$(date +'%F %R') \t rabbitMq \t $(rabbitmqctl version)" >> /cre/versions.txt 
 
 EXPOSE 15672 15675 5672 25672 1883   
 #  4369 5671 5672 15691 15692 
