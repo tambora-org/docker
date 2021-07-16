@@ -75,7 +75,7 @@ RUN apt update  -y  && apt install -y rabbitmq-server=3.8.\* \
 #ENV RABBITMQ_VERSION2 $(rabbitmqctl version/abbit/)
 #RUN echo "$RABBITMQ_VERSION2"
 
-RUN RABBITMQ_VERSION2=$(rabbitmqctl version | sed -e 's|abbit||')` && \
+RUN RABBITMQ_VERSION2=$(rabbitmqctl version | sed -e 's|abbit||') && \
     echo $RABBITMQ_VERSION2
 
 COPY cre /cre
