@@ -77,6 +77,7 @@ RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs  r-cr
 ## r-cran-tidyverse r-cran-tidygraph r-cran-tidyselect r-cran-tinytex r-cran-tufte r-cran-waveslim r-cran-wavethresh r-cran-webshot r-cran-webutils 
 ## r-cran-shinycssloaders r-cran-shinythemes
 ## r-cran-mlr r-cran-mlmetrics r-cran-mlbench
+#  "dplyr", "tidytext", "stopwords" 
 
 ## rdwd (https://cran.r-project.org/web/packages/rdwd/index.html)
 ## install.packages("climate")  ; climate ; (https://cran.r-project.org/web/packages/climate/index.html)
@@ -84,11 +85,21 @@ RUN apt-get -y --no-install-recommends install r-cran-shiny r-cran-shinybs  r-cr
 # install Latex
 RUN apt-get -y --no-install-recommends install texlive-full latex-make latex2html python3-latexcodec 
  
+# install rust
+RUN apt-get -y --no-install-recommends install rustc cargo
+RUN rustup update
+
 # install cLisp ;-)
 # https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=lisp&searchon=names
 RUN apt-get -y --no-install-recommends install clisp
 #sbcl
 RUN apt-get -y --no-install-recommends install sbcl
+
+# http://www.peter-herth.de/ltk/ltkdoc.pdf
+# http://www.peter-herth.de/ltk/ltkdoc/node1.html
+#apt-get -y --no-install-recommends install tcl
+#https://github.com/herth/ltk/archive/refs/tags/0.992.tar.gz
+
 
 # move to ubuntu later
 #RUN apt-get -y --no-install-recommends install jq 
@@ -107,11 +118,13 @@ RUN apt-get -y --no-install-recommends install sbcl
 ##RUN julia -e 'using Pkg; Pkg.add("Spark.jl")'    ##ERROR
 ## Pkg.add(“IJulia”)
 
-RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.0-linux-x86_64.tar.gz  && \
-    tar -xvzf julia-1.6.0-linux-x86_64.tar.gz  && \
-    cp -r julia-1.6.0 /opt/  && \
-    ln -s /opt/julia-1.6.0/bin/julia /usr/local/bin/julia  && \
-    rm julia-1.6.0-linux-x86_64.tar.gz
+RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.6-linux-x86_64.tar.gz  && \
+    tar -xvzf julia-1.6.6-linux-x86_64.tar.gz  && \
+    cp -r julia-1.6.6 /opt/  && \
+    ln -s /opt/julia-1.6.6/bin/julia /usr/local/bin/julia  && \
+    rm julia-1.6.6-linux-x86_64.tar.gz
+
+# https://medium.com/@andreaskuhn92/how-to-solve-the-same-numerical-problem-in-7-different-programming-languages-a64daac3ed64
 
 RUN mkdir -p /cre && touch /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t crePython \t $PYTHON_VERSION" >> /cre/versions.txt && \
@@ -124,6 +137,8 @@ RUN mkdir -p /cre && touch /cre/versions.txt && \
    echo "$(date +'%F %R') \t  sbcl \t $(sbcl --version)" >> /cre/versions.txt && \ 
 #   echo "$(date +'%F %R') \t  $(ros --version 2>&1)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(julia --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(rustc --version)" >> /cre/versions.txt && \ 
+   echo "$(date +'%F %R') \t  $(cargo --version)" >> /cre/versions.txt && \ 
    echo "$(date +'%F %R') \t  $(latex --version | grep Debian)" >> /cre/versions.txt 
 
 COPY cre /cre

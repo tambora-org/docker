@@ -3,6 +3,19 @@ Still in prototype status
 
 Todo:
 =====
+https://geocoder.readthedocs.io/providers/GeoNames.html
+pip3 install geocoder
+
+https://www.twilio.com/blog/2017/08/geospatial-analysis-python-geojson-geopandas.html
+pip3 install shapely==1.5.17
+pip3 install geopandas==0.6.0
+##pip3 install geojsonio==0.0.3
+
+Deep-Translator
+
+
+https://jakevdp.github.io/PythonDataScienceHandbook/04.13-geographic-data-with-basemap.html
+conda install basemap
 
 
 https://realpython.com/flask-connexion-rest-api/
