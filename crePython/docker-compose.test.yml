@@ -1,6 +1,0 @@
-sut:
-  build: .
-  command: /cre/tests/python-test.sh
-  volumes:
-    - ./tests:/cre/tests
-
