@@ -27,8 +27,14 @@ Mobile App
 creIonic vs creNative (was/is creMobile)
 
 BOINC-Server
-BOINC-Client
  https://github.com/marius311/boinc-server-docker/tree/master/images/makeproject
+BOINC-Client
+ https://hub.docker.com/r/boinc/client
+
+https://github.com/marius311/boinc-server-docker/blob/master/docs/cookbook.md
+https://boinc.berkeley.edu/trac/wiki/BoincDocker
+https://dbeley.ovh/en/post/2020/12/30/run-boinc-with-docker/
+
  https://docs.wxwidgets.org/2.6/wx_wxhtml.html
  http://htmlcxx.sourceforge.net/
 

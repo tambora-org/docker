@@ -64,3 +64,10 @@ https://stackoverflow.com/questions/10228592/splitting-a-pdf-with-ghostscript
 https://stackoverflow.com/questions/653380/converting-a-pdf-to-png
 
 
+
+Spellcheck:
+https://wiki.ubuntuusers.de/Hunspell/
+https://wiki.ubuntuusers.de/gImageReader/ (UI)
+
+
+

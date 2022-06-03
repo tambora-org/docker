@@ -132,6 +132,8 @@ https://nlp.johnsnowlabs.com/docs/en/install
 https://morioh.com/p/49d876460bc4
 https://www.dagshub.com/MiguelPeralvo/spark-nlp-workshop
 https://github.com/JohnSnowLabs/spark-nlp/discussions/1714
+https://github.com/MiguelPeralvo/spark-nlp-workshop/blob/master/Dockerfile
+
 
 
 https://spark.apache.org/docs/3.1.1/api/python/user_guide/arrow_pandas.html#ensure-pyarrow-installed

@@ -112,6 +112,7 @@ RUN pip3 install sense2vec
 RUN python3 -m spacy download en_core_web_sm
 RUN python3 -m spacy download de_core_news_sm
 RUN python3 -m spacy download xx_ent_wiki_sm
+#RUN python3 -m spacy download fr_core_news_sm french
 #python3 -m spacy download el_core_news_sm   greek
 #python3 -m spacy download zh_core_web_sm    chinese
 

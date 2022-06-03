@@ -15,6 +15,8 @@
 
 # https://www.kdnuggets.com/2020/07/apache-spark-cluster-docker.html
 
+# https://medium.com/@andreaskuhn92/how-to-solve-the-same-numerical-problem-in-7-different-programming-languages-a64daac3ed64
+
 # Jupyter Hub Dockerfile 
 #
 # https://github.com/tamboraorg/docker/crepython
