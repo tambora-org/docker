@@ -1,6 +1,0 @@
-mq: /cre/mq/init-queue.sh
-languages: /cre/gen-template.sh /cre/tesseract.sh.tmpl /cre/tesseract.sh
-watch: /cre/init-consume.sh
-trigger: watch -n 120 /cre/do-publish.sh
-update: watch -n 600007 /cre/ubuntu-weekly.sh
-start: bash
