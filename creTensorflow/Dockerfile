@@ -139,6 +139,18 @@ RUN apt-get install -y python3-pil
 RUN apt-get -y --no-install-recommends install caffe-cpu
 #RUN apt-get -y --no-install-recommends install caffe-cuda
 
+# Add xgboost
+# https://xgboost.readthedocs.io/en/stable/install.html
+RUN pip3 install xgboost
+#R: install.packages("xgboost")
+#Julia: https://github.com/dmlc/XGBoost.jl
+# add XGBoost
+
+# Add ivy
+# https://github.com/unifyai/ivy
+# https://lets-unify.ai/ivy/
+RUN pip3 install ivy-core
+
 # https://ui.neptune.ai
 RUN pip3 install neptune-client
 
