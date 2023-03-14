@@ -56,3 +56,5 @@ https://readthedocs.org/projects/jupyterhub/downloads/pdf/0.9.0/
 
 https://github.com/jupytercalpoly/jupyterlab-interactive-dashboard-editor
 
+https://towardsdatascience.com/the-perfect-text-editor-for-jupyter-a-complete-python-ide-608dd466560b
+
