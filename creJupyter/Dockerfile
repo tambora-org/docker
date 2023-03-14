@@ -23,7 +23,7 @@
 #
 
 # Pull base image.
-FROM tamboraorg/cretensorflow:latest
+FROM tamboraorg/creml:latest
 
 MAINTAINER Michael Kahle <michael.kahle@yahoo.de>
 
