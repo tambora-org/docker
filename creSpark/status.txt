@@ -143,3 +143,10 @@ http://spark.apache.org/docs/latest/submitting-applications.html#master-urls
 http://spark.apache.org/docs/latest/spark-standalone.html
 http://spark.apache.org/docs/latest/configuration.html#environment-variables
 
+https://www.oreilly.com/radar/podcast/building-a-natural-language-processing-library-for-apache-spark/
+https://nlp.johnsnowlabs.com/
+https://github.com/johnsnowlabs/spark-nlp
+https://opennlp.apache.org/
+https://nlp.stanford.edu/software/
+
+

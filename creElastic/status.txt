@@ -12,5 +12,13 @@ https://opensearch.org/
 https://github.com/opensearch-project/OpenSearch
 https://github.com/opensearch-project/OpenSearch-Dashboards
 
+# pgsync
+https://pgsync.com/schema/
+https://github.com/toluaina/pgsync
+https://github.com/toluaina/pgsync/blob/main/docker-compose.yml
+https://github.com/toluaina/pgsync/blob/main/docker-compose-opensearch.yml
 
 
+https://dattell.com/data-architecture-blog/opensearch-vs-elasticsearch/
+
+(https://de.wikipedia.org/wiki/OpenID_Connect)
